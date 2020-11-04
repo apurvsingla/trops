@@ -10,7 +10,6 @@ export const Graph = styled.div`
     background-image: -moz-linear-gradient(rgba(56, 56, 56, 0.5) 1px, transparent 1px), -moz-linear-gradient(0, rgba(56, 56, 56, 0.5) 1px, transparent 1px), -moz-linear-gradient(rgba(56, 56, 56, 0.5) 1px, transparent 1px), -moz-linear-gradient(0, rgba(56, 56, 56, 0.5) 1px, transparent 1px);
     background-image: linear-gradient(rgba(56, 56, 56, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 56, 56, 0.5) 1px, transparent 1px), linear-gradient(rgba(56, 56, 56, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 56, 56, 0.5) 1px, transparent 1px);
     width: 100%;
-    min-width: auto;
     height: 100%;
     opacity: 0.2;
 `;
