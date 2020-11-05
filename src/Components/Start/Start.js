@@ -25,14 +25,6 @@ const Start = () => {
     const [displayDot2, setDisplayDot2] = useState(false);
     const [displayDot3, setDisplayDot3] = useState(false);
     const [img1, setImg1] = useSessionStorage('img1', []);
-    const [img2, setImg2] = useSessionStorage('img2', []);
-    const [img3, setImg3] = useSessionStorage('img3', []);
-    const [img4, setImg4] = useSessionStorage('img4', []);
-    const [img5, setImg5] = useSessionStorage('img5', []);
-    const [img6, setImg6] = useSessionStorage('img6', []);
-    const [img7, setImg7] = useSessionStorage('img7', []);
-    const [img8, setImg8] = useSessionStorage('img8', []);
-    const [img9, setImg9] = useSessionStorage('img9', []);
 
     const history = useHistory();
 
@@ -41,40 +33,8 @@ const Start = () => {
     }
 
     // populating images
-    const onImage1Concat = () => {
-        setImg1(img1 => img1.concat({id: v4()}));
-    }
-
-    const onImage2Concat = () => {
-        setImg2(img2 => img2.concat({id: v4()}));
-    }
-
-    const onImage3Concat = () => {
-        setImg3(img1 => img1.concat({id: v4()}));
-    }
-
-    const onImage4Concat = () => {
-        setImg4(img1 => img1.concat({id: v4()}));
-    }
-    
-    const onImage5Concat = () => {
-        setImg5(img1 => img1.concat({id: v4()}));
-    }
-
-    const onImage6Concat = () => {
-        setImg6(img1 => img1.concat({id: v4()}));
-    }
-
-    const onImage7Concat = () => {
-        setImg7(img1 => img1.concat({id: v4()}));
-    }
-
-    const onImage8Concat = () => {
-        setImg8(img1 => img1.concat({id: v4()}));
-    }
-
-    const onImage9Concat = () => {
-        setImg9(img1 => img1.concat({id: v4()}));
+    const onImage1Concat = (src) => {
+        setImg1(img1 => img1.concat({id: v4(), src: src}));
     }
 
     //swipe
@@ -99,12 +59,7 @@ const Start = () => {
            </div>
 
             {/* Middle Component render */}
-            <MiddleComponent img1={img1} 
-            img2={img2} img3={img3}
-            img5={img5} img4={img4}
-            img6={img6} img7={img7}
-            img8={img8} img9={img9}
-            />
+            <MiddleComponent img1={img1}/>
             {/* end */}
 
            <Bottom>
@@ -118,11 +73,11 @@ const Start = () => {
                     setDisplayDot1(true);
                     setDisplayDot3(false);
                     }}>
-                    <Icon onClick={() => onImage1Concat()}/>
+                    <Icon onClick={(e) =>  onImage1Concat(process.env.PUBLIC_URL + '/images/components/beeper.png')}/>
                     <img src={process.env.PUBLIC_URL + '/images/components/beeper.png'} 
                     alt="beeper" width="60" />
 
-                    <MiddleIcon onClick={() => onImage2Concat()}/>
+                    <MiddleIcon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/condition.png')}/>
                     <img src={process.env.PUBLIC_URL + '/images/components/condition.png'} 
                     alt="beeper" 
                     width="60" 
@@ -131,7 +86,7 @@ const Start = () => {
                     marginRight: '20px'
                     }}/>
 
-                    <Icon onClick={() => onImage3Concat()} />
+                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/distance.png')} />
                     <img src={process.env.PUBLIC_URL + '/images/components/distance.png'} 
                     alt="beeper" width="65" />
                 </div>
@@ -141,11 +96,11 @@ const Start = () => {
                     setDisplayDot1(false);
                     setDisplayDot3(false);
                 }}>
-                    <Icon onClick={() => onImage4Concat()}/>
+                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/distance.png')}  />
                     <img src={process.env.PUBLIC_URL + '/images/components/distance.png'} 
                     alt="beeper" width="65" />
 
-                    <MiddleIcon onClick={() => onImage5Concat()}/>
+                    <MiddleIcon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/LED.png')}/>
                     <img src={process.env.PUBLIC_URL + '/images/components/LED.png'} 
                     alt="beeper" 
                     width="60" 
@@ -154,7 +109,7 @@ const Start = () => {
                     marginRight: '20px'
                     }}/>
                     
-                    <Icon onClick={() => onImage6Concat()}/>
+                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/light.png')}/>
                     <img src={process.env.PUBLIC_URL + '/images/components/light.png'} 
                     alt="beeper" width="65" />
                 </div>
@@ -164,11 +119,11 @@ const Start = () => {
                     setDisplayDot1(false);
                     setDisplayDot3(true);
                 }}>
-                    <Icon onClick={() => onImage7Concat()}/>
+                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/Magnetic.png')}/>
                     <img src={process.env.PUBLIC_URL + '/images/components/Magnetic.png'} 
                     alt="beeper" width="65" />
                     
-                    <MiddleIcon onClick={() => onImage8Concat()}/>
+                    <MiddleIcon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/Motor.png')}/>
                     <img src={process.env.PUBLIC_URL + '/images/components/Motor.png'} 
                     alt="beeper" 
                     width="65" 
@@ -177,7 +132,7 @@ const Start = () => {
                     marginRight: '20px'
                     }}/>
                     
-                    <Icon onClick={() => onImage9Concat()}/>
+                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/Power.png')}/>
                     <img src={process.env.PUBLIC_URL + '/images/components/Power.png'} 
                     alt="beeper" width="65" />
                 </div>
