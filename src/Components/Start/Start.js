@@ -21,9 +21,11 @@ MiddleIcon
 import './Start.styles.scss';
 
 const Start = () => {
+    let l = 0;
     const [displayDot1, setDisplayDot1] = useState(true);
     const [displayDot2, setDisplayDot2] = useState(false);
     const [displayDot3, setDisplayDot3] = useState(false);
+    const [num, setNum] = useSessionStorage('num', 0)
     const [img1, setImg1] = useSessionStorage('img1', []);
 
     const history = useHistory();
@@ -34,6 +36,13 @@ const Start = () => {
 
     // populating images
     const onImage1Concat = (src) => {
+        if(src=== (process.env.PUBLIC_URL + '/images/components/beeper.png')){
+            if(num === 1){
+                return;
+            }
+            setNum(num+1);
+            setImg1(img1 => img1.concat({id: v4(), src: src}));
+        }
         setImg1(img1 => img1.concat({id: v4(), src: src}));
     }
 
@@ -42,7 +51,9 @@ const Start = () => {
 
     return (
         <div>
-           <Graph style={{position: 'absolute'}}/>
+           <Graph style={{position: 'absolute',
+        width: `${(img1.length/img1.length*16/2)*(img1.length) + 100}%`,
+        }}/>
            <div style={{
                display: 'flex',
                flexDirection: 'column',
@@ -62,6 +73,8 @@ const Start = () => {
             <MiddleComponent img1={img1}/>
             {/* end */}
 
+
+            {/* swipeable area */}
            <Bottom>
             <ReactSwipe
                 className="carousel"
