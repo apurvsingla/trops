@@ -7,7 +7,7 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 const MiddleComponent = ({img1}) => {
         const [active, setActive] = useState(false);
         return( <>
-        <div style={{width: `${(img1.length/img1.length*16/2)*(img1.length) + 100}%`}}>
+        <div style={{width: `${(img1.length/img1.length*16/2)*(img1.length) + 100}%`, position: 'absolute',}}>
                 {img1.length>=1 ? img1.map((i,index) => {
                         console.log(index)
                 return(

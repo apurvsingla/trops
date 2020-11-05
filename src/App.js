@@ -11,7 +11,7 @@ import Assembly from './pages/Assembly/Assembly';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{height: '100%'}}>
       <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/sandbox" component={Main} />

@@ -18,9 +18,9 @@ export const Bottom = styled.div`
     width: 80%;
     background-color: white;
     border: 1px solid #fc846a;
-    height: 80px;
+    height: 90px;
     text-align: center;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 10%;
     border-top-left-radius: 15px;
