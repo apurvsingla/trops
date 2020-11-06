@@ -59,7 +59,7 @@ const Start = () => {
                flexDirection: 'column',
            }}>
             <Back width="120" height="120"
-                style={{position: 'absolute'}}
+                style={{position: 'absolute', cursor: 'pointer'}}
                 onClick={() => back()}
             />
             <Retry width="120" height="120" 

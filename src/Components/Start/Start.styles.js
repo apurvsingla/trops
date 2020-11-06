@@ -20,7 +20,7 @@ export const Bottom = styled.div`
     border: 1px solid #fc846a;
     height: 90px;
     text-align: center;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 10%;
     border-top-left-radius: 15px;
