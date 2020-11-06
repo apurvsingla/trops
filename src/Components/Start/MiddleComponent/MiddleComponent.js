@@ -1,22 +1,44 @@
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
+import {useSessionStorage} from '../../SessionStorage/SessionStorage';
 import {v4} from 'uuid';
 import MaximizeIcon from '@material-ui/icons/Maximize';
-import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
+import {style, imgStyle, bottomStyle, maximizeIconStyle} from './style';
 import './Middle.scss';
 
 const MiddleComponent = ({img1}) => {
-        const [active, setActive] = useState(true);
-        const [activeother, setActiveother] = useState(false);
-
-        const activeLink = () => {
-                setActive(!active);
-                setActiveother(false);
+        const [active, setActive] = useSessionStorage('active', {});
+        const [activeother, setActiveother] = useSessionStorage('activeother', false);
+        const [bool] = useState(false);
+        let boolean = false;
+        const activeLink = (e) => {
+                boolean = !boolean;
+                if(e){
+                        active[e.target.id] = boolean;
+                        e.target.className = `${boolean}icondot`;
+                        if(boolean === true){
+                                e.target.style.backgroundColor = 'green';
+                        }else{
+                                e.target.style.backgroundColor = 'black';   
+                        }
+                        setActive(active);
+                }
+                return `${bool}icondot`;
         }
-
-        const activeSecondLink = () => {
-                setActiveother(!activeother);
-                setActive(false);
+        
+        const activeSecondLink = (e) => {
+                boolean = !boolean;
+                if(e){
+                        active[e.target.id] = boolean;
+                        e.target.className = `${boolean}icondot`;
+                        if(boolean === true){
+                                e.target.style.backgroundColor = 'green';
+                        }else{
+                                e.target.style.backgroundColor = 'black';   
+                        }
+                        setActive(active);
+                }
+                return `${bool}icondot`;
         }
 
         return( <>
@@ -27,54 +49,32 @@ const MiddleComponent = ({img1}) => {
                 <>
                 <span style={{position: 'relative'}}
                 key={v4()}>
+
                     <img src={i.src} 
                     alt="src" 
-                    style={{
-                        width: '70px',
-                        height: '70px',
-                    }}
-                    key={v4()}
+                    style={imgStyle}
                     />
 
                 {(img1.length-1) === index ? null : (<MaximizeIcon 
-                style={{
-                        position: 'relative',
-                        transform: 'scale(1.8)',
-                        bottom: '5px'
-                }}
-                key={v4()}
-                />) }
+                style={maximizeIconStyle} />) }
 
                     {i.src === (process.env.PUBLIC_URL + '/images/components/condition.png') ? 
                         (<>
-                        <FiberManualRecordIcon style={{
-                                position: 'absolute',
-                                bottom: '24px',
-                                left: '48px',
-                        }}
-                        className={active + 'icondot'}
-                        onClick={() => activeLink()}
-                        key={v4()}
+                        <span style={style}
+                        className={activeLink()}
+                        onClick={(e) => activeLink(e)}
+                        id={v4()}
                         /> 
-                        <FiberManualRecordIcon style={{
-                                position: 'absolute',
-                                left: '23px',
-                                bottom: '3px'
-                        }}
-                        className={activeother + 'icondot'}
-                        onClick={() => activeSecondLink()}
-                        key={v4()}
+                        <span style={bottomStyle}
+                        className={'falseicondot'}
+                        onClick={(e) => activeSecondLink(e)}
                         /> 
-                        
-                        </>): null
-                     }
+                        </>): null}
                     </span>
                 </>
                 )}
-            ) : null} 
-             
-            </div>  
-                    
+            ) : null}  
+            </div>          
             </>)  
 }
 
