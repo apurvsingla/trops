@@ -9,7 +9,6 @@ export const Graph = styled.div`
     background-image: -webkit-linear-gradient(rgba(56, 56, 56, 0.5) 2px, transparent 2px), -webkit-linear-gradient(0, rgba(56, 56, 56, 0.5) 2px, transparent 2px), -webkit-linear-gradient(rgba(56, 56, 56, 0.5) 1px, transparent 1px), -webkit-linear-gradient(0, rgba(56, 56, 56, 0.5) 1px, transparent 1px);
     background-image: -moz-linear-gradient(rgba(56, 56, 56, 0.5) 1px, transparent 1px), -moz-linear-gradient(0, rgba(56, 56, 56, 0.5) 1px, transparent 1px), -moz-linear-gradient(rgba(56, 56, 56, 0.5) 1px, transparent 1px), -moz-linear-gradient(0, rgba(56, 56, 56, 0.5) 1px, transparent 1px);
     background-image: linear-gradient(rgba(56, 56, 56, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 56, 56, 0.5) 1px, transparent 1px), linear-gradient(rgba(56, 56, 56, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 56, 56, 0.5) 1px, transparent 1px);
-    width: 100%;
     height: 100%;
     opacity: 0.2;
 `;

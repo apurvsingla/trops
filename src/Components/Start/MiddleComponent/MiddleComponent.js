@@ -1,21 +1,32 @@
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
 import {useSessionStorage} from '../../SessionStorage/SessionStorage';
-import {v4} from 'uuid';
+// import {v4} from 'uuid';
 import MaximizeIcon from '@material-ui/icons/Maximize';
-import {style, imgStyle, bottomStyle, maximizeIconStyle} from './style';
+// import {style, imgStyle, bottomStyle, maximizeIconStyle} from './style';
 import './Middle.scss';
 
 const MiddleComponent = ({img1}) => {
-        const [active, setActive] = useSessionStorage('active', {});
-        const [activeother, setActiveother] = useSessionStorage('activeother', false);
-        const [bool] = useState(false);
+        //dots active or not
+        const [active, setActive] = useSessionStorage('active-right-dot', {});
+        const [activeother, setActiveother] = useSessionStorage('active-bottom-dot', {});
+        
+        //right dot left pos(relative)
+        const [rightDotPosLeft, setRightDotPosLeft] = useSessionStorage('right-dot-pos-left', {});
+        const [bottomDotPosLeft, setbottomDotPosLeft] = useSessionStorage('bottom-dot-pos-left', {});
+        //bottom dot top pos(relative)
+        const [rightDotPosTop, setRightDotPosTop] = useSessionStorage('right-dot-pos-left', {});
+        const [bottomDotPosTop, setBottomDotPosTop] = useSessionStorage('bottom-dot-pos-left', {});
+        //index
+        const [activeIndex, setActiveIndex] = useState(null);
+
+
         let boolean = false;
         const activeLink = (e) => {
-                boolean = !boolean;
                 if(e){
+                        boolean = !boolean;
                         active[e.target.id] = boolean;
-                        e.target.className = `${boolean}icondot`;
+                        e.target.className = `${boolean}-right-icondot`;
                         if(boolean === true){
                                 e.target.style.backgroundColor = 'green';
                         }else{
@@ -23,51 +34,119 @@ const MiddleComponent = ({img1}) => {
                         }
                         setActive(active);
                 }
-                return `${bool}icondot`;
         }
         
-        const activeSecondLink = (e) => {
-                boolean = !boolean;
+        const activeSecondLink = (e,index) => {
                 if(e){
-                        active[e.target.id] = boolean;
-                        e.target.className = `${boolean}icondot`;
+                        boolean = !boolean;
+                        activeother[e.target.id] = boolean;
+                        e.target.className = `${boolean}-bottom-icondot`;
                         if(boolean === true){
                                 e.target.style.backgroundColor = 'green';
                         }else{
                                 e.target.style.backgroundColor = 'black';   
                         }
-                        setActive(active);
+                        setActiveother(activeother);
+                        setActiveIndex(index)
                 }
-                return `${bool}icondot`;
         }
 
+        // const columnStyle = {
+        //         display: 'flex',
+        //         flexDirection: 'column',
+        //         width: '70px',
+        //         height: '70px',
+        //         position: 'relative',
+        //         left: `${bottomDotPosLeft-265}px`,
+        // }
+
         return( <>
-        <div style={{width: `${(img1.length/img1.length*16/2)*(img1.length) + 100}%`, 
+        <div style={{width: '100%', 
         position: 'absolute', top: '50px', left: '120px'}}>
                 {img1.length>=1 ? img1.map((i,index) => {
+                        // if(activeIndex === index-1){
+                        //         return(
+                        //         <>
+                        //         <img src={i.src} 
+                        //                 data-id={index}
+                        //                 alt="src" 
+                        //                 style={{position: 'absolute', 
+                        //                     top: `${index + 80}px`, 
+                        //                     width: '70px', 
+                        //                     height: '70px',
+                        //                     display: 'flex',
+                        //                     flexDirection: 'column',
+                        //                     left: `${74*index +235}px`
+                        //                 }}
+                        //                 key={index+'-img'}
+                        //                 />
+                        //                 </>)
+                        // }
                 return(
                 <>
-                <span style={{position: 'relative'}}
-                key={v4()}>
-
+                <span key={index + '-span'}>   
                     <img src={i.src} 
+                    data-id={index}
                     alt="src" 
-                    style={imgStyle}
+                    style={{position: 'absolute', 
+                        left: `${100*index + 20}px`, 
+                        width: '70px', 
+                        height: '70px'
+                    }}
+                    key={index+'-img'}
                     />
 
                 {(img1.length-1) === index ? null : (<MaximizeIcon 
-                style={maximizeIconStyle} />) }
+                style={{
+                        position: 'absolute',
+                        transform: 'scale(2)',
+                        left: `${100*index + 93}px`,
+                        top: '41px',
+                        }}
+                        key={index+'--icon'}
+                        />) }
 
                     {i.src === (process.env.PUBLIC_URL + '/images/components/condition.png') ? 
                         (<>
-                        <span style={style}
-                        className={activeLink()}
+                        <span style={{
+                                position: 'absolute',
+                                left: `${100*index + 75}px`,
+                                height: '15px',
+                                width: '15px',
+                                top: '30px',
+                                borderRadius: '25px',
+                                backgroundColor : 'black'
+                        }}
                         onClick={(e) => activeLink(e)}
-                        id={v4()}
+                        id={index+'-right'}
+                        key={index+'-right'}
+                        ref={(el) => {
+                                if(!el) return;
+                                rightDotPosLeft[index+'-right'] = el.getBoundingClientRect().left;
+                                rightDotPosTop[index+'-bottom'] = el.getBoundingClientRect().top;
+                                setRightDotPosLeft(rightDotPosLeft);
+                                setRightDotPosTop(rightDotPosTop);
+                        }}
                         /> 
-                        <span style={bottomStyle}
-                        className={'falseicondot'}
-                        onClick={(e) => activeSecondLink(e)}
+                        <span style={{
+                                position: 'absolute',
+                                left: `${100*index + 48}px`,
+                                top: '54px',
+                                backgroundColor: 'black',
+                                height: '15px',
+                                width: '15px',
+                                borderRadius: '25px'
+                        }}
+                        key={index+'-bottom'}
+                        id={index+'-bottom'}
+                        onClick={(e) => activeSecondLink(e,index)}
+                        ref={(el) => {
+                                if(!el) return;
+                                bottomDotPosLeft[index+'-bottom'] = el.getBoundingClientRect().left;
+                                bottomDotPosTop[index+'-bottom'] = el.getBoundingClientRect().top;
+                                setbottomDotPosLeft(bottomDotPosLeft);
+                                setBottomDotPosTop(bottomDotPosTop);
+                        }}
                         /> 
                         </>): null}
                     </span>

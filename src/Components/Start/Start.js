@@ -50,9 +50,11 @@ const Start = () => {
     let reactSwipeEl;
 
     return (
-        <div>
-           <Graph style={{position: 'absolute',
-        width: `${(img1.length/img1.length*16/2)*(img1.length) + 100}%`,
+        <>
+           <Graph 
+           style={{position: 'absolute',
+                    minWidth: `${10*(img1.length)+ 100}%`,
+                    height: `${10*(img1.length)+ 100}%`,
         }}/>
            <div style={{
                display: 'flex',
@@ -184,7 +186,7 @@ const Start = () => {
             />
             {/* Swipeable Dots End */}
            </Bottom>
-        </div>
+        </>
     );
 }
 

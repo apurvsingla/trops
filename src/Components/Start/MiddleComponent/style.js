@@ -28,3 +28,15 @@ export const imgStyle = {
     width: '70px',
     height: '70px',
 }
+
+export const spanStyle = {
+    position: 'relative', top: '50px', left: '120px'
+}
+
+export const coloumnStyle = {
+    position: 'relative',
+    display:'flex',
+    flexDirection:'column',
+    width: '70px',
+    height: '70px',
+}
