@@ -28,16 +28,11 @@ const Start = () => {
     const [num, setNum] = useSessionStorage('num', 0)
     const [img1, setImg1] = useSessionStorage('img1', []);
     const [id, setId] = useSessionStorage('id', 1);
-    // const [inActive, setInActive] = useSessionStorage('In-Active', -1);
+
     const history = useHistory();
 
     const back = () => {
         history.push('/sandbox');
-    }
-
-    const reset = () => {
-        window.sessionStorage.clear();
-        window.location.reload();
     }
 
     // populating images
@@ -78,12 +73,11 @@ const Start = () => {
             style={{position: 'absolute',
                     top: '75px'
                 }}
-                onClick={() => reset()}
             />
            </div>
 
             {/* Middle Component render */}
-            <MiddleComponent img1={img1} />
+            <MiddleComponent img1={img1}/>
             {/* end */}
 
 

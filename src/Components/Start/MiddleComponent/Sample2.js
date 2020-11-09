@@ -57,23 +57,37 @@ const MiddleComponent = ({img1}) => {
 
         return( <>
         <div style={{width: '100%', 
-                position: 'absolute', 
-                top: '50px', 
-                left: '120px'
-                }}>
+        position: 'absolute', top: '50px', left: '120px'}}>
                 {img1.length>=1 ? img1.map((i,index) => {
                 return(
                 <>
                 <span key={index + '-span'}>   
-                
+                {/* {activeIndex ? (<img src={i.src} 
+                                        data-id={index}
+                                        alt="src" 
+                                        style={{position: 'relative', 
+                                            width: '70px', 
+                                            height: '70px',
+                                            display: 'flex',
+                                            flexDirection: 'column',
+                                        //     left: `${74*index +235}px`
+                                        }}
+                                        key={index+'-img'}
+                    />) : null } */}
                     <img src={i.src} 
                     data-id={index}
                     alt="src" 
-                    style={{position: 'absolute',
+                    style={activeother[activeIndex+'-bottom'] === true ? {
+                        position: 'absolute',
+                        top: `${100*index + 20}px`,
+                        left: `${100*activeIndex + 20}px`,
+                        width: '70px'
+                        
+                } : {   position: 'absolute', 
                         left: `${100*index + 20}px`, 
                         width: '70px', 
                         height: '70px'
-                    }}
+                    } }
                     key={index+'-img'}
                     />
 

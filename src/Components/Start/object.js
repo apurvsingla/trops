@@ -10,6 +10,8 @@ import MiddleComponent from './MiddleComponent/MiddleComponent';
 import {useSessionStorage} from '../SessionStorage/SessionStorage';
 
 import {ReactComponent as Back} from './button_back.svg';
+import MaximizeIcon from '@material-ui/icons/Maximize';
+
 import {ReactComponent as Retry} from './button_retry.svg';
 import {Graph,
 Bottom,
@@ -26,25 +28,22 @@ const Start = () => {
     const [displayDot2, setDisplayDot2] = useState(false);
     const [displayDot3, setDisplayDot3] = useState(false);
     const [num, setNum] = useSessionStorage('num', 0)
-    const [img1, setImg1] = useSessionStorage('img1', []);
+    const [img1, setImg1] = useSessionStorage('img1', {});
     const [id, setId] = useSessionStorage('id', 1);
-    // const [inActive, setInActive] = useSessionStorage('In-Active', -1);
+    const [key, setKey] = useSessionStorage('key', 0);
+
     const history = useHistory();
 
     const back = () => {
         history.push('/sandbox');
     }
 
-    const reset = () => {
-        window.sessionStorage.clear();
-        window.location.reload();
-    }
-
     // populating images
     const onImage1Concat = (src) => {
         if(src!==(process.env.PUBLIC_URL + '/images/components/beeper.png')){
             if(num > 0){
-                setImg1(img1 => img1.concat({id: id, src: src}));
+                img1[id] = src;
+                setImg1(img1);
                 setId(id + 1);
             }
         }else if(src=== (process.env.PUBLIC_URL + '/images/components/beeper.png')){
@@ -52,7 +51,8 @@ const Start = () => {
                 return;
             }
             setNum(num+1);
-            setImg1(img1 => img1.concat({id: num, src: src}));
+            img1[num] = src;
+            setImg1(img1);
         }
     }
 
@@ -63,8 +63,8 @@ const Start = () => {
         <>
            <Graph 
            style={{position: 'absolute',
-                    minWidth: `${10*(img1.length)+ 100}%`,
-                    height: `${10*(img1.length)+ 100}%`,
+                    minWidth: `${100}%`,
+                    height: `${100}%`,
         }}/>
            <div style={{
                display: 'flex',
@@ -78,12 +78,29 @@ const Start = () => {
             style={{position: 'absolute',
                     top: '75px'
                 }}
-                onClick={() => reset()}
             />
            </div>
 
             {/* Middle Component render */}
-            <MiddleComponent img1={img1} />
+            {/* <MiddleComponent img1={img1}/> */}
+            
+        {Object.values(img1).map((i, index) => {
+            return(<>
+                <img src={i} alt="alt" style={{width: '70px', position: 'relative', left: '100px'}}/>
+                <MaximizeIcon 
+                style={{
+                        position: 'absolute',
+                        transform: 'scale(2)',
+                        left: `${100*index + 93}px`,
+                        top: '41px',
+                        }}
+                        key={index+'--icon'}
+                        />
+                </>
+                )
+        })}
+            
+
             {/* end */}
 
 
