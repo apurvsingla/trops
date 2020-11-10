@@ -64,15 +64,24 @@ const MiddleComponent = ({img1}) => {
                         ((index > activeIndex) && 
                 activeother[activeIndex + '-bottom'] === true) ? 
                 (<>
-                <Span>
+                <Span style={{top: '-20px', marginTop: '-5px'}}>
                     <Img src={i.src} alt="alt"
                     style={{
-                        left: `${100*activeIndex + 20}px`
+                        left: `${100*activeIndex + 20}px`,
+                        top: `${100*index}px`
                 }} />
                 </Span>
                 {/* line */}
-                <ColumnLine  style={{left: `${100*activeIndex + 130}px`,}}
+                
+                <span style={{
+                        position: 'relative',
+                        bottom: '57px'
+                }}>
+                <ColumnLine  style={{left: `${100*activeIndex + 130}px`,
+                top: `${100*index + 20}px`
+                }}
                 key={index+'--icon'}/>
+                </span>
 
                 {i.src === (process.env.PUBLIC_URL + '/images/components/condition.png') ? 
                  <>
@@ -123,19 +132,21 @@ const MiddleComponent = ({img1}) => {
                 ) : 
                 (
                 <>
-                {active[activeRightIndex + '-right'] === true && index > activeRightIndex ? (<Span>
+                {active[activeRightIndex + '-right'] === true && index > 
+                activeRightIndex ? (<Span>
                         <NormalImg src={i.src} 
                         alt="alt" 
                         style={{
-                                left: `${30*index + 20}px`
+                                left: `${100*index + 20}px`
                         }}/>
-                </Span>) : <>
+                </Span>) : 
+                <>
                 <Span>
-                        <NormalImg src={i.src} 
-                        alt="alt" 
-                        style={{
-                                left: `${30*index + 20}px`
-                        }}/>
+                <NormalImg src={i.src} 
+                alt="alt" 
+                style={{
+                        left: `${100*index + 20}px`
+                }}/>
                 </Span>
 
                 {/* line */}

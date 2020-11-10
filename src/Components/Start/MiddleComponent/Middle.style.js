@@ -5,18 +5,18 @@ export const Img = styled.img`
     width: 70px;
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: absolute;
     margin-top: 23px;
 `;
 
 export const NormalImg = styled.img`
     width: 70px;
     height: 70px;
-    position: relative;
+    position: absolute;
 `;
 
 export const Span = styled.span`
-    position: relative;
+    position: absolute;
     left: 100px;
     top: 100px;
 `;
