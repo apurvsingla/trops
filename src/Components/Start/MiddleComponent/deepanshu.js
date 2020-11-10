@@ -3,11 +3,8 @@ import React from 'react';
 import {useSessionStorage} from '../../SessionStorage/SessionStorage';
 // import {v4} from 'uuid';
 // import {style, imgStyle, bottomStyle, maximizeIconStyle} from './style';
-import {Img,
-NormalImg, 
-Span,
-Line, 
-ColumnLine} from './Middle.style';
+import {Img,NormalImg, Span,Line} from './Middle.style';
+import './Middle.scss';
 
 const MiddleComponent = ({img1}) => {
         //dots active or not
@@ -22,11 +19,9 @@ const MiddleComponent = ({img1}) => {
         const [bottomDotPosTop, setBottomDotPosTop] = useSessionStorage('bottom-dot-pos-left', {});
         //index
         const [activeIndex, setActiveIndex] = useSessionStorage('active-bottom-index',null);
-        const [activeRightIndex, setActiveRightIndex] = useSessionStorage('active-right-index',null);
-        //active button
-        const [activeButton, setActiveButton] = React.useState(false);
-        const [activeBottom, setActiveBottom] = React.useState(false);
-        
+        const [activeOtherIndex, setActiveOtherIndex] = useSessionStorage('active-right-index',null);
+
+
         let boolean = false;
         let boolean2 = false;
         const activeLink = (e,index) => {
@@ -40,7 +35,7 @@ const MiddleComponent = ({img1}) => {
                                 e.target.style.backgroundColor = 'black';   
                         }
                         setActive(active);
-                        setActiveRightIndex(index);
+                        setActiveOtherIndex(index);
                 }
                 
         }
@@ -62,23 +57,13 @@ const MiddleComponent = ({img1}) => {
         return(
                 <>
                 {img1.length >= 1 ? img1.map((i,index) => 
-                ((((index > activeIndex) && activeIndex) && 
-                activeother[activeIndex + '-bottom'] === true) ? 
+                (activeother[activeIndex+'-bottom'] === true ? 
                 (<>
                 <Span>
                     <Img src={i.src} alt="alt"
                     style={{
-                            left: `${100*activeIndex + 20}px`
                     }} />
                 </Span>
-                {/* line */}
-                {(img1.length-1) === index ? null : (<ColumnLine 
-                style={{
-                        top: `${35*index + 20}px`,
-                        left: `${100*activeIndex + 135}px`
-                }}
-                key={index+'--icon'}
-                        />) }
                 </>
                 ) : 
                 (

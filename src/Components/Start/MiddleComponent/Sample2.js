@@ -54,40 +54,39 @@ const MiddleComponent = ({img1}) => {
                         setActiveIndex(index);
                 }
         }
-
         return( <>
         <div style={{width: '100%', 
-        position: 'absolute', top: '50px', left: '120px'}}>
-                {img1.length>=1 ? img1.map((i,index) => {
+                position: 'absolute', 
+                top: '50px', 
+                left: '120px'
+                }}>
+                {img1.length>=1 ? img1.map((i,index,arr) => {
                 return(
                 <>
                 <span key={index + '-span'}>   
-                {/* {activeIndex ? (<img src={i.src} 
-                                        data-id={index}
-                                        alt="src" 
-                                        style={{position: 'relative', 
-                                            width: '70px', 
-                                            height: '70px',
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                        //     left: `${74*index +235}px`
-                                        }}
-                                        key={index+'-img'}
-                    />) : null } */}
+                {/* condition */}
+                {activeother[activeIndex + '-bottom'] === true ? <img src={i.src} 
+                style={{width: '70px', 
+                height: '70px',
+                display: 'flex',
+                flexDirection: 'column',
+                position: 'absolute',
+                top: `${100*index +100}px`,
+                left: `${100*activeIndex + 20}px`
+                }} 
+                alt='src'
+                key={index}
+                /> : null}
+
                     <img src={i.src} 
                     data-id={index}
                     alt="src" 
-                    style={activeother[activeIndex+'-bottom'] === true ? {
+                    style={{
                         position: 'absolute',
-                        top: `${100*index + 20}px`,
-                        left: `${100*activeIndex + 20}px`,
-                        width: '70px'
-                        
-                } : {   position: 'absolute', 
                         left: `${100*index + 20}px`, 
                         width: '70px', 
                         height: '70px'
-                    } }
+                    }}
                     key={index+'-img'}
                     />
 
