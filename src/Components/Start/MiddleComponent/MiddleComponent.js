@@ -23,9 +23,7 @@ const MiddleComponent = ({img1}) => {
         //index
         const [activeIndex, setActiveIndex] = useSessionStorage('active-bottom-index',null);
         const [activeRightIndex, setActiveRightIndex] = useSessionStorage('active-right-index',null);
-        //active button
-        const [activeButton, setActiveButton] = React.useState(false);
-        const [activeBottom, setActiveBottom] = React.useState(false);
+        //active button`
         
         let boolean = false;
         let boolean2 = false;
@@ -62,27 +60,76 @@ const MiddleComponent = ({img1}) => {
         return(
                 <>
                 {img1.length >= 1 ? img1.map((i,index) => 
-                ((((index > activeIndex) && activeIndex) && 
+                (
+                        ((index > activeIndex) && 
                 activeother[activeIndex + '-bottom'] === true) ? 
                 (<>
                 <Span>
                     <Img src={i.src} alt="alt"
                     style={{
-                            left: `${100*activeIndex + 20}px`
-                    }} />
+                        left: `${100*activeIndex + 20}px`
+                }} />
                 </Span>
                 {/* line */}
-                {(img1.length-1) === index ? null : (<ColumnLine 
-                style={{
-                        top: `${35*index + 20}px`,
-                        left: `${100*activeIndex + 135}px`
+                <ColumnLine  style={{left: `${100*activeIndex + 130}px`,}}
+                key={index+'--icon'}/>
+
+                {i.src === (process.env.PUBLIC_URL + '/images/components/condition.png') ? 
+                 <>
+                 <span style={{
+                        position: 'absolute',
+                        left: `${100*activeIndex + 175}px`,
+                        height: '15px',
+                        width: '15px',
+                        borderRadius: '25px',
+                        backgroundColor : 'black',
+                        marginTop: '58px',
                 }}
-                key={index+'--icon'}
-                        />) }
+                onClick={(e) => activeLink(e,index)}
+                id={index+'-right'}
+                key={index+'-right'}
+                ref={(el) => {
+                        if(!el) return;
+                        rightDotPosLeft[index+'-right'] = el.getBoundingClientRect().left;
+                        rightDotPosTop[index+'-bottom'] = el.getBoundingClientRect().top;
+                        setRightDotPosLeft(rightDotPosLeft);
+                        setRightDotPosTop(rightDotPosTop);
+                }}
+                />
+
+                <span style={{
+                        position: 'absolute',
+                        left: `${100*activeIndex + 148}px`,
+                        marginTop: '85px',
+                        backgroundColor: 'black',
+                        height: '15px',
+                        width: '15px',
+                        borderRadius: '25px'
+                        }}
+                        key={index+'-bottom'}
+                        id={index+'-bottom'}
+                        onClick={(e) => activeSecondLink(e,index)}
+                        ref={(el) => {
+                                if(!el) return;
+                                bottomDotPosLeft[index+'-bottom'] = el.getBoundingClientRect().left;
+                                bottomDotPosTop[index+'-bottom'] = el.getBoundingClientRect().top;
+                                setbottomDotPosLeft(bottomDotPosLeft);
+                                setBottomDotPosTop(bottomDotPosTop);
+                        }}
+                        />
+                </>
+                : null }
                 </>
                 ) : 
                 (
                 <>
+                {active[activeRightIndex + '-right'] === true && index > activeRightIndex ? (<Span>
+                        <NormalImg src={i.src} 
+                        alt="alt" 
+                        style={{
+                                left: `${30*index + 20}px`
+                        }}/>
+                </Span>) : <>
                 <Span>
                         <NormalImg src={i.src} 
                         alt="alt" 
@@ -94,7 +141,7 @@ const MiddleComponent = ({img1}) => {
                 {/* line */}
                 {(img1.length-1) === index ? null : (<Line 
                 style={{
-                left: `${100*index + 194}px`,
+                        left: `${100*index + 194}px`,
                 }}
                 key={index+'--icon'}
                         />) }
@@ -145,6 +192,9 @@ const MiddleComponent = ({img1}) => {
                         />
                 </>
                 : null }
+                </>
+                }
+               
                 </>
                 ))): null}
                 </>)

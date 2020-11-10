@@ -6,6 +6,7 @@ export const Img = styled.img`
     display: flex;
     flex-direction: column;
     position: relative;
+    margin-top: 23px;
 `;
 
 export const NormalImg = styled.img`
@@ -28,11 +29,9 @@ export const Line = styled(MaximizeIcon)`
 
 
 export const ColumnLine = styled(MaximizeIcon)`
-    display: flex;
-    flex-direction: column;
+    transform: scale(1.7) rotate(90deg);
     position: absolute;
-    transform: rotate(90deg);   
-    width: 150px;
+    margin-top: 8px
 `;
 
 // export const RightDot = styled.span`
