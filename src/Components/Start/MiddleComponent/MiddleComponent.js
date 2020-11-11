@@ -20,10 +20,12 @@ const MiddleComponent = ({img1}) => {
         //bottom dot top pos(relative)
         const [rightDotPosTop, setRightDotPosTop] = useSessionStorage('right-dot-pos-left', {});
         const [bottomDotPosTop, setBottomDotPosTop] = useSessionStorage('bottom-dot-pos-left', {});
-        //index
-        const [activeIndex, setActiveIndex] = useSessionStorage('active-bottom-index',null);
-        const [activeRightIndex, setActiveRightIndex] = useSessionStorage('active-right-index',null);
-        //active button`
+        //index dictionary
+        const [activeIndex, setActiveIndex] = useSessionStorage('active-bottom-index',{});
+        const [activeRightIndex, setActiveRightIndex] = useSessionStorage('active-right-index',{});
+        //active index
+        const [current, setCurrent] = React.useState(null);
+        const [currentRight, setCurrentRight] = React.useState(null);
         
         let boolean = false;
         let boolean2 = false;
@@ -37,8 +39,10 @@ const MiddleComponent = ({img1}) => {
                         }else{
                                 e.target.style.backgroundColor = 'black';   
                         }
+                        activeRightIndex[index] = index;
                         setActive(active);
-                        setActiveRightIndex(index);
+                        setActiveRightIndex(activeRightIndex);
+                        setCurrentRight(index);
                 }
                 
         }
@@ -53,21 +57,23 @@ const MiddleComponent = ({img1}) => {
                         }else{
                                 e.target.style.backgroundColor = 'black';   
                         }
+                        activeIndex[index] = index;
                         setActiveother(activeother);
-                        setActiveIndex(index);
+                        setActiveIndex(activeIndex);
+                        setCurrent(index);
                 }
         }
         return(
                 <>
                 {img1.length >= 1 ? img1.map((i,index) => 
                 (
-                        ((index > activeIndex) && 
-                activeother[activeIndex + '-bottom'] === true) ? 
+                        ((index > activeIndex[current]) && 
+                activeother[activeIndex[current] + '-bottom'] === true) ? 
                 (<>
                 <Span style={{top: '-20px', marginTop: '-5px'}}>
                     <Img src={i.src} alt="alt"
                     style={{
-                        left: `${100*activeIndex + 20}px`,
+                        left: `${100*activeIndex[current] + 20}px`,
                         top: `${100*index}px`
                 }} />
                 </Span>
@@ -77,7 +83,7 @@ const MiddleComponent = ({img1}) => {
                         position: 'relative',
                         bottom: '57px'
                 }}>
-                <ColumnLine  style={{left: `${100*activeIndex + 130}px`,
+                <ColumnLine  style={{left: `${100*activeIndex[current] + 130}px`,
                 top: `${100*index + 20}px`
                 }}
                 key={index+'--icon'}/>
@@ -92,7 +98,7 @@ const MiddleComponent = ({img1}) => {
                         width: '15px',
                         borderRadius: '25px',
                         backgroundColor : 'black',
-                        marginTop: '58px',
+                        marginTop: `${100*index + 30}px`,
                 }}
                 onClick={(e) => activeLink(e,index)}
                 id={index+'-right'}
@@ -109,7 +115,7 @@ const MiddleComponent = ({img1}) => {
                 <span style={{
                         position: 'absolute',
                         left: `${100*activeIndex + 148}px`,
-                        marginTop: '85px',
+                        marginTop: `${100*index + 55}px`,
                         backgroundColor: 'black',
                         height: '15px',
                         width: '15px',
@@ -132,8 +138,8 @@ const MiddleComponent = ({img1}) => {
                 ) : 
                 (
                 <>
-                {active[activeRightIndex + '-right'] === true && index > 
-                activeRightIndex ? (<Span>
+                {active[activeRightIndex[currentRight] + '-right'] === true && index > 
+                activeRightIndex[currentRight] ? (<Span>
                         <NormalImg src={i.src} 
                         alt="alt" 
                         style={{

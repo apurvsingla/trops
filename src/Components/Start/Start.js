@@ -37,7 +37,9 @@ const Start = () => {
 
     const reset = () => {
         window.sessionStorage.clear();
-        window.location.reload();
+        setImg1([]);
+        setId(1);
+        setNum(0);
     }
 
     // populating images

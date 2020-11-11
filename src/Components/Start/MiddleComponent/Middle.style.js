@@ -5,7 +5,7 @@ export const Img = styled.img`
     width: 70px;
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: relative;
     margin-top: 23px;
 `;
 
