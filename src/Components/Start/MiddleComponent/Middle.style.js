@@ -16,8 +16,13 @@ export const NormalImg = styled.img`
 `;
 
 export const Span = styled.span`
-    position: absolute;
+    position: relative;
     left: 100px;
+    top: 100px;
+`;
+
+export const RightSpan = styled.span`
+    position: absolute;
     top: 100px;
 `;
 
@@ -32,6 +37,11 @@ export const ColumnLine = styled(MaximizeIcon)`
     transform: scale(1.7) rotate(90deg);
     position: absolute;
     margin-top: 8px
+`;
+
+export const columnLineSpan = styled.span`
+    position: relative;
+    bottom: 57px;
 `;
 
 // export const RightDot = styled.span`

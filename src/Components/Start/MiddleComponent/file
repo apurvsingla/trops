@@ -1,0 +1,6 @@
+{activeother[activeIndex[current] + '-bottom'] === false && active[activeRightIndex[currentRight] + '-right'] === false ? (
+                        
+                )
+                :
+                null
+                }

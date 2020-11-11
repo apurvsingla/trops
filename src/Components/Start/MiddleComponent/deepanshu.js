@@ -1,27 +1,23 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import {useSessionStorage} from '../../SessionStorage/SessionStorage';
-// import {v4} from 'uuid';
-// import {style, imgStyle, bottomStyle, maximizeIconStyle} from './style';
-import {Img,NormalImg, Span,Line} from './Middle.style';
-import './Middle.scss';
+import {Img,
+NormalImg, 
+Span,
+Line, 
+ColumnLine} from './Middle.style';
 
-const MiddleComponent = ({img1}) => {
-        //dots active or not
-        const [active, setActive] = useSessionStorage('active-right-dot', {});
-        const [activeother, setActiveother] = useSessionStorage('active-bottom-dot', {});
+const MiddleComponent = ({img1, active, setActive, 
+        activeother, setActiveother, rightDotPosLeft, 
+        setRightDotPosLeft, bottomDotPosLeft, 
+        setbottomDotPosLeft, rightDotPosTop, 
+        setRightDotPosTop, bottomDotPosTop, 
+        setBottomDotPosTop, activeIndex, setActiveIndex, 
+        activeRightIndex, setActiveRightIndex, 
+        current, setCurrent, currentRight, setCurrentRight,
+        bottomImg, setBottomImg, rightImg, setRightImg
+}) => {
         
-        //right dot left pos(relative)
-        const [rightDotPosLeft, setRightDotPosLeft] = useSessionStorage('right-dot-pos-left', {});
-        const [bottomDotPosLeft, setbottomDotPosLeft] = useSessionStorage('bottom-dot-pos-left', {});
-        //bottom dot top pos(relative)
-        const [rightDotPosTop, setRightDotPosTop] = useSessionStorage('right-dot-pos-left', {});
-        const [bottomDotPosTop, setBottomDotPosTop] = useSessionStorage('bottom-dot-pos-left', {});
-        //index
-        const [activeIndex, setActiveIndex] = useSessionStorage('active-bottom-index',null);
-        const [activeOtherIndex, setActiveOtherIndex] = useSessionStorage('active-right-index',null);
-
-
+        
         let boolean = false;
         let boolean2 = false;
         const activeLink = (e,index) => {
@@ -34,8 +30,10 @@ const MiddleComponent = ({img1}) => {
                         }else{
                                 e.target.style.backgroundColor = 'black';   
                         }
+                        activeRightIndex[index] = index;
                         setActive(active);
-                        setActiveOtherIndex(index);
+                        setActiveRightIndex(activeRightIndex);
+                        setCurrentRight(index);
                 }
                 
         }
@@ -50,36 +48,108 @@ const MiddleComponent = ({img1}) => {
                         }else{
                                 e.target.style.backgroundColor = 'black';   
                         }
+                        activeIndex[index] = index;
                         setActiveother(activeother);
-                        setActiveIndex(index);
+                        setActiveIndex(activeIndex);
+                        setCurrent(index);
                 }
         }
         return(
                 <>
                 {img1.length >= 1 ? img1.map((i,index) => 
-                (activeother[activeIndex+'-bottom'] === true ? 
+                (
+                        ((index > activeIndex[current]) && 
+                activeother[activeIndex[current] + '-bottom'] === true) ? 
                 (<>
-                <Span>
+                <Span style={{top: '-20px', marginTop: '-5px'}}>
                     <Img src={i.src} alt="alt"
                     style={{
-                    }} />
+                        left: `${100*activeIndex[current] + 20}px`,
+                        top: `${100*index}px`
+                }} />
                 </Span>
+                {/* line */}
+                
+                <span style={{
+                        position: 'relative',
+                        bottom: '57px'
+                }}>
+                <ColumnLine  style={{left: `${100*activeIndex[current] + 130}px`,
+                top: `${100*index + 20}px`
+                }}
+                key={index+'--icon'}/>
+                </span>
+
+                {i.src === (process.env.PUBLIC_URL + '/images/components/condition.png') ? 
+                 <>
+                 <span style={{
+                        position: 'absolute',
+                        left: `${100*activeIndex + 175}px`,
+                        height: '15px',
+                        width: '15px',
+                        borderRadius: '25px',
+                        backgroundColor : 'black',
+                        marginTop: `${100*index + 30}px`,
+                }}
+                onClick={(e) => activeLink(e,index)}
+                id={index+'-right'}
+                key={index+'-right'}
+                ref={(el) => {
+                        if(!el) return;
+                        rightDotPosLeft[index+'-right'] = el.getBoundingClientRect().left;
+                        rightDotPosTop[index+'-bottom'] = el.getBoundingClientRect().top;
+                        setRightDotPosLeft(rightDotPosLeft);
+                        setRightDotPosTop(rightDotPosTop);
+                }}
+                />
+
+                <span style={{
+                        position: 'absolute',
+                        left: `${100*activeIndex + 148}px`,
+                        marginTop: `${100*index + 55}px`,
+                        backgroundColor: 'black',
+                        height: '15px',
+                        width: '15px',
+                        borderRadius: '25px'
+                        }}
+                        key={index+'-bottom'}
+                        id={index+'-bottom'}
+                        onClick={(e) => activeSecondLink(e,index)}
+                        ref={(el) => {
+                                if(!el) return;
+                                bottomDotPosLeft[index+'-bottom'] = el.getBoundingClientRect().left;
+                                bottomDotPosTop[index+'-bottom'] = el.getBoundingClientRect().top;
+                                setbottomDotPosLeft(bottomDotPosLeft);
+                                setBottomDotPosTop(bottomDotPosTop);
+                        }}
+                        />
+                </>
+                : null }
                 </>
                 ) : 
                 (
                 <>
-                <Span>
+                {active[activeRightIndex[currentRight] + '-right'] === true && index > 
+                activeRightIndex[currentRight] ? (<Span>
                         <NormalImg src={i.src} 
                         alt="alt" 
                         style={{
-                                left: `${30*index + 20}px`
+                                left: `${100*index + 20}px`
                         }}/>
+                </Span>) : 
+                <>
+                <Span>
+                <NormalImg src={i.src} 
+                alt="alt" 
+                style={{
+                        left: `${100*index + 20}px`
+                }}/>
                 </Span>
 
                 {/* line */}
                 {(img1.length-1) === index ? null : (<Line 
                 style={{
-                left: `${100*index + 194}px`,
+                        left: `${100*index + 194}px`,
                 }}
                 key={index+'--icon'}
                         />) }
@@ -130,6 +200,9 @@ const MiddleComponent = ({img1}) => {
                         />
                 </>
                 : null }
+                </>
+                }
+               
                 </>
                 ))): null}
                 </>)

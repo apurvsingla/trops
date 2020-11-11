@@ -21,14 +21,39 @@ MiddleIcon
 import './Start.styles.scss';
 
 const Start = () => {
-    // let l = 0;
+    // + sign
     const [displayDot1, setDisplayDot1] = useState(true);
     const [displayDot2, setDisplayDot2] = useState(false);
     const [displayDot3, setDisplayDot3] = useState(false);
-    const [num, setNum] = useSessionStorage('num', 0)
+
+    //images
     const [img1, setImg1] = useSessionStorage('img1', []);
+    const [bottomImg, setBottomImg] = useSessionStorage('bottom-img', []);
+    const [rightImg, setRightImg] = useSessionStorage('right-img', []);
     const [id, setId] = useSessionStorage('id', 1);
-    // const [inActive, setInActive] = useSessionStorage('In-Active', -1);
+    const [num, setNum] = useSessionStorage('num', 0);
+
+    //dots active or not
+    const [active, setActive] = useSessionStorage('active-right-dot', {});
+    const [activeother, setActiveother] = useSessionStorage('active-bottom-dot', {});
+
+    //right dot left pos(relative)
+    const [rightDotPosLeft, setRightDotPosLeft] = useSessionStorage('right-dot-pos-left', {});
+    const [bottomDotPosLeft, setbottomDotPosLeft] = useSessionStorage('bottom-dot-pos-left', {});
+    //bottom dot top pos(relative)
+    const [rightDotPosTop, setRightDotPosTop] = useSessionStorage('right-dot-pos-left', {});
+    const [bottomDotPosTop, setBottomDotPosTop] = useSessionStorage('bottom-dot-pos-left', {});
+    //index dictionary
+    const [activeIndex, setActiveIndex] = useSessionStorage('active-bottom-index',{});
+    const [activeRightIndex, setActiveRightIndex] = useSessionStorage('active-right-index',{});
+    //active index
+    const [current, setCurrent] = useSessionStorage('current-bottom',null);
+    const [currentRight, setCurrentRight] = useSessionStorage('current-right',null);
+    const [currentColumnRight, setCurrentColumnRight] = useSessionStorage('current-column-right', {});
+    const [currentColumnBottom, setCurrentColumnBottom] = useSessionStorage('current-column-left', {});
+    const [currentRowRight, setCurrentRowRight] = useSessionStorage('current-column-right', {});
+    const [currentRowBottom, setCurrentRowBottom] = useSessionStorage('current-column-left', {});
+
     const history = useHistory();
 
     const back = () => {
@@ -40,21 +65,33 @@ const Start = () => {
         setImg1([]);
         setId(1);
         setNum(0);
+        setBottomImg([]);
+        setRightImg([]);
+        setActive({});
+        setActiveother({});
     }
 
     // populating images
     const onImage1Concat = (src) => {
-        if(src!==(process.env.PUBLIC_URL + '/images/components/beeper.png')){
-            if(num > 0){
-                setImg1(img1 => img1.concat({id: id, src: src}));
-                setId(id + 1);
+        if(activeother[activeIndex[current] + '-bottom']=== true){
+            setBottomImg(i => i.concat({id: id, src: src}));
+            setId(id+1);
+        }else if(active[activeRightIndex[currentRight] + '-right'] === true){
+            setRightImg(i => i.concat({id: id, src: src}));
+            setId(id+1);
+        }else{
+            if(src!==(process.env.PUBLIC_URL + '/images/components/beeper.png')){
+                if(num > 0){
+                    setImg1(img1 => img1.concat({id: id, src: src}));
+                    setId(id + 1);
+                }
+            }else if(src=== (process.env.PUBLIC_URL + '/images/components/beeper.png')){
+                if(num === 1){
+                    return;
+                }
+                setNum(num+1);
+                setImg1(img1 => img1.concat({id: num, src: src}));
             }
-        }else if(src=== (process.env.PUBLIC_URL + '/images/components/beeper.png')){
-            if(num === 1){
-                return;
-            }
-            setNum(num+1);
-            setImg1(img1 => img1.concat({id: num, src: src}));
         }
     }
 
@@ -85,7 +122,36 @@ const Start = () => {
            </div>
 
             {/* Middle Component render */}
-            <MiddleComponent img1={img1} />
+            <MiddleComponent img1={img1} 
+            active={active} setActive={setActive}
+            activeother={activeother} 
+            setActiveother={setActiveother}
+            rightDotPosLeft={rightDotPosLeft} 
+            setRightDotPosLeft={setRightDotPosLeft}
+            bottomDotPosLeft={bottomDotPosLeft} 
+            setbottomDotPosLeft={setbottomDotPosLeft}
+            rightDotPosTop={rightDotPosTop} 
+            setRightDotPosTop={setRightDotPosTop}
+            bottomDotPosTop={bottomDotPosTop} 
+            setBottomDotPosTop={setBottomDotPosTop}
+            activeIndex={activeIndex} 
+            setActiveIndex={setActiveIndex}
+            activeRightIndex={activeRightIndex} 
+            setActiveRightIndex={setActiveRightIndex}
+            current={current} setCurrent={setCurrent} 
+            currentRight={currentRight} 
+            setCurrentRight={setCurrentRight}
+            bottomImg={bottomImg} setBottomImg={setBottomImg}
+            rightImg={rightImg} setRightImg={setRightImg}
+            currentColumnRight={currentColumnRight}
+            setCurrentColumnRight={setCurrentColumnRight}
+            currentColumnBottom={currentColumnBottom}
+            setCurrentColumnBottom={setCurrentColumnBottom}
+            currentRowBottom={setCurrentColumnBottom}
+            setCurrentRowRight={setCurrentRowRight}
+            setCurrentRowBottom={setCurrentRowBottom}
+            currentRowRight={currentRowRight}
+            />
             {/* end */}
 
 
