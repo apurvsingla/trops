@@ -175,13 +175,13 @@ const MiddleComponent = ({img1, active, setActive,
                         <RightSpan style={{
                                 left: `${i.id === currentRight ?
                                         100*activeRightIndex[currentRight] + 100 : null}px`,
-                                top: `${i.id === current ? 100*activeRightIndex[currentRight] + 80: null}px`
+                                top: `${i.id === currentRight ? 100*activeRightIndex[currentRight] + 80: null}px`
                                         }}>
                                 <NormalImg src={i.src} 
                                 alt="alt" 
                                 style={{
                                         left: `${100*index + 120}px`,
-                                        top: '103px'
+                                        top: '105px'
                                 }}/>
                         </RightSpan>
                         {/* line */}
