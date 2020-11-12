@@ -1,22 +1,25 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import {Img,
 NormalImg, 
 Span,
 Line, 
-ColumnLine,
-columnLineSpan,
+// ColumnLine,
+// columnLineSpan,
 RightSpan} from './Middle.style';
 
 const MiddleComponent = ({img1, active, setActive, 
-        activeother, setActiveother, rightDotPosLeft, 
-        setRightDotPosLeft, bottomDotPosLeft, 
-        setbottomDotPosLeft, rightDotPosTop, 
-        setRightDotPosTop, bottomDotPosTop, 
-        setBottomDotPosTop, activeIndex, setActiveIndex, 
+        activeother, setActiveother,
+        activeIndex, setActiveIndex, 
         activeRightIndex, setActiveRightIndex, 
-        current, setCurrent, currentRight, setCurrentRight,
-        bottomImg, rightImg
+        current, setCurrent, currentRight, 
+        setCurrentRight, bottomImg, rightImg,
+        //unused
+        currentColumnRight, setCurrentColumnRight,
+        currentColumnBottom, setCurrentColumnBottom, 
+        currentRowRight, setCurrentRowRight,
+        currentRowBottom, setCurrentRowBottom,
+        rightRImg, setRightRImg,
+        bottomBImg, setBottomBImg
 }) => {
         
         
@@ -36,8 +39,7 @@ const MiddleComponent = ({img1, active, setActive,
                         setActive(active);
                         setActiveRightIndex(activeRightIndex);
                         setCurrentRight(index);
-                }
-                
+                }      
         }
         
         const activeSecondLink = (e,index) => {
@@ -91,13 +93,6 @@ const MiddleComponent = ({img1, active, setActive,
                                 onClick={(e) => activeLink(e,index)}
                                 id={index+'-right'}
                                 key={index+'-right'}
-                                ref={(el) => {
-                                        if(!el) return;
-                                        rightDotPosLeft[index+'-right'] = el.getBoundingClientRect().left;
-                                        rightDotPosTop[index+'-bottom'] = el.getBoundingClientRect().top;
-                                        setRightDotPosLeft(rightDotPosLeft);
-                                        setRightDotPosTop(rightDotPosTop);
-                                }}
                                 />
 
                                 <span style={{
@@ -112,13 +107,6 @@ const MiddleComponent = ({img1, active, setActive,
                                         key={index+'-bottom'}
                                         id={index+'-bottom'}
                                         onClick={(e) => activeSecondLink(e,index)}
-                                        ref={(el) => {
-                                                if(!el) return;
-                                                bottomDotPosLeft[index+'-bottom'] = el.getBoundingClientRect().left;
-                                                bottomDotPosTop[index+'-bottom'] = el.getBoundingClientRect().top;
-                                                setbottomDotPosLeft(bottomDotPosLeft);
-                                                setBottomDotPosTop(bottomDotPosTop);
-                                        }}
                                         />
                                 </>
                                 : null }
@@ -128,48 +116,47 @@ const MiddleComponent = ({img1, active, setActive,
 
                 {bottomImg.length>=1 ? (bottomImg.map((i,index) => {
                         return(<>
-                                <Span style={{top: `${100*activeIndex[current] + 175}px`}}>
+                         {/* {activeother[activeIndex[current] + '-bottom'] === true} */}
+                                <Span style={{top: `${175}px`}}>
                                 <Img src={i.src} alt="alt"
                                 style={{
-                                        left: `${100*activeIndex[current] + 20}px`,
-                                        top: `${4*index - 100*activeIndex[current]}px`
+                                        left: `${i.id === current ?100*activeIndex[current] + 20: null}px`,
+                                        top: `${i.id === current ? 0: null}px`,
+                                        // marginTop: `${100*index}px`
                                 }} />
                         </Span>
                         {/* line */}
                 
-                        <columnLineSpan>
-                                <ColumnLine  style={{left: `${100*activeIndex[current] + 130}px`,
-                                marginTop: `${4*index - 100*activeIndex[current] + 178}px`
+                        {/* <columnLineSpan>
+                                <span  style={{left: `${i.id === current ? 100*activeIndex[current] + 130: null}px`,
+                                marginTop: `${i.id === current ? 2*activeIndex[current]: null}px`,
+                                width: '4px',
+                                height: `${40*activeIndex[current]}px`,
+                                backgroundColor: 'black',
+                                position: 'absolute'
                                 }}
                                 key={index+'--icon'}/>
-                        </columnLineSpan>
+                        </columnLineSpan> */}
                         {i.src === (process.env.PUBLIC_URL + '/images/components/condition.png') ? 
                         <>
                         <span style={{
                                 position: 'absolute',
-                                left: `${100*activeIndex[current] + 175}px`,
+                                left: `${i.id === current ?100*activeIndex[current] + 175: null}px`,
                                 height: '15px',
                                 width: '15px',
                                 borderRadius: '25px',
                                 backgroundColor : 'black',
-                                marginTop: `${4*index - 100*activeIndex[current] + 235}px`
+                                marginTop: `${i.id === current ? index + 130 : null}px`
                                 }}
                                 onClick={(e) => activeLink(e,index)}
                                 id={index+'-right'}
                                 key={index+'-right'}
-                                ref={(el) => {
-                                        if(!el) return;
-                                        rightDotPosLeft[index+'-right'] = el.getBoundingClientRect().left;
-                                        rightDotPosTop[index+'-bottom'] = el.getBoundingClientRect().top;
-                                        setRightDotPosLeft(rightDotPosLeft);
-                                        setRightDotPosTop(rightDotPosTop);
-                                }}
                                 />
 
                         <span style={{
                                 position: 'absolute',
-                                left: `${100*activeIndex[current] + 148}px`,
-                                marginTop: `${4*index - 100*activeIndex[current] + 258}px`,
+                                left: `${i.id === current ? 100*activeIndex[current] + 148 : null}px`,
+                                marginTop: `${i.id === current ? index + 150 : null}px`,
                                 backgroundColor: 'black',
                                 height: '15px',
                                 width: '15px',
@@ -178,13 +165,6 @@ const MiddleComponent = ({img1, active, setActive,
                                 key={index+'-bottom'}
                                 id={index+'-bottom'}
                                 onClick={(e) => activeSecondLink(e,index)}
-                                ref={(el) => {
-                                        if(!el) return;
-                                        bottomDotPosLeft[index+'-bottom'] = el.getBoundingClientRect().left;
-                                        bottomDotPosTop[index+'-bottom'] = el.getBoundingClientRect().top;
-                                        setbottomDotPosLeft(bottomDotPosLeft);
-                                        setBottomDotPosTop(bottomDotPosTop);
-                                }}
                                 />
                         </>
                         : null }
@@ -192,15 +172,60 @@ const MiddleComponent = ({img1, active, setActive,
                 })) : null}
                 {rightImg.length>=1 ? (rightImg.map((i,index) => {
                         return(<>
-                        <RightSpan style={{left: `${100*activeRightIndex[currentRight] + 200}px`,
-                                                top: `${100*activeRightIndex[currentRight] }px`
+                        <RightSpan style={{
+                                left: `${i.id === currentRight ?
+                                        100*activeRightIndex[currentRight] + 100 : null}px`,
+                                top: `${i.id === current ? 100*activeRightIndex[currentRight] + 80: null}px`
                                         }}>
                                 <NormalImg src={i.src} 
                                 alt="alt" 
                                 style={{
-                                        left: `${100*index + 20}px`
+                                        left: `${100*index + 120}px`,
+                                        top: '103px'
                                 }}/>
                         </RightSpan>
+                        {/* line */}
+                        {/* {(rightImg.length-1) === index ? null : (
+                                <Line style={{
+                                        left: `${100*index + 393}px`,
+                                        }}
+                                key={index+'--icon'} />) } */}
+
+                                {/* line end */}
+
+                                {/* dots start */}
+                                {i.src === (process.env.PUBLIC_URL + '/images/components/condition.png') ? 
+                                <>
+                                <span style={{
+                                        position: 'absolute',
+                                        left: `${100*index + 375}px`,
+                                        height: '15px',
+                                        width: '15px',
+                                        top: '130px',
+                                        borderRadius: '25px',
+                                        backgroundColor : 'black'
+                                }}
+                                onClick={(e) => activeLink(e,index)}
+                                id={index+'-right'}
+                                key={index+'-right'}
+                                />
+
+                                <span style={{
+                                        position: 'absolute',
+                                        left: `${100*index + 348}px`,
+                                        top: '154px',
+                                        backgroundColor: 'black',
+                                        height: '15px',
+                                        width: '15px',
+                                        borderRadius: '25px'
+                                        }}
+                                        key={index+'-bottom'}
+                                        id={index+'-bottom'}
+                                        onClick={(e) => activeSecondLink(e,index)}
+                                        />
+                                </>
+                                : null }
+                                {/* dots end */}
                         </>)
                 })) : null}
 

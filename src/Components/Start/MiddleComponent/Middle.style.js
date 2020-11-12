@@ -23,7 +23,6 @@ export const Span = styled.span`
 
 export const RightSpan = styled.span`
     position: absolute;
-    top: 100px;
 `;
 
 export const Line = styled(MaximizeIcon)`

@@ -30,25 +30,23 @@ const Start = () => {
     const [img1, setImg1] = useSessionStorage('img1', []);
     const [bottomImg, setBottomImg] = useSessionStorage('bottom-img', []);
     const [rightImg, setRightImg] = useSessionStorage('right-img', []);
+    //separate storage for column and row images
+    const [rightRImg, setRightRImg] = useSessionStorage('right-right-imh', []);
+    const [bottomBImg, setBottomBImg] = useSessionStorage('bottom-bottom-img', {})
+    
     const [id, setId] = useSessionStorage('id', 1);
     const [num, setNum] = useSessionStorage('num', 0);
 
     //dots active or not
     const [active, setActive] = useSessionStorage('active-right-dot', {});
     const [activeother, setActiveother] = useSessionStorage('active-bottom-dot', {});
-
-    //right dot left pos(relative)
-    const [rightDotPosLeft, setRightDotPosLeft] = useSessionStorage('right-dot-pos-left', {});
-    const [bottomDotPosLeft, setbottomDotPosLeft] = useSessionStorage('bottom-dot-pos-left', {});
-    //bottom dot top pos(relative)
-    const [rightDotPosTop, setRightDotPosTop] = useSessionStorage('right-dot-pos-left', {});
-    const [bottomDotPosTop, setBottomDotPosTop] = useSessionStorage('bottom-dot-pos-left', {});
     //index dictionary
     const [activeIndex, setActiveIndex] = useSessionStorage('active-bottom-index',{});
     const [activeRightIndex, setActiveRightIndex] = useSessionStorage('active-right-index',{});
     //active index
     const [current, setCurrent] = useSessionStorage('current-bottom',null);
     const [currentRight, setCurrentRight] = useSessionStorage('current-right',null);
+    //setActive positions for alternate positions
     const [currentColumnRight, setCurrentColumnRight] = useSessionStorage('current-column-right', {});
     const [currentColumnBottom, setCurrentColumnBottom] = useSessionStorage('current-column-left', {});
     const [currentRowRight, setCurrentRowRight] = useSessionStorage('current-column-right', {});
@@ -74,10 +72,10 @@ const Start = () => {
     // populating images
     const onImage1Concat = (src) => {
         if(activeother[activeIndex[current] + '-bottom']=== true){
-            setBottomImg(i => i.concat({id: id, src: src}));
+            setBottomImg(i => i.concat({id: current, src: src}));
             setId(id+1);
         }else if(active[activeRightIndex[currentRight] + '-right'] === true){
-            setRightImg(i => i.concat({id: id, src: src}));
+            setRightImg(i => i.concat({id: currentRight, src: src}));
             setId(id+1);
         }else{
             if(src!==(process.env.PUBLIC_URL + '/images/components/beeper.png')){
@@ -126,14 +124,6 @@ const Start = () => {
             active={active} setActive={setActive}
             activeother={activeother} 
             setActiveother={setActiveother}
-            rightDotPosLeft={rightDotPosLeft} 
-            setRightDotPosLeft={setRightDotPosLeft}
-            bottomDotPosLeft={bottomDotPosLeft} 
-            setbottomDotPosLeft={setbottomDotPosLeft}
-            rightDotPosTop={rightDotPosTop} 
-            setRightDotPosTop={setRightDotPosTop}
-            bottomDotPosTop={bottomDotPosTop} 
-            setBottomDotPosTop={setBottomDotPosTop}
             activeIndex={activeIndex} 
             setActiveIndex={setActiveIndex}
             activeRightIndex={activeRightIndex} 
@@ -147,10 +137,14 @@ const Start = () => {
             setCurrentColumnRight={setCurrentColumnRight}
             currentColumnBottom={currentColumnBottom}
             setCurrentColumnBottom={setCurrentColumnBottom}
-            currentRowBottom={setCurrentColumnBottom}
+            currentRowBottom={currentRowBottom}
             setCurrentRowRight={setCurrentRowRight}
             setCurrentRowBottom={setCurrentRowBottom}
             currentRowRight={currentRowRight}
+            rightRImg={rightRImg}
+            setRightRImg={setRightRImg}
+            bottomBImg={bottomBImg}
+            setBottomBImg={setBottomBImg}
             />
             {/* end */}
 
