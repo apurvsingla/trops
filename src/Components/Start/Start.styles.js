@@ -17,7 +17,7 @@ export const Bottom = styled.div`
     width: 80%;
     background-color: white;
     border: 1px solid #fc846a;
-    height: 90px;
+    height: 100px;
     text-align: center;
     position: fixed;
     bottom: 0;
@@ -25,10 +25,13 @@ export const Bottom = styled.div`
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom: none;
+    @media (min-width: 893px){
+        height: 120px;
+    }
 `;
 
 export const Dots = styled.button`
-    position: relative;
+    position: fixed;
     bottom: 7px;
     border: none;
     border-radius: 25px;
@@ -39,15 +42,31 @@ export const Dots = styled.button`
 
 export const Icon = styled(AddCircleIcon)`
     position: relative;
-    bottom: 40px;
-    left: 10px;
+    bottom: 78px;
+    left: 14px;
     cursor: pointer;
+    @media (max-width: 892px){
+        bottom: 51px
+    }
 `;
 
 export const MiddleIcon = styled(AddCircleIcon)`
     position: relative;
-    bottom: 40px;
-    left: 28px;
+    bottom: 78px;
+    left: 30px;
     cursor: pointer;
+    @media (max-width: 892px){
+        bottom: 51px;
+    }
+`;
+
+export const Img = styled.img`
+    width: 75px;
+    height: 75px;
+    @media (min-width: 893px){
+        width: 100px;
+        height: 100px;
+    }  
 `;
     
+

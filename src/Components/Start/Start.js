@@ -15,24 +15,35 @@ import {Graph,
 Bottom,
 Dots,
 Icon,
-MiddleIcon
+MiddleIcon,
+Img
 } from './Start.styles';
 
 import './Start.styles.scss';
 
 const Start = () => {
+
+    //media query
+    const [mQuery, setMQuery] = React.useState({
+        matches: window.innerWidth > 892 ? true : false,
+      });
+
+    React.useEffect(() => {
+        let mediaQuery = window.matchMedia("(max-width: 892px)");
+        mediaQuery.addListener(setMQuery);
+        return () => mediaQuery.removeListener(setMQuery);
+      }, []);
+
     // + sign
     const [displayDot1, setDisplayDot1] = useState(true);
     const [displayDot2, setDisplayDot2] = useState(false);
     const [displayDot3, setDisplayDot3] = useState(false);
+    const [displayDot4, setDisplayDot4] = useState(false);
 
     //images
     const [img1, setImg1] = useSessionStorage('img1', []);
     const [bottomImg, setBottomImg] = useSessionStorage('bottom-img', []);
     const [rightImg, setRightImg] = useSessionStorage('right-img', []);
-    //separate storage for column and row images
-    const [rightRImg, setRightRImg] = useSessionStorage('right-right-imh', []);
-    const [bottomBImg, setBottomBImg] = useSessionStorage('bottom-bottom-img', {})
     
     const [id, setId] = useSessionStorage('id', 1);
     const [num, setNum] = useSessionStorage('num', 0);
@@ -40,17 +51,13 @@ const Start = () => {
     //dots active or not
     const [active, setActive] = useSessionStorage('active-right-dot', {});
     const [activeother, setActiveother] = useSessionStorage('active-bottom-dot', {});
+
     //index dictionary
     const [activeIndex, setActiveIndex] = useSessionStorage('active-bottom-index',{});
     const [activeRightIndex, setActiveRightIndex] = useSessionStorage('active-right-index',{});
     //active index
     const [current, setCurrent] = useSessionStorage('current-bottom',null);
     const [currentRight, setCurrentRight] = useSessionStorage('current-right',null);
-    //setActive positions for alternate positions
-    const [currentColumnRight, setCurrentColumnRight] = useSessionStorage('current-column-right', {});
-    const [currentColumnBottom, setCurrentColumnBottom] = useSessionStorage('current-column-left', {});
-    const [currentRowRight, setCurrentRowRight] = useSessionStorage('current-column-right', {});
-    const [currentRowBottom, setCurrentRowBottom] = useSessionStorage('current-column-left', {});
 
     const history = useHistory();
 
@@ -78,12 +85,12 @@ const Start = () => {
             setRightImg(i => i.concat({id: currentRight, src: src}));
             setId(id+1);
         }else{
-            if(src!==(process.env.PUBLIC_URL + '/images/components/beeper.png')){
+            if(src!==(process.env.PUBLIC_URL + '/images/components/power.png')){
                 if(num > 0){
                     setImg1(img1 => img1.concat({id: id, src: src}));
                     setId(id + 1);
                 }
-            }else if(src=== (process.env.PUBLIC_URL + '/images/components/beeper.png')){
+            }else if(src=== (process.env.PUBLIC_URL + '/images/components/power.png')){
                 if(num === 1){
                     return;
                 }
@@ -101,7 +108,7 @@ const Start = () => {
            <Graph 
            style={{position: 'absolute',
                     minWidth: `${10*(img1.length)+ 100}%`,
-                    height: `${10*(img1.length)+ 100}%`,
+                    height: `${20*(bottomImg.length)+ 100}%`,
         }}/>
            <div style={{
                display: 'flex',
@@ -121,6 +128,7 @@ const Start = () => {
 
             {/* Middle Component render */}
             <MiddleComponent img1={img1} 
+            setImg1={setImg1}
             active={active} setActive={setActive}
             activeother={activeother} 
             setActiveother={setActiveother}
@@ -133,25 +141,14 @@ const Start = () => {
             setCurrentRight={setCurrentRight}
             bottomImg={bottomImg} setBottomImg={setBottomImg}
             rightImg={rightImg} setRightImg={setRightImg}
-            currentColumnRight={currentColumnRight}
-            setCurrentColumnRight={setCurrentColumnRight}
-            currentColumnBottom={currentColumnBottom}
-            setCurrentColumnBottom={setCurrentColumnBottom}
-            currentRowBottom={currentRowBottom}
-            setCurrentRowRight={setCurrentRowRight}
-            setCurrentRowBottom={setCurrentRowBottom}
-            currentRowRight={currentRowRight}
-            rightRImg={rightRImg}
-            setRightRImg={setRightRImg}
-            bottomBImg={bottomBImg}
-            setBottomBImg={setBottomBImg}
             />
             {/* end */}
 
 
             {/* swipeable area */}
            <Bottom>
-            <ReactSwipe
+               <>
+                    {mQuery && !mQuery.matches ?( <ReactSwipe
                 className="carousel"
                 swipeOptions={{ continuous: true }}
                 ref={el => (reactSwipeEl = el)}
@@ -160,71 +157,189 @@ const Start = () => {
                     setDisplayDot2(false);
                     setDisplayDot1(true);
                     setDisplayDot3(false);
+                    setDisplayDot4(false);
                     }}>
+                    <Icon onClick={(e) =>  onImage1Concat(process.env.PUBLIC_URL + '/images/components/power.png')}/>
+                    <Img src={process.env.PUBLIC_URL + '/images/components/power.png'} 
+                    alt="power" style={{marginRight: '20px'}}/>
+
+                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/sequence.png')}/>
+                    <Img src={process.env.PUBLIC_URL + '/images/components/sequence.png'} 
+                    alt="beeper" style={{marginRight: '20px'}}/>
+
                     <Icon onClick={(e) =>  onImage1Concat(process.env.PUBLIC_URL + '/images/components/beeper.png')}/>
-                    <img src={process.env.PUBLIC_URL + '/images/components/beeper.png'} 
-                    alt="beeper" width="60" />
+                    <Img src={process.env.PUBLIC_URL + '/images/components/beeper.png'} 
+                    alt="beeper" />
 
                     <MiddleIcon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/condition.png')}/>
-                    <img src={process.env.PUBLIC_URL + '/images/components/condition.png'} 
+                    <Img src={process.env.PUBLIC_URL + '/images/components/condition.png'} 
                     alt="beeper" 
-                    width="60" 
                     style={{
                     marginLeft: '20px',
                     marginRight: '20px'
                     }}/>
-
-                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/distance.png')} />
-                    <img src={process.env.PUBLIC_URL + '/images/components/distance.png'} 
-                    alt="beeper" width="65" />
                 </div>
-
+                
                 <div className={JSON.stringify(displayDot2)} onTouchEnd={() => {
                     setDisplayDot2(true);
                     setDisplayDot1(false);
                     setDisplayDot3(false);
+                    setDisplayDot4(false);
                 }}>
+
+                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/graph.png')}/>
+                    <Img src={process.env.PUBLIC_URL + '/images/components/graph.png'} 
+                    alt="beeper" style={{marginRight: '20px'}}/>
+
                     <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/distance.png')}  />
-                    <img src={process.env.PUBLIC_URL + '/images/components/distance.png'} 
-                    alt="beeper" width="65" />
+                    <Img src={process.env.PUBLIC_URL + '/images/components/distance.png'} 
+                    alt="beeper" style={{marginRight: "20px"}}/>
+
 
                     <MiddleIcon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/LED.png')}/>
-                    <img src={process.env.PUBLIC_URL + '/images/components/LED.png'} 
+                    <Img src={process.env.PUBLIC_URL + '/images/components/LED.png'} 
                     alt="beeper" 
-                    width="60" 
                     style={{
-                    marginLeft: '20px',
                     marginRight: '20px'
                     }}/>
                     
                     <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/light.png')}/>
-                    <img src={process.env.PUBLIC_URL + '/images/components/light.png'} 
-                    alt="beeper" width="65" />
+                    <Img src={process.env.PUBLIC_URL + '/images/components/light.png'} 
+                    alt="beeper" />
                 </div>
 
                 <div className={JSON.stringify(displayDot3)} onTouchEnd={() => {
                     setDisplayDot2(false);
                     setDisplayDot1(false);
                     setDisplayDot3(true);
+                    setDisplayDot4(false);
                 }}>
                     <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/Magnetic.png')}/>
-                    <img src={process.env.PUBLIC_URL + '/images/components/Magnetic.png'} 
-                    alt="beeper" width="65" />
+                    <Img src={process.env.PUBLIC_URL + '/images/components/Magnetic.png'} 
+                    alt="beeper" style={{marginRight: '20px'}}/>
+
+                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/temperature.png')}/>
+                    <Img src={process.env.PUBLIC_URL + '/images/components/temperature.png'} 
+                    alt="temperature" style={{marginRight: '20px'}}/>
                     
                     <MiddleIcon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/Motor.png')}/>
-                    <img src={process.env.PUBLIC_URL + '/images/components/Motor.png'} 
+                    <Img src={process.env.PUBLIC_URL + '/images/components/Motor.png'} 
                     alt="beeper" 
-                    width="65" 
                     style={{
-                    marginLeft: '20px',
                     marginRight: '20px'
                     }}/>
                     
-                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/Power.png')}/>
-                    <img src={process.env.PUBLIC_URL + '/images/components/Power.png'} 
-                    alt="beeper" width="65" />
+                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/sound.png')}/>
+                    <Img src={process.env.PUBLIC_URL + '/images/components/sound.png'} 
+                    alt="beeper" />
                 </div>
-            </ReactSwipe>
+
+                <div className={JSON.stringify(displayDot4)} onTouchEnd={() => {
+                    setDisplayDot2(false);
+                    setDisplayDot1(false);
+                    setDisplayDot3(false);
+                    setDisplayDot4(true);
+                }}>                   
+                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/sound.png')}/>
+                    <Img src={process.env.PUBLIC_URL + '/images/components/tact.png'} 
+                    alt="beeper" />
+                    
+                </div>
+                </ReactSwipe>) : (
+                         <ReactSwipe
+                         className="carousel"
+                         swipeOptions={{ continuous: true }}
+                         ref={el => (reactSwipeEl = el)}
+                         >
+                        <div className={JSON.stringify(displayDot1)} onTouchEnd={() => {
+                            setDisplayDot2(false);
+                            setDisplayDot1(true);
+                            setDisplayDot3(false);
+                            }}>
+                            <Icon onClick={(e) =>  onImage1Concat(process.env.PUBLIC_URL + '/images/components/power.png')}/>
+                            <Img src={process.env.PUBLIC_URL + '/images/components/power.png'} 
+                            alt="power" style={{marginRight: '20px'}}/>
+        
+                            <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/sequence.png')}/>
+                            <Img src={process.env.PUBLIC_URL + '/images/components/sequence.png'} 
+                            alt="beeper" style={{marginRight: '20px'}}/>
+        
+                            <Icon onClick={(e) =>  onImage1Concat(process.env.PUBLIC_URL + '/images/components/beeper.png')}/>
+                            <Img src={process.env.PUBLIC_URL + '/images/components/beeper.png'} 
+                            alt="beeper" />
+        
+                            <MiddleIcon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/condition.png')}/>
+                            <Img src={process.env.PUBLIC_URL + '/images/components/condition.png'} 
+                            alt="beeper" 
+                            style={{
+                            marginLeft: '20px',
+                            marginRight: '20px'
+                            }}/>
+        
+                            <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/distance.png')} />
+                            <Img src={process.env.PUBLIC_URL + '/images/components/distance.png'} 
+                            alt="beeper" />
+                        </div>
+        
+                        <div className={JSON.stringify(displayDot2)} onTouchEnd={() => {
+                            setDisplayDot2(true);
+                            setDisplayDot1(false);
+                            setDisplayDot3(false);
+                        }}>
+        
+                            <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/graph.png')}/>
+                            <Img src={process.env.PUBLIC_URL + '/images/components/graph.png'} 
+                            alt="beeper" style={{marginRight: '20px'}}/>
+        
+                            <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/distance.png')}  />
+                            <Img src={process.env.PUBLIC_URL + '/images/components/distance.png'} 
+                            alt="beeper" style={{marginRight: "20px"}}/>
+        
+                            <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/tact.png')}  />
+                            <Img src={process.env.PUBLIC_URL + '/images/components/tact.png'} 
+                            alt="magnetic" />
+        
+                            <MiddleIcon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/LED.png')}/>
+                            <Img src={process.env.PUBLIC_URL + '/images/components/LED.png'} 
+                            alt="beeper" 
+                            style={{
+                            marginLeft: '20px',
+                            marginRight: '20px'
+                            }}/>
+                            
+                            <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/light.png')}/>
+                            <Img src={process.env.PUBLIC_URL + '/images/components/light.png'} 
+                            alt="beeper" />
+                        </div>
+        
+                        <div className={JSON.stringify(displayDot3)} onTouchEnd={() => {
+                            setDisplayDot2(false);
+                            setDisplayDot1(false);
+                            setDisplayDot3(true);
+                        }}>
+                            <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/Magnetic.png')}/>
+                            <Img src={process.env.PUBLIC_URL + '/images/components/Magnetic.png'} 
+                            alt="beeper" style={{marginRight: '20px'}}/>
+        
+                            <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/temperature.png')}/>
+                            <Img src={process.env.PUBLIC_URL + '/images/components/temperature.png'} 
+                            alt="beeper" />
+                            
+                            <MiddleIcon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/Motor.png')}/>
+                            <Img src={process.env.PUBLIC_URL + '/images/components/Motor.png'} 
+                            alt="beeper" 
+                            style={{
+                            marginLeft: '20px',
+                            marginRight: '20px'
+                            }}/>
+                            
+                            <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/sound.png')}/>
+                            <Img src={process.env.PUBLIC_URL + '/images/components/sound.png'} 
+                            alt="beeper" />
+                        </div>
+                        </ReactSwipe>
+                    ) }
+            </>
 
             {/* Swipeable Dots Beggining */}
             <Dots onClick={() => {
@@ -232,9 +347,11 @@ const Start = () => {
             setDisplayDot1(true);
             setDisplayDot2(false);
             setDisplayDot3(false);
+            setDisplayDot4(false);
+
             }}
             style={{
-                marginRight: '10px'
+                marginRight: '10px',
             }}
             className={JSON.stringify(displayDot1) + 'dot'}
             />
@@ -243,9 +360,12 @@ const Start = () => {
             setDisplayDot2(true);
             setDisplayDot1(false);
             setDisplayDot3(false);
+            setDisplayDot4(false);
+
             }} 
             style={{
-                marginRight: '10px'
+                marginRight: '15px',
+                marginLeft: '15px'
             }}
             className={JSON.stringify(displayDot2) + 'dot'}
             />
@@ -254,8 +374,26 @@ const Start = () => {
                 setDisplayDot1(false);
                 setDisplayDot2(false);
                 setDisplayDot3(true);
+                setDisplayDot4(false);
+
             }} 
+            style={{
+                marginLeft: '30px'
+            }}
             className={JSON.stringify(displayDot3) + 'dot'}
+            />
+
+            <Dots onClick={() => {
+                reactSwipeEl.slide(4);
+                setDisplayDot1(false);
+                setDisplayDot2(false);
+                setDisplayDot3(false);
+                setDisplayDot4(true);
+            }} 
+            style={{
+                marginLeft: '45px'
+            }}
+            className={JSON.stringify(displayDot4) + 'dot'}
             />
             {/* Swipeable Dots End */}
            </Bottom>

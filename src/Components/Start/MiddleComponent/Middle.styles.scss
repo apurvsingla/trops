@@ -1,0 +1,50 @@
+.bottom-dot-normal{
+    left: 148px;
+    top: 104px;
+    border-radius: 25px;
+    height: 15px;
+    width: 15px;
+    background-color: black;
+    position: absolute;
+
+    @media (min-width: 893px){
+        left: 164px;
+        top: 130px;
+    }
+}
+
+.right-dot-bottom{
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 25px;
+    background-color : black;
+    left: 124px;
+    @media (max-width: 892px){
+        left: 94px;
+    }
+}
+
+.right-right-dot{
+    left: 0px;
+    top:276px;
+    @media (max-width: 892px){
+        left: -15px;
+        top: 250px;
+    }
+}
+
+.middle-dot-normal{
+    left: 148px;
+    top: 90px;
+    border-radius: 25px;
+    height: 15px;
+    width: 15px;
+    background-color: black;
+    position: absolute;
+
+    @media (min-width: 893px){
+        left: 164px;
+        top: 120px;
+    }
+}
