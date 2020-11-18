@@ -26,6 +26,18 @@ export const NormalImg = styled.img`
     }
 `;
 
+export const NormalRImg = styled.img`
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    z-index: -3;
+    @media (min-width: 893px){
+        width: 100px;
+        height: 100px;
+    }
+`;
+
+
 export const Span = styled.span`
     position: relative;
     left: 100px;
@@ -46,6 +58,11 @@ export const BottomSpan = styled.span`
 
 export const RightSpan = styled.span`
     position: absolute;
+    top: 194px;
+
+    @media (max-width: 892px){
+        top: 169px;
+    }
 `;
 
 export const ScrollSlider = styled(Slider)`
@@ -61,25 +78,42 @@ export const ScrollSlider = styled(Slider)`
     }
 `;
 
-// export const Line = styled(MaximizeIcon)`
-//     position: absolute;
-//     transform: scale(2);
-//     top: 141px;
-// `;
-
-
-// export const ColumnLine = styled(MaximizeIcon)`
-//     transform: scale(1.7) rotate(90deg);
-//     position: absolute;
-//     margin-top: 8px
-// `;
-
 export const columnLineSpan = styled.span`
     position: relative;
     bottom: 57px;
 `;
 
 export const LargeLine = styled.span`
+    background-color: black;
+    width: 48px;
+    height: 2px;
+    position: absolute;
+    top: 101px;
+    left: 216px;
+    @media (max-width: 893px){
+        width: 75px;
+        z-index: 8;
+        left: 188px;
+        top: 87px;
+    }
+`;
+
+export const LargeColLine = styled.span`
+    background-color: black;
+    width: 2px;
+    position: absolute;
+    top: 151px;
+    left: 170px;
+    @media (max-width: 893px){
+        height: 75px;
+        z-index: 8;
+        left: 188px;
+        top: 87px;
+    }
+`;
+
+
+export const LargeRowLine = styled.span`
     background-color: black;
     width: 48px;
     height: 2px;

@@ -44,6 +44,7 @@ const Start = () => {
     const [img1, setImg1] = useSessionStorage('img1', []);
     const [bottomImg, setBottomImg] = useSessionStorage('bottom-img', []);
     const [rightImg, setRightImg] = useSessionStorage('right-img', []);
+    const [rightRImg, setRightRImg]= useSessionStorage('right-bottom-Img', []);
     
     const [id, setId] = useSessionStorage('id', 1);
     const [num, setNum] = useSessionStorage('num', 0);
@@ -51,13 +52,17 @@ const Start = () => {
     //dots active or not
     const [active, setActive] = useSessionStorage('active-right-dot', {});
     const [activeother, setActiveother] = useSessionStorage('active-bottom-dot', {});
+    const [activeRightBottom,setActiveRightBottom] = useSessionStorage('active-right-bottom',{}); //new for right
 
     //index dictionary
     const [activeIndex, setActiveIndex] = useSessionStorage('active-bottom-index',{});
     const [activeRightIndex, setActiveRightIndex] = useSessionStorage('active-right-index',{});
+    const [activeRightBottomIndex, setActiveRightBottomIndex] = useSessionStorage('right-bottom-index', {}); //new for right
+
     //active index
     const [current, setCurrent] = useSessionStorage('current-bottom',null);
     const [currentRight, setCurrentRight] = useSessionStorage('current-right',null);
+    const [currentRightDot, setCurrentRightDot] = useSessionStorage('right-right-dot', null); //new for right
 
     const history = useHistory();
 
@@ -74,6 +79,8 @@ const Start = () => {
         setRightImg([]);
         setActive({});
         setActiveother({});
+        setRightRImg([]);
+        setActiveRightBottom({});
     }
 
     // populating images
@@ -83,6 +90,9 @@ const Start = () => {
             setId(id+1);
         }else if(active[activeRightIndex[currentRight] + '-right'] === true){
             setRightImg(i => i.concat({id: currentRight, src: src}));
+            setId(id+1);
+        }else if(activeRightBottom[activeRightBottomIndex[currentRightDot] + '-bottom'] === true){
+            setRightRImg(i=> i.concat({id: currentRightDot, src: src}));
             setId(id+1);
         }else{
             if(src!==(process.env.PUBLIC_URL + '/images/components/power.png')){
@@ -108,7 +118,7 @@ const Start = () => {
            <Graph 
            style={{position: 'absolute',
                     minWidth: `${10*(img1.length)+ 100}%`,
-                    height: `${20*(bottomImg.length)+ 100}%`,
+                    height: `${20*(bottomImg.length)+ 20*(rightRImg.length) + 100}%`,
         }}/>
            <div style={{
                display: 'flex',
@@ -120,7 +130,8 @@ const Start = () => {
             />
             <Retry width="120" height="120" 
             style={{position: 'absolute',
-                    top: '75px'
+                    top: '75px',
+                    cursor: 'pointer'
                 }}
                 onClick={() => reset()}
             />
@@ -141,6 +152,13 @@ const Start = () => {
             setCurrentRight={setCurrentRight}
             bottomImg={bottomImg} setBottomImg={setBottomImg}
             rightImg={rightImg} setRightImg={setRightImg}
+            activeRightBottom={activeRightBottom} 
+            setActiveRightBottom={setActiveRightBottom}
+            activeRightBottomIndex={activeRightBottomIndex}
+            setActiveRightBottomIndex={setActiveRightBottomIndex}
+            currentRightDot={currentRightDot}
+            setCurrentRightDot={setCurrentRightDot}
+            rightRImg={rightRImg}
             />
             {/* end */}
 
