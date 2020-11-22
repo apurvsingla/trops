@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Slider from '@material-ui/core/Slider';
+// import Slider from '@material-ui/core/Slider';
 
 // import MaximizeIcon from '@material-ui/icons/Maximize';
 
@@ -65,18 +65,18 @@ export const RightSpan = styled.span`
     }
 `;
 
-export const ScrollSlider = styled(Slider)`
-    position: absolute;
-    left: 150px;
-    top: 120px;
-    width: 50px;
+// export const ScrollSlider = styled(Slider)`
+//     position: absolute;
+//     left: 150px;
+//     top: 120px;
+//     width: 50px;
 
-    @media (max-width: 892px){
-        width: 40px;
-        top: 87px;
-        left: 138px;
-    }
-`;
+//     @media (max-width: 892px){
+//         width: 40px;
+//         top: 87px;
+//         left: 138px;
+//     }
+// `;
 
 export const columnLineSpan = styled.span`
     position: relative;
@@ -119,7 +119,7 @@ export const LargeRowLine = styled.span`
     height: 2px;
     position: absolute;
     top: 101px;
-    left: 216px;
+   
     @media (max-width: 893px){
         width: 75px;
         z-index: 8;

@@ -1,0 +1,11 @@
+.scroll-large{
+    position: absolute !important;
+    left: 150px;
+    top: 128px;
+    width: 50px !important;
+    @media (max-width: 892px){
+        width: 40px !important;
+        top: 87px;
+        left: 138px;
+    }
+}

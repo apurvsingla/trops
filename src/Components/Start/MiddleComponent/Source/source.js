@@ -1,0 +1,13 @@
+export const lightSource = (process.env.PUBLIC_URL + '/images/components/light.png');
+export const tempSource =  (process.env.PUBLIC_URL + '/images/components/temperature.png');
+export const soundSource = (process.env.PUBLIC_URL + '/images/components/sound.png');
+export const magSource = (process.env.PUBLIC_URL + '/images/components/Magnetic.png');
+export const distanceSource = (process.env.PUBLIC_URL + '/images/components/distance.png');
+export const ledSource = (process.env.PUBLIC_URL + '/images/components/LED.png');
+export const tactSource = (process.env.PUBLIC_URL + '/images/components/tact.png');
+export const beeperSource = (process.env.PUBLIC_URL + '/images/components/tact.png');
+export const motorSource = (process.env.PUBLIC_URL + '/images/components/Motor.png');
+export const conditionSource = (process.env.PUBLIC_URL + '/images/components/condition.png');
+export const powerSource = (process.env.PUBLIC_URL + '/images/components/power.png');
+export const magneticSource = (process.env.PUBLIC_URL + '/images/components/magnetic.png');
+export const graphSource = (process.env.PUBLIC_URL + '/images/components/graph.png');

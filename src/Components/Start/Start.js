@@ -8,6 +8,20 @@ import ReactSwipe from 'react-swipe';
 import MiddleComponent from './MiddleComponent/MiddleComponent';
 
 import {useSessionStorage} from '../SessionStorage/SessionStorage';
+import {
+lightSource,
+powerSource,
+tactSource,
+ledSource,
+beeperSource,
+distanceSource,
+magneticSource,
+tempSource,
+soundSource,
+conditionSource,
+motorSource,
+graphSource
+} from './MiddleComponent/Source/source';
 
 import {ReactComponent as Back} from './button_back.svg';
 import {ReactComponent as Retry} from './button_retry.svg';
@@ -64,6 +78,16 @@ const Start = () => {
     const [currentRight, setCurrentRight] = useSessionStorage('current-right',null);
     const [currentRightDot, setCurrentRightDot] = useSessionStorage('right-right-dot', null); //new for right
 
+    //tact
+    const [tact, setTact]= useSessionStorage('tact-image-count', {});
+    const [lights, setLights] = useSessionStorage('lights-image-count',{});
+    const [meter, setMeter] = useSessionStorage('tact-meter', 1);
+    const [lightMeter, setLightMeter] = useSessionStorage('lights-meter',1);
+    const [staticVal, setStaticVal] = React.useState(null);
+    const [range, setRange] = React.useState({});
+    const [rangeMeter, setRangeMeter] = useSessionStorage('range',1);
+    const [staticRange, setStaticRange] = React.useState(null);
+
     const history = useHistory();
 
     const back = () => {
@@ -85,6 +109,20 @@ const Start = () => {
 
     // populating images
     const onImage1Concat = (src) => {
+        if(src === lightSource){
+            range[rangeMeter] = rangeMeter;
+            setRange(range);
+            setStaticRange(rangeMeter);
+        }
+        if(src === tactSource){
+            tact[meter]= meter;
+            setTact(tact);
+            setStaticVal(meter);
+        }
+        if(src === ledSource){
+            lights[tact[staticVal] + '-tact-led'] = lightMeter;
+            setLights(lights);
+        }
         if(activeother[activeIndex[current] + '-bottom']=== true){
             setBottomImg(i => i.concat({id: current, src: src}));
             setId(id+1);
@@ -95,12 +133,15 @@ const Start = () => {
             setRightRImg(i=> i.concat({id: currentRightDot, src: src}));
             setId(id+1);
         }else{
-            if(src!==(process.env.PUBLIC_URL + '/images/components/power.png')){
+            if(src!==powerSource){
                 if(num > 0){
                     setImg1(img1 => img1.concat({id: id, src: src}));
                     setId(id + 1);
+                    setMeter(meter + 1);
+                    setLightMeter(lightMeter + 1);
+                    setRangeMeter(rangeMeter + 1);
                 }
-            }else if(src=== (process.env.PUBLIC_URL + '/images/components/power.png')){
+            }else if(src=== powerSource){
                 if(num === 1){
                     return;
                 }
@@ -108,6 +149,7 @@ const Start = () => {
                 setImg1(img1 => img1.concat({id: num, src: src}));
             }
         }
+        
     }
 
     //swipe
@@ -158,7 +200,10 @@ const Start = () => {
             setActiveRightBottomIndex={setActiveRightBottomIndex}
             currentRightDot={currentRightDot}
             setCurrentRightDot={setCurrentRightDot}
-            rightRImg={rightRImg}
+            rightRImg={rightRImg} lights={lights}
+            tact={tact} range={range} staticRange={staticRange}
+            setRange={setRange} setStaticRange={setStaticRange}
+            rangeMeter={rangeMeter} setRangeMeter={setRangeMeter}
             />
             {/* end */}
 
@@ -177,20 +222,20 @@ const Start = () => {
                     setDisplayDot3(false);
                     setDisplayDot4(false);
                     }}>
-                    <Icon onClick={(e) =>  onImage1Concat(process.env.PUBLIC_URL + '/images/components/power.png')}/>
-                    <Img src={process.env.PUBLIC_URL + '/images/components/power.png'} 
+                    <Icon onClick={(e) =>  onImage1Concat(powerSource)}/>
+                    <Img src={powerSource} 
                     alt="power" style={{marginRight: '20px'}}/>
 
                     <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/sequence.png')}/>
                     <Img src={process.env.PUBLIC_URL + '/images/components/sequence.png'} 
                     alt="beeper" style={{marginRight: '20px'}}/>
 
-                    <Icon onClick={(e) =>  onImage1Concat(process.env.PUBLIC_URL + '/images/components/beeper.png')}/>
-                    <Img src={process.env.PUBLIC_URL + '/images/components/beeper.png'} 
+                    <Icon onClick={(e) =>  onImage1Concat(beeperSource)}/>
+                    <Img src={beeperSource} 
                     alt="beeper" />
 
-                    <MiddleIcon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/condition.png')}/>
-                    <Img src={process.env.PUBLIC_URL + '/images/components/condition.png'} 
+                    <MiddleIcon onClick={() => onImage1Concat(conditionSource)}/>
+                    <Img src={conditionSource} 
                     alt="beeper" 
                     style={{
                     marginLeft: '20px',
@@ -205,24 +250,24 @@ const Start = () => {
                     setDisplayDot4(false);
                 }}>
 
-                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/graph.png')}/>
-                    <Img src={process.env.PUBLIC_URL + '/images/components/graph.png'} 
+                    <Icon onClick={() => onImage1Concat(graphSource)}/>
+                    <Img src={graphSource} 
                     alt="beeper" style={{marginRight: '20px'}}/>
 
-                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/distance.png')}  />
-                    <Img src={process.env.PUBLIC_URL + '/images/components/distance.png'} 
+                    <Icon onClick={() => onImage1Concat(distanceSource)}  />
+                    <Img src={distanceSource} 
                     alt="beeper" style={{marginRight: "20px"}}/>
 
 
-                    <MiddleIcon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/LED.png')}/>
-                    <Img src={process.env.PUBLIC_URL + '/images/components/LED.png'} 
+                    <MiddleIcon onClick={() => onImage1Concat(ledSource)}/>
+                    <Img src={ledSource} 
                     alt="beeper" 
                     style={{
                     marginRight: '20px'
                     }}/>
                     
-                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/light.png')}/>
-                    <Img src={process.env.PUBLIC_URL + '/images/components/light.png'} 
+                    <Icon onClick={() => onImage1Concat(lightSource)}/>
+                    <Img src={lightSource} 
                     alt="beeper" />
                 </div>
 
@@ -232,23 +277,23 @@ const Start = () => {
                     setDisplayDot3(true);
                     setDisplayDot4(false);
                 }}>
-                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/Magnetic.png')}/>
-                    <Img src={process.env.PUBLIC_URL + '/images/components/Magnetic.png'} 
+                    <Icon onClick={() => onImage1Concat(magneticSource)}/>
+                    <Img src={magneticSource} 
                     alt="beeper" style={{marginRight: '20px'}}/>
 
-                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/temperature.png')}/>
-                    <Img src={process.env.PUBLIC_URL + '/images/components/temperature.png'} 
+                    <Icon onClick={() => onImage1Concat(tempSource)}/>
+                    <Img src={tempSource} 
                     alt="temperature" style={{marginRight: '20px'}}/>
                     
-                    <MiddleIcon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/Motor.png')}/>
-                    <Img src={process.env.PUBLIC_URL + '/images/components/Motor.png'} 
+                    <MiddleIcon onClick={() => onImage1Concat(motorSource)}/>
+                    <Img src={motorSource} 
                     alt="beeper" 
                     style={{
                     marginRight: '20px'
                     }}/>
                     
-                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/sound.png')}/>
-                    <Img src={process.env.PUBLIC_URL + '/images/components/sound.png'} 
+                    <Icon onClick={() => onImage1Concat(soundSource)}/>
+                    <Img src={soundSource} 
                     alt="beeper" />
                 </div>
 
@@ -258,8 +303,8 @@ const Start = () => {
                     setDisplayDot3(false);
                     setDisplayDot4(true);
                 }}>                   
-                    <Icon onClick={() => onImage1Concat(process.env.PUBLIC_URL + '/images/components/sound.png')}/>
-                    <Img src={process.env.PUBLIC_URL + '/images/components/tact.png'} 
+                    <Icon onClick={() => onImage1Concat(tactSource)}/>
+                    <Img src={tactSource} 
                     alt="beeper" />
                     
                 </div>

@@ -1,0 +1,24 @@
+.glow-small{
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    z-index: 15;
+    position: absolute;
+    top: 95px;
+    border-radius: 25px;
+    margin-left: 160px;
+    @media (max-width: 892px){
+        margin-left: 145px;
+        top: 75px;
+    }
+}
+
+// .glow-large{
+//     background-color: red;
+//     width: 20px;
+//     height: 20px;
+//     z-index: 15;
+//     position: absolute;
+//     top: 95px;
+//     border-radius: 25px;
+// }
