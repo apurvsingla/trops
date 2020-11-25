@@ -23,15 +23,6 @@ conditionSource,
 graphSource
 } from '../Source/source';
 
-//css files
-// import {
-// one,
-// two,
-// three,
-// four,
-// five,
-// six 
-// } from './GlowStyle';
 import './Glow.scss';
 import '../Middle.styles.scss';
 
@@ -163,21 +154,6 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
             : null) 
         : null}
 
-        {/* {i.src === (process.env.PUBLIC_URL + '/images/components/LED.png')?  <span 
-        style={{
-                ...appearDotRange['text' + glowNum], 
-                left: `${140*index + 160}px`,
-        }}
-        /> : null} */}
-
-        {/* <Slider /> */}
-        {/* { ((i.src === ledSource) || appearDotRange)? <span 
-        style={{
-                ...appearDotRange['text' + glowNum],
-                left: `${140*index + 300}px`
-        }}
-        />: null} */}
-
         {i.src === graphSource ? (range[index-1] === true || 
         ((range[index-2] === true) && (arr[index-1].src !== (lightSource || tactSource)))|| 
         ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource))) 
@@ -215,7 +191,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 position: 'absolute',
                 top: `${95 - 5*staticRange}px`,
                 marginLeft: `${staticRange*(-5)}px`,
-                left: `${140*index + 168}px`
+                left: `${140*index + 168}px`,
+                opacity: '0.7'
         }}
         />
             : null) 
