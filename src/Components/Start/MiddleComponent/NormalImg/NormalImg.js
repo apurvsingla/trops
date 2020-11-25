@@ -19,7 +19,8 @@ ledSource,
 tactSource,
 beeperSource,
 motorSource,
-conditionSource
+conditionSource,
+graphSource
 } from '../Source/source';
 
 //css files
@@ -42,7 +43,8 @@ import '../Middle.styles.scss';
 
 const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat, 
      activeSecondLink, img1,setAppearDot, appearDot,
-//     appearDotRange, setAppearDotRange, lights, tact,
+//     appearDotRange, setAppearDotRange, lights, 
+        tact,
     arr,
 // range
     range, setRange, setStaticRange, staticRange, rangeMeter,
@@ -55,9 +57,16 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
     const func = (e) => {
         boolean =! boolean;
         const num = Number(e.target.id);
-        appearDot[num] = boolean;
+        if(appearDot[num] === true){
+                appearDot[num] = false;
+        }else{
+                appearDot[num] = boolean;
+        }
         setAppearDot(appearDot);
+        window.location.reload();
+        // Object.keys(appearDot).map(i => alert(arr[i].src))
     }
+
     
         
     return(<>
@@ -86,16 +95,21 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 className="middle-dot-normal"
                 onTouchStart={(e) => func(e)}
                 // onTouchEnd={(e) => func(e)}
-                onClick={(e) => func(e)}
+                onClick={(e) => {
+                        func(e);
+                }}
                 style={{
-                      marginLeft: `${140*index}px`
+                      marginLeft: `${140*index}px`,
+                      cursor: 'pointer'
                 }}
                 key={index+'-middle'}
                 id={index}
                 />
         ): null}
 
-        {(i.src===lightSource)|| i.src === tempSource || i.src === soundSource ||(i.src === magSource) ||(i.src === distanceSource)
+        {(i.src===lightSource)|| (i.src === tempSource) || 
+        (i.src === soundSource) ||(i.src === magSource) ||
+        (i.src === distanceSource)
                 ? 
                 <Scroll marks={marks} 
                 valueLabelFormat={valueLabelFormat} 
@@ -113,12 +127,14 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
          : null}
 
         {i.src === ledSource? (
-        appearDot[index-1] === true || 
-        ((appearDot[index-2] === true) && (arr[index-1].src !== (tactSource || beeperSource || motorSource)))|| 
-        ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource || beeperSource || motorSource)))||
-        ((appearDot[index-4] === true) && (arr[index-1].src !== (tactSource || beeperSource || motorSource)))||
-        ((appearDot[index-5] === true) && (arr[index-1].src !== (tactSource || beeperSource || motorSource)))||
-        ((appearDot[index-6] === true) && (arr[index-1].src !== (tactSource || beeperSource || motorSource))) 
+         appearDot[index-1] === true || 
+         ((appearDot[index-2] === true) && (arr[index-1].src !== (tactSource && lightSource)))|| 
+         ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource && lightSource)))
+        //  ((appearDot[index-4] === true) && (arr[index-1].src !== (tactSource && lightSource)))||
+        //  ((appearDot[index-5] === true) && (arr[index-1].src !== (tactSource && lightSource)))||
+        //  ((appearDot[index-6] === true) && (arr[index-1].src !== (tactSource && lightSource)))||
+        //  ((appearDot[index-7] === true) && (arr[index-1].src !== (tactSource && lightSource)))
+        // (Object.keys(appearDot).map((i) => arr[i] === tactSource))
         ? 
             <span 
             className='glow-small'
@@ -126,7 +142,6 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
             style={{
                     left: `${140*index}px`,
             }}
-        //     onClick={() => console.log(arr[index].src)}
             />
             : null) 
         : null}
@@ -146,19 +161,40 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         }}
         />: null} */}
 
+        {i.src === graphSource ? (range[index-1] === true || 
+        ((range[index-2] === true) && (arr[index-1].src !== (lightSource || tactSource)))|| 
+        ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource))) 
+        ? 
+        <span
+        onClick={e=>console.log(index)}
+        style={{
+                height: `${staticRange*10 + 5 }px`,
+                width: `${staticRange*10 + 5}px`,
+                backgroundColor: 'red',
+                zIndex: '15',
+                position: 'absolute',
+                top: `${95 - 5*staticRange}px`,
+                marginLeft: `${staticRange*(-5)}px`,
+                left: `${140*index + 168}px`,
+        }}
+        />
+            : null) 
+        : null}
+
         {i.src === ledSource? (
         range[index-1] === true || 
-        ((range[index-2] === true) && (arr[index-1].src !== (lightSource)))|| 
-        ((range[index-3] === true) && (arr[index-1].src !== (lightSource)))||
-        ((range[index-4] === true) && (arr[index-1].src !== (lightSource)))||
-        ((range[index-5] === true) && (arr[index-1].src !== (lightSource))) ||
-        ((range[index-6] === true) && (arr[index-1].src !== (lightSource))) 
+        ((range[index-2] === true) && (arr[index-1].src !== (lightSource || tactSource)))|| 
+        ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource)))
+        // ((range[index-4] === true) && (arr[index-1].src !== (lightSource || tactSource)))||
+        // ((range[index-5] === true) && (arr[index-1].src !== (lightSource || tactSource)))||
+        // ((range[index-6] === true) && (arr[index-1].src !== (lightSource || tactSource)))||
+        // ((range[index-7] === true) && (arr[index-1].src !== (lightSource || tactSource)))
 
         ? 
         <span
         onClick={e=>console.log(index)}
         style={{
-                height: `${staticRange*10 + 5}px`,
+                height: `${staticRange*10 + 5 }px`,
                 width: `${staticRange*10 + 5}px`,
                 backgroundColor: 'red',
                 borderRadius: '50px',

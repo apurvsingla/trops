@@ -79,13 +79,13 @@ const Start = () => {
     const [currentRightDot, setCurrentRightDot] = useSessionStorage('right-right-dot', null); //new for right
 
     //tact
-    const [tact, setTact]= useSessionStorage('tact-image-count', {});
-    const [lights, setLights] = useSessionStorage('lights-image-count',{});
-    const [meter, setMeter] = useSessionStorage('tact-meter', 1);
-    const [lightMeter, setLightMeter] = useSessionStorage('lights-meter',1);
+    const [tact, setTact]= React.useState({});
+    const [lights, setLights] = React.useState({});
+    const [meter, setMeter] = React.useState(1);
+    const [lightMeter, setLightMeter] = React.useState(1);
     const [staticVal, setStaticVal] = React.useState(null);
     const [range, setRange] = React.useState({});
-    const [rangeMeter, setRangeMeter] = useSessionStorage('range',1);
+    const [rangeMeter, setRangeMeter] = React.useState(1);
     const [staticRange, setStaticRange] = React.useState(null);
 
     const history = useHistory();
@@ -115,7 +115,7 @@ const Start = () => {
             setStaticRange(rangeMeter);
         }
         if(src === tactSource){
-            tact[meter]= meter;
+            tact[meter]= true;
             setTact(tact);
             setStaticVal(meter);
         }
@@ -137,8 +137,8 @@ const Start = () => {
                 if(num > 0){
                     setImg1(img1 => img1.concat({id: id, src: src}));
                     setId(id + 1);
-                    setMeter(meter + 1);
-                    setLightMeter(lightMeter + 1);
+                    // setMeter(meter + 1);
+                    // setLightMeter(lightMeter + 1);
                     setRangeMeter(rangeMeter + 1);
                 }
             }else if(src=== powerSource){
