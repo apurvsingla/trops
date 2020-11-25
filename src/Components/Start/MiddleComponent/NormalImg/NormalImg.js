@@ -80,7 +80,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         key={index+'--icon'} />) }
 
         {/* special case */}
-        {(i.src === tactSource)|| (i.src === beeperSource) || (i.src === motorSource) 
+        {(i.src === tactSource) 
                 ? (
                 <span 
                 className="middle-dot-normal"
@@ -117,7 +117,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 />
          : null}
 
-        {i.src === ledSource? (
+        {i.src === (ledSource || beeperSource || motorSource)? (
          appearDot[index-1] === true || 
          ((appearDot[index-2] === true) && (arr[index-1].src !== (tactSource && lightSource && soundSource && tempSource && magSource && distanceSource)))|| 
          ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource && lightSource && soundSource && tempSource && magSource && distanceSource)))
@@ -166,7 +166,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
             : null) 
         : null}
 
-        {i.src === ledSource? (
+        {i.src === (ledSource || beeperSource || motorSource)? (
         range[index-1] === true || 
         ((range[index-2] === true) && (arr[index-1].src !== (lightSource && tactSource && soundSource && tempSource && magSource && distanceSource)))|| 
         ((range[index-3] === true) && (arr[index-1].src !== (lightSource && tactSource && soundSource && tempSource && magSource && distanceSource)))
