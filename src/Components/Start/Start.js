@@ -86,7 +86,7 @@ const Start = () => {
     const [staticVal, setStaticVal] = React.useState(null);
     const [range, setRange] = React.useState({});
     const [rangeMeter, setRangeMeter] = React.useState(1);
-    const [staticRange, setStaticRange] = React.useState(null);
+    const [staticRange, setStaticRange] = useSessionStorage('static-range',null);
 
     const history = useHistory();
 

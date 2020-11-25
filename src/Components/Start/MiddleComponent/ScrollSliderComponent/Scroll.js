@@ -8,7 +8,7 @@ const Scroll = ({marks,
 // code try
     range, setRange, 
     // rangeMeter, setRangeMeter, staticRange,
-    setStaticRange
+    setStaticRange, staticRange
 }) => {
     // const sliderFunc = (e) => {
     //     const inner = JSON.parse(e.target.innerText);
@@ -32,7 +32,7 @@ const Scroll = ({marks,
         <Slider 
         key={key}
         className="scroll-large"
-        defaultValue={0}
+        defaultValue={staticRange}
         marks={marks}
         valueLabelFormat={valueLabelFormat}
         aria-labelledby="discrete-slider-restrict"

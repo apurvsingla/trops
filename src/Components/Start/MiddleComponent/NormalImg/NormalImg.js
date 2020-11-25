@@ -146,6 +146,23 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
             : null) 
         : null}
 
+        {i.src === graphSource? (
+         appearDot[index-1] === true || 
+         ((appearDot[index-2] === true) && (arr[index-1].src !== (tactSource && lightSource)))|| 
+         ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource && lightSource)))
+        ? 
+        <span className="graphDesign"
+        style={{
+                height: `${60 + 5 }px`,
+                width: `${60 + 5}px`,
+                top: `${65}px`,
+                marginLeft: `${-30}px`,
+                left: `${140*index + 168}px`,
+        }}
+        />
+            : null) 
+        : null}
+
         {/* {i.src === (process.env.PUBLIC_URL + '/images/components/LED.png')?  <span 
         style={{
                 ...appearDotRange['text' + glowNum], 
@@ -165,14 +182,10 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         ((range[index-2] === true) && (arr[index-1].src !== (lightSource || tactSource)))|| 
         ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource))) 
         ? 
-        <span
-        onClick={e=>console.log(index)}
+        <span className="graphDesign"
         style={{
                 height: `${staticRange*10 + 5 }px`,
                 width: `${staticRange*10 + 5}px`,
-                backgroundColor: 'red',
-                zIndex: '15',
-                position: 'absolute',
                 top: `${95 - 5*staticRange}px`,
                 marginLeft: `${staticRange*(-5)}px`,
                 left: `${140*index + 168}px`,
