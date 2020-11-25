@@ -1,27 +1,33 @@
 .glow-small{
     background-color: red;
-    width: 20px;
-    height: 20px;
+    width: 80px;
+    height: 80px;
     z-index: 15;
     position: absolute;
-    top: 95px;
-    border-radius: 25px;
-    margin-left: 160px;
+    top: 60px;
+    border-radius: 50px;
+    margin-left: 130px;
     opacity: 0.7;
     @media (max-width: 892px){
-        margin-left: 145px;
-        top: 75px;
+        margin-left: 125px;
+        top: 55px;
+        height: 60px;
+        width: 60px;
     }
 }
 
 .graphDesign{
-    background-image: linear-gradient(to right, transparent 50%, rgba(255, 255, 255, 0.5) 80%),
+    background-image: linear-gradient(to right, transparent 100%, rgba(255, 255, 255, 0.7) 50%),
     linear-gradient(to bottom, transparent 30%, rgba(255, 255, 255, 0.8) 20%);
     background-size: 20px 10px;
     opacity: 0.7;
     background-color: #00ccd6;
     position: absolute;
     z-index: 15;
+    height: 65px;
+    width: 65px;
+    top: 65px;
+    margin-left: 138px;
 
     // background-color: red;
 }

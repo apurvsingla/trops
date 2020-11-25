@@ -23,6 +23,7 @@ export const NormalImg = styled.img`
     @media (min-width: 893px){
         width: 100px;
         height: 100px;
+        position: absolute;
     }
 `;
 
