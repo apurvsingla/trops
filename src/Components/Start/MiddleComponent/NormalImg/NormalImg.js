@@ -119,8 +119,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
 
         {i.src === (ledSource || beeperSource || motorSource)? (
          appearDot[index-1] === true || 
-         ((appearDot[index-2] === true) && (arr[index-1].src !== (tactSource && lightSource && soundSource && tempSource && magSource && distanceSource)))|| 
-         ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource && lightSource && soundSource && tempSource && magSource && distanceSource)))
+         ((appearDot[index-2] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))|| 
+         ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))
         //  ((appearDot[index-4] === true) && (arr[index-1].src !== (tactSource && lightSource)))||
         //  ((appearDot[index-5] === true) && (arr[index-1].src !== (tactSource && lightSource)))||
         //  ((appearDot[index-6] === true) && (arr[index-1].src !== (tactSource && lightSource)))||
@@ -139,8 +139,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
 
         {i.src === graphSource? (
          appearDot[index-1] === true || 
-         ((appearDot[index-2] === true) && (arr[index-1].src !== (tactSource && lightSource && soundSource && tempSource && magSource && distanceSource)))|| 
-         ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource && lightSource && soundSource && tempSource && magSource && distanceSource)))
+         ((appearDot[index-2] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))|| 
+         ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))
         ? 
         <span className="graphDesign"
         style={{
@@ -151,8 +151,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         : null}
 
         {i.src === graphSource ? (range[index-1] === true || 
-        ((range[index-2] === true) && (arr[index-1].src !== (lightSource && tactSource && soundSource && tempSource && magSource && distanceSource)))|| 
-        ((range[index-3] === true) && (arr[index-1].src !== (lightSource && tactSource && soundSource && tempSource && magSource && distanceSource))) 
+        ((range[index-2] === true) && (arr[index-1].src !== (lightSource || tactSource ||soundSource || tempSource || magSource || distanceSource)))|| 
+        ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource))) 
         ? 
         <span className="graphDesign"
         style={{
@@ -168,8 +168,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
 
         {i.src === (ledSource || beeperSource || motorSource)? (
         range[index-1] === true || 
-        ((range[index-2] === true) && (arr[index-1].src !== (lightSource && tactSource && soundSource && tempSource && magSource && distanceSource)))|| 
-        ((range[index-3] === true) && (arr[index-1].src !== (lightSource && tactSource && soundSource && tempSource && magSource && distanceSource)))
+        ((range[index-2] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource)))|| 
+        ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource ||tempSource || magSource || distanceSource)))
         // ((range[index-4] === true) && (arr[index-1].src !== (lightSource || tactSource)))||
         // ((range[index-5] === true) && (arr[index-1].src !== (lightSource || tactSource)))||
         // ((range[index-6] === true) && (arr[index-1].src !== (lightSource || tactSource)))||
@@ -177,7 +177,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
 
         ? 
         <span
-        onClick={e=>console.log(index)}
+        // onClick={e=>console.log(index)}
         style={{
                 height: `${staticRange*10 + 5 }px`,
                 width: `${staticRange*10 + 5}px`,
