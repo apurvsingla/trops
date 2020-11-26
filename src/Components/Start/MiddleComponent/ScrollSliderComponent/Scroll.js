@@ -16,15 +16,14 @@ const Scroll = ({marks,
     //     setAppearDotRange(appearDotRange);
     //     setGlowNum(inner);
     // }
-    let boolean = false;
+    // let boolean = false;
     const sliderFunc = (e) => {
-        boolean = !boolean;
+        // boolean = !boolean;
         const num = Number(e.target.innerText);
         const numId = (e.target.parentNode.parentNode.id);
-        range[numId] = boolean;
+        range[numId] = true;
         setRange(range);
         setStaticRange(num);
-        // console.log(numId)
     }
     return (
         <>
@@ -32,7 +31,7 @@ const Scroll = ({marks,
         <Slider 
         key={key}
         className="scroll-large"
-        defaultValue={staticRange}
+        defaultValue={0}
         marks={marks}
         valueLabelFormat={valueLabelFormat}
         aria-labelledby="discrete-slider-restrict"

@@ -121,10 +121,6 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
          appearDot[index-1] === true || 
          ((appearDot[index-2] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))|| 
          ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))
-        //  ((appearDot[index-4] === true) && (arr[index-1].src !== (tactSource && lightSource)))||
-        //  ((appearDot[index-5] === true) && (arr[index-1].src !== (tactSource && lightSource)))||
-        //  ((appearDot[index-6] === true) && (arr[index-1].src !== (tactSource && lightSource)))||
-        //  ((appearDot[index-7] === true) && (arr[index-1].src !== (tactSource && lightSource)))
         // (Object.keys(appearDot).map((i) => arr[i] === tactSource))
         ? 
             <span 
@@ -132,6 +128,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
             key={index}
             style={{
                     left: `${140*index}px`,
+                    backgroundColor: `${appearDot ? 'red': null}`
             }}
             />
             : null) 
@@ -170,14 +167,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         range[index-1] === true || 
         ((range[index-2] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource)))|| 
         ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource ||tempSource || magSource || distanceSource)))
-        // ((range[index-4] === true) && (arr[index-1].src !== (lightSource || tactSource)))||
-        // ((range[index-5] === true) && (arr[index-1].src !== (lightSource || tactSource)))||
-        // ((range[index-6] === true) && (arr[index-1].src !== (lightSource || tactSource)))||
-        // ((range[index-7] === true) && (arr[index-1].src !== (lightSource || tactSource)))
-
         ? 
         <span
-        // onClick={e=>console.log(index)}
         style={{
                 height: `${staticRange*10 + 5 }px`,
                 width: `${staticRange*10 + 5}px`,

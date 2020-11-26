@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
 
-// import {v4} from 'uuid';
 import {useHistory} from 'react-router-dom';
 import ReactSwipe from 'react-swipe';
 
@@ -84,7 +83,7 @@ const Start = () => {
     const [meter, setMeter] = React.useState(1);
     const [lightMeter, setLightMeter] = React.useState(1);
     const [staticVal, setStaticVal] = React.useState(null);
-    const [range, setRange] = React.useState({});
+    const [range, setRange] = useSessionStorage('range',{});
     const [rangeMeter, setRangeMeter] = React.useState(1);
     const [staticRange, setStaticRange] = useSessionStorage('static-range',null);
 
