@@ -117,10 +117,13 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 />
          : null}
 
-        {i.src === (ledSource || beeperSource || motorSource)? (
+        {(i.src === (ledSource || beeperSource || motorSource)&& 
+        (arr[index-1].src !== (lightSource || soundSource || tempSource || magSource || distanceSource)))? (
          appearDot[index-1] === true || 
          ((appearDot[index-2] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))|| 
-         ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))
+         ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))||
+         ((appearDot[index-4] === true) && ((arr[index-2].src || arr[index-1].src) === (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))||
+         ((appearDot[index-5] === true) && ((arr[index-3].src || arr[index-2].src || arr[index-1].src)  === (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))
         // (Object.keys(appearDot).map((i) => arr[i] === tactSource))
         ? 
             <span 
@@ -134,10 +137,12 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
             : null) 
         : null}
 
-        {i.src === graphSource? (
+        {((i.src === graphSource) && (arr[index-1].src !== (lightSource || soundSource || tempSource || magSource || distanceSource)))? (
          appearDot[index-1] === true || 
          ((appearDot[index-2] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))|| 
-         ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))
+         ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))||
+         ((appearDot[index-4] === true) && ((arr[index-2].src || arr[index-1].src) === (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))||
+         ((appearDot[index-5] === true) && ((arr[index-3].src || arr[index-2].src || arr[index-1].src)  === (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))
         ? 
         <span className="graphDesign"
         style={{
@@ -147,9 +152,11 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
             : null) 
         : null}
 
-        {i.src === graphSource ? (range[index-1] === true || 
+        {((i.src === graphSource) && (arr[index-1].src !== (tactSource||lightSource || soundSource || tempSource || magSource || distanceSource))) ? (range[index-1] === true || 
         ((range[index-2] === true) && (arr[index-1].src !== (lightSource || tactSource ||soundSource || tempSource || magSource || distanceSource)))|| 
-        ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource))) 
+        ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource)))||
+        ((range[index-4] === true) && ((arr[index-2].src || arr[index-1].src) === (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource))) ||
+        ((range[index-5] === true) && ((arr[index-3].src || arr[index-2].src || arr[index-1].src) === (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource)))  
         ? 
         <span className="graphDesign"
         style={{
@@ -163,10 +170,12 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
             : null) 
         : null}
 
-        {i.src === (ledSource || beeperSource || motorSource)? (
+        {(i.src === (ledSource || beeperSource || motorSource) && (arr[index-1].src !== (tactSource||lightSource || soundSource || tempSource || magSource || distanceSource)))? (
         range[index-1] === true || 
         ((range[index-2] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource)))|| 
-        ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource ||tempSource || magSource || distanceSource)))
+        ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource ||tempSource || magSource || distanceSource)))||
+        ((range[index-4] === true) && ((arr[index-2].src || arr[index-1].src) === (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource))) ||
+        ((range[index-5] === true) && ((arr[index-3].src || arr[index-2].src || arr[index-1].src) === (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource)))  
         ? 
         <span
         style={{
