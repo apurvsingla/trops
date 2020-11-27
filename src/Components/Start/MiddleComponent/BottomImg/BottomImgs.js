@@ -30,7 +30,7 @@ const BottomImgs = ({i, current, activeIndex, index, activeLink, pos,
         <span 
         className="right-dot-bottom"
         style={{
-                marginTop: `${i.id === current ? 10*current + 70 -2*index: null}px`,
+                marginTop: `${i.id === current ? 10*current + 90 -2*index: null}px`,
                 marginLeft: `${i.id ===current ? 140*activeIndex[current] + 80: null}px`
                 }}
                 onClick={(e) => activeLink(e,index)}

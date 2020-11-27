@@ -108,7 +108,7 @@ export const LargeColLine = styled.span`
     @media (max-width: 893px){
         height: 75px;
         z-index: 8;
-        left: 188px;
+        left: 154px;
         top: 87px;
     }
 `;

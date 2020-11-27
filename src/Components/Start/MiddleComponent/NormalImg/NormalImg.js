@@ -152,7 +152,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
             : null) 
         : null}
 
-        {((i.src === graphSource) && (arr[index-1].src !== (tactSource||lightSource || soundSource || tempSource || magSource || distanceSource))) ? (range[index-1] === true || 
+        {((i.src === graphSource) && (arr[index-1].src !== (lightSource||tactSource || soundSource || tempSource || magSource || distanceSource))) ? (range[index-1] === true || 
         ((range[index-2] === true) && (arr[index-1].src !== (lightSource || tactSource ||soundSource || tempSource || magSource || distanceSource)))|| 
         ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource)))||
         ((range[index-4] === true) && ((arr[index-2].src || arr[index-1].src) === (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource))) ||
