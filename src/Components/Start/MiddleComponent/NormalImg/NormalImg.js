@@ -25,7 +25,7 @@ graphSource
 
 import './Glow.scss';
 import '../Middle.styles.scss';
-import useSessionStorage from '../../../SessionStorage/SessionStorage';
+// import useSessionStorage from '../../../SessionStorage/SessionStorage';
 // import {useRefresh} from 'react-tidy'
 
 
@@ -35,20 +35,14 @@ import useSessionStorage from '../../../SessionStorage/SessionStorage';
 
 
 const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat, 
-     activeSecondLink, img1,setAppearDot, appearDot,
-    arr,
-// range
-    range, setRange, setStaticRange, staticRange, rangeMeter,
-    setRangeMeter,
-    tactId,
-    ledID,setImg1
+     activeSecondLink, img1,setAppearDot, appearDot,setImg1
 }) => {
 
 //     const [glowNum, setGlowNum] = React.useState(null);
     let boolean = false;
 //     const [number, setNumber] = useSessionStorage('number',null);
 //     const [ledids, setLedids] = useSessionStorage('led-ids',{});
-    const [rangeNumber, setRangeNumber] = useSessionStorage(null);
+//     const [rangeNumber, setRangeNumber] = useSessionStorage(null);
 
     const func = (e) => {
         boolean =!boolean;
@@ -62,10 +56,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         setAppearDot(appearDot);
         // setLedids(ledids);
         let newArray = [...img1];
-        let bool = false;
         newArray.forEach((val, index) => {
                 const array = newArray[index]
-                bool = !bool;
                 if(array.id === num+1){
                         if(appearDot[num] === true){
                                 newArray[index] = {id: array.id, src: array.src, bool: false};
@@ -84,7 +76,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                  key={index}
                  style={{
                          left: `${140*index}px`,
-                         backgroundColor: `${true ? 'red' : null}`
+                         backgroundColor: `${'red'}`
                  }}
                  />)
         }
@@ -99,6 +91,42 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                     />)
             }
     }
+
+    const rangeGlow = () => {
+            if(i.bools){
+                        return(
+                                <span
+                                style={{
+                                        height: `${i.bools*10 + 5 }px`,
+                                        width: `${i.bools*10 + 5}px`,
+                                        backgroundColor: `${true ?'red':null}`,
+                                        borderRadius: '50px',
+                                        zIndex: '15',
+                                        position: 'absolute',
+                                        top: `${95 - 5*i.bools}px`,
+                                        marginLeft: `${i.bools*(-5)}px`,
+                                        left: `${140*index + 168}px`,
+                                        opacity: '0.7',
+                                }}
+                                />
+                        )
+
+            }
+    }
+
+    const rangeGraph = () => {
+            if(i.bools){
+                return(<span className="graphDesign"
+                        style={{
+                                height: `${i.bools*10 + 5 }px`,
+                                width: `${i.bools*10 + 5}px`,
+                                top: `${95 - 5*i.bools}px`,
+                                marginLeft: `${i.bools*(-5)}px`,
+                                left: `${140*index + 168}px`,
+                        }}
+                />)
+        }
+    } 
         
     return(<>
         <Span>
@@ -152,9 +180,12 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 key={index + '-scroll'}
                 // setNumber={setNumber}
                 //code try
-                range={range} setRange={setRange} rangeMeter={rangeMeter}
-                setRangeMeter={setRangeMeter} staticRange={staticRange}
-                setStaticRange={setStaticRange} setRangeNumber={setRangeNumber}
+                // range={range} setRange={setRange} 
+                // rangeMeter={rangeMeter}
+                // setRangeMeter={setRangeMeter} staticRange={staticRange}
+                // setStaticRange={setStaticRange} 
+                // setRangeNumber={setRangeNumber}
+                img1={img1} setImg1={setImg1}
                 />
          : null}
         {(((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)) 
@@ -167,38 +198,12 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         glowGraph()
         : null}
 
-        {((i.src === graphSource)) ? (
-                i.id === range[rangeNumber] +1 ? 
-        <span className="graphDesign"
-        style={{
-                height: `${staticRange*10 + 5 }px`,
-                width: `${staticRange*10 + 5}px`,
-                top: `${95 - 5*staticRange}px`,
-                marginLeft: `${staticRange*(-5)}px`,
-                left: `${140*index + 168}px`,
-        }}
-        />
-            : null) 
+        {((i.src === graphSource)) ? 
+            rangeGraph()
         : null}
 
-        {(((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)))? (
-        i.id === range[rangeNumber] +1 
-        ? 
-        <span
-        style={{
-                height: `${staticRange*10 + 5 }px`,
-                width: `${staticRange*10 + 5}px`,
-                backgroundColor: `${i.id === range[rangeNumber] +1 ?'red':null}`,
-                borderRadius: '50px',
-                zIndex: '15',
-                position: 'absolute',
-                top: `${95 - 5*staticRange}px`,
-                marginLeft: `${staticRange*(-5)}px`,
-                left: `${140*index + 168}px`,
-                opacity: '0.7',
-        }}
-        />
-            : null) 
+        {(((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)))? 
+                rangeGlow()
         : null}
 
         

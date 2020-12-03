@@ -138,19 +138,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         marks={marks} valueLabelFormat={valueLabelFormat}
                         activeSecondLink={activeSecondLink} 
                         img1={img1} appearDot={appearDot} 
-                        // normal dots
                         setAppearDot={setAppearDot}
-                        // appearDotRange={appearDotRange} 
-                        // setAppearDotRange={setAppearDotRange}
-                        lights={lights} tact={tact} arr={arr} 
-                        //range dots
-                        range={range} setRange={setRange}
-                        rangeMeter={rangeMeter} setRangeMeter={setRangeMeter} 
-                        staticRange={staticRange}
-                        setStaticRange={setStaticRange}
-                        activeother={activeother} activeIndex={activeIndex}
-                        current={current} id={id} 
-                        tactId={tactID} ledID={ledID} setLedID={setLedID}
                         setImg1={setImg1}
                          />
                          )

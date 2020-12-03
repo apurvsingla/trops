@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, {useState} from 'react';
 
 import {useHistory} from 'react-router-dom';
@@ -83,11 +82,11 @@ const Start = () => {
     // const [meter, setMeter] = React.useState(1);
     // const [lightMeter, setLightMeter] = React.useState(1);
     // const [staticVal, setStaticVal] = React.useState(null);
-    const [range, setRange] = useSessionStorage('range',{});
-    const [rangeMeter, setRangeMeter] = React.useState(1);
-    const [staticRange, setStaticRange] = useSessionStorage('static-range',null);
-    const [tactID, setTactID] = useSessionStorage('tact-id', id);
-    const [ledID, setLedID] = useSessionStorage('led-id', 0);
+    // const [range, setRange] = useSessionStorage('range',{});
+    // const [rangeMeter, setRangeMeter] = React.useState(1);
+    // const [staticRange, setStaticRange] = useSessionStorage('static-range',null);
+    // const [tactID, setTactID] = useSessionStorage('tact-id', id);
+    // const [ledID, setLedID] = useSessionStorage('led-id', 0);
 
     const history = useHistory();
 
@@ -110,11 +109,11 @@ const Start = () => {
 
     // populating images
     const onImage1Concat = (src) => {
-        if(src === lightSource){
-            range[rangeMeter] = rangeMeter;
-            setRange(range);
-            setStaticRange(rangeMeter);
-        }
+        // if(src === lightSource){
+        //     range[rangeMeter] = rangeMeter;
+        //     setRange(range);
+        //     setStaticRange(rangeMeter);
+        // }
         // if(src === tactSource){
         //     tact[meter]= true;
         //     setTact(tact);
@@ -141,16 +140,16 @@ const Start = () => {
                 if(num > 0){
                     if(src === tactSource || src === lightSource || src === magSource){
                         setImg1(i => i.concat({id: id, src: src}));
-                        setTactID(id+1);
+                        // setTactID(id+1);
                         setId(id+1);
                         return;
                     }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
-                        setImg1(i => i.concat({id: id, src: src, bool: false}));
+                        setImg1(i => i.concat({id: id, src: src, bool: false, bools: 0}));
                         return;
                     }else{
                         setImg1(img1 => img1.concat({id: id, src: src}));
                         setId(id + 1);
-                        setRangeMeter(rangeMeter + 1);
+                        // setRangeMeter(rangeMeter + 1);
                         return;
                     }
                 }
@@ -214,11 +213,6 @@ const Start = () => {
             currentRightDot={currentRightDot}
             setCurrentRightDot={setCurrentRightDot}
             rightRImg={rightRImg} 
-            // lights={lights} tact={tact}
-            range={range} staticRange={staticRange}
-            setRange={setRange} setStaticRange={setStaticRange}
-            rangeMeter={rangeMeter} setRangeMeter={setRangeMeter}
-            tactID={tactID} ledID={ledID} setLedID={setLedID}
             />
             {/* end */}
 

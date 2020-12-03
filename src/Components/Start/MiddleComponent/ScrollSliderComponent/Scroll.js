@@ -6,26 +6,24 @@ const Scroll = ({marks,
     valueLabelFormat, index, id, key,
     // appearDotRange, setAppearDotRange, dict,setGlowNum,
 // code try
-    range, setRange, 
-    // rangeMeter, setRangeMeter, staticRange,
-    setStaticRange, staticRange, setRangeNumber
+     img1, setImg1
 }) => {
-    // const sliderFunc = (e) => {
-    //     const inner = JSON.parse(e.target.innerText);
-    //     appearDotRange['text' + inner] = dict[inner]; 
-    //     setAppearDotRange(appearDotRange);
-    //     setGlowNum(inner);
-    // }
-    // let boolean = false;
     const sliderFunc = (e) => {
-        // boolean = !boolean;
         const num = Number(e.target.innerText);
-        const numId = (e.target.parentNode.parentNode.id);
-        range[numId] = Number(numId);
-        setRange(range);
-        setStaticRange(num);
-        setRangeNumber(Number(numId));
-        // window.location.reload();
+        const numId = Number(e.target.parentNode.parentNode.id);
+        // range[numId] = numId;
+        // setRange(range);
+        // setStaticRange(num);
+        // setRangeNumber(numId);
+        const newArray = [...img1];
+        newArray.forEach((val, index) => {
+            const array = newArray[index]
+            if(array.id === numId+1){
+                        newArray[index] = {id: array.id, src: array.src, bools: num};
+                    
+            }
+        })
+        setImg1(newArray);
     }
     return (
         <>
