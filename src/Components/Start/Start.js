@@ -127,12 +127,15 @@ const Start = () => {
         if(activeother[activeIndex[current] + '-bottom']=== true){
             setBottomImg(i => i.concat({id: current, src: src}));
             setId(id+1);
+            return;
         }else if(active[activeRightIndex[currentRight] + '-right'] === true){
             setRightImg(i => i.concat({id: currentRight, src: src}));
             setId(id+1);
+            return;
         }else if(activeRightBottom[activeRightBottomIndex[currentRightDot] + '-bottom'] === true){
             setRightRImg(i=> i.concat({id: currentRightDot, src: src}));
             setId(id+1);
+            return;
         }else{
             if(src!==powerSource){
                 if(num > 0){
@@ -142,7 +145,7 @@ const Start = () => {
                         setId(id+1);
                         return;
                     }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
-                        setImg1(i => i.concat({id: id, src: src}));
+                        setImg1(i => i.concat({id: id, src: src, bool: false}));
                         return;
                     }else{
                         setImg1(img1 => img1.concat({id: id, src: src}));

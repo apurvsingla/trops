@@ -41,31 +41,64 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
     range, setRange, setStaticRange, staticRange, rangeMeter,
     setRangeMeter,
     tactId,
-    ledID
+    ledID,setImg1
 }) => {
 
 //     const [glowNum, setGlowNum] = React.useState(null);
     let boolean = false;
-    const [number, setNumber] = useSessionStorage('number',null);
-    const [ledids, setLedids] = useSessionStorage('led-ids',{});
+//     const [number, setNumber] = useSessionStorage('number',null);
+//     const [ledids, setLedids] = useSessionStorage('led-ids',{});
     const [rangeNumber, setRangeNumber] = useSessionStorage(null);
 
     const func = (e) => {
-        boolean =! boolean;
+        boolean =!boolean;
         const num = Number(i.id);
         if(appearDot[num] === true){
                 appearDot[num] = !boolean;
         }else{
                 appearDot[num] = boolean;
         }
-        ledids[num] = num+1;
+        // ledids[num] = num+1;
         setAppearDot(appearDot);
-        setNumber(num);
-        setLedids(ledids);
-        window.location.reload();
+        // setLedids(ledids);
+        let newArray = [...img1];
+        let bool = false;
+        newArray.forEach((val, index) => {
+                const array = newArray[index]
+                bool = !bool;
+                if(array.id === num+1){
+                        if(appearDot[num] === true){
+                                newArray[index] = {id: array.id, src: array.src, bool: false};
+                        }else{
+                                newArray[index] = {id: array.id, src: array.src, bool: true};  
+                        }
+                }
+        })
+        setImg1(newArray);
     }
 
-    
+    const glowDot = () => {
+        if(i.bool){
+                return(<span 
+                 className='glow-small'
+                 key={index}
+                 style={{
+                         left: `${140*index}px`,
+                         backgroundColor: `${true ? 'red' : null}`
+                 }}
+                 />)
+        }
+    }
+
+    const glowGraph = () => {
+            if(i.bool){
+                    return(<span className="graphDesign"
+                    style={{
+                            left: `${140*index}px`,
+                    }}
+                    />)
+            }
+    }
         
     return(<>
         <Span>
@@ -117,38 +150,21 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 // setGlowNum={setGlowNum}
                 id={i.id}
                 key={index + '-scroll'}
-                setNumber={setNumber}
+                // setNumber={setNumber}
                 //code try
                 range={range} setRange={setRange} rangeMeter={rangeMeter}
                 setRangeMeter={setRangeMeter} staticRange={staticRange}
                 setStaticRange={setStaticRange} setRangeNumber={setRangeNumber}
                 />
          : null}
-
         {(((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)) 
-       )? (
-        (appearDot[number])&& (ledids[number] === i.id)
-        ? 
-                <span 
-                className='glow-small'
-                key={index}
-                style={{
-                        left: `${140*index}px`,
-                        backgroundColor: `${'red'}`
-                }}
-                />
-            : null) 
-        : null}
+        )? 
+                glowDot()
+     
+       : null}
 
-        {(i.src === graphSource)? (
-         (appearDot[number])&& (ledids[number] === i.id)
-        ? 
-        <span className="graphDesign"
-        style={{
-                left: `${140*index}px`,
-        }}
-        />
-            : null) 
+        {(i.src === graphSource)? 
+        glowGraph()
         : null}
 
         {((i.src === graphSource)) ? (

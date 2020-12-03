@@ -151,6 +151,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         activeother={activeother} activeIndex={activeIndex}
                         current={current} id={id} 
                         tactId={tactID} ledID={ledID} setLedID={setLedID}
+                        setImg1={setImg1}
                          />
                          )
                 })) : null}
