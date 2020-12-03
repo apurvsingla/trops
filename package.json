@@ -15,6 +15,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
     "react-swipe": "^6.0.4",
+    "react-tidy": "^1.1.0",
     "reactjs-popup": "^2.0.4",
     "styled-components": "^5.2.0",
     "swiper": "^6.3.5",

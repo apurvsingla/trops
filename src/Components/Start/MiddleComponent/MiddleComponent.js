@@ -40,11 +40,13 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         activeRightBottom,setActiveRightBottom,
         currentRightDot,setCurrentRightDot,
         rightRImg, lights, tact, 
+        tactID,
 
         //range (lights)
         range, setRange, 
         rangeMeter, setRangeMeter, 
-        staticRange, setStaticRange
+        staticRange, setStaticRange, id,
+        ledID, setLedID
 }) => {
         
         //media query
@@ -68,7 +70,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         
         //red dots
         const [appearDot, setAppearDot] = useSessionStorage('appear-dot',{});
-        // const [appearDotRange, setAppearDotRange] = useSessionStorage('dotRange',{});
+        // const [currentRightPos, setCurrentRightPos] = useSessionStorage('current-right-pos',{});
 
         let boolean = false;
         let boolean2 = false;
@@ -82,9 +84,11 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                                 e.target.style.backgroundColor = 'black';   
                         }
                         activeRightIndex[index] = index;
+                        // currentRightPos[index] = e.screenX
                         setActive(active);
                         setActiveRightIndex(activeRightIndex);
                         setCurrentRight(index);
+                        // setCurrentRightPos(currentRightPos);
                 }      
         }
         
@@ -101,6 +105,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setActiveother(activeother);
                         setActiveIndex(activeIndex);
                         setCurrent(index);
+                        // console.log(e.screenY);
                 }
         }
 
@@ -143,6 +148,9 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         rangeMeter={rangeMeter} setRangeMeter={setRangeMeter} 
                         staticRange={staticRange}
                         setStaticRange={setStaticRange}
+                        activeother={activeother} activeIndex={activeIndex}
+                        current={current} id={id} 
+                        tactId={tactID} ledID={ledID} setLedID={setLedID}
                          />
                          )
                 })) : null}
@@ -160,7 +168,9 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         return(
                         <RightImgs mQuery={mQuery} currentRight={currentRight} activeRightIndex={activeRightIndex}
                         activeDot={activeDot} activeSecondRightLink={activeSecondRightLink} bottomTop={bottomTop} 
-                        index={index} setBottomTop={setBottomTop} pos={pos} rightImg={rightImg} i={i} activeIndex={activeIndex} />
+                        index={index} setBottomTop={setBottomTop} pos={pos} rightImg={rightImg} i={i} activeIndex={activeIndex} 
+                        // currentRightPos={currentRightPos}
+                        />
                         )
                 })) : null}
                 {rightRImg.length >=1 ? (rightRImg.map((i,index) => {

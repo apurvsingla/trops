@@ -25,6 +25,8 @@ graphSource
 
 import './Glow.scss';
 import '../Middle.styles.scss';
+import useSessionStorage from '../../../SessionStorage/SessionStorage';
+// import {useRefresh} from 'react-tidy'
 
 
 // const dict = {1: one, 2: two, 
@@ -34,28 +36,33 @@ import '../Middle.styles.scss';
 
 const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat, 
      activeSecondLink, img1,setAppearDot, appearDot,
-//     appearDotRange, setAppearDotRange, lights, 
-        tact,
     arr,
 // range
     range, setRange, setStaticRange, staticRange, rangeMeter,
-    setRangeMeter
+    setRangeMeter,
+    tactId,
+    ledID
 }) => {
 
 //     const [glowNum, setGlowNum] = React.useState(null);
     let boolean = false;
+    const [number, setNumber] = useSessionStorage('number',null);
+    const [ledids, setLedids] = useSessionStorage('led-ids',{});
+    const [rangeNumber, setRangeNumber] = useSessionStorage(null);
 
     const func = (e) => {
         boolean =! boolean;
-        const num = Number(e.target.id);
+        const num = Number(i.id);
         if(appearDot[num] === true){
-                appearDot[num] = false;
+                appearDot[num] = !boolean;
         }else{
                 appearDot[num] = boolean;
         }
+        ledids[num] = num+1;
         setAppearDot(appearDot);
+        setNumber(num);
+        setLedids(ledids);
         window.location.reload();
-        // Object.keys(appearDot).map(i => alert(arr[i].src))
     }
 
     
@@ -86,8 +93,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 className="middle-dot-normal"
                 onTouchStart={(e) => func(e)}
                 // onTouchEnd={(e) => func(e)}
-                onClick={(e) => {
-                        func(e);
+                onClick={(e,arr) => {
+                        func(e,arr);
                 }}
                 style={{
                       marginLeft: `${140*index}px`,
@@ -108,41 +115,33 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 // appearDotRange={appearDotRange}
                 // dict={dict} setAppearDotRange={setAppearDotRange}
                 // setGlowNum={setGlowNum}
-                id={index}
+                id={i.id}
                 key={index + '-scroll'}
+                setNumber={setNumber}
                 //code try
                 range={range} setRange={setRange} rangeMeter={rangeMeter}
                 setRangeMeter={setRangeMeter} staticRange={staticRange}
-                setStaticRange={setStaticRange}
+                setStaticRange={setStaticRange} setRangeNumber={setRangeNumber}
                 />
          : null}
 
-        {(i.src === (ledSource || beeperSource || motorSource)&& 
-        (arr[index-1].src !== (lightSource || soundSource || tempSource || magSource || distanceSource)))? (
-         appearDot[index-1] === true || 
-         ((appearDot[index-2] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))|| 
-         ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))||
-         ((appearDot[index-4] === true) && ((arr[index-2].src || arr[index-1].src) === (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))||
-         ((appearDot[index-5] === true) && ((arr[index-3].src || arr[index-2].src || arr[index-1].src)  === (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))
-        // (Object.keys(appearDot).map((i) => arr[i] === tactSource))
+        {(((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)) 
+       )? (
+        (appearDot[number])&& (ledids[number] === i.id)
         ? 
-            <span 
-            className='glow-small'
-            key={index}
-            style={{
-                    left: `${140*index}px`,
-                    backgroundColor: `${appearDot ? 'red': null}`
-            }}
-            />
+                <span 
+                className='glow-small'
+                key={index}
+                style={{
+                        left: `${140*index}px`,
+                        backgroundColor: `${'red'}`
+                }}
+                />
             : null) 
         : null}
 
-        {((i.src === graphSource) && (arr[index-1].src !== (lightSource || soundSource || tempSource || magSource || distanceSource)))? (
-         appearDot[index-1] === true || 
-         ((appearDot[index-2] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))|| 
-         ((appearDot[index-3] === true) && (arr[index-1].src !== (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))||
-         ((appearDot[index-4] === true) && ((arr[index-2].src || arr[index-1].src) === (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))||
-         ((appearDot[index-5] === true) && ((arr[index-3].src || arr[index-2].src || arr[index-1].src)  === (tactSource || lightSource || soundSource || tempSource || magSource || distanceSource)))
+        {(i.src === graphSource)? (
+         (appearDot[number])&& (ledids[number] === i.id)
         ? 
         <span className="graphDesign"
         style={{
@@ -152,12 +151,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
             : null) 
         : null}
 
-        {((i.src === graphSource) && (arr[index-1].src !== (lightSource||tactSource || soundSource || tempSource || magSource || distanceSource))) ? (range[index-1] === true || 
-        ((range[index-2] === true) && (arr[index-1].src !== (lightSource || tactSource ||soundSource || tempSource || magSource || distanceSource)))|| 
-        ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource)))||
-        ((range[index-4] === true) && ((arr[index-2].src || arr[index-1].src) === (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource))) ||
-        ((range[index-5] === true) && ((arr[index-3].src || arr[index-2].src || arr[index-1].src) === (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource)))  
-        ? 
+        {((i.src === graphSource)) ? (
+                i.id === range[rangeNumber] +1 ? 
         <span className="graphDesign"
         style={{
                 height: `${staticRange*10 + 5 }px`,
@@ -170,25 +165,21 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
             : null) 
         : null}
 
-        {(i.src === (ledSource || beeperSource || motorSource) && (arr[index-1].src !== (tactSource||lightSource || soundSource || tempSource || magSource || distanceSource)))? (
-        range[index-1] === true || 
-        ((range[index-2] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource)))|| 
-        ((range[index-3] === true) && (arr[index-1].src !== (lightSource || tactSource || soundSource ||tempSource || magSource || distanceSource)))||
-        ((range[index-4] === true) && ((arr[index-2].src || arr[index-1].src) === (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource))) ||
-        ((range[index-5] === true) && ((arr[index-3].src || arr[index-2].src || arr[index-1].src) === (lightSource || tactSource || soundSource || tempSource || magSource || distanceSource)))  
+        {(((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)))? (
+        i.id === range[rangeNumber] +1 
         ? 
         <span
         style={{
                 height: `${staticRange*10 + 5 }px`,
                 width: `${staticRange*10 + 5}px`,
-                backgroundColor: 'red',
+                backgroundColor: `${i.id === range[rangeNumber] +1 ?'red':null}`,
                 borderRadius: '50px',
                 zIndex: '15',
                 position: 'absolute',
                 top: `${95 - 5*staticRange}px`,
                 marginLeft: `${staticRange*(-5)}px`,
                 left: `${140*index + 168}px`,
-                opacity: '0.7'
+                opacity: '0.7',
         }}
         />
             : null) 

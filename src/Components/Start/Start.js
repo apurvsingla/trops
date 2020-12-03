@@ -14,7 +14,7 @@ tactSource,
 ledSource,
 beeperSource,
 distanceSource,
-magneticSource,
+magSource,
 tempSource,
 soundSource,
 conditionSource,
@@ -78,14 +78,16 @@ const Start = () => {
     const [currentRightDot, setCurrentRightDot] = useSessionStorage('right-right-dot', null); //new for right
 
     //tact
-    const [tact, setTact]= React.useState({});
-    const [lights, setLights] = React.useState({});
-    const [meter, setMeter] = React.useState(1);
-    const [lightMeter, setLightMeter] = React.useState(1);
-    const [staticVal, setStaticVal] = React.useState(null);
+    // const [tact, setTact]= React.useState({});
+    // const [lights, setLights] = React.useState({});
+    // const [meter, setMeter] = React.useState(1);
+    // const [lightMeter, setLightMeter] = React.useState(1);
+    // const [staticVal, setStaticVal] = React.useState(null);
     const [range, setRange] = useSessionStorage('range',{});
     const [rangeMeter, setRangeMeter] = React.useState(1);
     const [staticRange, setStaticRange] = useSessionStorage('static-range',null);
+    const [tactID, setTactID] = useSessionStorage('tact-id', id);
+    const [ledID, setLedID] = useSessionStorage('led-id', 0);
 
     const history = useHistory();
 
@@ -113,15 +115,15 @@ const Start = () => {
             setRange(range);
             setStaticRange(rangeMeter);
         }
-        if(src === tactSource){
-            tact[meter]= true;
-            setTact(tact);
-            setStaticVal(meter);
-        }
-        if(src === ledSource){
-            lights[tact[staticVal] + '-tact-led'] = lightMeter;
-            setLights(lights);
-        }
+        // if(src === tactSource){
+        //     tact[meter]= true;
+        //     setTact(tact);
+        //     setStaticVal(meter);
+        // }
+        // if(src === ledSource){
+        //     lights[tact[staticVal] + '-tact-led'] = lightMeter;
+        //     setLights(lights);
+        // }
         if(activeother[activeIndex[current] + '-bottom']=== true){
             setBottomImg(i => i.concat({id: current, src: src}));
             setId(id+1);
@@ -134,11 +136,20 @@ const Start = () => {
         }else{
             if(src!==powerSource){
                 if(num > 0){
-                    setImg1(img1 => img1.concat({id: id, src: src}));
-                    setId(id + 1);
-                    // setMeter(meter + 1);
-                    // setLightMeter(lightMeter + 1);
-                    setRangeMeter(rangeMeter + 1);
+                    if(src === tactSource || src === lightSource || src === magSource){
+                        setImg1(i => i.concat({id: id, src: src}));
+                        setTactID(id+1);
+                        setId(id+1);
+                        return;
+                    }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
+                        setImg1(i => i.concat({id: id, src: src}));
+                        return;
+                    }else{
+                        setImg1(img1 => img1.concat({id: id, src: src}));
+                        setId(id + 1);
+                        setRangeMeter(rangeMeter + 1);
+                        return;
+                    }
                 }
             }else if(src=== powerSource){
                 if(num === 1){
@@ -146,9 +157,9 @@ const Start = () => {
                 }
                 setNum(num+1);
                 setImg1(img1 => img1.concat({id: num, src: src}));
+                return;
             }
         }
-        
     }
 
     //swipe
@@ -199,10 +210,12 @@ const Start = () => {
             setActiveRightBottomIndex={setActiveRightBottomIndex}
             currentRightDot={currentRightDot}
             setCurrentRightDot={setCurrentRightDot}
-            rightRImg={rightRImg} lights={lights}
-            tact={tact} range={range} staticRange={staticRange}
+            rightRImg={rightRImg} 
+            // lights={lights} tact={tact}
+            range={range} staticRange={staticRange}
             setRange={setRange} setStaticRange={setStaticRange}
             rangeMeter={rangeMeter} setRangeMeter={setRangeMeter}
+            tactID={tactID} ledID={ledID} setLedID={setLedID}
             />
             {/* end */}
 
@@ -276,8 +289,8 @@ const Start = () => {
                     setDisplayDot3(true);
                     setDisplayDot4(false);
                 }}>
-                    <Icon onClick={() => onImage1Concat(magneticSource)}/>
-                    <Img src={magneticSource} 
+                    <Icon onClick={() => onImage1Concat(magSource)}/>
+                    <Img src={magSource} 
                     alt="beeper" style={{marginRight: '20px'}}/>
 
                     <Icon onClick={() => onImage1Concat(tempSource)}/>

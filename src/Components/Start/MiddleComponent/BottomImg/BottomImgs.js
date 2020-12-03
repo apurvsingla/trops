@@ -40,6 +40,7 @@ const BottomImgs = ({i, current, activeIndex, index, activeLink, pos,
                         if(!e){
                                 return;
                         }
+                        // console.log(index);
                         pos[index + '-left'] = (e.getBoundingClientRect().left);
                         setPos(pos);
                         setActiveDot(index);

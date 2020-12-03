@@ -8,7 +8,7 @@ const Scroll = ({marks,
 // code try
     range, setRange, 
     // rangeMeter, setRangeMeter, staticRange,
-    setStaticRange, staticRange
+    setStaticRange, staticRange, setRangeNumber
 }) => {
     // const sliderFunc = (e) => {
     //     const inner = JSON.parse(e.target.innerText);
@@ -21,9 +21,11 @@ const Scroll = ({marks,
         // boolean = !boolean;
         const num = Number(e.target.innerText);
         const numId = (e.target.parentNode.parentNode.id);
-        range[numId] = true;
+        range[numId] = Number(numId);
         setRange(range);
         setStaticRange(num);
+        setRangeNumber(Number(numId));
+        // window.location.reload();
     }
     return (
         <>
