@@ -11,3 +11,4 @@ export const conditionSource = (process.env.PUBLIC_URL + '/images/components/con
 export const powerSource = (process.env.PUBLIC_URL + '/images/components/power.png');
 // export const magneticSource = (process.env.PUBLIC_URL + '/images/components/magnetic.png');
 export const graphSource = (process.env.PUBLIC_URL + '/images/components/graph.png');
+export const sequenceSource = process.env.PUBLIC_URL + '/images/components/sequence.png';

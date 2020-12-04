@@ -25,24 +25,11 @@ graphSource
 
 import './Glow.scss';
 import '../Middle.styles.scss';
-// import useSessionStorage from '../../../SessionStorage/SessionStorage';
-// import {useRefresh} from 'react-tidy'
-
-
-// const dict = {1: one, 2: two, 
-//         3: three, 4: four, 5:five, 6: six
-// }
-
 
 const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat, 
      activeSecondLink, img1,setAppearDot, appearDot,setImg1
 }) => {
-
-//     const [glowNum, setGlowNum] = React.useState(null);
     let boolean = false;
-//     const [number, setNumber] = useSessionStorage('number',null);
-//     const [ledids, setLedids] = useSessionStorage('led-ids',{});
-//     const [rangeNumber, setRangeNumber] = useSessionStorage(null);
 
     const func = (e) => {
         boolean =!boolean;
@@ -52,9 +39,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         }else{
                 appearDot[num] = boolean;
         }
-        // ledids[num] = num+1;
         setAppearDot(appearDot);
-        // setLedids(ledids);
         let newArray = [...img1];
         newArray.forEach((val, index) => {
                 const array = newArray[index]
@@ -173,18 +158,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 <Scroll marks={marks} 
                 valueLabelFormat={valueLabelFormat} 
                 index={index}
-                // appearDotRange={appearDotRange}
-                // dict={dict} setAppearDotRange={setAppearDotRange}
-                // setGlowNum={setGlowNum}
                 id={i.id}
                 key={index + '-scroll'}
-                // setNumber={setNumber}
-                //code try
-                // range={range} setRange={setRange} 
-                // rangeMeter={rangeMeter}
-                // setRangeMeter={setRangeMeter} staticRange={staticRange}
-                // setStaticRange={setStaticRange} 
-                // setRangeNumber={setRangeNumber}
                 img1={img1} setImg1={setImg1}
                 />
          : null}
