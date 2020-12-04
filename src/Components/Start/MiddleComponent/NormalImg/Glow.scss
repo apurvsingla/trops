@@ -30,4 +30,10 @@
     width: 65px;
     top: 65px;
     margin-left: 138px;
+    @media (max-width: 892px){
+        margin-left: 125px;
+        top: 55px;
+        height: 60px;
+        width: 60px;
+    }
 }

@@ -179,7 +179,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 ? (
                 <span 
                 className="middle-dot-normal"
-                // onTouchStart={(e) => func(e)}
+                onTouchStart={(e) => func(e)}
                 onTouchEnd={(e) => func(e)}
                 onClick={(e,arr) => {
                         func(e,arr);
