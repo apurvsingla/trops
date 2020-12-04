@@ -152,8 +152,8 @@ const Start = () => {
          <Scrollbars style={{ width: '100vw', height: '100vh' }}>
            <Graph 
            style={{position: 'absolute',
-                    minWidth: `${10*(img1.length)+ 100}%`,
-                    height: `${20*(bottomImg.length)+ 20*(rightRImg.length) + 100}%`,
+                    minWidth: `${15*(img1.length)+ 100}%`,
+                    height: `${25*(bottomImg.length)+ 25*(rightRImg.length) + 100}%`,
         }}/>
            <div style={{
                display: 'flex',
@@ -201,7 +201,7 @@ const Start = () => {
             {/* swipeable area */}
            <Bottom>
                <>
-                    {mQuery && !mQuery.matches ?( <ReactSwipe
+                 <ReactSwipe
                 className="carousel"
                 swipeOptions={{ continuous: true }}
                 ref={el => (reactSwipeEl = el)}
@@ -298,100 +298,7 @@ const Start = () => {
                     alt="beeper" />
                     
                 </div>
-                </ReactSwipe>) : (
-                         <ReactSwipe
-                         className="carousel"
-                         swipeOptions={{ continuous: true }}
-                         ref={el => (reactSwipeEl = el)}
-                         >
-                        <div className={JSON.stringify(displayDot1)} onTouchEnd={() => {
-                            setDisplayDot2(false);
-                            setDisplayDot1(true);
-                            setDisplayDot3(false);
-                            }}>
-                            <Icon onClick={(e) =>  onImage1Concat(powerSource)}/>
-                            <Img src={powerSource} 
-                            alt="power" style={{marginRight: '20px'}}/>
-        
-                            <Icon onClick={() => onImage1Concat(sequenceSource)}/>
-                            <Img src={sequenceSource} 
-                            alt="beeper" style={{marginRight: '20px'}}/>
-        
-                            <Icon onClick={(e) =>  onImage1Concat(beeperSource)}/>
-                            <Img src={beeperSource} 
-                            alt="beeper" />
-        
-                            <MiddleIcon onClick={() => onImage1Concat(conditionSource)}/>
-                            <Img src={conditionSource} 
-                            alt="beeper" 
-                            style={{
-                            marginLeft: '20px',
-                            marginRight: '20px'
-                            }}/>
-        
-                            <Icon onClick={() => onImage1Concat(distanceSource)} />
-                            <Img src={distanceSource} 
-                            alt="beeper" />
-                        </div>
-        
-                        <div className={JSON.stringify(displayDot2)} onTouchEnd={() => {
-                            setDisplayDot2(true);
-                            setDisplayDot1(false);
-                            setDisplayDot3(false);
-                        }}>
-        
-                            <Icon onClick={() => onImage1Concat(graphSource)}/>
-                            <Img src={graphSource} 
-                            alt="beeper" style={{marginRight: '20px'}}/>
-        
-                            <Icon onClick={() => onImage1Concat(distanceSource)}  />
-                            <Img src={distanceSource} 
-                            alt="beeper" style={{marginRight: "20px"}}/>
-        
-                            <Icon onClick={() => onImage1Concat(tactSource)}  />
-                            <Img src={tactSource} 
-                            alt="magnetic" />
-        
-                            <MiddleIcon onClick={() => onImage1Concat(ledSource)}/>
-                            <Img src={ledSource} 
-                            alt="beeper" 
-                            style={{
-                            marginLeft: '20px',
-                            marginRight: '20px'
-                            }}/>
-                            
-                            <Icon onClick={() => onImage1Concat(lightSource)}/>
-                            <Img src={lightSource} 
-                            alt="beeper" />
-                        </div>
-        
-                        <div className={JSON.stringify(displayDot3)} onTouchEnd={() => {
-                            setDisplayDot2(false);
-                            setDisplayDot1(false);
-                            setDisplayDot3(true);
-                        }}>
-                            <Icon onClick={() => onImage1Concat(magSource)}/>
-                            <Img src={magSource} 
-                            alt="mag" style={{marginRight: '20px'}}/>
-        
-                            <Icon onClick={() => onImage1Concat(tempSource)}/>
-                            <Img src={tempSource} 
-                            alt="temp" />
-                            
-                            <MiddleIcon onClick={() => onImage1Concat(motorSource)}/>
-                            <Img src={motorSource} 
-                            alt="motor" 
-                            style={{
-                            marginLeft: '20px',
-                            marginRight: '20px'
-                            }}/>
-                            
-                            <Icon onClick={() => onImage1Concat(soundSource)}/>
-                            <Img src={soundSource} 
-                            alt="sound" />
-                        </div>
-                        </ReactSwipe>
-                    ) }
+                </ReactSwipe>) 
             </>
 
             {/* Swipeable Dots Beggining */}
@@ -454,7 +361,7 @@ const Start = () => {
                <>
                <Graph 
            style={{position: 'absolute',
-                    minWidth: `${10*(img1.length)+ 100}%`,
+                    minWidth: `${8*(img1.length)+ 100}%`,
                     height: `${20*(bottomImg.length)+ 20*(rightRImg.length) + 100}%`,
         }}/>
            <div style={{
@@ -503,197 +410,98 @@ const Start = () => {
             {/* swipeable area */}
            <Bottom>
                <>
-                    {mQuery && !mQuery.matches ?( <ReactSwipe
+                <ReactSwipe
                 className="carousel"
                 swipeOptions={{ continuous: true }}
                 ref={el => (reactSwipeEl = el)}
                 >
-                <div className={JSON.stringify(displayDot1)} onTouchEnd={() => {
-                    setDisplayDot2(false);
-                    setDisplayDot1(true);
-                    setDisplayDot3(false);
-                    setDisplayDot4(false);
+                    <div className={JSON.stringify(displayDot1)} onTouchEnd={() => {
+                        setDisplayDot2(false);
+                        setDisplayDot1(true);
+                        setDisplayDot3(false);
+                        }}>
+                        <Icon onClick={(e) =>  onImage1Concat(powerSource)}/>
+                        <Img src={powerSource} 
+                        alt="power" style={{marginRight: '20px'}}/>
+    
+                        <Icon onClick={() => onImage1Concat(sequenceSource)}/>
+                        <Img src={sequenceSource} 
+                        alt="beeper" style={{marginRight: '20px'}}/>
+    
+                        <Icon onClick={(e) =>  onImage1Concat(beeperSource)}/>
+                        <Img src={beeperSource} 
+                        alt="beeper" />
+    
+                        <MiddleIcon onClick={() => onImage1Concat(conditionSource)}/>
+                        <Img src={conditionSource} 
+                        alt="beeper" 
+                        style={{
+                        marginLeft: '20px',
+                        marginRight: '20px'
+                        }}/>
+    
+                        <Icon onClick={() => onImage1Concat(distanceSource)} />
+                        <Img src={distanceSource} 
+                        alt="beeper" />
+                    </div>
+    
+                    <div className={JSON.stringify(displayDot2)} onTouchEnd={() => {
+                        setDisplayDot2(true);
+                        setDisplayDot1(false);
+                        setDisplayDot3(false);
                     }}>
-                    <Icon onClick={(e) =>  onImage1Concat(powerSource)}/>
-                    <Img src={powerSource} 
-                    alt="power" style={{marginRight: '20px'}}/>
-
-                    <Icon onClick={() => onImage1Concat(sequenceSource)}/>
-                    <Img src={sequenceSource} 
-                    alt="beeper" style={{marginRight: '20px'}}/>
-
-                    <Icon onClick={(e) =>  onImage1Concat(beeperSource)}/>
-                    <Img src={beeperSource} 
-                    alt="beeper" />
-
-                    <MiddleIcon onClick={() => onImage1Concat(conditionSource)}/>
-                    <Img src={conditionSource} 
-                    alt="beeper" 
-                    style={{
-                    marginLeft: '20px',
-                    marginRight: '20px'
-                    }}/>
-                </div>
-                
-                <div className={JSON.stringify(displayDot2)} onTouchEnd={() => {
-                    setDisplayDot2(true);
-                    setDisplayDot1(false);
-                    setDisplayDot3(false);
-                    setDisplayDot4(false);
-                }}>
-
-                    <Icon onClick={() => onImage1Concat(graphSource)}/>
-                    <Img src={graphSource} 
-                    alt="beeper" style={{marginRight: '20px'}}/>
-
-                    <Icon onClick={() => onImage1Concat(distanceSource)}  />
-                    <Img src={distanceSource} 
-                    alt="beeper" style={{marginRight: "20px"}}/>
-
-
-                    <MiddleIcon onClick={() => onImage1Concat(ledSource)}/>
-                    <Img src={ledSource} 
-                    alt="beeper" 
-                    style={{
-                    marginRight: '20px'
-                    }}/>
-                    
-                    <Icon onClick={() => onImage1Concat(lightSource)}/>
-                    <Img src={lightSource} 
-                    alt="beeper" />
-                </div>
-
-                <div className={JSON.stringify(displayDot3)} onTouchEnd={() => {
-                    setDisplayDot2(false);
-                    setDisplayDot1(false);
-                    setDisplayDot3(true);
-                    setDisplayDot4(false);
-                }}>
-                    <Icon onClick={() => onImage1Concat(magSource)}/>
-                    <Img src={magSource} 
-                    alt="beeper" style={{marginRight: '20px'}}/>
-
-                    <Icon onClick={() => onImage1Concat(tempSource)}/>
-                    <Img src={tempSource} 
-                    alt="temperature" style={{marginRight: '20px'}}/>
-                    
-                    <MiddleIcon onClick={() => onImage1Concat(motorSource)}/>
-                    <Img src={motorSource} 
-                    alt="beeper" 
-                    style={{
-                    marginRight: '20px'
-                    }}/>
-                    
-                    <Icon onClick={() => onImage1Concat(soundSource)}/>
-                    <Img src={soundSource} 
-                    alt="beeper" />
-                </div>
-
-                <div className={JSON.stringify(displayDot4)} onTouchEnd={() => {
-                    setDisplayDot2(false);
-                    setDisplayDot1(false);
-                    setDisplayDot3(false);
-                    setDisplayDot4(true);
-                }}>                   
-                    <Icon onClick={() => onImage1Concat(tactSource)}/>
-                    <Img src={tactSource} 
-                    alt="beeper" />
-                    
-                </div>
-                </ReactSwipe>) : (
-                         <ReactSwipe
-                         className="carousel"
-                         swipeOptions={{ continuous: true }}
-                         ref={el => (reactSwipeEl = el)}
-                         >
-                        <div className={JSON.stringify(displayDot1)} onTouchEnd={() => {
-                            setDisplayDot2(false);
-                            setDisplayDot1(true);
-                            setDisplayDot3(false);
-                            }}>
-                            <Icon onClick={(e) =>  onImage1Concat(powerSource)}/>
-                            <Img src={powerSource} 
-                            alt="power" style={{marginRight: '20px'}}/>
-        
-                            <Icon onClick={() => onImage1Concat(sequenceSource)}/>
-                            <Img src={sequenceSource} 
-                            alt="beeper" style={{marginRight: '20px'}}/>
-        
-                            <Icon onClick={(e) =>  onImage1Concat(beeperSource)}/>
-                            <Img src={beeperSource} 
-                            alt="beeper" />
-        
-                            <MiddleIcon onClick={() => onImage1Concat(conditionSource)}/>
-                            <Img src={conditionSource} 
-                            alt="beeper" 
-                            style={{
-                            marginLeft: '20px',
-                            marginRight: '20px'
-                            }}/>
-        
-                            <Icon onClick={() => onImage1Concat(distanceSource)} />
-                            <Img src={distanceSource} 
-                            alt="beeper" />
-                        </div>
-        
-                        <div className={JSON.stringify(displayDot2)} onTouchEnd={() => {
-                            setDisplayDot2(true);
-                            setDisplayDot1(false);
-                            setDisplayDot3(false);
-                        }}>
-        
-                            <Icon onClick={() => onImage1Concat(graphSource)}/>
-                            <Img src={graphSource} 
-                            alt="beeper" style={{marginRight: '20px'}}/>
-        
-                            <Icon onClick={() => onImage1Concat(distanceSource)}  />
-                            <Img src={distanceSource} 
-                            alt="beeper" style={{marginRight: "20px"}}/>
-        
-                            <Icon onClick={() => onImage1Concat(tactSource)}  />
-                            <Img src={tactSource} 
-                            alt="magnetic" />
-        
-                            <MiddleIcon onClick={() => onImage1Concat(ledSource)}/>
-                            <Img src={ledSource} 
-                            alt="beeper" 
-                            style={{
-                            marginLeft: '20px',
-                            marginRight: '20px'
-                            }}/>
-                            
-                            <Icon onClick={() => onImage1Concat(lightSource)}/>
-                            <Img src={lightSource} 
-                            alt="beeper" />
-                        </div>
-        
-                        <div className={JSON.stringify(displayDot3)} onTouchEnd={() => {
-                            setDisplayDot2(false);
-                            setDisplayDot1(false);
-                            setDisplayDot3(true);
-                        }}>
-                            <Icon onClick={() => onImage1Concat(magSource)}/>
-                            <Img src={magSource} 
-                            alt="mag" style={{marginRight: '20px'}}/>
-        
-                            <Icon onClick={() => onImage1Concat(tempSource)}/>
-                            <Img src={tempSource} 
-                            alt="temp" />
-                            
-                            <MiddleIcon onClick={() => onImage1Concat(motorSource)}/>
-                            <Img src={motorSource} 
-                            alt="motor" 
-                            style={{
-                            marginLeft: '20px',
-                            marginRight: '20px'
-                            }}/>
-                            
-                            <Icon onClick={() => onImage1Concat(soundSource)}/>
-                            <Img src={soundSource} 
-                            alt="sound" />
-                        </div>
-                        </ReactSwipe>
-                    ) }
+    
+                        <Icon onClick={() => onImage1Concat(graphSource)}/>
+                        <Img src={graphSource} 
+                        alt="beeper" style={{marginRight: '20px'}}/>
+    
+                        <Icon onClick={() => onImage1Concat(distanceSource)}  />
+                        <Img src={distanceSource} 
+                        alt="beeper" style={{marginRight: "20px"}}/>
+    
+                        <Icon onClick={() => onImage1Concat(tactSource)}  />
+                        <Img src={tactSource} 
+                        alt="magnetic" />
+    
+                        <MiddleIcon onClick={() => onImage1Concat(ledSource)}/>
+                        <Img src={ledSource} 
+                        alt="beeper" 
+                        style={{
+                        marginLeft: '20px',
+                        marginRight: '20px'
+                        }}/>
+                        
+                        <Icon onClick={() => onImage1Concat(lightSource)}/>
+                        <Img src={lightSource} 
+                        alt="beeper" />
+                    </div>
+    
+                    <div className={JSON.stringify(displayDot3)} onTouchEnd={() => {
+                        setDisplayDot2(false);
+                        setDisplayDot1(false);
+                        setDisplayDot3(true);
+                    }}>
+                        <Icon onClick={() => onImage1Concat(magSource)}/>
+                        <Img src={magSource} 
+                        alt="mag" style={{marginRight: '20px'}}/>
+    
+                        <Icon onClick={() => onImage1Concat(tempSource)}/>
+                        <Img src={tempSource} 
+                        alt="temp" />
+                        
+                        <MiddleIcon onClick={() => onImage1Concat(motorSource)}/>
+                        <Img src={motorSource} 
+                        alt="motor" 
+                        style={{
+                        marginLeft: '20px',
+                        marginRight: '20px'
+                        }}/>
+                        
+                        <Icon onClick={() => onImage1Concat(soundSource)}/>
+                        <Img src={soundSource} 
+                        alt="sound" />
+                    </div>
+                    </ReactSwipe>
             </>
 
             {/* Swipeable Dots Beggining */}
