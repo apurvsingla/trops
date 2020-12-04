@@ -10,19 +10,31 @@ const marks = [
           value: 0,
         },
         {
-          value: 20,
+          value: 10,
         },
         {
-          value: 40,
+        value: 20,
+        },
+        {
+        value: 30,
+        },
+        {
+        value: 40,
+        },
+        {
+        value: 50,
         },
         {
           value: 60,
         },
         {
+          value: 70,
+        },
+        {
           value: 80,
         },
         {
-          value: 100,
+          value: 90,
         },
       ];
 
@@ -39,14 +51,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         activeRightBottomIndex,setActiveRightBottomIndex,
         activeRightBottom,setActiveRightBottom,
         currentRightDot,setCurrentRightDot,
-        rightRImg, lights, tact, 
-        tactID,
-
-        //range (lights)
-        range, setRange, 
-        rangeMeter, setRangeMeter, 
-        staticRange, setStaticRange, id,
-        ledID, setLedID
+        rightRImg
 }) => {
         
         //media query
@@ -70,7 +75,6 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         
         //red dots
         const [appearDot, setAppearDot] = useSessionStorage('appear-dot',{});
-        // const [currentRightPos, setCurrentRightPos] = useSessionStorage('current-right-pos',{});
 
         let boolean = false;
         let boolean2 = false;
@@ -84,11 +88,9 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                                 e.target.style.backgroundColor = 'black';   
                         }
                         activeRightIndex[index] = index;
-                        // currentRightPos[index] = e.screenX
                         setActive(active);
                         setActiveRightIndex(activeRightIndex);
                         setCurrentRight(index);
-                        // setCurrentRightPos(currentRightPos);
                 }      
         }
         
@@ -105,7 +107,6 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setActiveother(activeother);
                         setActiveIndex(activeIndex);
                         setCurrent(index);
-                        // console.log(e.screenY);
                 }
         }
 
@@ -158,7 +159,6 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         <RightImgs mQuery={mQuery} currentRight={currentRight} activeRightIndex={activeRightIndex}
                         activeDot={activeDot} activeSecondRightLink={activeSecondRightLink} bottomTop={bottomTop} 
                         index={index} setBottomTop={setBottomTop} pos={pos} rightImg={rightImg} i={i} activeIndex={activeIndex} 
-                        // currentRightPos={currentRightPos}
                         />
                         )
                 })) : null}

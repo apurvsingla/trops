@@ -4,17 +4,11 @@ import './Scroll.scss';
 
 const Scroll = ({marks, 
     valueLabelFormat, index, id, key,
-    // appearDotRange, setAppearDotRange, dict,setGlowNum,
-// code try
      img1, setImg1
 }) => {
     const sliderFunc = (e) => {
         const num = Number(e.target.innerText);
         const numId = Number(e.target.parentNode.parentNode.id);
-        // range[numId] = numId;
-        // setRange(range);
-        // setStaticRange(num);
-        // setRangeNumber(numId);
         const newArray = [...img1];
         newArray.forEach((val, index) => {
             const array = newArray[index]

@@ -29,15 +29,23 @@ import '../Middle.styles.scss';
 const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat, 
      activeSecondLink, img1,setAppearDot, appearDot,setImg1
 }) => {
-    let boolean = false;
+    const [mQuery, setMQuery] = React.useState({
+        matches: window.innerWidth > 892 ? true : false,
+    });
+ 
+    React.useEffect(() => {
+        let mediaQuery = window.matchMedia("(max-width: 892px)");
+        mediaQuery.addListener(setMQuery);
+        return () => mediaQuery.removeListener(setMQuery);     
+    }, []);
 
     const func = (e) => {
-        boolean =!boolean;
+        // boolean =!boolean;
         const num = Number(i.id);
         if(appearDot[num] === true){
-                appearDot[num] = !boolean;
+                appearDot[num] = false;
         }else{
-                appearDot[num] = boolean;
+                appearDot[num] = true;
         }
         setAppearDot(appearDot);
         let newArray = [...img1];
@@ -78,38 +86,72 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
     }
 
     const rangeGlow = () => {
-            if(i.bools){
+            if(mQuery && !mQuery.matches){
+                    if(i.bools){
                         return(
                                 <span
                                 style={{
-                                        height: `${i.bools*10 + 5 }px`,
-                                        width: `${i.bools*10 + 5}px`,
+                                        height: `${i.bools*6 + 5 }px`,
+                                        width: `${i.bools*6 + 5}px`,
                                         backgroundColor: `${true ?'red':null}`,
                                         borderRadius: '50px',
                                         zIndex: '15',
                                         position: 'absolute',
-                                        top: `${95 - 5*i.bools}px`,
-                                        marginLeft: `${i.bools*(-5)}px`,
+                                        top: `${92 - 4*i.bools}px`,
+                                        marginLeft: `${i.bools*(-4)}px`,
+                                        left: `${140*index + 162}px`,
+                                        opacity: '0.7',
+                                }}
+                                />
+                        )
+                }
+            }else{
+                if(i.bools){
+                        return(
+                                <span
+                                style={{
+                                        height: `${i.bools*8 + 5 }px`,
+                                        width: `${i.bools*8 + 5}px`,
+                                        backgroundColor: `${true ?'red':null}`,
+                                        borderRadius: '50px',
+                                        zIndex: '15',
+                                        position: 'absolute',
+                                        top: `${95 - 4*i.bools}px`,
+                                        marginLeft: `${i.bools*(-4)}px`,
                                         left: `${140*index + 168}px`,
                                         opacity: '0.7',
                                 }}
                                 />
                         )
-
-            }
+                }
+        }
     }
 
     const rangeGraph = () => {
+        if(mQuery && !mQuery.matches){
             if(i.bools){
                 return(<span className="graphDesign"
                         style={{
-                                height: `${i.bools*10 + 5 }px`,
-                                width: `${i.bools*10 + 5}px`,
-                                top: `${95 - 5*i.bools}px`,
-                                marginLeft: `${i.bools*(-5)}px`,
+                                height: `${i.bools*6 + 5 }px`,
+                                width: `${i.bools*6 + 5}px`,
+                                top: `${92 - 4*i.bools}px`,
+                                marginLeft: `${i.bools*(-4)}px`,
+                                left: `${140*index + 162}px`,
+                        }}
+                />)
+                }
+        }else{
+                if(i.bools){
+                        return(<span className="graphDesign"
+                        style={{
+                                height: `${i.bools*8 + 5 }px`,
+                                width: `${i.bools*8 + 5}px`,
+                                top: `${95 - 4*i.bools}px`,
+                                marginLeft: `${i.bools*(-4)}px`,
                                 left: `${140*index + 168}px`,
                         }}
                 />)
+                }
         }
     } 
         
@@ -137,8 +179,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 ? (
                 <span 
                 className="middle-dot-normal"
-                onTouchStart={(e) => func(e)}
-                // onTouchEnd={(e) => func(e)}
+                // onTouchStart={(e) => func(e)}
+                onTouchEnd={(e) => func(e)}
                 onClick={(e,arr) => {
                         func(e,arr);
                 }}
