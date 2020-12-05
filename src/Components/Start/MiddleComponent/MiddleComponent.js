@@ -96,6 +96,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         
         const activeSecondLink = (e,index) => {
                 if(e){
+                        console.log(index);
                         boolean2 = !boolean2;
                         activeother[e.target.id] = boolean2;
                         if(boolean2 === true){
@@ -108,6 +109,29 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setActiveIndex(activeIndex);
                         setCurrent(index);
                 }
+                // if(e){
+                // boolean2 = !boolean2
+                // let newArray = [...img1];
+                // const num = Number(e.target.id);
+                // activeother[num] = boolean2;
+                // if(boolean2 === true){
+                //         e.target.style.backgroundColor = 'green';
+                // }else{
+                //         e.target.style.backgroundColor = 'black';   
+                // }
+                // setActiveother(activeother);
+                // newArray.forEach((val, index) => {
+                //         const array = newArray[index]
+                //         console.log(array.id,num);
+                //         if(array.id > num){
+                //                 // cosnole.log(num);
+                //                 // if(activeother[num] === true){
+                //                         newArray[index] = {id: array.id, src: array.src, pos: 'bottom'};
+                //                 // }
+                //         }
+                // })
+                // setImg1(newArray);
+                // }
         }
 
         const activeSecondRightLink = (e,index) => {
@@ -134,6 +158,8 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         return(<> 
                 {img1.length>=1 ? (img1.map((i,index,arr) => {
                         return(
+                                <>
+                                {i.pos === 'normal' ? 
                         <NormalImgs index={index} 
                         i={i} deleteImage={deleteImage} 
                         marks={marks} valueLabelFormat={valueLabelFormat}
@@ -141,7 +167,18 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         img1={img1} appearDot={appearDot} 
                         setAppearDot={setAppearDot}
                         setImg1={setImg1}
-                         />
+                         /> : null}
+
+                         {i.pos === 'bottom' ? <>
+                                 {/* <span>
+                                        <img src={i.src} alt="src" id={index} height="200" width="200"/>
+                                </span>  */}
+                                <BottomImgs i={i} current={current} activeIndex={activeIndex}
+                        index={index} activeLink={activeLink} pos={pos} setPos={setPos}
+                        setActiveDot={setActiveDot} bottomImg={bottomImg} 
+                        activeDot={activeDot} />
+                                 </>: null}
+                         </>
                          )
                 })) : null}
 

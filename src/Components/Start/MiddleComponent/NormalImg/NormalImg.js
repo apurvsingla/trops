@@ -53,9 +53,9 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 const array = newArray[index]
                 if(array.id === num+1){
                         if(appearDot[num] === true){
-                                newArray[index] = {id: array.id, src: array.src, bool: false};
+                                newArray[index] = {id: array.id, src: array.src, bool: false, pos: 'normal'};
                         }else{
-                                newArray[index] = {id: array.id, src: array.src, bool: true};  
+                                newArray[index] = {id: array.id, src: array.src, bool: true, pos: 'normal'};  
                         }
                 }
         })
@@ -162,7 +162,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 style={{
                         left: `${100*index + 20}px`,
                 }}
-                id={index}
+                id={i.id}
                 // onClick={(e) => deleteImage(e)}
                 />
         </Span>
@@ -233,8 +233,9 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 marginLeft: `${140*index}px`
                 }}
                 key={index+'-bottom'}
-                id={index+'-bottom'}
+                id={i.id}
                 onClick={(e) => activeSecondLink(e,index)}
+                // onClick={true}
                 />
         : null }
         {/* dots end */}

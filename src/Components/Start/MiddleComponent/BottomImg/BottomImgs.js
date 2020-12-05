@@ -13,13 +13,13 @@ const BottomImgs = ({i, current, activeIndex, index, activeLink, pos,
         <BottomSpan>
                 <Img src={i.src} alt="alt"
                 style={{
-                        left: `${i.id === current ? (140*activeIndex[current]) + 20: null}px`,
+                        left: `${(140*i.bottomPos) + 20}px`,
                 }} />
         </BottomSpan>
 
         {(bottomImg.length) === index ? null : (
                 <LargeColLine style={{
-                        marginLeft: `${i.id === current ? 140*activeIndex[current]: null}px`,
+                        marginLeft: `${140*i.bottomPos}px`,
                         height: `${140*index + 78}px`,
                         zIndex: '-2'
                         }}
@@ -30,21 +30,21 @@ const BottomImgs = ({i, current, activeIndex, index, activeLink, pos,
         <span 
         className="right-dot-bottom"
         style={{
-                marginTop: `${i.id === current ? 10*current + 90 -2*index: null}px`,
-                marginLeft: `${i.id ===current ? 140*activeIndex[current] + 80: null}px`
+                marginTop: `${10*activeDot + 45}px`,
+                marginLeft: `${140*i.bottomPos + 80}px`,
+                // zIndex: '25'
                 }}
                 onClick={(e) => activeLink(e,index)}
                 id={index+'-right'}
                 key={index+'-right'}
-                ref={e => {
-                        if(!e){
-                                return;
-                        }
-                        // console.log(index);
-                        pos[index + '-left'] = (e.getBoundingClientRect().left);
-                        setPos(pos);
-                        setActiveDot(index);
-                }}
+                // ref={e => {
+                //         if(!e){
+                //                 return;
+                //         }
+                //         pos[index + '-left'] = (e.getBoundingClientRect().left);
+                //         setPos(pos);
+                //         setActiveDot(index);
+                // }}
                 />
         </>
         : null }

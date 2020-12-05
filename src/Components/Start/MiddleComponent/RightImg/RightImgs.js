@@ -13,7 +13,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
     return(<>
         {mQuery && !mQuery.matches ? (<RightSpan style={{
                 marginTop: `${i.id === currentRight ?
-                        100*currentRight + 14*activeRightIndex[currentRight]: null}px`,     
+                        100*pos[currentRight] + 14*activeRightIndex[currentRight]: null}px`,     
                         }}> 
                          <NormalRImg src={i.src} 
                 alt="alt" 

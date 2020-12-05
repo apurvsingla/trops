@@ -60,6 +60,9 @@ const Start = () => {
     const [rightRImg, setRightRImg]= useSessionStorage('right-bottom-Img', []);
     
     const [id, setId] = useSessionStorage('id', 1);
+    const [id2, setId2] = useSessionStorage('id2', 1);
+    const [id3, setId3] = useSessionStorage('id3', 1);
+    const [id4, setId4] = useSessionStorage('id4', 1);
     const [num, setNum] = useSessionStorage('num', 0);
 
     //dots active or not
@@ -76,6 +79,9 @@ const Start = () => {
     const [current, setCurrent] = useSessionStorage('current-bottom',null);
     const [currentRight, setCurrentRight] = useSessionStorage('current-right',null);
     const [currentRightDot, setCurrentRightDot] = useSessionStorage('right-right-dot', null); 
+
+
+    
 
     const history = useHistory();
 
@@ -104,17 +110,29 @@ const Start = () => {
 
     // populating images
     const onImage1Concat = (src) => {
-        if(activeother[activeIndex[current] + '-bottom']=== true){
-            setBottomImg(i => i.concat({id: current, src: src}));
-            setId(id+1);
+        if(activeother[activeIndex[current]]=== true){
+            setBottomImg(i => i.concat({id: id2, src: src, pos: 'normal', bottomPos: current}));
+            // img.findIndex()
+            // setImg1()
+            // let currDotIndex = img1.findIndex(i => i.id === current);
+            // let newArray = [...img1];
+            // newArray.forEach((val,index) => {
+            //     const array = newArray[index];
+            //     if(index === currDotIndex){
+                    
+            //     }
+            // })
+            // setImg1(i => i.concat({id: current, src: src, pos: 'bottom', bottomPos: current}));
+            setId2(id2+1);
             return;
+        
         }else if(active[activeRightIndex[currentRight] + '-right'] === true){
-            setRightImg(i => i.concat({id: currentRight, src: src}));
-            setId(id+1);
+            setRightImg(i => i.concat({id: id3, src: src, pos: 'normal', bottomRight: currentRight}));
+            setId3(id3+1);
             return;
         }else if(activeRightBottom[activeRightBottomIndex[currentRightDot] + '-bottom'] === true){
-            setRightRImg(i=> i.concat({id: currentRightDot, src: src}));
-            setId(id+1);
+            setRightRImg(i=> i.concat({id: id4, src: src, pos: 'normal', currentRightRight: currentRightDot}));
+            setId4(id4+1);
             return;
         }else{
             if(src!==powerSource){
@@ -137,7 +155,7 @@ const Start = () => {
                     return;
                 }
                 setNum(num+1);
-                setImg1(img1 => img1.concat({id: num, src: src}));
+                setImg1(img1 => img1.concat({id: num, src: src, pos: 'normal'}));
                 return;
             }
         }

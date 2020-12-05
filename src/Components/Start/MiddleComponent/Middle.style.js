@@ -60,24 +60,10 @@ export const BottomSpan = styled.span`
 export const RightSpan = styled.span`
     position: absolute;
     top: 194px;
-
     @media (max-width: 892px){
         top: 169px;
     }
 `;
-
-// export const ScrollSlider = styled(Slider)`
-//     position: absolute;
-//     left: 150px;
-//     top: 120px;
-//     width: 50px;
-
-//     @media (max-width: 892px){
-//         width: 40px;
-//         top: 87px;
-//         left: 138px;
-//     }
-// `;
 
 export const columnLineSpan = styled.span`
     position: relative;
