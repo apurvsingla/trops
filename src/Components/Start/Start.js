@@ -79,7 +79,7 @@ const Start = () => {
     const [current, setCurrent] = useSessionStorage('current-bottom',null);
     const [currentRight, setCurrentRight] = useSessionStorage('current-right',null);
     const [currentRightDot, setCurrentRightDot] = useSessionStorage('right-right-dot', null); 
-    const [indexVal, setIndexVal] = useSessionStorage('current-bottom-index', null);
+    const [indexVal, setIndexVal] = useSessionStorage('current-bottom-indexs', null);
 
 
     

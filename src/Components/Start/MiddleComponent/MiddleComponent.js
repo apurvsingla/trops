@@ -51,7 +51,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         activeRightBottomIndex,setActiveRightBottomIndex,
         activeRightBottom,setActiveRightBottom,
         currentRightDot,setCurrentRightDot,
-        rightRImg, indexVal, setIndexVal
+        rightRImg, setIndexVal
 }) => {
         
         //media query
@@ -146,13 +146,6 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setAppearDot={setAppearDot}
                         setImg1={setImg1}
                          /> : null}
-
-                         {/* {i.pos === 'bottom' ? <>
-                                <BottomImgs i={i} current={current} activeIndex={activeIndex}
-                        index={index} activeLink={activeLink} pos={pos} setPos={setPos}
-                        setActiveDot={setActiveDot} bottomImg={bottomImg} 
-                        activeDot={activeDot} />
-                                 </>: null} */}
                          </>
                          )
                 })) : null}
