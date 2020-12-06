@@ -13,7 +13,7 @@ const Scroll = ({marks,
         newArray.forEach((val, index) => {
             const array = newArray[index]
             if(array.id === numId+1){
-                        newArray[index] = {id: array.id, src: array.src, bools: num};
+                        newArray[index] = {id: array.id, src: array.src, bools: num, pos: 'normal'};
                     
             }
         })
