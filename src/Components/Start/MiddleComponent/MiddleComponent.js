@@ -96,7 +96,6 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         
         const activeSecondLink = (e,index) => {
                 if(e){
-                        // console.log(index);
                         boolean2 = !boolean2;
                         activeother[Number(e.target.id)] = boolean2;
                         if(boolean2 === true){
@@ -159,6 +158,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         />
                         )
                 })) : null}
+                
                 {rightImg.length>=1 ? (rightImg.map((i,index) => {
                         return(
                         <RightImgs mQuery={mQuery} currentRight={currentRight} activeRightIndex={activeRightIndex}

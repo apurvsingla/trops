@@ -76,10 +76,10 @@ const Start = () => {
     const [activeRightBottomIndex, setActiveRightBottomIndex] = useSessionStorage('right-bottom-index', {}); //new for right
 
     //active index
-    const [current, setCurrent] = useSessionStorage('current-bottom',null);
+    const [current, setCurrent] = useState(null);
     const [currentRight, setCurrentRight] = useSessionStorage('current-right',null);
     const [currentRightDot, setCurrentRightDot] = useSessionStorage('right-right-dot', null); 
-    const [indexVal, setIndexVal] = useSessionStorage('current-bottom-indexs', null);
+    const [indexVal, setIndexVal] = useState(null);
 
 
     
@@ -115,7 +115,6 @@ const Start = () => {
             setBottomImg(i => i.concat({id: id2, src: src, pos: 'normal', bottomPos: indexVal}));
             setId2(id2+1);
             return;
-        
         }else if(active[activeRightIndex[currentRight] + '-right'] === true){
             setRightImg(i => i.concat({id: id3, src: src, pos: 'normal', bottomRight: currentRight}));
             setId3(id3+1);
@@ -411,7 +410,8 @@ const Start = () => {
             setActiveRightBottomIndex={setActiveRightBottomIndex}
             currentRightDot={currentRightDot}
             setCurrentRightDot={setCurrentRightDot}
-            rightRImg={rightRImg} 
+            rightRImg={rightRImg} setIndexVal={setIndexVal}
+            indexVal={indexVal}
             />
             {/* end */}
 
