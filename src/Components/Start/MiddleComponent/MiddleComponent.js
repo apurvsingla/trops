@@ -110,29 +110,6 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setCurrent(Number(e.target.id));
                         setIndexVal(index);
                 }
-                // if(e){
-                // boolean2 = !boolean2
-                // let newArray = [...img1];
-                // const num = Number(e.target.id);
-                // activeother[num] = boolean2;
-                // if(boolean2 === true){
-                //         e.target.style.backgroundColor = 'green';
-                // }else{
-                //         e.target.style.backgroundColor = 'black';   
-                // }
-                // setActiveother(activeother);
-                // newArray.forEach((val, index) => {
-                //         const array = newArray[index]
-                //         console.log(array.id,num);
-                //         if(array.id > num){
-                //                 // cosnole.log(num);
-                //                 // if(activeother[num] === true){
-                //                         newArray[index] = {id: array.id, src: array.src, pos: 'bottom'};
-                //                 // }
-                //         }
-                // })
-                // setImg1(newArray);
-                // }
         }
 
         const activeSecondRightLink = (e,index) => {
@@ -170,15 +147,12 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setImg1={setImg1}
                          /> : null}
 
-                         {i.pos === 'bottom' ? <>
-                                 {/* <span>
-                                        <img src={i.src} alt="src" id={index} height="200" width="200"/>
-                                </span>  */}
+                         {/* {i.pos === 'bottom' ? <>
                                 <BottomImgs i={i} current={current} activeIndex={activeIndex}
                         index={index} activeLink={activeLink} pos={pos} setPos={setPos}
                         setActiveDot={setActiveDot} bottomImg={bottomImg} 
                         activeDot={activeDot} />
-                                 </>: null}
+                                 </>: null} */}
                          </>
                          )
                 })) : null}
