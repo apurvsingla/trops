@@ -51,7 +51,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         activeRightBottomIndex,setActiveRightBottomIndex,
         activeRightBottom,setActiveRightBottom,
         currentRightDot,setCurrentRightDot,
-        rightRImg
+        rightRImg, indexVal, setIndexVal
 }) => {
         
         //media query
@@ -96,18 +96,19 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         
         const activeSecondLink = (e,index) => {
                 if(e){
-                        console.log(index);
+                        // console.log(index);
                         boolean2 = !boolean2;
-                        activeother[e.target.id] = boolean2;
+                        activeother[Number(e.target.id)] = boolean2;
                         if(boolean2 === true){
                                 e.target.style.backgroundColor = 'green';
                         }else{
                                 e.target.style.backgroundColor = 'black';   
                         }
-                        activeIndex[index] = index;
+                        activeIndex[Number(e.target.id)] = Number(e.target.id);
                         setActiveother(activeother);
                         setActiveIndex(activeIndex);
-                        setCurrent(index);
+                        setCurrent(Number(e.target.id));
+                        setIndexVal(index);
                 }
                 // if(e){
                 // boolean2 = !boolean2

@@ -79,6 +79,7 @@ const Start = () => {
     const [current, setCurrent] = useSessionStorage('current-bottom',null);
     const [currentRight, setCurrentRight] = useSessionStorage('current-right',null);
     const [currentRightDot, setCurrentRightDot] = useSessionStorage('right-right-dot', null); 
+    const [indexVal, setIndexVal] = useSessionStorage('current-bottom-index', null);
 
 
     
@@ -111,18 +112,7 @@ const Start = () => {
     // populating images
     const onImage1Concat = (src) => {
         if(activeother[activeIndex[current]]=== true){
-            setBottomImg(i => i.concat({id: id2, src: src, pos: 'normal', bottomPos: current}));
-            // img.findIndex()
-            // setImg1()
-            // let currDotIndex = img1.findIndex(i => i.id === current);
-            // let newArray = [...img1];
-            // newArray.forEach((val,index) => {
-            //     const array = newArray[index];
-            //     if(index === currDotIndex){
-                    
-            //     }
-            // })
-            // setImg1(i => i.concat({id: current, src: src, pos: 'bottom', bottomPos: current}));
+            setBottomImg(i => i.concat({id: id2, src: src, pos: 'normal', bottomPos: indexVal}));
             setId2(id2+1);
             return;
         
@@ -211,7 +201,8 @@ const Start = () => {
             setActiveRightBottomIndex={setActiveRightBottomIndex}
             currentRightDot={currentRightDot}
             setCurrentRightDot={setCurrentRightDot}
-            rightRImg={rightRImg} 
+            rightRImg={rightRImg} indexVal={indexVal}
+            setIndexVal={setIndexVal}
             />
             {/* end */}
 
