@@ -203,6 +203,10 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 id={i.id}
                 key={index + '-scroll'}
                 img1={img1} setImg1={setImg1}
+                className="scroll-large"
+                style={{
+                        marginLeft: `${140*index}px`,
+                }}
                 />
          : null}
         {(((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)) 

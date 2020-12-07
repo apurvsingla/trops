@@ -51,7 +51,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         activeRightBottomIndex,setActiveRightBottomIndex,
         activeRightBottom,setActiveRightBottom,
         currentRightDot,setCurrentRightDot,
-        rightRImg, setIndexVal
+        rightRImg, setIndexVal, setBottomImg
 }) => {
         
         //media query
@@ -81,32 +81,35 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         const activeLink = (e,index) => {
                 if(e){
                         boolean = !boolean;
-                        active[e.target.id] = boolean;
+                        const ids = Number(e.target.id);
+                        active[ids] = boolean;
                         if(boolean === true){
                                 e.target.style.backgroundColor = 'green';
                         }else{
                                 e.target.style.backgroundColor = 'black';   
                         }
-                        activeRightIndex[index] = index;
+                        activeRightIndex[ids] = ids;
                         setActive(active);
                         setActiveRightIndex(activeRightIndex);
-                        setCurrentRight(index);
+                        setCurrentRight(ids);
+                        setIndexVal(index);
                 }      
         }
         
         const activeSecondLink = (e,index) => {
                 if(e){
                         boolean2 = !boolean2;
-                        activeother[Number(e.target.id)] = boolean2;
+                        const ids = Number(e.target.id);
+                        activeother[ids] = boolean2;
                         if(boolean2 === true){
                                 e.target.style.backgroundColor = 'green';
                         }else{
                                 e.target.style.backgroundColor = 'black';   
                         }
-                        activeIndex[Number(e.target.id)] = Number(e.target.id);
+                        activeIndex[ids] = ids;
                         setActiveother(activeother);
                         setActiveIndex(activeIndex);
-                        setCurrent(Number(e.target.id));
+                        setCurrent(ids);
                         setIndexVal(index);
                 }
         }
@@ -154,7 +157,9 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         <BottomImgs i={i} current={current} activeIndex={activeIndex}
                         index={index} activeLink={activeLink} pos={pos} setPos={setPos}
                         setActiveDot={setActiveDot} bottomImg={bottomImg} 
-                        activeDot={activeDot}
+                        activeDot={activeDot} setBottomImg={setBottomImg}
+                        setAppearDot={setAppearDot} appearDot={appearDot}
+                        marks={marks} valueLabelFormat={valueLabelFormat}
                         />
                         )
                 })) : null}

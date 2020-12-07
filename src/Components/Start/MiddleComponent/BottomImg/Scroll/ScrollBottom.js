@@ -2,22 +2,22 @@ import React from 'react';
 import Slider from '@material-ui/core/Slider';
 import './Scroll.scss';
 
-const Scroll = ({marks, 
+const ScrollBottom = ({marks, 
     valueLabelFormat, index, id, key,
-     img1, setImg1, className, style
+     bottomImg, setBottomImg, className, style, i
 }) => {
     const sliderFunc = (e) => {
         const num = Number(e.target.innerText);
         const numId = Number(e.target.parentNode.parentNode.id);
-        const newArray = [...img1];
+        const newArray = [...bottomImg];
         newArray.forEach((val, index) => {
             const array = newArray[index]
             if(array.id === numId+1){
-                        newArray[index] = {id: array.id, src: array.src, bools: num, pos: 'normal'};
+                        newArray[index] = {id: array.id, src: array.src, bools: num, pos: 'normal', bottomPos: i.bottomPos};
                     
             }
         })
-        setImg1(newArray);
+        setBottomImg(newArray);
     }
     return (
         <>
@@ -40,4 +40,4 @@ const Scroll = ({marks,
     );
 }
 
-export default Scroll;
+export default ScrollBottom;

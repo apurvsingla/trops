@@ -25,6 +25,7 @@ export const Bottom = styled.div`
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     border-bottom: none;
+    z-index: 100;
     @media (min-width: 893px){
         height: 120px;
     }

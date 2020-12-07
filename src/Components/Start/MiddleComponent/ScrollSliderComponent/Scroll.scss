@@ -9,3 +9,11 @@
         left: 138px;
     }
 }
+
+.bottom-scroll{
+    position: absolute !important;
+    width: 50px !important;
+    @media (max-width: 892px){
+        width: 40px !important;
+    }
+}
