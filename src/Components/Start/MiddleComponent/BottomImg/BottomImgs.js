@@ -36,9 +36,9 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                         const array = newArray[index]
                         if(array.id === num+1){
                                 if(appearDot[num] === true){
-                                        newArray[index] = {id: array.id, src: array.src, bool: false, pos: 'normal', bottomPos: i.bottomPos};
+                                        newArray[index] = {id: array.id, src: array.src, bool: false, pos: 'normal', bottomPos: array.bottomPos};
                                 }else{
-                                        newArray[index] = {id: array.id, src: array.src, bool: true, pos: 'normal', bottomPos: i.bottomPos};  
+                                        newArray[index] = {id: array.id, src: array.src, bool: true, pos: 'normal', bottomPos: array.bottomPos};  
                                 }
                         }
                 })
@@ -95,9 +95,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                                                 borderRadius: '50px',
                                                 zIndex: '15',
                                                 position: 'absolute',
-                                                // top: `${92 - 4*i.bools}px`,
-                                                marginLeft: `${137+140*i.bottomPos}px`,
-                                                marginTop: '67px',
+                                                marginLeft: `${140*i.bottomPos - 100 - 4*i.bools}px`,
+                                                marginTop: `${-4*i.bools + 100}px`,
                                                 opacity: '0.7',
                                                 
                                         }}
@@ -115,8 +114,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                                                 borderRadius: '50px',
                                                 zIndex: '15',
                                                 position: 'absolute',
-                                                marginLeft: `${140*i.bottomPos - 140}px`,
-                                                marginTop: '65px',
+                                                marginLeft: `${140*i.bottomPos - 100 - 4*i.bools}px`,
+                                                marginTop: `${-4*i.bools + 100}px`,
                                                 left: '272px',
                                                 opacity: '0.7',
                                         }}
@@ -133,10 +132,9 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                                 style={{
                                         height: `${i.bools*4 + 5 }px`,
                                         width: `${i.bools*4 + 5}px`,
-                                        // top: `${92 - 4*i.bools}px`,
-                                        marginLeft: `${140*i.bottomPos - 140}px`,
-                                        marginTop: '65px',
-                                        left: '272px',
+                                        marginLeft: `${140*i.bottomPos - 100 - 4*i.bools}px`,
+                                        marginTop: `${-4*i.bools + 100}px`,
+                                        left: '268px',
                                 }}
                         />)
                         }
@@ -146,9 +144,9 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                                 style={{
                                         height: `${i.bools*7 + 5 }px`,
                                         width: `${i.bools*7 + 5}px`,
-                                        marginLeft: `${140*i.bottomPos - 140}px`,
-                                        marginTop: '65px',
-                                        left: '272px',
+                                        marginLeft: `${140*i.bottomPos - 100 - 4*i.bools}px`,
+                                        marginTop: `${-4*i.bools + 100}px`,
+                                        left: '268px',
                                 }}
                         />)
                         }
