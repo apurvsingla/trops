@@ -36,9 +36,9 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                         const array = newArray[index]
                         if(array.id === num+1){
                                 if(appearDot[num] === true){
-                                        newArray[index] = {id: array.id, src: array.src, bool: false, pos: 'normal', bottomPos: array.bottomPos, trackValue: array.trackValue};
+                                        newArray[index] = {...newArray[index], bool: false}
                                 }else{
-                                        newArray[index] = {id: array.id, src: array.src, bool: true, pos: 'normal', bottomPos: array.bottomPos, trackValue: array.trackValue};  
+                                        newArray[index] = {...newArray[index], bool: true}  
                                 }
                         }
                 })
@@ -61,7 +61,6 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                          className='glow-small-bottom'
                          key={index}
                          style={{
-                                // top: `${140*index}px`,
                                 marginTop: `${140*i.trackValue}px`,
                                 left: `${140*i.bottomPos}px`,
                                 backgroundColor: `${'red'}`,

@@ -84,9 +84,6 @@ const Start = () => {
     const [trackValue, setTrackValue] = useSessionStorage('tracl-value', 0);
     const [imgTrack, setImgTrack] = useSessionStorage('imgTrack', 0);
 
-
-    
-
     const history = useHistory();
 
     const back = () => {
@@ -120,7 +117,7 @@ const Start = () => {
     const onImage1Concat = (src) => {
         if(activeother[activeIndex[current]]=== true){
             if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
-                setBottomImg(i => i.concat({id: id2, src: src, pos: 'normal', bottomPos: indexVal, trackValue: track[current]}));
+                setBottomImg(i => i.concat({id: id2+current, src: src, pos: 'normal', bottomPos: indexVal, trackValue: track[current]}));
                 if(track[current]){
                     track[current] = track[current]+ 1
                     setTrack(track);
@@ -135,7 +132,7 @@ const Start = () => {
                 setId2(id2+1);
                 return;
             }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
-                setBottomImg(i => i.concat({id: id2, src: src, bool: false, bools: 0, pos: 'normal', bottomPos: indexVal, trackValue: track[current]}));
+                setBottomImg(i => i.concat({id: id2+current, src: src, bool: false, bools: 0, pos: 'normal', bottomPos: indexVal, trackValue: track[current]}));
                 if(track[current]){
                     track[current] = track[current]+ 1
                     setTrack(track);
