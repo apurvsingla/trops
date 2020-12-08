@@ -36,9 +36,9 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                         const array = newArray[index]
                         if(array.id === num+1){
                                 if(appearDot[num] === true){
-                                        newArray[index] = {id: array.id, src: array.src, bool: false, pos: 'normal', bottomPos: array.bottomPos};
+                                        newArray[index] = {id: array.id, src: array.src, bool: false, pos: 'normal', bottomPos: array.bottomPos, trackValue: array.trackValue};
                                 }else{
-                                        newArray[index] = {id: array.id, src: array.src, bool: true, pos: 'normal', bottomPos: array.bottomPos};  
+                                        newArray[index] = {id: array.id, src: array.src, bool: true, pos: 'normal', bottomPos: array.bottomPos, trackValue: array.trackValue};  
                                 }
                         }
                 })
@@ -62,8 +62,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                          key={index}
                          style={{
                                 // top: `${140*index}px`,
-                                marginLeft: `${130+140*i.bottomPos}px`,
-                                marginTop: '60px',
+                                marginTop: `${140*i.trackValue}px`,
+                                left: `${140*i.bottomPos}px`,
                                 backgroundColor: `${'red'}`,
                                 position: 'absolute',
                          }}
@@ -95,8 +95,10 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                                                 borderRadius: '50px',
                                                 zIndex: '15',
                                                 position: 'absolute',
-                                                marginLeft: `${140*i.bottomPos - 100 - 4*i.bools}px`,
-                                                marginTop: `${-4*i.bools + 100}px`,
+                                                left: `${140*i.bottomPos + 152 - 2*i.bools}px`,
+                                                marginTop: `${140*i.trackValue}px`,
+                                                top: `${175 -2*i.bools}px`,
+                                                // left: `${140*i.bottomPos- 22}px`,
                                                 opacity: '0.7',
                                                 
                                         }}
@@ -114,9 +116,9 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                                                 borderRadius: '50px',
                                                 zIndex: '15',
                                                 position: 'absolute',
-                                                marginLeft: `${140*i.bottomPos - 100 - 4*i.bools}px`,
-                                                marginTop: `${-4*i.bools + 100}px`,
-                                                left: '272px',
+                                                left: `${140*i.bottomPos - 3.3*i.bools + 166}px`,
+                                                marginTop: `${140*i.trackValue + 220 - 3*i.bools}px`,
+                                                // left: `${140*i.bottomPos + 132}px`,
                                                 opacity: '0.7',
                                         }}
                                         />
@@ -132,9 +134,9 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                                 style={{
                                         height: `${i.bools*4 + 5 }px`,
                                         width: `${i.bools*4 + 5}px`,
-                                        marginLeft: `${140*i.bottomPos - 100 - 4*i.bools}px`,
-                                        marginTop: `${-4*i.bools + 100}px`,
-                                        left: '268px',
+                                        // marginLeft: `${140*i.bottomPos - 100 - 4*i.bools}px`,
+                                        left: `${140*i.bottomPos - 2.1*i.bools + 27}px`,
+                                        marginTop: `${140*i.trackValue + 125 - 2.3*i.bools}px`,
                                 }}
                         />)
                         }
@@ -144,9 +146,10 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                                 style={{
                                         height: `${i.bools*7 + 5 }px`,
                                         width: `${i.bools*7 + 5}px`,
-                                        marginLeft: `${140*i.bottomPos - 100 - 4*i.bools}px`,
-                                        marginTop: `${-4*i.bools + 100}px`,
-                                        left: '268px',
+                                        // marginLeft: `${140*i.bottomPos - 100 - 4*i.bools}px`,
+                                        left: `${140*i.bottomPos - 3.3*i.bools + 166}px`,
+                                        marginTop: `${140*i.trackValue + 220 - 3*i.bools}px`,
+                                        
                                 }}
                         />)
                         }
@@ -157,20 +160,22 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         <BottomSpan>
                 <Img src={i.src} alt="alt"
                 style={{
-                        left: `${(140*i.bottomPos) + 20}px`,
+                        marginLeft: `${(140*i.bottomPos) + 20}px`,
+                        marginTop: `${140*i.trackValue + 20}px`,
                 }} />
         </BottomSpan>
 
         {(bottomImg.length) === index ? null : (
                 <LargeColLine style={{
                         marginLeft: `${140*i.bottomPos}px`,
-                        height: `${140*index + 108}px`,
+                        height: `${i.trackValue? 140*i.trackValue + 108 : 108}px`,
                         zIndex: '-2'
                         }}
                 key={index+'--icon'} />) }
 
                 {(i.src === tactSource) 
                 ? (
+                <>
                 <span 
                 className="bottom-middle-dot"
                 onTouchStart={(e) => func(e)}
@@ -181,19 +186,22 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 style={{
                 //       top: `${140*index + 110}px`,
                       cursor: 'pointer',
-                      marginLeft: `${162+140*i.bottomPos}px`,
-                      marginTop: '125px'
+                      marginTop: `${140*i.trackValue}px`,
+                      left: `${140*i.bottomPos}px`,
+                      
                 }}
                 key={index+'-middle'}
                 id={index}
-                />
+                /> 
+                </>
         ): null}
 
         {(i.src===lightSource)|| (i.src === tempSource) || 
         (i.src === soundSource) ||(i.src === magSource) ||
         (i.src === distanceSource)
                 ? 
-                <ScrollBottom marks={marks} 
+                <>
+                {mQuery && !mQuery.matches ? <ScrollBottom marks={marks} 
                 valueLabelFormat={valueLabelFormat} 
                 index={index}
                 i={i}
@@ -202,12 +210,28 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 bottomImg={bottomImg} setBottomImg={setBottomImg}
                 className="bottom-scroll"
                 style={{
-                        // top: `${110 + 140*i.index}px`,
+                        top: `${185}px`,
                         cursor: 'pointer',
-                        marginLeft: `${155+140*i.bottomPos}px`,
-                        marginTop: '120px'
+                        marginTop: `${140*i.trackValue}px`,
+                      left: `${140*i.bottomPos + 137}px`
                 }}
-                />
+                />: <ScrollBottom marks={marks} 
+                valueLabelFormat={valueLabelFormat} 
+                index={index}
+                i={i}
+                id={i.id}
+                key={index + '-scroll'}
+                bottomImg={bottomImg} setBottomImg={setBottomImg}
+                className="bottom-scroll"
+                style={{
+                        top: `${255}px`,
+                        cursor: 'pointer',
+                        marginTop: `${140*i.trackValue}px`,
+                      left: `${140*i.bottomPos + 152}px`
+                }}
+                />}
+                
+                </>
          : null}
 
         {(((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)) 
@@ -230,17 +254,28 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         
         {i.src === conditionSource ? 
         <>
+         {mQuery && !mQuery.matches  ?
         <span 
         className="right-dot-bottom"
         style={{
                 cursor: 'pointer',
-                marginLeft: `${78+140*i.bottomPos}px`,
-                marginTop: '100px'
+                marginTop: `${140*i.trackValue + 175}px`,
+                left: `${140*i.bottomPos + 172}px`
                 }}
                 onClick={(e) => activeLink(e,index)}
                 id={index+'-right'}
                 key={index+'-right'}
-                />
+                />: <span 
+        className="right-dot-bottom"
+        style={{
+                cursor: 'pointer',
+                marginTop: `${140*i.trackValue + 227}px`,
+                left: `${140*i.bottomPos + 202}px`
+                }}
+                onClick={(e) => activeLink(e,index)}
+                id={index+'-right'}
+                key={index+'-right'}
+                />}
         </>
         : null }
         </>)

@@ -235,11 +235,10 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         className="bottom-dot-normal"
         style={{
                 marginLeft: `${140*index}px`
-                }}
-                key={index+'-bottom'}
-                id={i.id}
-                onClick={(e) => activeSecondLink(e,index)}
-                // onClick={true}
+        }}
+        key={index+'-bottom'}
+        id={i.id}
+        onClick={(e) => activeSecondLink(e,index)}
                 />
         : null }
         {/* dots end */}

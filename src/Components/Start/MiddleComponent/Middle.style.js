@@ -7,7 +7,7 @@ export const Img = styled.img`
     width: 70px;
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: absolute;
     margin-top: 23px;
     height: 70px;
     @media (min-width: 893px){
@@ -49,9 +49,7 @@ export const Span = styled.span`
 export const BottomSpan = styled.span`
     position: relative;
     left: 100px;
-    top: 50px;
-    margin-right:40px;
-    top: 150px;
+    top: 160px;
     @media (max-width:892px){
         top: 125px;
     }

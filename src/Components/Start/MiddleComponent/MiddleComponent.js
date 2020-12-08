@@ -51,7 +51,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         activeRightBottomIndex,setActiveRightBottomIndex,
         activeRightBottom,setActiveRightBottom,
         currentRightDot,setCurrentRightDot,
-        rightRImg, setIndexVal, setBottomImg
+        rightRImg, setIndexVal, setBottomImg, id2, setTrack, track, trackValue
 }) => {
         
         //media query
@@ -160,6 +160,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         activeDot={activeDot} setBottomImg={setBottomImg}
                         setAppearDot={setAppearDot} appearDot={appearDot}
                         marks={marks} valueLabelFormat={valueLabelFormat}
+                        track={track} trackValue={trackValue}
                         />
                         )
                 })) : null}

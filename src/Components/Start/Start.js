@@ -76,10 +76,13 @@ const Start = () => {
     const [activeRightBottomIndex, setActiveRightBottomIndex] = useSessionStorage('right-bottom-index', {}); //new for right
 
     //active index
-    const [current, setCurrent] = useState(null);
+    const [current, setCurrent] = useSessionStorage('current-bottom',null);
     const [currentRight, setCurrentRight] = useSessionStorage('current-right',null);
     const [currentRightDot, setCurrentRightDot] = useSessionStorage('right-right-dot', null); 
-    const [indexVal, setIndexVal] = useState(null);
+    const [indexVal, setIndexVal] = useSessionStorage('index-val',null);
+    const [track, setTrack] = useSessionStorage('track',{});
+    const [trackValue, setTrackValue] = useSessionStorage('tracl-value', 0);
+    const [imgTrack, setImgTrack] = useSessionStorage('imgTrack', 0);
 
 
     
@@ -107,20 +110,55 @@ const Start = () => {
         setBottomImg([]);
         setRightRImg([]);
         setRightImg([]);
+        setTrack({});
+        setTrackValue(0);
+        setIndexVal(null);
+        setId2(1);
     }
 
     // populating images
     const onImage1Concat = (src) => {
         if(activeother[activeIndex[current]]=== true){
             if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
-                setBottomImg(i => i.concat({id: id2, src: src, pos: 'normal', bottomPos: indexVal}));
+                setBottomImg(i => i.concat({id: id2, src: src, pos: 'normal', bottomPos: indexVal, trackValue: track[current]}));
+                if(track[current]){
+                    track[current] = track[current]+ 1
+                    setTrack(track);
+                    setTrackValue(track[current]);
+
+                }else{
+                    track[current] = id2;
+                    setTrack(track);
+                    setTrackValue(track[current]);
+
+                }
                 setId2(id2+1);
                 return;
             }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
-                setBottomImg(i => i.concat({id: id2, src: src, bool: false, bools: 0, pos: 'normal', bottomPos: indexVal}));
+                setBottomImg(i => i.concat({id: id2, src: src, bool: false, bools: 0, pos: 'normal', bottomPos: indexVal, trackValue: track[current]}));
+                if(track[current]){
+                    track[current] = track[current]+ 1
+                    setTrack(track);
+                    setTrackValue(track[current]);
+                }else{
+                    track[current] = id2;
+                    setTrack(track);
+                    setTrackValue(track[current]);
+
+                }
                 return;
             }
-            setBottomImg(i => i.concat({id: id2, src: src, pos: 'normal', bottomPos: indexVal}));
+            setBottomImg(i => i.concat({id: id2, src: src, pos: 'normal', bottomPos: indexVal ,trackValue:track[current]}));
+            if(track[current]){
+                track[current] = track[current] + 1;
+                setTrack(track);
+                setTrackValue(track[current]);
+
+            }else{
+                track[current] = id2;
+                setTrack(track);
+                setTrackValue(track[current]);
+            }
             setId2(id2+1);
             return;
         }else if(active[activeRightIndex[currentRight] + '-right'] === true){
@@ -134,12 +172,14 @@ const Start = () => {
         }else{
             if(src!==powerSource){
                 if(num > 0){
+                    setId2(1);
                     if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
                         setImg1(i => i.concat({id: id, src: src, pos: 'normal'}));
                         setId(id+1);
                         return;
                     }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
                         setImg1(i => i.concat({id: id, src: src, bool: false, bools: 0, pos: 'normal'}));
+                        setImgTrack(imgTrack +1);
                         return;
                     }else{
                         setImg1(img1 => img1.concat({id: id, src: src, pos: 'normal'}));
@@ -209,7 +249,10 @@ const Start = () => {
             currentRightDot={currentRightDot}
             setCurrentRightDot={setCurrentRightDot}
             rightRImg={rightRImg} indexVal={indexVal}
-            setIndexVal={setIndexVal}
+            setIndexVal={setIndexVal} 
+            id2={id2}
+            setTrack={setTrack}
+            tack={track}
             />
             {/* end */}
 
@@ -420,6 +463,9 @@ const Start = () => {
             setCurrentRightDot={setCurrentRightDot}
             rightRImg={rightRImg} setIndexVal={setIndexVal}
             indexVal={indexVal}
+            id2={id2}
+            setTrack={setTrack}
+            tack={track} trackValue={trackValue}
             />
             {/* end */}
 
