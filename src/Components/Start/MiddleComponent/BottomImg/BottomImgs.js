@@ -258,7 +258,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         className="right-dot-bottom"
         style={{
                 cursor: 'pointer',
-                marginTop: `${140*i.trackValue + 175}px`,
+                marginTop: `${i.trackValue ? 140*i.trackValue + 175: 178}px`,
                 left: `${140*i.bottomPos + 172}px`
                 }}
                 onClick={(e) => activeLink(e,index)}
@@ -268,8 +268,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         className="right-dot-bottom"
         style={{
                 cursor: 'pointer',
-                marginTop: `${140*i.trackValue + 227}px`,
-                left: `${140*i.bottomPos + 202}px`
+                marginTop: `${i.trackValue ? 140*i.trackValue + 227: 230}px`,
+                left: `${140*i.bottomPos + 202}px`,
                 }}
                 onClick={(e) => activeLink(e,index)}
                 id={index+'-right'}

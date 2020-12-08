@@ -91,7 +91,7 @@ const Start = () => {
     }
 
     const reset = () => {
-        window.sessionStorage.clear();
+        // window.sessionStorage.clear();
         setImg1([]);
         setId(1);
         setNum(0);
@@ -111,6 +111,7 @@ const Start = () => {
         setTrackValue(0);
         setIndexVal(null);
         setId2(1);
+        setImgTrack(0);
     }
 
     // populating images

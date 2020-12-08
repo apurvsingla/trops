@@ -53,9 +53,9 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 const array = newArray[index]
                 if(array.id === num+1){
                         if(appearDot[num] === true){
-                                newArray[index] = {id: array.id, src: array.src, bool: false, pos: 'normal'};
+                                newArray[index] = {...newArray[index], bool: false}
                         }else{
-                                newArray[index] = {id: array.id, src: array.src, bool: true, pos: 'normal'};  
+                                newArray[index] = {...newArray[index], bool: true}
                         }
                 }
         })
