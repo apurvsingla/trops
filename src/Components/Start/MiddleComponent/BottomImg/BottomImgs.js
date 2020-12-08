@@ -75,8 +75,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                     if(i.bool){
                             return(<span className="graphDesign-bottom"
                             style={{
-                                marginLeft: `${137+140*i.bottomPos}px`,
-                                marginTop: '67px',
+                                marginTop: `${140*i.trackValue}px`,
+                                left: `${140*i.bottomPos}px`,
                                 position: 'absolute',
                             }}
                             />)
