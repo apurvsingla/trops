@@ -147,8 +147,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                                         height: `${i.bools*7 + 5 }px`,
                                         width: `${i.bools*7 + 5}px`,
                                         // marginLeft: `${140*i.bottomPos - 100 - 4*i.bools}px`,
-                                        left: `${140*i.bottomPos - 3.3*i.bools + 166}px`,
-                                        marginTop: `${140*i.trackValue + 220 - 3*i.bools}px`,
+                                        left: `${140*i.bottomPos - 3.3*i.bools + 28}px`,
+                                        marginTop: `${140*i.trackValue +20 - 3*i.bools}px`,
                                         
                                 }}
                         />)
