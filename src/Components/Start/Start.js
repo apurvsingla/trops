@@ -117,7 +117,10 @@ const Start = () => {
     // populating images
     const onImage1Concat = (src) => {
         if(activeother[activeIndex[current]]=== true){
-            if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
+            if(src === powerSource){
+                return;
+            }
+            else if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
                 setBottomImg(i => i.concat({id: id2+current, src: src, pos: 'normal', bottomPos: indexVal, trackValue: track[current]}));
                 if(track[current]){
                     track[current] = track[current]+ 1
@@ -267,6 +270,8 @@ const Start = () => {
                     setDisplayDot2(false);
                     setDisplayDot1(true);
                     setDisplayDot3(false);
+                    setDisplayDot4(false);
+                    
                     }}>
                     <Icon onClick={(e) =>  onImage1Concat(powerSource)}/>
                     <Img src={powerSource} 
@@ -274,7 +279,7 @@ const Start = () => {
 
                     <Icon onClick={() => onImage1Concat(sequenceSource)}/>
                     <Img src={sequenceSource} 
-                    alt="beeper" style={{marginRight: '20px'}}/>
+                    alt="sequence" style={{marginRight: '20px'}}/>
 
                     <Icon onClick={(e) =>  onImage1Concat(beeperSource)}/>
                     <Img src={beeperSource} 
@@ -293,6 +298,8 @@ const Start = () => {
                     setDisplayDot2(true);
                     setDisplayDot1(false);
                     setDisplayDot3(false);
+                    setDisplayDot4(false);
+
                 }}>
 
                     <Icon onClick={() => onImage1Concat(graphSource)}/>
@@ -320,6 +327,8 @@ const Start = () => {
                     setDisplayDot2(false);
                     setDisplayDot1(false);
                     setDisplayDot3(true);
+                    setDisplayDot4(false);
+
                 }}>
                     <Icon onClick={() => onImage1Concat(magSource)}/>
                     <Img src={magSource} 
@@ -345,6 +354,7 @@ const Start = () => {
                     setDisplayDot2(false);
                     setDisplayDot1(false);
                     setDisplayDot3(false);
+                    setDisplayDot4(true);
                 }}>                   
                     <Icon onClick={() => onImage1Concat(tactSource)}/>
                     <Img src={tactSource} 
@@ -355,7 +365,7 @@ const Start = () => {
             </>
 
             {/* Swipeable Dots Beggining */}
-            <Dots onClick={() => {
+            <Dots onTouchEnd={() => {
             reactSwipeEl.slide(1);
             setDisplayDot1(true);
             setDisplayDot2(false);
@@ -368,7 +378,7 @@ const Start = () => {
             }}
             className={JSON.stringify(displayDot1) + 'dot'}
             />
-            <Dots onClick={() => {
+            <Dots onTouchEnd={() => {
             reactSwipeEl.slide(2);
             setDisplayDot2(true);
             setDisplayDot1(false);
@@ -382,11 +392,11 @@ const Start = () => {
             }}
             className={JSON.stringify(displayDot2) + 'dot'}
             />
-            <Dots onClick={() => {
+            <Dots onTouchEnd={() => {
                 reactSwipeEl.slide(3);
-                setDisplayDot1(false);
                 setDisplayDot2(false);
                 setDisplayDot3(true);
+                setDisplayDot1(false);
                 setDisplayDot4(false);
 
             }} 
@@ -396,12 +406,12 @@ const Start = () => {
             className={JSON.stringify(displayDot3) + 'dot'}
             />
 
-            <Dots onClick={() => {
+            <Dots onTouchEnd={() => {
                 reactSwipeEl.slide(4);
-                setDisplayDot1(false);
-                setDisplayDot2(false);
                 setDisplayDot3(false);
                 setDisplayDot4(true);
+                setDisplayDot1(false);
+                setDisplayDot2(false);
             }} 
             style={{
                 marginLeft: '45px'
@@ -562,14 +572,12 @@ const Start = () => {
             </>
 
             {/* Swipeable Dots Beggining */}
-            {mQuery && !mQuery.matches ? 
             <>
             <Dots onClick={() => {
             reactSwipeEl.slide(1);
             setDisplayDot1(true);
             setDisplayDot2(false);
             setDisplayDot3(false);
-            setDisplayDot4(false);
 
             }}
             style={{
@@ -582,7 +590,6 @@ const Start = () => {
             setDisplayDot2(true);
             setDisplayDot1(false);
             setDisplayDot3(false);
-            setDisplayDot4(false);
 
             }} 
             style={{
@@ -596,67 +603,13 @@ const Start = () => {
                 setDisplayDot1(false);
                 setDisplayDot2(false);
                 setDisplayDot3(true);
-                setDisplayDot4(false);
-
             }} 
             style={{
                 marginLeft: '30px'
             }}
             className={JSON.stringify(displayDot3) + 'dot'}
-            />
-
-            <Dots onClick={() => {
-                reactSwipeEl.slide(4);
-                setDisplayDot1(false);
-                setDisplayDot2(false);
-                setDisplayDot3(false);
-                setDisplayDot4(true);
-            }} 
-            style={{
-                marginLeft: '45px'
-            }}
-            className={JSON.stringify(displayDot4) + 'dot'}
             />
             </>
-            : <>
-            <Dots onClick={() => {
-            reactSwipeEl.slide(1);
-            setDisplayDot1(true);
-            setDisplayDot2(false);
-            setDisplayDot3(false);
-
-            }}
-            style={{
-                marginRight: '10px',
-            }}
-            className={JSON.stringify(displayDot1) + 'dot'}
-            />
-            <Dots onClick={() => {
-            reactSwipeEl.slide(2);
-            setDisplayDot2(true);
-            setDisplayDot1(false);
-            setDisplayDot3(false);
-
-            }} 
-            style={{
-                marginRight: '15px',
-                marginLeft: '15px'
-            }}
-            className={JSON.stringify(displayDot2) + 'dot'}
-            />
-            <Dots onClick={() => {
-                reactSwipeEl.slide(3);
-                setDisplayDot1(false);
-                setDisplayDot2(false);
-                setDisplayDot3(true);
-
-            }} 
-            style={{
-                marginLeft: '30px'
-            }}
-            className={JSON.stringify(displayDot3) + 'dot'}
-            />
-            </>}
             {/* Swipeable Dots End */}
            </Bottom>
            </>
