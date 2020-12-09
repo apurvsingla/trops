@@ -11,53 +11,26 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
     activeDot, activeSecondRightLink, bottomTop, index, 
     setBottomTop, pos, rightImg, i}) => {
     return(<>
-        {mQuery && !mQuery.matches ? (<RightSpan style={{
-                marginTop: `${i.id === currentRight ?
-                        100*pos[currentRight] + 14*activeRightIndex[currentRight]: null}px`,     
-                        }}> 
-                         <NormalRImg src={i.src} 
-                alt="alt" 
-                style={{
-                        left: `${ pos[activeDot+'-left'] + 58 + 140*index}px`,
-                }}
-                ref={e=>{
-                        if(!e){
-                                return;
-                        }
-                        bottomTop[index] = (e.getBoundingClientRect().top);
-                        setBottomTop(bottomTop);
-                }}/>
+        {mQuery && !mQuery.matches ? (
+        <RightSpan> 
+                <NormalRImg src={i.src} 
+                        alt="alt" 
+                        style={{
+                                left: `${140*i.id+ 170}px`,
+                                top: `${140*i.bottomRightPos + 43}px`
+                        }}
+                        />
         </RightSpan>) : 
-        <RightSpan style={{
-                marginTop: `${i.id === currentRight ?
-                        100*currentRight + 44*activeRightIndex[currentRight]: null}px`,       
-                        }}>
+        <RightSpan>
                 <NormalRImg src={i.src} 
                 alt="alt" 
                 style={{
-                        left: `${ pos[activeDot+'-left'] + 58 + 140*index}px`,
+                        left: `${140*i.id+ 170}px`,
+                        top: `${140*i.bottomRightPos + 43}px`
                 }}
-                ref={e=>{
-                        if(!e){
-                                return;
-                        }
-                        bottomTop[index] = (e.getBoundingClientRect().top);
-                        setBottomTop(bottomTop);
-                }}/>
+                />
         </RightSpan>}
 
-
-                {/* {(rightImg.length) === index ? null : (
-                <LargeRowLine style={{
-                        marginLeft: `${ pos[activeDot+'-left']  - 210}px`,
-                        marginTop: `${i.id === currentRight ?
-                                100*currentRight + 44*activeRightIndex[currentRight] + 148: null}px`,
-                                width: `${140*index + 78}px`,
-                                zIndex: '-4'
-                        }}
-                key={index+'--icon'} />) } */}
-
-                {/* dots start */}
                 {i.src === conditionSource ? 
                 <>
                  {mQuery && !mQuery.matches ? (<span 

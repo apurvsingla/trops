@@ -148,7 +148,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setAppearDot={setAppearDot}
                         setImg1={setImg1}
                          /> : null}
-                         </>
+                        </>
                          )
                 })) : null}
 

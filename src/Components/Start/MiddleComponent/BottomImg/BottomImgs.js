@@ -521,7 +521,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 left: `${140*i.bottomPos + 172}px`
                 }}
                 onClick={(e) => activeLink(e,index)}
-                id={index+'-right'}
+                id={i.id}
                 key={index+'-right'}
                 />: <span 
         className="right-dot-bottom"
@@ -530,8 +530,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 marginTop: `${i.trackValue ? 140*i.trackValue + 227: 230}px`,
                 left: `${140*i.bottomPos + 202}px`,
                 }}
-                onClick={(e) => activeLink(e,index)}
-                id={index+'-right'}
+                onClick={(e) => activeLink(e,i.switchId)}
+                id={i.id}
                 key={index+'-right'}
                 />}
         </>

@@ -57,10 +57,6 @@ export const BottomSpan = styled.span`
 
 export const RightSpan = styled.span`
     position: absolute;
-    top: 194px;
-    @media (max-width: 892px){
-        top: 169px;
-    }
 `;
 
 export const columnLineSpan = styled.span`
