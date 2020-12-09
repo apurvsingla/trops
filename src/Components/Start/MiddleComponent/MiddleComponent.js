@@ -154,6 +154,8 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
 
                 {bottomImg.length>=1 ? (bottomImg.map((i,index) => {
                         return(
+                        <>
+                        {i.pos === 'normal' ? 
                         <BottomImgs i={i} current={current} activeIndex={activeIndex}
                         index={index} activeLink={activeLink} pos={pos} setPos={setPos}
                         setActiveDot={setActiveDot} bottomImg={bottomImg} 
@@ -162,17 +164,24 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         marks={marks} valueLabelFormat={valueLabelFormat}
                         track={track} trackValue={trackValue}
                         />
+                        :null}
+                        {i.pos === 'right' ? <RightImgs mQuery={mQuery} currentRight={currentRight} activeRightIndex={activeRightIndex}
+                        activeDot={activeDot} activeSecondRightLink={activeSecondRightLink} bottomTop={bottomTop} 
+                        index={index} setBottomTop={setBottomTop} pos={pos} rightImg={rightImg} i={i} activeIndex={activeIndex} 
+                        /> : null}
+                        </>
+                        
                         )
                 })) : null}
                 
-                {rightImg.length>=1 ? (rightImg.map((i,index) => {
+                {/* {rightImg.length>=1 ? (rightImg.map((i,index) => {
                         return(
                         <RightImgs mQuery={mQuery} currentRight={currentRight} activeRightIndex={activeRightIndex}
                         activeDot={activeDot} activeSecondRightLink={activeSecondRightLink} bottomTop={bottomTop} 
                         index={index} setBottomTop={setBottomTop} pos={pos} rightImg={rightImg} i={i} activeIndex={activeIndex} 
                         />
                         )
-                })) : null}
+                })) : null} */}
                 {rightRImg.length >=1 ? (rightRImg.map((i,index) => {
                         return(
                         <RightRImgs 
