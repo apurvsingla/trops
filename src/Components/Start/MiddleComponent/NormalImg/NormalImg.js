@@ -25,6 +25,17 @@ graphSource
 
 import './Glow.scss';
 import '../Middle.styles.scss';
+import {
+GlowOne,
+GlowTwo,
+GlowThree,
+GlowFour,
+GlowFive,
+GlowSix,
+GlowSeven,
+GlowEight
+} from './GlowStyle';
+import { GlowEightM, GlowFiveM, GlowFourM, GlowOneM, GlowSevenM, GlowSixM, GlowThreeM,GlowTwoM } from './GlowStyleMobile';
 
 const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat, 
      activeSecondLink, img1,setAppearDot, appearDot,setImg1
@@ -129,28 +140,106 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
 
     const rangeGraph = () => {
         if(mQuery && !mQuery.matches){
-            if(i.bools){
-                return(<span className="graphDesign"
-                        style={{
-                                height: `${i.bools*6 + 5 }px`,
-                                width: `${i.bools*6 + 5}px`,
-                                top: `${92 - 4*i.bools}px`,
-                                marginLeft: `${i.bools*(-4)}px`,
-                                left: `${140*index + 162}px`,
-                        }}
-                />)
+                if(i.bools){
+                        if(i.bools === 1){
+                                return(<GlowOneM index={index}/>)
+                        }
+                        if(i.bools === 2){
+                                return(
+                                <GlowTwoM index={index}/>
+                                )
+                        }
+                        if(i.bools === 3){
+                                return(
+                                <GlowThreeM index={index}/>
+                                )
+                        }
+                        if(i.bools === 4){
+                                return(
+                                <GlowFourM index={index}/>
+                                )
+                        }
+                        if(i.bools === 5){
+                                return(
+                                <GlowFiveM index={index}/>
+                                )
+                        }
+                        if(i.bools === 6){
+                                return(
+                                <GlowSixM index={index}/>
+                                )
+                        }
+                        if(i.bools === 7){
+                                return(
+                                <GlowSevenM index={index}/>
+                                )
+                        }
+                        if(i.bools === 8){
+                                return(
+                                <GlowEightM index={index}/>
+                                )
+                        }
+                        if(i.bools === 9){
+                                return(
+                                <GlowEightM index={index}/>
+                                )
+                        }
+                        if(i.bools === 10){
+                                return(
+                                <GlowEightM index={index}/>
+                                )
+                        }
                 }
         }else{
                 if(i.bools){
-                        return(<span className="graphDesign"
-                        style={{
-                                height: `${i.bools*8 + 5 }px`,
-                                width: `${i.bools*8 + 5}px`,
-                                top: `${95 - 4*i.bools}px`,
-                                marginLeft: `${i.bools*(-4)}px`,
-                                left: `${140*index + 168}px`,
-                        }}
-                />)
+                        if(i.bools === 1){
+                                return(<GlowOne index={index}/>)
+                        }
+                        if(i.bools === 2){
+                                return(
+                                <GlowTwo index={index}/>
+                                )
+                        }
+                        if(i.bools === 3){
+                                return(
+                                <GlowThree index={index}/>
+                                )
+                        }
+                        if(i.bools === 4){
+                                return(
+                                <GlowFour index={index}/>
+                                )
+                        }
+                        if(i.bools === 5){
+                                return(
+                                <GlowFive index={index}/>
+                                )
+                        }
+                        if(i.bools === 6){
+                                return(
+                                <GlowSix index={index}/>
+                                )
+                        }
+                        if(i.bools === 7){
+                                return(
+                                <GlowSeven index={index}/>
+                                )
+                        }
+                        if(i.bools === 8){
+                                return(
+                                <GlowEight index={index}/>
+                                )
+                        }
+                        if(i.bools === 9){
+                                return(
+                                <GlowEight index={index}/>
+                                )
+                        }
+                        if(i.bools === 10){
+                                return(
+                                <GlowEight index={index}/>
+                                )
+                        }
                 }
         }
     } 

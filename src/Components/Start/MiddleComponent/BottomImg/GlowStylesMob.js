@@ -1,133 +1,133 @@
 import React from 'react';
 
-export const GlowOne = ({index}) => {
+export const GlowOneM = ({index,bottom}) => {
     return (
         <>
             <span 
             style={{
-                    width: '25px',
+                    width: '20px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    left: `${140*bottom + 145}px`,
+                    marginTop: `${140*index + 200}px`
             }}
             />
         </>
     );
 }
 
-export const GlowTwo = ({index}) => {
+export const GlowTwoM = ({index, bottom}) => {
     return(<>
             <span 
             style={{
-                    width: '25px',
+                    width: '20px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    left: `${140*bottom + 145}px`,
+                    marginTop: `${140*index + 200}px`
             }}
             />
             <span 
             style={{
-                    width: '34px',
+                    width: '25px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '122px',
-                    marginLeft: `${140*index - 88}px`
+                    left: `${140*bottom + 142}px`,
+                    marginTop: `${140*index + 195}px`
             }}
             />
     </>)
 }
 
-export const GlowThree = ({index}) => {
+export const GlowThreeM = ({index, bottom}) => {
     return(<>
+             <span 
+            style={{
+                    width: '20px',
+                    backgroundColor:'red',
+                    height: '2px',
+                    zIndex: '15',
+                    position: 'absolute',
+                    left: `${140*bottom + 145}px`,
+                    marginTop: `${140*index + 200}px`
+            }}
+            />
             <span 
             style={{
                     width: '25px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    left: `${140*bottom + 142}px`,
+                    marginTop: `${140*index + 195}px`
             }}
             />
             <span 
             style={{
-                    width: '34px',
+                    width: '29px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '122px',
-                    marginLeft: `${140*index - 88}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '38px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '115px',
-                    marginLeft: `${140*index - 90}px`
+                    left: `${140*bottom + 140}px`,
+                    marginTop: `${140*index + 191}px`
             }}
             />
     </>)
 }
 
-export const GlowFour = ({index}) => {
+export const GlowFourM = ({index, bottom}) => {
     return(
         <>
-        <span 
+         <span 
+            style={{
+                    width: '20px',
+                    backgroundColor:'red',
+                    height: '2px',
+                    zIndex: '15',
+                    position: 'absolute',
+                    left: `${140*bottom + 145}px`,
+                    marginTop: `${140*index + 200}px`
+            }}
+            />
+            <span 
             style={{
                     width: '25px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    left: `${140*bottom + 142}px`,
+                    marginTop: `${140*index + 195}px`
             }}
             />
             <span 
             style={{
-                    width: '34px',
+                    width: '29px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '122px',
-                    marginLeft: `${140*index - 88}px`
+                    left: `${140*bottom + 140}px`,
+                    marginTop: `${140*index + 191}px`
             }}
             />
             <span 
             style={{
-                    width: '38px',
+                    width: '33px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '115px',
-                    marginLeft: `${140*index - 90}px`
-            }}
-            />
-                <span 
-            style={{
-                    width: '40px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '109px',
-                    marginLeft: `${140*index - 90}px`
+                    left: `${140*bottom + 138}px`,
+                    marginTop: `${140*index + 186}px`
             }}
             />
         </>
@@ -135,309 +135,309 @@ export const GlowFour = ({index}) => {
 
 }
 
-export const GlowFive = ({index}) => {
+export const GlowFiveM = ({index, bottom}) => {
     return(<>
-     <span 
+        <span 
+            style={{
+                    width: '20px',
+                    backgroundColor:'red',
+                    height: '2px',
+                    zIndex: '15',
+                    position: 'absolute',
+                    left: `${140*bottom + 145}px`,
+                    marginTop: `${140*index + 200}px`
+            }}
+            />
+            <span 
             style={{
                     width: '25px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    left: `${140*bottom + 142}px`,
+                    marginTop: `${140*index + 195}px`
             }}
             />
             <span 
             style={{
-                    width: '34px',
+                    width: '29px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '122px',
-                    marginLeft: `${140*index - 88}px`
+                    left: `${140*bottom + 140}px`,
+                    marginTop: `${140*index + 191}px`
             }}
             />
             <span 
             style={{
-                    width: '38px',
+                    width: '33px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '115px',
-                    marginLeft: `${140*index - 90}px`
-            }}
-            />
-                <span 
-            style={{
-                    width: '40px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '109px',
-                    marginLeft: `${140*index - 90}px`
+                    left: `${140*bottom + 138}px`,
+                    marginTop: `${140*index + 186}px`
             }}
             />
             <span 
             style={{
-                    width: '50px',
+                    width: '37px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '102px',
-                    marginLeft: `${140*index - 95}px`
+                    left: `${140*bottom + 136}px`,
+                    marginTop: `${140*index + 181}px`
             }}
             />
     </>
     )
 }
 
-export const GlowSix = ({index}) => {
+export const GlowSixM = ({index, bottom}) => {
     return(<>
-    <span 
+   <span 
+            style={{
+                    width: '20px',
+                    backgroundColor:'red',
+                    height: '2px',
+                    zIndex: '15',
+                    position: 'absolute',
+                    left: `${140*bottom + 145}px`,
+                    marginTop: `${140*index + 200}px`
+            }}
+            />
+            <span 
             style={{
                     width: '25px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    left: `${140*bottom + 142}px`,
+                    marginTop: `${140*index + 195}px`
             }}
             />
             <span 
             style={{
-                    width: '34px',
+                    width: '29px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '122px',
-                    marginLeft: `${140*index - 88}px`
+                    left: `${140*bottom + 140}px`,
+                    marginTop: `${140*index + 191}px`
             }}
             />
             <span 
             style={{
-                    width: '38px',
+                    width: '33px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '115px',
-                    marginLeft: `${140*index - 90}px`
-            }}
-            />
-                <span 
-            style={{
-                    width: '40px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '109px',
-                    marginLeft: `${140*index - 90}px`
+                    left: `${140*bottom + 138}px`,
+                    marginTop: `${140*index + 186}px`
             }}
             />
             <span 
             style={{
-                    width: '50px',
+                    width: '37px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '102px',
-                    marginLeft: `${140*index - 95}px`
+                    left: `${140*bottom + 136}px`,
+                    marginTop: `${140*index + 181}px`
             }}
             />
             <span 
             style={{
-                    width: '61px',
+                    width: '43px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '96px',
-                    marginLeft: `${140*index - 101}px`
+                    left: `${140*bottom + 133}px`,
+                    marginTop: `${140*index + 176}px`
             }}
             />
     </>)
 }
 
-export const GlowSeven = ({index}) => {
+export const GlowSevenM = ({index,bottom}) => {
     return(<>
-    <span 
+     <span 
+            style={{
+                    width: '20px',
+                    backgroundColor:'red',
+                    height: '2px',
+                    zIndex: '15',
+                    position: 'absolute',
+                    left: `${140*bottom + 145}px`,
+                    marginTop: `${140*index + 200}px`
+            }}
+            />
+            <span 
             style={{
                     width: '25px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    left: `${140*bottom + 142}px`,
+                    marginTop: `${140*index + 195}px`
             }}
             />
             <span 
             style={{
-                    width: '34px',
+                    width: '29px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '122px',
-                    marginLeft: `${140*index - 88}px`
+                    left: `${140*bottom + 140}px`,
+                    marginTop: `${140*index + 191}px`
             }}
             />
             <span 
             style={{
-                    width: '38px',
+                    width: '33px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '115px',
-                    marginLeft: `${140*index - 90}px`
-            }}
-            />
-                <span 
-            style={{
-                    width: '40px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '109px',
-                    marginLeft: `${140*index - 90}px`
+                    left: `${140*bottom + 138}px`,
+                    marginTop: `${140*index + 186}px`
             }}
             />
             <span 
             style={{
-                    width: '50px',
+                    width: '37px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '102px',
-                    marginLeft: `${140*index - 95}px`
+                    left: `${140*bottom + 136}px`,
+                    marginTop: `${140*index + 181}px`
             }}
             />
             <span 
             style={{
-                    width: '61px',
+                    width: '43px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '96px',
-                    marginLeft: `${140*index - 101}px`
+                    left: `${140*bottom + 133}px`,
+                    marginTop: `${140*index + 176}px`
             }}
             />
             <span 
             style={{
-                    width: '75px',
+                    width: '53px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '89px',
-                    marginLeft: `${140*index - 108}px`
+                    left: `${140*bottom + 128}px`,
+                    marginTop: `${140*index + 171}px`
             }}
             />
     </>)
 }
 
 
-export const GlowEight = ({index}) => {
+export const GlowEightM = ({index, bottom}) => {
     return(<>
     <span 
             style={{
+                    width: '20px',
+                    backgroundColor:'red',
+                    height: '2px',
+                    zIndex: '15',
+                    position: 'absolute',
+                    left: `${140*bottom + 145}px`,
+                    marginTop: `${140*index + 200}px`
+            }}
+            />
+            <span 
+            style={{
                     width: '25px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    left: `${140*bottom + 142}px`,
+                    marginTop: `${140*index + 195}px`
             }}
             />
             <span 
             style={{
-                    width: '34px',
+                    width: '29px',
                     backgroundColor:'red',
-                    height: '3px',
+                    height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '122px',
-                    marginLeft: `${140*index - 88}px`
+                    left: `${140*bottom + 140}px`,
+                    marginTop: `${140*index + 191}px`
             }}
             />
             <span 
             style={{
-                    width: '38px',
+                    width: '33px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '115px',
-                    marginLeft: `${140*index - 90}px`
-            }}
-            />
-                <span 
-            style={{
-                    width: '40px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '109px',
-                    marginLeft: `${140*index - 90}px`
+                    left: `${140*bottom + 138}px`,
+                    marginTop: `${140*index + 186}px`
             }}
             />
             <span 
             style={{
-                    width: '50px',
+                    width: '37px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '102px',
-                    marginLeft: `${140*index - 95}px`
+                    left: `${140*bottom + 136}px`,
+                    marginTop: `${140*index + 181}px`
             }}
             />
             <span 
             style={{
-                    width: '61px',
+                    width: '43px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '96px',
-                    marginLeft: `${140*index - 101}px`
+                    left: `${140*bottom + 133}px`,
+                    marginTop: `${140*index + 176}px`
             }}
             />
             <span 
             style={{
-                    width: '75px',
+                    width: '53px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '89px',
-                    marginLeft: `${140*index - 108}px`
+                    left: `${140*bottom + 128}px`,
+                    marginTop: `${140*index + 171}px`
             }}
             />
             <span 
             style={{
-                    width: '80px',
+                    width: '60px',
                     backgroundColor:'red',
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    top: '82px',
-                    marginLeft: `${140*index - 110}px`
+                    left: `${140*bottom + 124}px`,
+                    marginTop: `${140*index + 167}px`
             }}
             />
     </>)

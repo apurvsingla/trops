@@ -19,6 +19,26 @@ graphSource
 } from '../Source/source';
 import '../Middle.styles.scss';
 import ScrollBottom from './Scroll/ScrollBottom';
+import {
+GlowOne,
+GlowTwo,
+GlowThree,
+GlowFour,
+GlowFive,
+GlowSeven,
+GlowSix,
+GlowEight
+} from './GlowStyles';
+import {
+GlowOneM,
+GlowTwoM,
+GlowThreeM,
+GlowFourM,
+GlowFiveM,
+GlowSevenM,
+GlowSixM,
+GlowEightM
+} from './GlowStylesMob';
 
 const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 appearDot, setAppearDot, setBottomImg, marks, valueLabelFormat
@@ -126,35 +146,96 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 }
             }
         
+            
             const rangeGraph = () => {
                 if(mQuery && !mQuery.matches){
-                    if(i.bools){
-                        return(<span className="graphDesign"
-                                style={{
-                                        height: `${i.bools*4 + 5 }px`,
-                                        width: `${i.bools*4 + 5}px`,
-                                        // marginLeft: `${140*i.bottomPos - 100 - 4*i.bools}px`,
-                                        left: `${140*i.bottomPos - 2.1*i.bools + 27}px`,
-                                        marginTop: `${140*i.trackValue + 125 - 2.3*i.bools}px`,
-                                }}
-                        />)
+                        if(i.bools){
+                                if(i.bools === 1){
+                                        return(
+                                        <GlowOneM index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 2){
+                                        return(
+                                        <GlowTwoM index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 3){
+                                        return(
+                                        <GlowThreeM index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 4){
+                                        return(
+                                        <GlowFourM index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 5){
+                                        return(
+                                        <GlowFiveM index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 6){
+                                        return(
+                                        <GlowSixM index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 7){
+                                        return(
+                                        <GlowSevenM index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 8 || i.bools ===9 || i.bools === 10){
+                                        return(
+                                        <GlowEightM index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
                         }
                 }else{
                         if(i.bools){
-                                return(<span className="graphDesign-bottom"
-                                style={{
-                                        height: `${i.bools*7 + 5 }px`,
-                                        width: `${i.bools*7 + 5}px`,
-                                        // marginLeft: `${140*i.bottomPos - 100 - 4*i.bools}px`,
-                                        left: `${140*i.bottomPos - 3.3*i.bools + 28}px`,
-                                        marginTop: `${140*i.trackValue +20 - 3*i.bools}px`,
-                                        
-                                }}
-                        />)
+                                if(i.bools === 1){
+                                        return(
+                                        <GlowOne index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 2){
+                                        return(
+                                        <GlowTwo index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 3){
+                                        return(
+                                        <GlowThree index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 4){
+                                        return(
+                                        <GlowFour index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 5){
+                                        return(
+                                        <GlowFive index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 6){
+                                        return(
+                                        <GlowSix index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 7){
+                                        return(
+                                        <GlowSeven index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
+                                if(i.bools === 8 || i.bools ===9 || i.bools === 10){
+                                        return(
+                                        <GlowEight index={i.trackValue} bottom={i.bottomPos}/>
+                                        )
+                                }
                         }
-                }
-            } 
-
+                }      
+        }
     return(<>
         <BottomSpan>
                 <Img src={i.src} alt="alt"
