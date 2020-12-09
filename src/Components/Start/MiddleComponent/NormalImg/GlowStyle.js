@@ -11,7 +11,7 @@ export const GlowOne = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    marginLeft: `${100*index + 118}px`
             }}
             />
         </>
@@ -28,7 +28,7 @@ export const GlowTwo = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    marginLeft: `${100*index + 118}px`
             }}
             />
             <span 
@@ -39,7 +39,7 @@ export const GlowTwo = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '122px',
-                    marginLeft: `${140*index - 88}px`
+                    marginLeft: `${100*index+ 113}px`
             }}
             />
     </>)
@@ -55,7 +55,7 @@ export const GlowThree = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    marginLeft: `${100*index + 118}px`
             }}
             />
             <span 
@@ -66,7 +66,7 @@ export const GlowThree = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '122px',
-                    marginLeft: `${140*index - 88}px`
+                    marginLeft: `${100*index+ 113}px`
             }}
             />
             <span 
@@ -77,7 +77,7 @@ export const GlowThree = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '115px',
-                    marginLeft: `${140*index - 90}px`
+                    marginLeft: `${100*index + 111}px`
             }}
             />
     </>)
@@ -86,7 +86,7 @@ export const GlowThree = ({index}) => {
 export const GlowFour = ({index}) => {
     return(
         <>
-        <span 
+         <span 
             style={{
                     width: '25px',
                     backgroundColor:'red',
@@ -94,7 +94,7 @@ export const GlowFour = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    marginLeft: `${100*index + 118}px`
             }}
             />
             <span 
@@ -105,7 +105,7 @@ export const GlowFour = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '122px',
-                    marginLeft: `${140*index - 88}px`
+                    marginLeft: `${100*index+ 113}px`
             }}
             />
             <span 
@@ -116,7 +116,7 @@ export const GlowFour = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '115px',
-                    marginLeft: `${140*index - 90}px`
+                    marginLeft: `${100*index + 111}px`
             }}
             />
                 <span 
@@ -127,7 +127,7 @@ export const GlowFour = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '109px',
-                    marginLeft: `${140*index - 90}px`
+                    marginLeft: `${100*index +109}px`
             }}
             />
         </>
@@ -145,7 +145,7 @@ export const GlowFive = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    marginLeft: `${100*index + 118}px`
             }}
             />
             <span 
@@ -156,7 +156,7 @@ export const GlowFive = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '122px',
-                    marginLeft: `${140*index - 88}px`
+                    marginLeft: `${100*index+ 113}px`
             }}
             />
             <span 
@@ -167,7 +167,7 @@ export const GlowFive = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '115px',
-                    marginLeft: `${140*index - 90}px`
+                    marginLeft: `${100*index + 111}px`
             }}
             />
                 <span 
@@ -178,7 +178,7 @@ export const GlowFive = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '109px',
-                    marginLeft: `${140*index - 90}px`
+                    marginLeft: `${100*index +109}px`
             }}
             />
             <span 
@@ -189,7 +189,7 @@ export const GlowFive = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '102px',
-                    marginLeft: `${140*index - 95}px`
+                    marginLeft: `${100*index + 104}px`
             }}
             />
     </>
@@ -206,7 +206,7 @@ export const GlowSix = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    marginLeft: `${100*index + 118}px`
             }}
             />
             <span 
@@ -217,7 +217,7 @@ export const GlowSix = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '122px',
-                    marginLeft: `${140*index - 88}px`
+                    marginLeft: `${100*index+ 113}px`
             }}
             />
             <span 
@@ -228,7 +228,7 @@ export const GlowSix = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '115px',
-                    marginLeft: `${140*index - 90}px`
+                    marginLeft: `${100*index + 111}px`
             }}
             />
                 <span 
@@ -239,7 +239,7 @@ export const GlowSix = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '109px',
-                    marginLeft: `${140*index - 90}px`
+                    marginLeft: `${100*index +109}px`
             }}
             />
             <span 
@@ -250,7 +250,7 @@ export const GlowSix = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '102px',
-                    marginLeft: `${140*index - 95}px`
+                    marginLeft: `${100*index + 104}px`
             }}
             />
             <span 
@@ -261,7 +261,7 @@ export const GlowSix = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '96px',
-                    marginLeft: `${140*index - 101}px`
+                    marginLeft: `${100*index + 99}px`
             }}
             />
     </>)
@@ -269,7 +269,7 @@ export const GlowSix = ({index}) => {
 
 export const GlowSeven = ({index}) => {
     return(<>
-    <span 
+   <span 
             style={{
                     width: '25px',
                     backgroundColor:'red',
@@ -277,7 +277,7 @@ export const GlowSeven = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    marginLeft: `${100*index + 118}px`
             }}
             />
             <span 
@@ -288,7 +288,7 @@ export const GlowSeven = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '122px',
-                    marginLeft: `${140*index - 88}px`
+                    marginLeft: `${100*index+ 113}px`
             }}
             />
             <span 
@@ -299,7 +299,7 @@ export const GlowSeven = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '115px',
-                    marginLeft: `${140*index - 90}px`
+                    marginLeft: `${100*index + 111}px`
             }}
             />
                 <span 
@@ -310,7 +310,7 @@ export const GlowSeven = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '109px',
-                    marginLeft: `${140*index - 90}px`
+                    marginLeft: `${100*index +109}px`
             }}
             />
             <span 
@@ -321,7 +321,7 @@ export const GlowSeven = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '102px',
-                    marginLeft: `${140*index - 95}px`
+                    marginLeft: `${100*index + 104}px`
             }}
             />
             <span 
@@ -332,7 +332,7 @@ export const GlowSeven = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '96px',
-                    marginLeft: `${140*index - 101}px`
+                    marginLeft: `${100*index + 99}px`
             }}
             />
             <span 
@@ -343,7 +343,7 @@ export const GlowSeven = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '89px',
-                    marginLeft: `${140*index - 108}px`
+                    marginLeft: `${100*index + 92}px`
             }}
             />
     </>)
@@ -360,7 +360,7 @@ export const GlowEight = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '128px',
-                    marginLeft: `${140*index - 84}px`
+                    marginLeft: `${100*index + 118}px`
             }}
             />
             <span 
@@ -371,7 +371,7 @@ export const GlowEight = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '122px',
-                    marginLeft: `${140*index - 88}px`
+                    marginLeft: `${100*index+ 113}px`
             }}
             />
             <span 
@@ -382,7 +382,7 @@ export const GlowEight = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '115px',
-                    marginLeft: `${140*index - 90}px`
+                    marginLeft: `${100*index + 111}px`
             }}
             />
                 <span 
@@ -393,7 +393,7 @@ export const GlowEight = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '109px',
-                    marginLeft: `${140*index - 90}px`
+                    marginLeft: `${100*index +109}px`
             }}
             />
             <span 
@@ -404,7 +404,7 @@ export const GlowEight = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '102px',
-                    marginLeft: `${140*index - 95}px`
+                    marginLeft: `${100*index + 104}px`
             }}
             />
             <span 
@@ -415,7 +415,7 @@ export const GlowEight = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '96px',
-                    marginLeft: `${140*index - 101}px`
+                    marginLeft: `${100*index + 99}px`
             }}
             />
             <span 
@@ -426,7 +426,7 @@ export const GlowEight = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '89px',
-                    marginLeft: `${140*index - 108}px`
+                    marginLeft: `${100*index + 92}px`
             }}
             />
             <span 
@@ -437,7 +437,7 @@ export const GlowEight = ({index}) => {
                     zIndex: '15',
                     position: 'absolute',
                     top: '82px',
-                    marginLeft: `${140*index - 110}px`
+                    marginLeft: `${100*index + 90}px`
             }}
             />
     </>)

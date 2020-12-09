@@ -87,13 +87,16 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
     }
 
     const glowGraph = () => {
-            if(i.bool){
-                    return(<span className="graphDesign"
-                    style={{
-                            left: `${140*index}px`,
-                    }}
-                    />)
-            }
+        if(mQuery && !mQuery.matches){
+                if(i.bool){
+                return(<GlowEightM index={index}/>)
+                        
+                }
+        }else{
+                if(i.bool){
+                return(<GlowEight index={index}/>)
+                }
+        }
     }
 
     const rangeGlow = () => {
