@@ -361,7 +361,7 @@ const Start = () => {
                     alt="beeper" />
                     
                 </div>
-                </ReactSwipe>) 
+                </ReactSwipe>
             </>
 
             {/* Swipeable Dots Beggining */}
@@ -371,13 +371,13 @@ const Start = () => {
             setDisplayDot2(false);
             setDisplayDot3(false);
             setDisplayDot4(false);
-
             }}
             style={{
                 marginRight: '10px',
             }}
             className={JSON.stringify(displayDot1) + 'dot'}
             />
+
             <Dots onTouchEnd={() => {
             reactSwipeEl.slide(2);
             setDisplayDot2(true);
