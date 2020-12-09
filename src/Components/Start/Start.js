@@ -169,9 +169,9 @@ const Start = () => {
             setId2(id2+1);
             return;
         }else if(active[activeRightIndex[currentRight]] === true){
-            setRightImg(i => i.concat({id: id3, src: src, pos: 'right',bottomRightPos: indexVal, trackValue: trackRight[currentRight]}));
+            setRightImg(i => i.concat({id: id3, src: src, pos: 'right',bottomRightPos: id2, trackValue: trackRight[currentRight]}));
             if(trackRight[currentRight]){
-                trackRight[currentRight] = trackRight[currentRight]+ 1
+                trackRight[currentRight] = id3 + current + 1
                 setTrackRight(trackRight);
                 setTrackValueRight(trackRight[currentRight]);
 
