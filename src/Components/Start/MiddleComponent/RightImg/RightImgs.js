@@ -25,8 +25,8 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 <NormalRImg src={i.src} 
                 alt="alt" 
                 style={{
-                        left: `${140*i.id+ 260}px`,
-                        marginTop:`${140*i.bottomRightPos - 100}px`,
+                        left: `${140*i.id+ 124}px`,
+                        marginTop:`${140*i.bottomRightPos+ 40}px`,
                         zIndex: '50'
                 }}
                 />

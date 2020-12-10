@@ -20,17 +20,7 @@ export const GlowOneM = ({index,bottom}) => {
 
 export const GlowTwoM = ({index, bottom}) => {
     return(<>
-            <span 
-            style={{
-                    width: '20px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 145}px`,
-                    marginTop: `${140*index + 200}px`
-            }}
-            />
+            <GlowOneM index={index} bottom={bottom}/>
             <span 
             style={{
                     width: '25px',
@@ -47,28 +37,7 @@ export const GlowTwoM = ({index, bottom}) => {
 
 export const GlowThreeM = ({index, bottom}) => {
     return(<>
-             <span 
-            style={{
-                    width: '20px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 145}px`,
-                    marginTop: `${140*index + 200}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '25px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 142}px`,
-                    marginTop: `${140*index + 195}px`
-            }}
-            />
+             <GlowTwoM index={index} bottom={bottom}/>
             <span 
             style={{
                     width: '29px',
@@ -86,39 +55,7 @@ export const GlowThreeM = ({index, bottom}) => {
 export const GlowFourM = ({index, bottom}) => {
     return(
         <>
-         <span 
-            style={{
-                    width: '20px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 145}px`,
-                    marginTop: `${140*index + 200}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '25px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 142}px`,
-                    marginTop: `${140*index + 195}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '29px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 140}px`,
-                    marginTop: `${140*index + 191}px`
-            }}
-            />
+         <GlowThreeM index={index} bottom={bottom}/>
             <span 
             style={{
                     width: '33px',
@@ -137,50 +74,7 @@ export const GlowFourM = ({index, bottom}) => {
 
 export const GlowFiveM = ({index, bottom}) => {
     return(<>
-        <span 
-            style={{
-                    width: '20px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 145}px`,
-                    marginTop: `${140*index + 200}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '25px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 142}px`,
-                    marginTop: `${140*index + 195}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '29px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 140}px`,
-                    marginTop: `${140*index + 191}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '33px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 138}px`,
-                    marginTop: `${140*index + 186}px`
-            }}
-            />
+        <GlowFourM index={index} bottom={bottom}/>
             <span 
             style={{
                     width: '37px',
@@ -198,61 +92,7 @@ export const GlowFiveM = ({index, bottom}) => {
 
 export const GlowSixM = ({index, bottom}) => {
     return(<>
-   <span 
-            style={{
-                    width: '20px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 145}px`,
-                    marginTop: `${140*index + 200}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '25px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 142}px`,
-                    marginTop: `${140*index + 195}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '29px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 140}px`,
-                    marginTop: `${140*index + 191}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '33px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 138}px`,
-                    marginTop: `${140*index + 186}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '37px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 136}px`,
-                    marginTop: `${140*index + 181}px`
-            }}
-            />
+        <GlowFiveM index={index} bottom={bottom}/>
             <span 
             style={{
                     width: '43px',
@@ -269,72 +109,7 @@ export const GlowSixM = ({index, bottom}) => {
 
 export const GlowSevenM = ({index,bottom}) => {
     return(<>
-     <span 
-            style={{
-                    width: '20px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 145}px`,
-                    marginTop: `${140*index + 200}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '25px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 142}px`,
-                    marginTop: `${140*index + 195}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '29px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 140}px`,
-                    marginTop: `${140*index + 191}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '33px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 138}px`,
-                    marginTop: `${140*index + 186}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '37px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 136}px`,
-                    marginTop: `${140*index + 181}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '43px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 133}px`,
-                    marginTop: `${140*index + 176}px`
-            }}
-            />
+     <GlowSixM index={index} bottom={bottom}/>
             <span 
             style={{
                     width: '53px',
@@ -352,83 +127,7 @@ export const GlowSevenM = ({index,bottom}) => {
 
 export const GlowEightM = ({index, bottom}) => {
     return(<>
-    <span 
-            style={{
-                    width: '20px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 145}px`,
-                    marginTop: `${140*index + 200}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '25px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 142}px`,
-                    marginTop: `${140*index + 195}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '29px',
-                    backgroundColor:'red',
-                    height: '2px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 140}px`,
-                    marginTop: `${140*index + 191}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '33px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 138}px`,
-                    marginTop: `${140*index + 186}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '37px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 136}px`,
-                    marginTop: `${140*index + 181}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '43px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 133}px`,
-                    marginTop: `${140*index + 176}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '53px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    left: `${140*bottom + 128}px`,
-                    marginTop: `${140*index + 171}px`
-            }}
-            />
+        <GlowSevenM index={index} bottom={bottom}/>
             <span 
             style={{
                     width: '60px',

@@ -20,17 +20,7 @@ export const GlowOne = ({index}) => {
 
 export const GlowTwo = ({index}) => {
     return(<>
-            <span 
-            style={{
-                    width: '25px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${100*index + 118}px`
-            }}
-            />
+            <GlowOne index={index} />
             <span 
             style={{
                     width: '34px',
@@ -47,28 +37,7 @@ export const GlowTwo = ({index}) => {
 
 export const GlowThree = ({index}) => {
     return(<>
-            <span 
-            style={{
-                    width: '25px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${100*index + 118}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '34px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '122px',
-                    marginLeft: `${100*index+ 113}px`
-            }}
-            />
+            <GlowTwo index={index} />
             <span 
             style={{
                     width: '38px',
@@ -86,39 +55,7 @@ export const GlowThree = ({index}) => {
 export const GlowFour = ({index}) => {
     return(
         <>
-         <span 
-            style={{
-                    width: '25px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${100*index + 118}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '34px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '122px',
-                    marginLeft: `${100*index+ 113}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '38px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '115px',
-                    marginLeft: `${100*index + 111}px`
-            }}
-            />
+         <GlowThree index={index} />
                 <span 
             style={{
                     width: '40px',
@@ -137,50 +74,7 @@ export const GlowFour = ({index}) => {
 
 export const GlowFive = ({index}) => {
     return(<>
-     <span 
-            style={{
-                    width: '25px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${100*index + 118}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '34px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '122px',
-                    marginLeft: `${100*index+ 113}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '38px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '115px',
-                    marginLeft: `${100*index + 111}px`
-            }}
-            />
-                <span 
-            style={{
-                    width: '40px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '109px',
-                    marginLeft: `${100*index +109}px`
-            }}
-            />
+     <GlowFour index={index} />
             <span 
             style={{
                     width: '50px',
@@ -198,61 +92,7 @@ export const GlowFive = ({index}) => {
 
 export const GlowSix = ({index}) => {
     return(<>
-    <span 
-            style={{
-                    width: '25px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${100*index + 118}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '34px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '122px',
-                    marginLeft: `${100*index+ 113}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '38px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '115px',
-                    marginLeft: `${100*index + 111}px`
-            }}
-            />
-                <span 
-            style={{
-                    width: '40px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '109px',
-                    marginLeft: `${100*index +109}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '50px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '102px',
-                    marginLeft: `${100*index + 104}px`
-            }}
-            />
+    <GlowFive index={index} />
             <span 
             style={{
                     width: '61px',
@@ -269,72 +109,7 @@ export const GlowSix = ({index}) => {
 
 export const GlowSeven = ({index}) => {
     return(<>
-   <span 
-            style={{
-                    width: '25px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${100*index + 118}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '34px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '122px',
-                    marginLeft: `${100*index+ 113}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '38px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '115px',
-                    marginLeft: `${100*index + 111}px`
-            }}
-            />
-                <span 
-            style={{
-                    width: '40px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '109px',
-                    marginLeft: `${100*index +109}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '50px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '102px',
-                    marginLeft: `${100*index + 104}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '61px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '96px',
-                    marginLeft: `${100*index + 99}px`
-            }}
-            />
+        <GlowSix index={index} />
             <span 
             style={{
                     width: '75px',
@@ -352,83 +127,7 @@ export const GlowSeven = ({index}) => {
 
 export const GlowEight = ({index}) => {
     return(<>
-    <span 
-            style={{
-                    width: '25px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '128px',
-                    marginLeft: `${100*index + 118}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '34px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '122px',
-                    marginLeft: `${100*index+ 113}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '38px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '115px',
-                    marginLeft: `${100*index + 111}px`
-            }}
-            />
-                <span 
-            style={{
-                    width: '40px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '109px',
-                    marginLeft: `${100*index +109}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '50px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '102px',
-                    marginLeft: `${100*index + 104}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '61px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '96px',
-                    marginLeft: `${100*index + 99}px`
-            }}
-            />
-            <span 
-            style={{
-                    width: '75px',
-                    backgroundColor:'red',
-                    height: '3px',
-                    zIndex: '15',
-                    position: 'absolute',
-                    top: '89px',
-                    marginLeft: `${100*index + 92}px`
-            }}
-            />
+    <GlowSeven index={index}/>
             <span 
             style={{
                     width: '80px',

@@ -88,6 +88,8 @@ const Start = () => {
     const [trackValueRight, setTrackValueRight] = useSessionStorage('trackValueRight', 0);
     const [trackRight, setTrackRight] = useSessionStorage('track-right',{});
 
+    const [trackBottom, setTrackBottom] = useSessionStorage('track-bottom', {});
+
     // const [curId, setCurId] = useSessionStorage('cur_id', 1);
     
     const history = useHistory();
@@ -139,6 +141,13 @@ const Start = () => {
                     setTrackValue(track[current]);
 
                 }
+                if(trackBottom[current]){
+                    trackBottom[current] = trackBottom[current] + 1
+                    setTrackBottom(trackBottom);
+                }else{
+                    trackBottom[current] = 1
+                    setTrackBottom(trackBottom);
+                }
                 setId2(id2+1);
                 return;
             }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
@@ -153,36 +162,50 @@ const Start = () => {
                     setTrackValue(track[current]);
 
                 }
+                if(trackBottom[current]){
+                    trackBottom[current] = trackBottom[current] + 1
+                    setTrackBottom(trackBottom);
+                }else{
+                    trackBottom[current] = 1
+                    setTrackBottom(trackBottom);
+                }
+                return;
+            }else{
+                setBottomImg(i => i.concat({id: id2, switchId: id2+current,src: src, pos: 'normal', bottomPos: indexVal ,trackValue:track[current]}));
+                if(track[current]){
+                    track[current] = track[current] + 1;
+                    setTrack(track);
+                    setTrackValue(track[current]);
+
+                }else{
+                    track[current] = id2;
+                    setTrack(track);
+                    setTrackValue(track[current]);
+                }
+                if(trackBottom[current]){
+                    trackBottom[current] = trackBottom[current] + 1
+                    setTrackBottom(trackBottom);
+                }else{
+                    trackBottom[current] = 1
+                    setTrackBottom(trackBottom);
+                }
+                setId2(id2+1);
                 return;
             }
-            setBottomImg(i => i.concat({id: id2, switchId: id2+current,src: src, pos: 'normal', bottomPos: indexVal ,trackValue:track[current]}));
-            if(track[current]){
-                track[current] = track[current] + 1;
-                setTrack(track);
-                setTrackValue(track[current]);
-
-            }else{
-                track[current] = id2;
-                setTrack(track);
-                setTrackValue(track[current]);
-            }
-            setId2(id2+1);
-            return;
         }else if(active[activeRightIndex[currentRight]] === true){
-            setBottomImg(i => i.concat({id: id3, src: src, pos: 'right',bottomRightPos: id2, trackValue: trackRight[currentRight]}));
+            setBottomImg(i => i.concat({id: id3+trackBottom[current], src: src, pos: 'right',bottomRightPos: trackBottom[current], trackValue: trackRight[currentRight]}));
             if(trackRight[currentRight]){
-                trackRight[currentRight] = id3 + current + 1
+                trackRight[currentRight] = id2 + current + 1
                 setTrackRight(trackRight);
                 setTrackValueRight(trackRight[currentRight]);
 
             }else{
-                trackRight[currentRight] = id3 + current;
+                trackRight[currentRight] = id2 + current;
                 setTrackRight(trackRight);
                 setTrackValueRight(trackRight[currentRight]);
 
             }
             setId3(id3+1);
-            // setCurId(current)
             return;
         }else if(activeRightBottom[activeRightBottomIndex[currentRightDot] + '-bottom'] === true){
             setRightRImg(i=> i.concat({id: id4, src: src, pos: 'normal', currentRightRight: currentRightDot}));
