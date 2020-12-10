@@ -121,6 +121,10 @@ const Start = () => {
         setIndexVal(null);
         setId2(1);
         setImgTrack(0);
+        setTrackBottom({});
+        setTrackBottomTop({});
+        setTrackRight({});
+        setTrackValueRight(0);
     }
 
     // populating images
@@ -207,14 +211,14 @@ const Start = () => {
                 return;
             }
         }else if(active[activeRightIndex[currentRight]] === true){
-            setBottomImg(i => i.concat({id: id3+trackBottom[current], src: src, pos: 'right',bottomRightPos: trackBottomTop[current], trackValue: trackRight[currentRight]}));
+            setBottomImg(i => i.concat({id: id3+trackBottom[current], src: src, pos: 'right',bottomRightPos: currentRight, trackValue: trackRight[currentRight]}));
             if(trackRight[currentRight]){
-                trackRight[currentRight] = id2 + current + 1
+                trackRight[currentRight] = trackRight[currentRight] + 1
                 setTrackRight(trackRight);
                 setTrackValueRight(trackRight[currentRight]);
 
             }else{
-                trackRight[currentRight] = id2 + current;
+                trackRight[currentRight] = id2 + currentRight;
                 setTrackRight(trackRight);
                 setTrackValueRight(trackRight[currentRight]);
 

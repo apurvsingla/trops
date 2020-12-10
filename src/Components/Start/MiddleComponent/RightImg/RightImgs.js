@@ -27,7 +27,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 style={{
                         left: `${140*i.id+ 124}px`,
                         marginTop:`${140*i.bottomRightPos+ 40}px`,
-                        zIndex: '50'
+                        // top: `${-250}px`
                 }}
                 />
         }                
