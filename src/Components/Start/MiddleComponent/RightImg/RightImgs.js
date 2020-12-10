@@ -32,12 +32,19 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                         // top: `${-250}px`
                 }}
                 />
-}                
+                }                
+                {mQuery && !mQuery.matches ? (
                 <LargeRowLine style={{
                         marginLeft: `${140*i.id - 160}px`,
-                        top: `${140*i.bottomRightPos + 95}px`
+                        top: `${140*i.bottomRightPos + 43}px`,
+                        zIndex: '-8'
                         }}
-                key={index+'--icon'} />
+                key={index+'--icon'} />): (
+                        <LargeRowLine style={{
+                                marginLeft: `${140*i.id - 160}px`,
+                                top: `${140*i.bottomRightPos + 95}px`
+                                }}
+                        key={index+'--icon'} />)}
         </>)
 }
 
