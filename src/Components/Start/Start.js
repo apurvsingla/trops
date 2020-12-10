@@ -88,12 +88,10 @@ const Start = () => {
     const [trackValueRight, setTrackValueRight] = useSessionStorage('trackValueRight', 0);
     const [trackRight, setTrackRight] = useSessionStorage('track-right',{});
 
-    const [trackBottom, setTrackBottom] = useSessionStorage('track-bottom', {});
-    const [trackBottomTop, setTrackBottomTop] = useSessionStorage('track-bottom-top', {});
+    // const [trackBottom, setTrackBottom] = useSessionStorage('track-bottom', {});
+    // const [trackBottomTop, setTrackBottomTop] = useSessionStorage('track-bottom-top', {});
 
     const [normalId, setNormalId] = useSessionStorage('noraml-id', 0);
-
-    // const [curId, setCurId] = useSessionStorage('cur_id', 1);
     
     const history = useHistory();
 
@@ -102,7 +100,6 @@ const Start = () => {
     }
 
     const reset = () => {
-        // window.sessionStorage.clear();
         setImg1([]);
         setId(1);
         setNum(0);
@@ -123,8 +120,8 @@ const Start = () => {
         setIndexVal(null);
         setId2(1);
         setImgTrack(0);
-        setTrackBottom({});
-        setTrackBottomTop({});
+        // setTrackBottom({});
+        // setTrackBottomTop({});
         setTrackRight({});
         setTrackValueRight(0);
         setNormalId(0);
@@ -150,17 +147,17 @@ const Start = () => {
                     setTrackValue(track[current]);
 
                 }
-                if(trackBottom[current]){
-                    trackBottom[current] = trackBottom[current] + 1
-                    setTrackBottom(trackBottom);
-                    trackBottomTop[current] = trackBottomTop[current] + 1;
-                    setTrackBottomTop(trackBottom);
-                }else{
-                    trackBottom[current] = current;
-                    setTrackBottom(trackBottom);
-                    trackBottomTop[current] = 1;
-                    setTrackBottomTop(trackBottom);
-                }
+                // if(trackBottom[current]){
+                //     trackBottom[current] = trackBottom[current] + 1
+                //     setTrackBottom(trackBottom);
+                //     trackBottomTop[current] = trackBottomTop[current] + 1;
+                //     setTrackBottomTop(trackBottom);
+                // }else{
+                //     trackBottom[current] = current;
+                //     setTrackBottom(trackBottom);
+                //     trackBottomTop[current] = 1;
+                //     setTrackBottomTop(trackBottom);
+                // }
                 setNormalId(normalId + 1);
                 setId2(id2+1);
                 return;
@@ -176,17 +173,17 @@ const Start = () => {
                     setTrackValue(track[current]);
 
                 }
-                if(trackBottom[current]){
-                    trackBottom[current] = trackBottom[current] + 1
-                    setTrackBottom(trackBottom);
-                    trackBottomTop[current] = trackBottomTop[current] + 1;
-                    setTrackBottomTop(trackBottom);
-                }else{
-                    trackBottom[current] = current;
-                    setTrackBottom(trackBottom);
-                    trackBottomTop[current] = 1;
-                    setTrackBottomTop(trackBottom);
-                }
+                // if(trackBottom[current]){
+                //     trackBottom[current] = trackBottom[current] + 1
+                //     setTrackBottom(trackBottom);
+                //     trackBottomTop[current] = trackBottomTop[current] + 1;
+                //     setTrackBottomTop(trackBottom);
+                // }else{
+                //     trackBottom[current] = current;
+                //     setTrackBottom(trackBottom);
+                //     trackBottomTop[current] = 1;
+                //     setTrackBottomTop(trackBottom);
+                // }
                 setNormalId(normalId + 1);
                 return;
             }else{
@@ -201,17 +198,17 @@ const Start = () => {
                     setTrack(track);
                     setTrackValue(track[current]);
                 }
-                if(trackBottom[current]){
-                    trackBottom[current] = trackBottom[current] + 1
-                    setTrackBottom(trackBottom);
-                    trackBottomTop[current] = trackBottomTop[current] + 1;
-                    setTrackBottomTop(trackBottom);
-                }else{
-                    trackBottom[current] = current;
-                    setTrackBottom(trackBottom);
-                    trackBottomTop[current] = 1;
-                    setTrackBottomTop(trackBottom);
-                }
+                // if(trackBottom[current]){
+                //     trackBottom[current] = trackBottom[current] + 1
+                //     setTrackBottom(trackBottom);
+                //     trackBottomTop[current] = trackBottomTop[current] + 1;
+                //     setTrackBottomTop(trackBottom);
+                // }else{
+                //     trackBottom[current] = current;
+                //     setTrackBottom(trackBottom);
+                //     trackBottomTop[current] = 1;
+                //     setTrackBottomTop(trackBottom);
+                // }
                 setNormalId(normalId + 1);
                 setId2(id2+1);
                 return;

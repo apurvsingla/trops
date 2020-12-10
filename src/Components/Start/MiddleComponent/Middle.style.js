@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-// import Slider from '@material-ui/core/Slider';
-
-// import MaximizeIcon from '@material-ui/icons/Maximize';
 
 export const Img = styled.img`
     width: 70px;
