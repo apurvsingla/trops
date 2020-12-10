@@ -36,3 +36,7 @@
 [1207/201703.237:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1208/092645.023:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1209/091656.915:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1210/095215.918:ERROR:crash_report_database_win.cc(496)] failed to stat report
+[1210/100216.019:ERROR:crash_report_database_win.cc(496)] failed to stat report
+[1210/100216.019:ERROR:filesystem_win.cc(116)] GetFileAttributes C:\Users\Parveen\AppData\Local\Google\Chrome\User Data\Crashpad\reports\205d3a3b-b18b-4ad9-9805-cf2a703c31be.dmp: The system cannot find the file specified. (0x2)
+[1210/100216.019:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)

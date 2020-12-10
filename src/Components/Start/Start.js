@@ -89,6 +89,7 @@ const Start = () => {
     const [trackRight, setTrackRight] = useSessionStorage('track-right',{});
 
     const [trackBottom, setTrackBottom] = useSessionStorage('track-bottom', {});
+    const [trackBottomTop, setTrackBottomTop] = useSessionStorage('track-bottom-top', {});
 
     // const [curId, setCurId] = useSessionStorage('cur_id', 1);
     
@@ -125,6 +126,7 @@ const Start = () => {
     // populating images
     const onImage1Concat = (src) => {
         if(activeother[activeIndex[current]]=== true){
+            setId3(1);
             if(src === powerSource){
                 return;
             }
@@ -144,9 +146,13 @@ const Start = () => {
                 if(trackBottom[current]){
                     trackBottom[current] = trackBottom[current] + 1
                     setTrackBottom(trackBottom);
+                    trackBottomTop[current] = trackBottomTop[current] + 1;
+                    setTrackBottomTop(trackBottom);
                 }else{
-                    trackBottom[current] = 1
+                    trackBottom[current] = current;
                     setTrackBottom(trackBottom);
+                    trackBottomTop[current] = 1;
+                    setTrackBottomTop(trackBottom);
                 }
                 setId2(id2+1);
                 return;
@@ -165,9 +171,13 @@ const Start = () => {
                 if(trackBottom[current]){
                     trackBottom[current] = trackBottom[current] + 1
                     setTrackBottom(trackBottom);
+                    trackBottomTop[current] = trackBottomTop[current] + 1;
+                    setTrackBottomTop(trackBottom);
                 }else{
-                    trackBottom[current] = 1
+                    trackBottom[current] = current;
                     setTrackBottom(trackBottom);
+                    trackBottomTop[current] = 1;
+                    setTrackBottomTop(trackBottom);
                 }
                 return;
             }else{
@@ -185,15 +195,19 @@ const Start = () => {
                 if(trackBottom[current]){
                     trackBottom[current] = trackBottom[current] + 1
                     setTrackBottom(trackBottom);
+                    trackBottomTop[current] = trackBottomTop[current] + 1;
+                    setTrackBottomTop(trackBottom);
                 }else{
-                    trackBottom[current] = 1
+                    trackBottom[current] = current;
                     setTrackBottom(trackBottom);
+                    trackBottomTop[current] = 1;
+                    setTrackBottomTop(trackBottom);
                 }
                 setId2(id2+1);
                 return;
             }
         }else if(active[activeRightIndex[currentRight]] === true){
-            setBottomImg(i => i.concat({id: id3+trackBottom[current], src: src, pos: 'right',bottomRightPos: trackBottom[current], trackValue: trackRight[currentRight]}));
+            setBottomImg(i => i.concat({id: id3+trackBottom[current], src: src, pos: 'right',bottomRightPos: trackBottomTop[current], trackValue: trackRight[currentRight]}));
             if(trackRight[currentRight]){
                 trackRight[currentRight] = id2 + current + 1
                 setTrackRight(trackRight);
