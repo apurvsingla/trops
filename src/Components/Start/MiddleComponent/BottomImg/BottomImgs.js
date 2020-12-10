@@ -531,7 +531,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 left: `${140*i.bottomPos + 202}px`,
                 }}
                 onClick={(e) => activeLink(e,i.switchId)}
-                id={i.switchId}
+                id={i.id}
                 key={index+'-right'}
                 />}
         </>

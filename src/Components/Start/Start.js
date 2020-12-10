@@ -211,7 +211,7 @@ const Start = () => {
                 return;
             }
         }else if(active[activeRightIndex[currentRight]] === true){
-            setBottomImg(i => i.concat({id: id3+trackBottom[current], src: src, pos: 'right',bottomRightPos: currentRight, trackValue: trackRight[currentRight]}));
+            setBottomImg(i => i.concat({id: current + 1, src: src, pos: 'right',bottomRightPos: currentRight, trackValue: trackRight[currentRight]}));
             if(trackRight[currentRight]){
                 trackRight[currentRight] = trackRight[currentRight] + 1
                 setTrackRight(trackRight);
@@ -224,6 +224,7 @@ const Start = () => {
 
             }
             setId3(id3+1);
+            setCurrent(current+1)
             return;
         }else if(activeRightBottom[activeRightBottomIndex[currentRightDot] + '-bottom'] === true){
             setRightRImg(i=> i.concat({id: id4, src: src, pos: 'normal', currentRightRight: currentRightDot}));
@@ -233,6 +234,7 @@ const Start = () => {
             if(src!==powerSource){
                 if(num > 0){
                     setId2(1);
+                    setId3(1);
                     if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
                         setImg1(i => i.concat({id: id, src: src, pos: 'normal'}));
                         setId(id+1);

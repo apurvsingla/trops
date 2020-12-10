@@ -329,7 +329,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 marginLeft: `${140*index}px`
         }}
         key={index+'-bottom'}
-        id={i.id}
+        id={index}
         onClick={(e) => activeSecondLink(e,index)}
                 />
         : null }
