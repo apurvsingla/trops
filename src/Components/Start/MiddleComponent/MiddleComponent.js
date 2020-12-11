@@ -51,7 +51,8 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         activeRightBottomIndex,setActiveRightBottomIndex,
         activeRightBottom,setActiveRightBottom,
         currentRightDot,setCurrentRightDot,
-        rightRImg, setIndexVal, setBottomImg, id2, setTrack, track, trackValue
+        rightRImg, setIndexVal, setBottomImg, id2, setTrack, track, trackValue,
+        setTopPos
 }) => {
         
         //media query
@@ -82,6 +83,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                 if(e){
                         boolean = !boolean;
                         const ids = Number(e.target.id);
+                        console.log(ids);
                         active[ids] = boolean;
                         if(boolean === true){
                                 e.target.style.backgroundColor = 'green';
@@ -163,6 +165,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setAppearDot={setAppearDot} appearDot={appearDot}
                         marks={marks} valueLabelFormat={valueLabelFormat}
                         track={track} trackValue={trackValue}
+                        setTopPos={setTopPos}
                         />
                         :null}
                         {i.pos === 'right' ? <RightImgs mQuery={mQuery} currentRight={currentRight} activeRightIndex={activeRightIndex}

@@ -28,21 +28,21 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 alt="alt" 
                 style={{
                         left: `${140*i.id+ 124}px`,
-                        marginTop:`${140*i.bottomRightPos+ 40}px`,
+                        marginTop:`${140*i.bottomRightPos+ 180}px`,
                         // top: `${-250}px`
                 }}
                 />
                 }                
                 {mQuery && !mQuery.matches ? (
                 <LargeRowLine style={{
-                        marginLeft: `${140*i.id - 160}px`,
+                        left: `${140*i.id +27}px`,
                         top: `${140*i.bottomRightPos + 43}px`,
                         zIndex: '-8'
                         }}
                 key={index+'--icon'} />): (
                         <LargeRowLine style={{
-                                marginLeft: `${140*i.id - 160}px`,
-                                top: `${140*i.bottomRightPos + 95}px`
+                                left: `${140*i.id +80}px`,
+                                top: `${140*i.bottomRightPos + 235}px`
                                 }}
                         key={index+'--icon'} />)}
         </>)
