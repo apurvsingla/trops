@@ -206,8 +206,13 @@ const Start = () => {
             }
         }else if(active[activeRightIndex[currentRight]] === true){
             setBottomImg(i => i.concat({id:  right[current+'-'+currentRight] || current + 1, src: src, pos: 'right', bottomRightPos: currentRight, trackValue: trackRight[currentRight]}));
-            right[current+'-'+currentRight] = current + 1;
-            setRight(right);
+            if(right[current+'-'+currentRight]){
+                right[current+'-'+currentRight] = right[current+'-'+currentRight] + 1;git ad
+                setRight(right);
+            }else{
+                right[current+'-'+currentRight] = current + 1;
+                setRight(right);
+            }
             if(trackRight[currentRight]){
                 trackRight[currentRight] = trackRight[currentRight] + 1
                 setTrackRight(trackRight);
