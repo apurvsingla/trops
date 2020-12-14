@@ -128,6 +128,8 @@ const Start = () => {
         setTrackRight({});
         setTrackValueRight(0);
         setNormalId(0);
+        setNormal({});
+        setRight({});
     }
 
     // populating images
@@ -205,9 +207,15 @@ const Start = () => {
                 return;
             }
         }else if(active[activeRightIndex[currentRight]] === true){
-            setBottomImg(i => i.concat({id:  right[current+'-'+currentRight] || current + 1, src: src, pos: 'right', bottomRightPos: currentRight, trackValue: trackRight[currentRight]}));
+            let obj = 0;
             if(right[current+'-'+currentRight]){
-                right[current+'-'+currentRight] = right[current+'-'+currentRight] + 1;git ad
+                obj = right[current+'-'+currentRight]+1
+            }else{
+                obj = current+1;
+            }
+            setBottomImg(i => i.concat({id:  obj, src: src, pos: 'right', bottomRightPos: currentRight, trackValue: trackRight[currentRight]}));
+            if(right[current+'-'+currentRight]){
+                right[current+'-'+currentRight] = right[current+'-'+currentRight] + 1;
                 setRight(right);
             }else{
                 right[current+'-'+currentRight] = current + 1;
@@ -225,7 +233,7 @@ const Start = () => {
 
             }
             setId3(id3+1);
-            setCurrent(current+1)
+            // setCurrent(current+1)
             return;
         }else if(activeRightBottom[activeRightBottomIndex[currentRightDot] + '-bottom'] === true){
             setRightRImg(i=> i.concat({id: id4, src: src, pos: 'normal', currentRightRight: currentRightDot}));
