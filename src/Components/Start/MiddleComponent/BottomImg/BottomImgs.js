@@ -548,8 +548,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 marginTop: `${i.trackValue ? 140*i.trackValue: 0}px`,
                 left: `${140*i.bottomPos + 182}px`
                 }}
-                onClick={(e) => activeLink(e,index)}
-                id={i.id}
+                onClick={(e) => activeLink(e,index,i.normal)}
+                id={i.normal}
                 key={index+'-right'}
                 />: <ArrowRightAltIcon
         className={classes.largeIconXL + " right-dot-bottom"}
@@ -558,7 +558,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 marginTop: `${i.trackValue ? 140*i.trackValue : 0}px`,
                 left: `${140*i.bottomPos + 202}px`,
                 }}
-                onClick={(e) => activeLink(e,i.switchId)}
+                onClick={(e) => activeLink(e,i.switchId,i.normal)}
                 id={i.normal}
                 key={index+'-right'}
                 />}

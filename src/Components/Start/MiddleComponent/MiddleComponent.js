@@ -79,20 +79,19 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
 
         let boolean = false;
         let boolean2 = false;
-        const activeLink = (e,index) => {
+        const activeLink = (e,index,normal) => {
                 if(e){
                         boolean = !boolean;
-                        const ids = Number(e.target.id);
-                        active[ids] = boolean;
+                        active[normal] = boolean;
                         if(boolean === true){
                                 e.target.style.color = 'green';
                         }else{
                                 e.target.style.color = 'black';   
                         }
-                        activeRightIndex[ids] = ids;
+                        activeRightIndex[normal] = normal;
                         setActive(active);
                         setActiveRightIndex(activeRightIndex);
-                        setCurrentRight(ids);
+                        setCurrentRight(normal);
                         setIndexVal(index);
                 }      
         }
