@@ -545,7 +545,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         className={classes.largeIconXL + " right-dot-bottom"}
         style={{
                 cursor: 'pointer',
-                marginTop: `${i.trackValue ? 140*i.trackValue: 178}px`,
+                marginTop: `${i.trackValue ? 140*i.trackValue: 0}px`,
                 left: `${140*i.bottomPos + 182}px`
                 }}
                 onClick={(e) => activeLink(e,index)}
