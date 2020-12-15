@@ -3,6 +3,7 @@ import {
 BottomSpan,
 Img,
 LargeColLine,
+CImg
 } from '../Middle.style';
 import {
 lightSource,
@@ -39,10 +40,19 @@ GlowSevenM,
 GlowSixM,
 GlowEightM
 } from './GlowStylesMob';
+import { makeStyles } from '@material-ui/core/styles';
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+
+const useStyles = makeStyles({
+        largeIconXL: {
+                fontSize: 70,
+              },
+      });
 
 const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 appearDot, setAppearDot, setBottomImg, marks, valueLabelFormat
 }) => {
+        const classes = useStyles();
         const func = (e) => {
                 const num = Number(i.id);
                 if(appearDot[num] === true){
@@ -415,21 +425,39 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 }      
         }
     return(<>
-        <BottomSpan>
+    {i.src === conditionSource ? <BottomSpan>
+                <CImg src={i.src} alt="alt"
+                style={{
+                        marginLeft: `${(140*i.bottomPos) + 20}px`,
+                        marginTop: `${140*i.trackValue + 20}px`,
+                }} />
+        </BottomSpan>: null}
+        {i.src !== conditionSource ?<BottomSpan>
                 <Img src={i.src} alt="alt"
                 style={{
                         marginLeft: `${(140*i.bottomPos) + 20}px`,
                         marginTop: `${140*i.trackValue + 20}px`,
                 }} />
-        </BottomSpan>
+        </BottomSpan>: null }
+        
 
         {(bottomImg.length) === index ? null : (
-                <LargeColLine style={{
+              <>  <LargeColLine style={{
                         marginLeft: `${140*i.bottomPos}px`,
                         height: `${i.trackValue? 140*i.trackValue + 108 : 108}px`,
                         zIndex: '-2'
                         }}
-                key={index+'--icon'} />) }
+                key={index+'--icon'} />
+
+                <span 
+                className='line-bottom-arrow'
+                key={index+'icon-arrow'}
+                style={{
+                        left: `${140*i.bottomPos}px`,
+                        marginTop: `${140*i.trackValue + 32}px`,                      
+                }}
+                />
+                </>) }
 
                 {(i.src === tactSource) 
                 ? (
@@ -513,21 +541,21 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         {i.src === conditionSource ? 
         <>
          {mQuery && !mQuery.matches  ?
-        <span 
-        className="right-dot-bottom"
+        <ArrowRightAltIcon 
+        className={classes.largeIconXL + " right-dot-bottom"}
         style={{
                 cursor: 'pointer',
-                marginTop: `${i.trackValue ? 140*i.trackValue + 175: 178}px`,
-                left: `${140*i.bottomPos + 172}px`
+                marginTop: `${i.trackValue ? 140*i.trackValue: 178}px`,
+                left: `${140*i.bottomPos + 182}px`
                 }}
                 onClick={(e) => activeLink(e,index)}
                 id={i.id}
                 key={index+'-right'}
-                />: <span 
-        className="right-dot-bottom"
+                />: <ArrowRightAltIcon
+        className={classes.largeIconXL + " right-dot-bottom"}
         style={{
                 cursor: 'pointer',
-                marginTop: `${i.trackValue ? 140*i.trackValue + 227: 230}px`,
+                marginTop: `${i.trackValue ? 140*i.trackValue : 0}px`,
                 left: `${140*i.bottomPos + 202}px`,
                 }}
                 onClick={(e) => activeLink(e,i.switchId)}

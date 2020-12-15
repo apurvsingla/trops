@@ -4,9 +4,13 @@ import React from 'react';
 import {
 NormalImg,
 Span,
-LargeLine
+// LargeLine,
+// Arrow
 } from '../Middle.style';
 import Scroll from '../ScrollSliderComponent/Scroll';
+// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+// import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
+import { makeStyles } from '@material-ui/core/styles';
 
 //image source
 import {
@@ -36,10 +40,23 @@ GlowSeven,
 GlowEight
 } from './GlowStyle';
 import { GlowEightM, GlowFiveM, GlowFourM, GlowOneM, GlowSevenM, GlowSixM, GlowThreeM,GlowTwoM } from './GlowStyleMobile';
+import Loader from './Loader';
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+const useStyles = makeStyles({
+        largeIcon: {
+          fontSize: 80,
+          transform: 'rotate(90deg)'
+        },
+        largeIconXL: {
+                fontSize: 70,
+              },
+      });
+
 
 const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat, 
      activeSecondLink, img1,setAppearDot, appearDot,setImg1
 }) => {
+        const classes = useStyles();
     const [mQuery, setMQuery] = React.useState({
         matches: window.innerWidth > 892 ? true : false,
     });
@@ -48,7 +65,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         let mediaQuery = window.matchMedia("(max-width: 892px)");
         mediaQuery.addListener(setMQuery);
         return () => mediaQuery.removeListener(setMQuery);     
-    }, []);
+    }, []);      
 
     const func = (e) => {
         // boolean =!boolean;
@@ -246,6 +263,35 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 }
         }
     } 
+
+    const line = () => {
+            if(mQuery && !mQuery.matches){
+                    return(<ArrowRightAltIcon
+                        className={classes.largeIconXL + ' row-line'}
+                        style={{
+                                marginLeft: `${140*index}px`,
+                                opacity: '0.8',
+                                position: 'absolute',
+                                top: '52px',
+                                left: '190px',
+                                transform: 'scale(1.4)'
+                                }}
+                        key={index+'--icon-arrow'} />)
+            }else{
+                    return(
+                        <ArrowRightAltIcon
+                        className={classes.largeIconXL + ' row-line'}
+                        style={{
+                                marginLeft: `${140*index}px`,
+                                opacity: '0.8',
+                                position: 'absolute',
+                                top: '70px',
+                                left: '205px'
+                                }}
+                        key={index+'--icon-arrow'} />
+                    )
+            }
+    }
         
     return(<>
         <Span>
@@ -259,12 +305,19 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 />
         </Span>
 
+        {i.bool && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)) ? true? (
+                <Loader index={index} />
+        ): null: null}
+
          {/* line */}
-        {(img1.length-1) === index ? null : (
+        {/* {(img1.length-1) === index ? null : (<>
         <LargeLine style={{
                 marginLeft: `${140*index}px`,
                 }}
-        key={index+'--icon'} />) }
+        key={index+'--icon'} />
+        </>) } */}
+
+        {(img1.length-1) === index ? null : line() }
 
         {/* special case */}
         {(i.src === tactSource) 
@@ -278,7 +331,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 }}
                 style={{
                       marginLeft: `${140*index}px`,
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      zIndex: '2'
                 }}
                 key={index+'-middle'}
                 id={index}
@@ -298,6 +352,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 className="scroll-large"
                 style={{
                         marginLeft: `${140*index}px`,
+                        zIndex: "2"
                 }}
                 />
          : null}
@@ -323,15 +378,18 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
 
         {/* dots start */}
         {i.src === conditionSource ? 
-        <span 
-        className="bottom-dot-normal"
+        <>
+        <ArrowRightAltIcon 
+        className={classes.largeIcon + ' bottom-dot-normal'}
         style={{
-                marginLeft: `${140*index}px`
+                marginLeft: `${140*index}px`,
+                zIndex: '1'
         }}
         key={index+'-bottom'}
         id={index}
         onClick={(e) => activeSecondLink(e,index)}
                 />
+        </>
         : null }
         {/* dots end */}
 </>)

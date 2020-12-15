@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 
 import {useHistory} from 'react-router-dom';
 import ReactSwipe from 'react-swipe';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 import MiddleComponent from './MiddleComponent/MiddleComponent';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -19,7 +21,8 @@ soundSource,
 conditionSource,
 motorSource,
 graphSource,
-sequenceSource
+sequenceSource,
+splitterSource
 } from './MiddleComponent/Source/source';
 
 import {ReactComponent as Back} from './button_back.svg';
@@ -281,8 +284,8 @@ const Start = () => {
          <Scrollbars style={{ width: '100vw', height: '100vh' }}>
            <Graph 
            style={{position: 'absolute',
-                    minWidth: `${15*(img1.length)+ 100}%`,
-                    height: `${25*(bottomImg.length)+ 25*(rightRImg.length) + 100}%`,
+                    minWidth: `${15*(img1.length)+ 15*(rightRImg.length)  + 100}%`,
+                    height: `${25*(bottomImg.length) + 100}%`,
         }}/>
            <div style={{
                display: 'flex',
@@ -340,7 +343,7 @@ const Start = () => {
                <>
                  <ReactSwipe
                 className="carousel"
-                swipeOptions={{ continuous: true }}
+                swipeOptions={{ continuous: false }}
                 ref={el => (reactSwipeEl = el)}
                 >
                 <div className={JSON.stringify(displayDot1)} onTouchEnd={() => {
@@ -436,6 +439,9 @@ const Start = () => {
                     <Icon onClick={() => onImage1Concat(tactSource)}/>
                     <Img src={tactSource} 
                     alt="beeper" />
+                    <Icon onClick={() => onImage1Concat(splitterSource)}/>
+                    <Img src={splitterSource} 
+                    alt="beeper" />
                     
                 </div>
                 </ReactSwipe>
@@ -443,7 +449,7 @@ const Start = () => {
 
             {/* Swipeable Dots Beggining */}
             <Dots onTouchEnd={() => {
-            reactSwipeEl.slide(1);
+            reactSwipeEl.slide(4);
             setDisplayDot1(true);
             setDisplayDot2(false);
             setDisplayDot3(false);
@@ -484,7 +490,7 @@ const Start = () => {
             />
 
             <Dots onTouchEnd={() => {
-                reactSwipeEl.slide(4);
+                reactSwipeEl.slide(1);
                 setDisplayDot3(false);
                 setDisplayDot4(true);
                 setDisplayDot1(false);
@@ -501,8 +507,8 @@ const Start = () => {
                <>
                <Graph 
            style={{position: 'absolute',
-                    minWidth: `${8*(img1.length)+ 100}%`,
-                    height: `${20*(bottomImg.length)+ 20*(rightRImg.length) + 100}%`,
+                    minWidth: `${8*(img1.length)+  8*(rightRImg.length)  + 100}%`,
+                    height: `${20*(bottomImg.length)+ 100}%`,
         }}/>
            <div style={{
                display: 'flex',
@@ -554,9 +560,25 @@ const Start = () => {
             {/* swipeable area */}
            <Bottom>
                <>
+               <ArrowBackIosIcon 
+               style={{
+                   position: 'absolute',
+                   left: '1%',
+                   top: '40%',
+                cursor: 'pointer',
+                pointerEvents: 'all',
+                zIndex: '100'
+               }}
+               onClick={() =>{
+                    reactSwipeEl.prev()
+                    setDisplayDot2(true);
+                    setDisplayDot1(true);
+                    setDisplayDot3(false);
+                }}
+               />
                 <ReactSwipe
                 className="carousel"
-                swipeOptions={{ continuous: true }}
+                swipeOptions={{ continuous: false }}
                 ref={el => (reactSwipeEl = el)}
                 >
                     <div className={JSON.stringify(displayDot1)} onTouchEnd={() => {
@@ -644,6 +666,9 @@ const Start = () => {
                         <Icon onClick={() => onImage1Concat(soundSource)}/>
                         <Img src={soundSource} 
                         alt="sound" />
+                        <Icon onClick={() => onImage1Concat(splitterSource)}/>
+                        <Img src={splitterSource} 
+                        alt="sound" />
                     </div>
                     </ReactSwipe>
             </>
@@ -651,7 +676,7 @@ const Start = () => {
             {/* Swipeable Dots Beggining */}
             <>
             <Dots onClick={() => {
-            reactSwipeEl.slide(1);
+            reactSwipeEl.slide(3);
             setDisplayDot1(true);
             setDisplayDot2(false);
             setDisplayDot3(false);
@@ -676,7 +701,7 @@ const Start = () => {
             className={JSON.stringify(displayDot2) + 'dot'}
             />
             <Dots onClick={() => {
-                reactSwipeEl.slide(3);
+                reactSwipeEl.slide(1);
                 setDisplayDot1(false);
                 setDisplayDot2(false);
                 setDisplayDot3(true);
@@ -688,6 +713,20 @@ const Start = () => {
             />
             </>
             {/* Swipeable Dots End */}
+            <ArrowForwardIosIcon 
+            style={{
+                position: 'absolute',
+                right: '0',
+                top: '40%',
+                cursor: 'pointer'
+            }}
+            onClick={(e) => {
+                reactSwipeEl.next()
+                setDisplayDot2(true);
+                setDisplayDot1(false);
+                setDisplayDot3(true);
+            }}
+            />
            </Bottom>
            </>
            )}

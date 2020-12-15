@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 
 export const Img = styled.img`
     width: 70px;
@@ -13,10 +14,25 @@ export const Img = styled.img`
     }
 `;
 
+
+export const CImg = styled.img`
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 23px;
+    height: 70px;
+    @media (min-width: 893px){
+        width: 95px;
+        height: 95px;
+    }
+`;
+
 export const NormalImg = styled.img`
     width: 70px;
     height: 70px;
     position: absolute;
+    z-index: 2;
     @media (min-width: 893px){
         width: 100px;
         height: 100px;
@@ -46,9 +62,9 @@ export const Span = styled.span`
 export const BottomSpan = styled.span`
     position: relative;
     left: 100px;
-    top: 160px;
+    top: 170px;
     @media (max-width:892px){
-        top: 125px;
+        top: 128px;
     }
 `;
 
@@ -63,29 +79,46 @@ export const columnLineSpan = styled.span`
 
 export const LargeLine = styled.span`
     background-color: black;
-    width: 48px;
-    height: 2px;
+    width: 53px;
+    height: 8px;
     position: absolute;
     top: 101px;
-    left: 216px;
+    left: 213px;
+    opacity: 0.8;
+    z-index: 1;
+    border-radius: 25px;
     @media (max-width: 893px){
-        width: 75px;
-        z-index: 8;
-        left: 188px;
-        top: 87px;
+        width: 77px;
+        left: 186px;
+        top: 82px;
+        height: 8px;
     }
 `;
 
+export const Arrow = styled(ArrowForwardIosIcon)`
+    position: absolute;
+    top: 93px;
+    transform: scale(1.2);
+    left: 248px;
+    z-index: 4;
+    @media (max-width: 893px){
+        top: 74px;
+        margin-left: -5px
+    }
+`
+
 export const LargeColLine = styled.span`
     background-color: black;
-    width: 2px;
+    width: 0.4rem;
     position: absolute;
     top: 151px;
-    left: 170px;
+    left: 168px;
+    z-index: 4;
+    border-radius: 25px;
     @media (max-width: 893px){
         height: 75px;
-        z-index: 8;
-        left: 154px;
+        width: 0.35rem;
+        left: 152px;
         top: 87px;
     }
 `;

@@ -83,12 +83,11 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                 if(e){
                         boolean = !boolean;
                         const ids = Number(e.target.id);
-                        console.log(ids);
                         active[ids] = boolean;
                         if(boolean === true){
-                                e.target.style.backgroundColor = 'green';
+                                e.target.style.color = 'green';
                         }else{
-                                e.target.style.backgroundColor = 'black';   
+                                e.target.style.color = 'black';   
                         }
                         activeRightIndex[ids] = ids;
                         setActive(active);
@@ -101,17 +100,17 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         const activeSecondLink = (e,index) => {
                 if(e){
                         boolean2 = !boolean2;
-                        const ids = Number(e.target.id);
-                        activeother[ids] = boolean2;
+                        // const ids = Number(e.target.id);
+                        activeother[index] = boolean2;
                         if(boolean2 === true){
-                                e.target.style.backgroundColor = 'green';
+                                e.target.style.color = 'green';
                         }else{
-                                e.target.style.backgroundColor = 'black';   
+                                e.target.style.color = 'black';   
                         }
-                        activeIndex[ids] = ids;
+                        activeIndex[index] = index;
                         setActiveother(activeother);
                         setActiveIndex(activeIndex);
-                        setCurrent(ids);
+                        setCurrent(index);
                         setIndexVal(index);
                 }
         }

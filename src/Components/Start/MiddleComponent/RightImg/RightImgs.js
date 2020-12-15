@@ -27,8 +27,8 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 <NormalRImg src={i.src} 
                 alt="alt" 
                 style={{
-                        left: `${140*i.id+ 124}px`,
-                        marginTop:`${140*i.bottomRightPos+ 180}px`,
+                        left: `${140*i.id+ 114}px`,
+                        marginTop:`${140*i.bottomRightPos+ 185}px`,
                         // top: `${-250}px`
                 }}
                 />
@@ -41,8 +41,9 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                         }}
                 key={index+'--icon'} />): (
                         <LargeRowLine style={{
-                                left: `${140*i.id +80}px`,
-                                top: `${140*i.bottomRightPos + 235}px`
+                                left: `${140*i.id +70}px`,
+                                top: `${140*i.bottomRightPos + 235}px`,
+                                zIndex: '-8'
                                 }}
                         key={index+'--icon'} />)}
         </>)

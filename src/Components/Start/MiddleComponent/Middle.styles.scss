@@ -1,27 +1,52 @@
 .bottom-dot-normal{
-    left: 148px;
-    top: 104px;
-    border-radius: 25px;
-    height: 15px;
-    width: 15px;
-    background-color: black;
+    left: 115px;
+    top: 89px;
+    transform: scale(2);
     position: absolute;
-
+    z-index: -1;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 50px;
     @media (min-width: 893px){
-        left: 164px;
+        left: 131px;
+        top: 131px;
+        height: 42px;
+    }
+}
+
+.line-bottom-arrow{
+    z-index: -2;
+    position: absolute;
+    border-top: 15px solid black;
+    border-right: 13px solid transparent;
+    border-left: 13px solid transparent;
+    top: 151px;
+    margin-left: 158px;
+    @media (max-width: 893px){
+        top: 105px;
+        margin-left: 142px;
+    }
+}
+
+.arrow-icon{
+    position: absolute;
+    left: 158px;
+    top: 168px;
+    transform: scale(2);
+    z-index: 4;
+    cursor: pointer;
+    @media (max-width: 893px){
+        left: 142px;
         top: 130px;
+        height: 42px;
     }
 }
 
 .right-dot-bottom{
     position: absolute;
-    height: 15px;
-    width: 15px;
-    border-radius: 25px;
-    background-color : black;
-    left: 124px;
+    top: 202px;
     @media (max-width: 892px){
-        left: 94px;
+        top: 149px;
     }
 }
 
