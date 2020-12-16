@@ -11,7 +11,8 @@ transform: translate(-50%, -50%);
         background-color: green;
         z-index: 3;
         @media (max-width: 892px){
-            top: 77px;
+            top: -50px;
+            margin-left: -16px;
         }
         @keyframes loading2 { 
             0%, 100%{ 

@@ -2,17 +2,33 @@ import React from 'react';
 import {BottomStyles} from './Led.styles';
 
 const Leds = ({index,top}) => {
+    const [mQuery, setMQuery] = React.useState({
+        matches: window.innerWidth > 892 ? true : false,
+    });
+ 
+    React.useEffect(() => {
+        let mediaQuery = window.matchMedia("(max-width: 892px)");
+        mediaQuery.addListener(setMQuery);
+        return () => mediaQuery.removeListener(setMQuery);     
+    }, []);
+    const func = () => {
+        if(mQuery && !mQuery.matches){
+            return(<>
+                <span 
+                style={{
+                    left: `${140*index + 163}px`,
+                    marginTop: `${140*top + 130}px`
+                }}
+                />
+            </>)
+        }
+    }
     return (
         <BottomStyles>
             <span 
             className="loader-glow-bottom"
             style={{
-                position: 'absolute',
                 left: `${140*index + 163}px`,
-                backgroundColor: 'green',
-                height: '15px',
-                width: '15px',
-                borderRadius: '50px',
                 marginTop: `${140*top + 145}px`
             }}
             />
@@ -42,7 +58,9 @@ const Leds = ({index,top}) => {
                 marginTop: `${140*top + 175}px`
             }}
             />
+              {func()}
         </BottomStyles>
+      
     );
 }
 

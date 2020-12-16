@@ -198,95 +198,10 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 }else{
                     if(i.bool){
                         return(<>
-                        <span 
-                        style={{
-                                width: '25px',
-                                backgroundColor:'red',
-                                height: '3px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 156}px`,
-                                marginTop: `${140*i.trackValue + 258}px`
-                        }}
+                        <GlowEight 
+                        index={i.trackValue} bottom={i.bottomPos}
                         />
-                        <span 
-                        style={{
-                                width: '29px',
-                                backgroundColor:'red',
-                                height: '3px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 154}px`,
-                                marginTop: `${140*i.trackValue + 252}px`
-                        }}
-                        />
-                        <span 
-                        style={{
-                                width: '33px',
-                                backgroundColor:'red',
-                                height: '3px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 152}px`,
-                                marginTop: `${140*i.trackValue + 246}px`
-                        }}
-                        />
-                                        
-                        <span 
-                        style={{
-                                width: '40px',
-                                backgroundColor:'red',
-                                height: '3px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 149}px`,
-                                marginTop: `${140*i.trackValue + 239}px`
-                        }}
-                        />
-                        <span 
-                        style={{
-                                width: '50px',
-                                backgroundColor:'red',
-                                height: '3px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 144}px`,
-                                marginTop: `${140*i.trackValue + 233}px`
-                        }}
-                        />
-                        <span 
-                        style={{
-                                width: '63px',
-                                backgroundColor:'red',
-                                height: '3px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 138}px`,
-                                marginTop: `${140*i.trackValue + 226}px`
-                        }}
-                        />
-                        <span 
-                        style={{
-                                width: '74px',
-                                backgroundColor:'red',
-                                height: '3px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 132}px`,
-                                marginTop: `${140*i.trackValue + 219}px`
-                        }}
-                        />
-                        <span 
-                        style={{
-                                width: '83px',
-                                backgroundColor:'red',
-                                height: '3px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 127}px`,
-                                marginTop: `${140*i.trackValue + 212}px`
-                        }}
-                        /></>)
+                        </>)
                     }
                 }
             }
@@ -454,14 +369,15 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 className='line-bottom-arrow'
                 key={index+'icon-arrow'}
                 style={{
-                        top: '130px',
                         left: `${140*i.bottomPos}px`,
-                        marginTop: `${140*i.trackValue + 50}px`,                      
+                        marginTop: `${140*i.trackValue}px`,                      
                 }}
                 />
                 </> }
-
-                {i.bool && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)) ? 
+                {i.bools && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? true? (
+                <Leds index={i.bottomPos} top={i.trackValue} />
+                ): null: null}
+                {i.bool && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? 
                 <Leds index={i.bottomPos} top={i.trackValue} /> : null}
 
                 {(i.src === tactSource) 

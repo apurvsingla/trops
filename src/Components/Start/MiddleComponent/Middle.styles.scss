@@ -1,6 +1,6 @@
 .bottom-dot-normal{
     left: 115px;
-    top: 89px;
+    top: 91px;
     transform: scale(2);
     position: absolute;
     z-index: -1;
@@ -9,7 +9,7 @@
     border-radius: 50px;
     @media (min-width: 893px){
         left: 131px;
-        top: 131px;
+        top: 134px;
         height: 42px;
     }
 }
@@ -20,11 +20,13 @@
     border-top: 15px solid black;
     border-right: 13px solid transparent;
     border-left: 13px solid transparent;
-    top: 151px;
+    top: 183px;
     margin-left: 158px;
+    margin-top: 4px;
     @media (max-width: 893px){
-        top: 105px;
+        top: 140px;
         margin-left: 142px;
+        margin-top: 3px;
     }
 }
 

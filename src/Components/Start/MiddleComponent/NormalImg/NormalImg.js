@@ -305,7 +305,11 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 />
         </Span>
 
-        {i.bool && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)) ? true? (
+        {i.bool && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? true? (
+                <Loader index={index} />
+        ): null: null}
+
+        {i.bools && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? true? (
                 <Loader index={index} />
         ): null: null}
 
