@@ -375,7 +375,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 />
                 </> }
                 {i.bools && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? true? (
-                <Leds index={i.bottomPos} top={i.trackValue} />
+                <Leds index={i.bottomPos} top={i.trackValue} bool={i.bools}/>
                 ): null: null}
                 {i.bool && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? 
                 <Leds index={i.bottomPos} top={i.trackValue} /> : null}

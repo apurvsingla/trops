@@ -8,8 +8,6 @@ Span,
 // Arrow
 } from '../Middle.style';
 import Scroll from '../ScrollSliderComponent/Scroll';
-// import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-// import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import { makeStyles } from '@material-ui/core/styles';
 
 //image source
@@ -310,7 +308,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         ): null: null}
 
         {i.bools && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? true? (
-                <Loader index={index} />
+                <Loader index={index} bool={i.bools}/>
         ): null: null}
 
 

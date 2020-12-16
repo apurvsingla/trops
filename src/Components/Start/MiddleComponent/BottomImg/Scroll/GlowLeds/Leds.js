@@ -1,7 +1,7 @@
 import React from 'react';
 import {BottomStyles} from './Led.styles';
 
-const Leds = ({index,top}) => {
+const Leds = ({index,top,bool}) => {
     const [mQuery, setMQuery] = React.useState({
         matches: window.innerWidth > 892 ? true : false,
     });
@@ -25,6 +25,8 @@ const Leds = ({index,top}) => {
     }
     return (
         <BottomStyles>
+            {bool!== 1 ?
+            <>
             <span 
             className="loader-glow-bottom"
             style={{
@@ -59,7 +61,9 @@ const Leds = ({index,top}) => {
             }}
             />
               {func()}
-        </BottomStyles>
+              </>
+        : null}
+        </BottomStyles>    
       
     );
 }

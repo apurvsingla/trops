@@ -1,6 +1,6 @@
 import React from 'react';
 import { Style } from './Loader.styles';
-const Loader = ({index}) => {
+const Loader = ({index,bool}) => {
     const [mQuery, setMQuery] = React.useState({
         matches: window.innerWidth > 892 ? true : false,
     });
@@ -11,7 +11,7 @@ const Loader = ({index}) => {
         return () => mediaQuery.removeListener(setMQuery);     
     }, []);
     return (<>
-        {(mQuery && !mQuery.matches) ? <Style>
+    {bool !== 1 ? (mQuery && !mQuery.matches) ? <Style>
         <span 
         style={{
                 marginLeft: `${100*index}px`,
@@ -70,7 +70,8 @@ const Loader = ({index}) => {
         }}
         />
         </Style>
-    }
+    :null}
+        
         </>
     );
 }
