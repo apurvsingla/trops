@@ -1,25 +1,34 @@
 import React from 'react';
 import {
-        LargeRowLine,
+        // LargeRowLine,
 // RightSpan,
 NormalRImg,
 // LargeRowLine
 } from '../Middle.style';
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 // import { tactSource } from '../Source/source';
 // import {conditionSource} from '../Source/source';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+        largeIconXL: {
+                fontSize: 70,
+              },
+      });
 
 
 const RightImgs = ({mQuery, currentRight, activeRightIndex, 
     activeDot, activeSecondRightLink, index, 
      pos, i}) => {
+        const classes = useStyles();
     return(<>
         {mQuery && !mQuery.matches ? (
          
                 <NormalRImg src={i.src} 
                         alt="alt" 
                         style={{
-                                left: `${140*i.id+ 100}px`,
-                                marginTop: `${140*i.bottomRightPos + 147}px`
+                                left: `${120*i.id+ 138}px`,
+                                marginTop: `${140*i.bottomRightPos + 147}px`,
                         }}
                         />
         ) : 
@@ -34,15 +43,21 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 />
                 }                
                 {mQuery && !mQuery.matches ? (
-                <LargeRowLine style={{
-                        left: `${140*i.id +27}px`,
-                        top: `${140*i.bottomRightPos + 183}px`,
-                        zIndex: '-8'
+                <ArrowRightAltIcon 
+                className={classes.largeIconXL}
+                style={{
+                        position: 'absolute',
+                        left: `${120*i.id +81}px`,
+                        top: `${140*i.bottomRightPos + 149}px`,
+                        zIndex: '-8',
                         }}
                 key={index+'--icon'} />): (
-                        <LargeRowLine style={{
-                                left: `${140*i.id +70}px`,
-                                top: `${140*i.bottomRightPos + 235}px`,
+                        <ArrowRightAltIcon 
+                        className={classes.largeIconXL}
+                        style={{
+                                position: 'absolute',
+                                left: `${140*i.id +60}px`,
+                                top: `${140*i.bottomRightPos + 202}px`,
                                 zIndex: '-8'
                                 }}
                         key={index+'--icon'} />)}

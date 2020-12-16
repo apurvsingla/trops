@@ -42,6 +42,7 @@ GlowEightM
 } from './GlowStylesMob';
 import { makeStyles } from '@material-ui/core/styles';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+import Leds from './Scroll/GlowLeds/Leds';
 
 const useStyles = makeStyles({
         largeIconXL: {
@@ -91,8 +92,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                          className='glow-small-bottom'
                          key={index}
                          style={{
-                                marginTop: `${140*i.trackValue}px`,
-                                left: `${140*i.bottomPos}px`,
+                                marginTop: `${140*i.trackValue + 10}px`,
+                                left: `${140*i.bottomPos - 2}px`,
                                 backgroundColor: `${'red'}`,
                                 position: 'absolute',
                          }}
@@ -303,7 +304,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                                                 zIndex: '15',
                                                 position: 'absolute',
                                                 left: `${140*i.bottomPos + 152 - 2*i.bools}px`,
-                                                marginTop: `${140*i.trackValue}px`,
+                                                marginTop: `${140*i.trackValue + 5}px`,
                                                 top: `${175 -2*i.bools}px`,
                                                 // left: `${140*i.bottomPos- 22}px`,
                                                 opacity: '0.7',
@@ -324,7 +325,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                                                 zIndex: '15',
                                                 position: 'absolute',
                                                 left: `${140*i.bottomPos - 3.3*i.bools + 166}px`,
-                                                marginTop: `${140*i.trackValue + 220 - 3*i.bools}px`,
+                                                marginTop: `${140*i.trackValue + 232 - 3*i.bools}px`,
                                                 // left: `${140*i.bottomPos + 132}px`,
                                                 opacity: '0.7',
                                         }}
@@ -441,7 +442,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         </BottomSpan>: null }
         
 
-        {(bottomImg.length) === index ? null : (
+        {(bottomImg.length) === index ? null : 
               <>  <LargeColLine style={{
                         marginLeft: `${140*i.bottomPos}px`,
                         height: `${i.trackValue? 140*i.trackValue + 108 : 108}px`,
@@ -453,11 +454,15 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 className='line-bottom-arrow'
                 key={index+'icon-arrow'}
                 style={{
+                        top: '130px',
                         left: `${140*i.bottomPos}px`,
-                        marginTop: `${140*i.trackValue + 32}px`,                      
+                        marginTop: `${140*i.trackValue + 50}px`,                      
                 }}
                 />
-                </>) }
+                </> }
+
+                {i.bool && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)) ? 
+                <Leds index={i.bottomPos} top={i.trackValue} /> : null}
 
                 {(i.src === tactSource) 
                 ? (

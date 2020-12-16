@@ -309,13 +309,6 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 <Loader index={index} />
         ): null: null}
 
-         {/* line */}
-        {/* {(img1.length-1) === index ? null : (<>
-        <LargeLine style={{
-                marginLeft: `${140*index}px`,
-                }}
-        key={index+'--icon'} />
-        </>) } */}
 
         {(img1.length-1) === index ? null : line() }
 

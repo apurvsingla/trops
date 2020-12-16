@@ -12,7 +12,7 @@ export const GlowOne = ({index,bottom}) => {
                     zIndex: '15',
                     position: 'absolute',
                     left: `${140*bottom + 156}px`,
-                    marginTop: `${140*index + 258}px`
+                    marginTop: `${140*index + 268}px`
             }}
             />
         </>
@@ -30,7 +30,7 @@ export const GlowTwo = ({index, bottom}) => {
                     zIndex: '15',
                     position: 'absolute',
                     left: `${140*bottom + 154}px`,
-                    marginTop: `${140*index + 252}px`
+                    marginTop: `${140*index + 262}px`
             }}
             />
     </>)
@@ -47,7 +47,7 @@ export const GlowThree = ({index, bottom}) => {
                     zIndex: '15',
                     position: 'absolute',
                     left: `${140*bottom + 152}px`,
-                    marginTop: `${140*index + 246}px`
+                    marginTop: `${140*index + 256}px`
             }}
             />
     </>)
@@ -65,7 +65,7 @@ export const GlowFour = ({index, bottom}) => {
                     zIndex: '15',
                     position: 'absolute',
                     left: `${140*bottom + 149}px`,
-                    marginTop: `${140*index + 239}px`
+                    marginTop: `${140*index + 249}px`
             }}
             />
         </>
@@ -84,7 +84,7 @@ export const GlowFive = ({index, bottom}) => {
                     zIndex: '15',
                     position: 'absolute',
                     left: `${140*bottom + 144}px`,
-                    marginTop: `${140*index + 233}px`
+                    marginTop: `${140*index + 243}px`
             }}
             />
     </>
@@ -102,7 +102,7 @@ export const GlowSix = ({index, bottom}) => {
                     zIndex: '15',
                     position: 'absolute',
                     left: `${140*bottom + 138}px`,
-                    marginTop: `${140*index + 226}px`
+                    marginTop: `${140*index + 236}px`
             }}
             />
     </>)
@@ -119,7 +119,7 @@ export const GlowSeven = ({index,bottom}) => {
                     zIndex: '15',
                     position: 'absolute',
                     left: `${140*bottom + 132}px`,
-                    marginTop: `${140*index + 219}px`
+                    marginTop: `${140*index + 229}px`
             }}
             />
     </>)
@@ -137,7 +137,7 @@ export const GlowEight = ({index, bottom}) => {
                     zIndex: '15',
                     position: 'absolute',
                     left: `${140*bottom + 127}px`,
-                    marginTop: `${140*index + 212}px`
+                    marginTop: `${140*index + 222}px`
             }}
             />
     </>)
