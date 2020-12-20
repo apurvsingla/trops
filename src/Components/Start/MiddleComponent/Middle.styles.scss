@@ -15,18 +15,24 @@
 }
 
 .line-bottom-arrow{
-    z-index: -2;
     position: absolute;
-    border-top: 15px solid black;
-    border-right: 13px solid transparent;
-    border-left: 13px solid transparent;
-    top: 183px;
-    margin-left: 158px;
+    top: 177px;
+    margin-left: 162px;
     margin-top: 4px;
+    width: 13px;
+    height: 13px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    z-index: -2;    
     @media (max-width: 893px){
-        top: 140px;
-        margin-left: 142px;
-        margin-top: 3px;
+        top: 132px;
+        margin-left: 146px;
+        margin-top:19px;
     }
 }
 

@@ -36,7 +36,7 @@ export const Dots = styled.button`
     bottom: 7px;
     border: none;
     border-radius: 25px;
-    width: 1px;
+    width: 12px;
     height: 12px;
     outline: none;
 `;

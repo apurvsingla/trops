@@ -4,6 +4,7 @@ import NormalImgs from './NormalImg/NormalImg';
 import BottomImgs from './BottomImg/BottomImgs';
 import RightImgs from './RightImg/RightImgs';
 import RightRImgs from './RightRImg/RightRImgs';
+import { beeperSource, conditionSource } from './Source/source';
 
 const marks = [
         {
@@ -52,7 +53,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         activeRightBottom,setActiveRightBottom,
         currentRightDot,setCurrentRightDot,
         rightRImg, setIndexVal, setBottomImg, id2, setTrack, track, trackValue,
-        setTopPos
+        setTopPos,setId2,indexVal,setUid,uid
 }) => {
         
         //media query
@@ -86,7 +87,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         if(boolean === true){
                                 e.target.style.color = 'green';
                         }else{
-                                e.target.style.color = 'black';   
+                                e.target.style.color = 'transparent';   
                         }
                         activeRightIndex[normal] = normal;
                         setActive(active);
@@ -104,7 +105,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         if(boolean2 === true){
                                 e.target.style.color = 'green';
                         }else{
-                                e.target.style.color = 'black';   
+                                e.target.style.color = 'transparent';   
                         }
                         activeIndex[index] = index;
                         setActiveother(activeother);
@@ -121,7 +122,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         if(boolean2 === true){
                                 e.target.style.backgroundColor = 'green';
                         }else{
-                                e.target.style.backgroundColor = 'black';   
+                                e.target.style.backgroundColor = 'transparent';   
                         }
                         activeRightBottomIndex[index] = index;
                         setActiveRightBottom(activeRightBottom);
@@ -130,11 +131,50 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                 }
         }
 
-        const deleteImage = (e) => {
-                setImg1(i => i.filter(a => {
-                        return a.id !== JSON.parse(e.target.id);
-                }));
+        const deleteImage = (e,uid,indexx,id) => {
+                // setImg1(i => i.filter(a => {
+                //         return a.uid !== uid;
+                // }));
+                // setId2(id2-1);
+                let newArray = [...img1];
+                newArray.forEach((val,index) => {
+                        const arr = newArray[index];
+                        if(arr.uid === uid){
+                                newArray.splice(index,1);
+                        }
+                        if(val.src !== conditionSource){
+                                let newBottom = [...bottomImg];
+                                newBottom.forEach((v,intt) => {
+                                        // if(v.bottomPos === indexx){
+                                        //         newBottom.splice(0,15);
+                                        // }
+                                        // if(uid<=v.uid){
+                                        if(v.nid >= indexx){
+                                                newBottom[intt] = {...newBottom[intt], bottomPos: v.bottomPos-1}     
+                                        }
+                                        
+                                })
+                                setBottomImg(newBottom);
+                                setCurrent(null);
+                        }
+                })
+                setImg1(newArray);
         }
+
+        
+        const deleteBottomImg = (e,uid) => {
+                let newArray = [...bottomImg];
+                newArray.forEach((val,index) => {
+                        const arr = newArray[index];
+                        if(arr.uid === uid){
+                                // newArray.splice(index,1);
+                                newArray[index] = {...arr, src: beeperSource}
+                              
+                        }
+                })
+                setBottomImg(newArray);
+        }
+
         return(<> 
                 {img1.length>=1 ? (img1.map((i,index,arr) => {
                         return(
@@ -163,12 +203,13 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setAppearDot={setAppearDot} appearDot={appearDot}
                         marks={marks} valueLabelFormat={valueLabelFormat}
                         track={track} trackValue={trackValue}
-                        setTopPos={setTopPos}
+                        setTopPos={setTopPos} deleteImage={deleteBottomImg}
                         />
                         :null}
                         {i.pos === 'right' ? <RightImgs mQuery={mQuery} currentRight={currentRight} activeRightIndex={activeRightIndex}
                         activeDot={activeDot} activeSecondRightLink={activeSecondRightLink} bottomTop={bottomTop} 
-                        index={index} setBottomTop={setBottomTop} pos={pos} rightImg={rightImg} i={i} activeIndex={activeIndex} 
+                        index={index} setBottomTop={setBottomTop} pos={pos} rightImg={rightImg} i={i} activeIndex={activeIndex}
+                        deleteImage={deleteBottomImg} 
                         /> : null}
                         </>
                         

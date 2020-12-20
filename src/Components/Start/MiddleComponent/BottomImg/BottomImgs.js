@@ -5,6 +5,9 @@ Img,
 LargeColLine,
 CImg
 } from '../Middle.style';
+
+import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
+
 import {
 lightSource,
 tempSource,
@@ -51,7 +54,8 @@ const useStyles = makeStyles({
       });
 
 const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
-                appearDot, setAppearDot, setBottomImg, marks, valueLabelFormat
+                appearDot, setAppearDot, setBottomImg, marks, valueLabelFormat,
+                deleteImage
 }) => {
         const classes = useStyles();
         const func = (e) => {
@@ -346,22 +350,39 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 style={{
                         marginLeft: `${(140*i.bottomPos) + 20}px`,
                         marginTop: `${140*i.trackValue + 20}px`,
-                }} />
+                }}
+                // onClick={(e) => deleteImage(e,i.uid)}
+                />
         </BottomSpan>: null}
         {i.src !== conditionSource ?<BottomSpan>
                 <Img src={i.src} alt="alt"
                 style={{
                         marginLeft: `${(140*i.bottomPos) + 20}px`,
                         marginTop: `${140*i.trackValue + 20}px`,
-                }} />
+                }} 
+                // onClick={(e) => deleteImage(e,i.uid)}
+                />
         </BottomSpan>: null }
+
+        <CancelOutlinedIcon 
+        stroke={'orange'}
+        key={index+'key'}
+        style={{
+                left: `${(140*i.bottomPos) + 120}px`,
+                top: `${mQuery && !mQuery.matches ? 140*i.trackValue :140*i.trackValue + 10}px`,
+                position: 'absolute',
+                cursor: 'pointer',
+                marginTop: `${mQuery && !mQuery.matches? '150' : '200'}px`
+        }} 
+        onClick={(e) => deleteImage(e,i.uid)}
+        />
         
 
         {(bottomImg.length) === index ? null : 
               <>  <LargeColLine style={{
                         marginLeft: `${140*i.bottomPos}px`,
-                        height: `${i.trackValue? 140*i.trackValue + 108 : 108}px`,
-                        zIndex: '-2'
+                        zIndex: '-2',
+                        top: `${i.trackValue? 140*i.trackValue + 78 : 40}px`
                         }}
                 key={index+'--icon'} />
 
@@ -370,7 +391,9 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 key={index+'icon-arrow'}
                 style={{
                         left: `${140*i.bottomPos}px`,
-                        marginTop: `${140*i.trackValue}px`,                      
+                        marginTop: `${140*i.trackValue}px`, 
+                        zIndex: '-1',
+                        color: 'transparent',                     
                 }}
                 />
                 </> }
@@ -467,21 +490,25 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         style={{
                 cursor: 'pointer',
                 marginTop: `${i.trackValue ? 140*i.trackValue: 0}px`,
-                left: `${140*i.bottomPos + 182}px`
+                left: `${140*i.bottomPos + 182}px`,
+                color: 'transparent'
                 }}
                 onClick={(e) => activeLink(e,index,i.normal)}
                 id={i.normal}
                 key={index+'-right'}
+                stroke={"black"} stroke-width={1}
                 />: <ArrowRightAltIcon
         className={classes.largeIconXL + " right-dot-bottom"}
         style={{
                 cursor: 'pointer',
                 marginTop: `${i.trackValue ? 140*i.trackValue : 0}px`,
                 left: `${140*i.bottomPos + 202}px`,
+                color: 'transparent'
                 }}
                 onClick={(e) => activeLink(e,i.switchId,i.normal)}
                 id={i.normal}
                 key={index+'-right'}
+                stroke={"black"} stroke-width={1}
                 />}
         </>
         : null }

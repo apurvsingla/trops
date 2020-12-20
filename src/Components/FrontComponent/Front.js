@@ -29,6 +29,12 @@ const Front = () => {
             history.push('/sandbox');
         }
     }
+
+    const learning = () => {
+      if(history.location.pathname === '/'){
+        history.push('/learning')
+      }
+    }
     const classes = useStyles();
     return (<>
     {/* top component */}
@@ -55,7 +61,9 @@ const Front = () => {
           // overflow: 'none',
           top: '250px',
           backgroundColor: 'yellow',
+          cursor: 'pointer'
         }}
+        onClick={() => learning()}
         />
     
         <SandboxLogo style={{

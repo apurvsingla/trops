@@ -25,6 +25,9 @@ sequenceSource,
 splitterSource
 } from './MiddleComponent/Source/source';
 
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+
 import {ReactComponent as Back} from './button_back.svg';
 import {ReactComponent as Retry} from './button_retry.svg';
 import {Graph,
@@ -34,11 +37,11 @@ Icon,
 MiddleIcon,
 Img
 } from './Start.styles';
+import axios from "axios";
 
 import './Start.styles.scss';
 
 const Start = () => {
-
     //media query
     const [mQuery, setMQuery] = React.useState({
         matches: window.innerWidth > 892 ? true : false,
@@ -50,11 +53,19 @@ const Start = () => {
         return () => mediaQuery.removeListener(setMQuery);
       }, []);
 
+      const [open, setOpen] = useState(false);
+      const [clicked, setClicked] = useState(false);
+      const [value, setValue] = useState(null);
+      const closeModal = () => setOpen(false);
+
     // + sign
     const [displayDot1, setDisplayDot1] = useState(true);
     const [displayDot2, setDisplayDot2] = useState(false);
     const [displayDot3, setDisplayDot3] = useState(false);
     const [displayDot4, setDisplayDot4] = useState(false);
+
+    //uid
+    const [uid,setUid] = useSessionStorage('uid', 0);
 
     //images
     const [img1, setImg1] = useSessionStorage('img1', []);
@@ -98,7 +109,16 @@ const Start = () => {
     // const [trackBottomTop, setTrackBottomTop] = useSessionStorage('track-bottom-top', {});
 
     const [normalId, setNormalId] = useSessionStorage('noraml-id', 0);
-    
+    const data = {
+     img1: img1,
+     img2: bottomImg,
+     name: value
+    }
+    const but = () => axios.post('http://localhost:8000/', data).then((res) => {
+        console.log(res.data)
+    }).catch((error) => {
+        console.log(error)
+    });;
     const history = useHistory();
 
     const back = () => {
@@ -126,13 +146,12 @@ const Start = () => {
         setIndexVal(null);
         setId2(1);
         setImgTrack(0);
-        // setTrackBottom({});
-        // setTrackBottomTop({});
         setTrackRight({});
         setTrackValueRight(0);
         setNormalId(0);
         setNormal({});
         setRight({});
+        setUid(0);
     }
 
     // populating images
@@ -143,7 +162,7 @@ const Start = () => {
                 return;
             }
             else if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
-                setBottomImg(i => i.concat({id: id2+current, src: src, pos: 'normal', bottomPos: indexVal, trackValue: track[current], normal: normal[current]||normalId}));
+                setBottomImg(i => i.concat({id: id2+current, src: src, pos: 'normal', uid: uid, bottomPos: indexVal, trackValue: track[current], normal: normal[current]||normalId, nid: current}));
                 if(track[current]){
                     track[current] = track[current]+ 1
                     setTrack(track);
@@ -162,11 +181,11 @@ const Start = () => {
                     normal[current] = normalId+1;
                     setNormal(normal);
                 }
-                
+                setUid(uid+1);
                 setId2(id2+1);
                 return;
             }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
-                setBottomImg(i => i.concat({id: id2+current, src: src, bool: false, bools: 0, pos: 'normal', bottomPos: indexVal, trackValue: track[current], normal: normal[current]||normalId}));
+                setBottomImg(i => i.concat({id: id2+current, nid: current, src: src, bool: false, bools: 0, pos: 'normal', uid: uid, bottomPos: indexVal, trackValue: track[current], normal: normal[current]||normalId}));
                 if(track[current]){
                     track[current] = track[current]+ 1
                     setTrack(track);
@@ -185,9 +204,10 @@ const Start = () => {
                     normal[current] = normalId+1;
                     setNormal(normal);
                 }
+                setUid(uid+1);
                 return;
             }else{
-                setBottomImg(i => i.concat({id: id2, switchId: id2+current,src: src, pos: 'normal', bottomPos: indexVal ,trackValue:track[current],  normal: normal[current]||normalId}));
+                setBottomImg(i => i.concat({id: id2,nid: current, switchId: id2+current,src: src, pos: 'normal', bottomPos: indexVal, uid: uid ,trackValue:track[current],  normal: normal[current]||normalId}));
                 if(track[current]){
                     track[current] = track[current] + 1;
                     setTrack(track);
@@ -207,6 +227,7 @@ const Start = () => {
                     setNormal(normal);
                 }
                 setId2(id2+1);
+                setUid(uid+1);
                 return;
             }
         }else if(active[activeRightIndex[currentRight]] === true){
@@ -216,7 +237,7 @@ const Start = () => {
             }else{
                 obj = current+1;
             }
-            setBottomImg(i => i.concat({id:  obj, src: src, pos: 'right', bottomRightPos: currentRight, trackValue: trackRight[currentRight]}));
+            setBottomImg(i => i.concat({id:  obj, src: src, pos: 'right', bottomRightPos: currentRight, uid: uid, trackValue: trackRight[currentRight]}));
             if(right[current+'-'+currentRight]){
                 right[current+'-'+currentRight] = right[current+'-'+currentRight] + 1;
                 setRight(right);
@@ -236,11 +257,13 @@ const Start = () => {
 
             }
             setId3(id3+1);
+            setUid(uid+1);
             // setCurrent(current+1)
             return;
         }else if(activeRightBottom[activeRightBottomIndex[currentRightDot] + '-bottom'] === true){
-            setRightRImg(i=> i.concat({id: id4, src: src, pos: 'normal', currentRightRight: currentRightDot}));
+            setRightRImg(i=> i.concat({id: id4, src: src, pos: 'normal', currentRightRight: currentRightDot, uid: uid}));
             setId4(id4+1);
+            setUid(uid+1);
             return;
         }else{
             if(src!==powerSource){
@@ -249,19 +272,19 @@ const Start = () => {
                     setNormalId(0);
                     // setId3(1);
                     if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
-                        setImg1(i => i.concat({id: id, src: src, pos: 'normal'}));
+                        setImg1(i => i.concat({id: id, src: src, pos: 'normal', uid: uid}));
                         setId(id+1);
                         setId3(id);
-                        return;
+                        setUid(uid+1);
                     }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
-                        setImg1(i => i.concat({id: id, src: src, bool: false, bools: 0, pos: 'normal'}));
+                        setImg1(i => i.concat({id: id, src: src, bool: false, bools: 0, pos: 'normal', uid: uid}));
                         setImgTrack(imgTrack +1);
-                        return;
+                        setUid(uid+1);
                     }else{
-                        setImg1(img1 => img1.concat({id: id, src: src, pos: 'normal'}));
+                        setImg1(img1 => img1.concat({id: id, src: src, pos: 'normal', uid: uid}));
                         setId(id + 1);
                         setId3(id);
-                        return;
+                        setUid(uid+1);
                     }
                 }
             }else if(src=== powerSource){
@@ -269,17 +292,54 @@ const Start = () => {
                     return;
                 }
                 setNum(num+1);
-                setImg1(img1 => img1.concat({id: num, src: src, pos: 'normal'}));
+                setUid(uid+1);
+                setImg1(img1 => img1.concat({id: num, src: src, pos: 'normal', uid: uid}));
                 return;
             }
         }
     }
 
+    const handleChange = (e) => {
+        setValue(e.target.value);
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        but();
+    }
     //swipe
     let reactSwipeEl;
 
     return (
         <>
+        <Popup trigger={<button
+        className='popup-button'
+        >SAVE</button>} position="left center" style={{zIndex: '150'}}
+        onClose={closeModal}
+        open={open}>
+             {close => (
+                 <form style={{marginTop: '25px', fontWeight: 'bold',}} 
+                 onSubmit={(e) => {
+                     handleSubmit(e); 
+                     close();
+                     setClicked(true);
+                     setValue("");
+                     }}>
+                    <label style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                        Project-Name 
+                        <input type="text" required value={value} onChange={handleChange}/>
+                    </label>
+                    <span style={{display: 'flex', justifyContent: 'space-around'}}>
+                    <input type="submit" value="Submit" className="popup-input"/>
+                        <input onClick={() => {
+                        close();
+                        }} className="popup-input" value="Cancel" type="button"/>
+                    </span>
+                </form>
+             )}
+            {/* <button onClick={() => false}>Cancel</button> */}
+        </Popup>
+
+        {clicked ? <span className="popup-form"><span>Saved Sucessfully</span> <button onClick={() => setClicked(false)} style={{marginTop: '5px', border: 'none', outline: 'none', backgroundColor: 'green', color: 'white', padding: '5px', borderRadius: '25px', cursor: 'pointer'}}>Continue</button></span>: null}
         {mQuery && !mQuery.matches ? 
          <Scrollbars style={{ width: '100vw', height: '100vh' }}>
            <Graph 
@@ -334,6 +394,8 @@ const Start = () => {
             setTrackRight={setTrackRight}
             id3={id3}
             trackValueRight={trackValueRight}
+            setId2={setId2} track={track} 
+            setUid={setUid} uid={uid}
             />
             {/* end */}
 
@@ -343,12 +405,12 @@ const Start = () => {
                <>
                  <ReactSwipe
                 className="carousel"
-                swipeOptions={{ continuous: false }}
+                swipeOptions={{ continuous: true }}
                 ref={el => (reactSwipeEl = el)}
                 >
                 <div className={JSON.stringify(displayDot1)} onTouchEnd={() => {
-                    setDisplayDot2(false);
-                    setDisplayDot1(true);
+                    setDisplayDot2(true);
+                    setDisplayDot1(false);
                     setDisplayDot3(false);
                     setDisplayDot4(false);
                     
@@ -375,9 +437,9 @@ const Start = () => {
                 </div>
                 
                 <div className={JSON.stringify(displayDot2)} onTouchEnd={() => {
-                    setDisplayDot2(true);
+                    setDisplayDot2(false);
                     setDisplayDot1(false);
-                    setDisplayDot3(false);
+                    setDisplayDot3(true);
                     setDisplayDot4(false);
 
                 }}>
@@ -406,8 +468,8 @@ const Start = () => {
                 <div className={JSON.stringify(displayDot3)} onTouchEnd={() => {
                     setDisplayDot2(false);
                     setDisplayDot1(false);
-                    setDisplayDot3(true);
-                    setDisplayDot4(false);
+                    setDisplayDot3(false);
+                    setDisplayDot4(true);
 
                 }}>
                     <Icon onClick={() => onImage1Concat(magSource)}/>
@@ -432,9 +494,9 @@ const Start = () => {
 
                 <div className={JSON.stringify(displayDot4)} onTouchEnd={() => {
                     setDisplayDot2(false);
-                    setDisplayDot1(false);
+                    setDisplayDot1(true);
                     setDisplayDot3(false);
-                    setDisplayDot4(true);
+                    setDisplayDot4(false);
                 }}>                   
                     <Icon onClick={() => onImage1Concat(tactSource)}/>
                     <Img src={tactSource} 
@@ -553,6 +615,8 @@ const Start = () => {
             id2={id2}
             setTrack={setTrack}
             tack={track} trackValue={trackValue}
+            setId2={setId2}  
+            setUid={setUid} uid={uid}
             />
             {/* end */}
 
@@ -578,7 +642,7 @@ const Start = () => {
                />
                 <ReactSwipe
                 className="carousel"
-                swipeOptions={{ continuous: false }}
+                swipeOptions={{ continuous: true }}
                 ref={el => (reactSwipeEl = el)}
                 >
                     <div className={JSON.stringify(displayDot1)} onTouchEnd={() => {
@@ -674,7 +738,7 @@ const Start = () => {
             </>
 
             {/* Swipeable Dots Beggining */}
-            <>
+            {/* <>
             <Dots onClick={() => {
             reactSwipeEl.slide(3);
             setDisplayDot1(true);
@@ -711,7 +775,7 @@ const Start = () => {
             }}
             className={JSON.stringify(displayDot3) + 'dot'}
             />
-            </>
+            </> */}
             {/* Swipeable Dots End */}
             <ArrowForwardIosIcon 
             style={{

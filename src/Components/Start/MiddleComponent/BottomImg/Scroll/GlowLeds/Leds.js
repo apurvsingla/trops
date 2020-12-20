@@ -16,7 +16,7 @@ const Leds = ({index,top,bool}) => {
             return(<>
                 <span 
                 style={{
-                    left: `${140*index + 163}px`,
+                    left: `${140*index + 166}px`,
                     marginTop: `${140*top + 130}px`
                 }}
                 />
@@ -30,7 +30,7 @@ const Leds = ({index,top,bool}) => {
             <span 
             className="loader-glow-bottom"
             style={{
-                left: `${140*index + 163}px`,
+                left: `${140*index + 166}px`,
                 marginTop: `${140*top + 145}px`
             }}
             />
@@ -38,12 +38,7 @@ const Leds = ({index,top,bool}) => {
             className="loader-glow-bottom"
 
             style={{
-                position: 'absolute',
-                left: `${140*index + 163}px`,
-                backgroundColor: 'green',
-                height: '15px',
-                width: '15px',
-                borderRadius: '50px',
+                left: `${140*index + 166}px`,
                 marginTop: `${140*top + 160}px`
             }}
             />
@@ -51,12 +46,7 @@ const Leds = ({index,top,bool}) => {
             className="loader-glow-bottom"
 
             style={{
-                position: 'absolute',
-                left: `${140*index + 163}px`,
-                backgroundColor: 'green',
-                height: '15px',
-                width: '15px',
-                borderRadius: '50px',
+                left: `${140*index + 166}px`,
                 marginTop: `${140*top + 175}px`
             }}
             />

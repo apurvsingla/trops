@@ -6,8 +6,8 @@ transform: translate(-50%, -50%);
         animation: loading2 0.8s linear infinite;
         position: absolute;
         border-radius: 50px;
-        height: 15px;
-        width: 15px;
+        height: 10px;
+        width: 10px;
         background-color: green;
         z-index: 3;
         @media (max-width: 892px){
@@ -16,16 +16,14 @@ transform: translate(-50%, -50%);
         }
         @keyframes loading2 { 
             0%, 100%{ 
-             transform: translateY(0) scale(0.7);; 
+             transform: translateY(0) scale(0.7);
              background-color: green;
             } 
             25%{ 
-             transform: translateY(2px) scale(0.8);; 
-             height: 18px;
+             transform: translateY(2px) scale(0.8);
             } 
             50%{ 
-             transform: translateY(-2px) scale(1);; 
-             height: 15px;
+             transform: translateY(-2px) scale(1); 
              background-color: green;
             } 
         }

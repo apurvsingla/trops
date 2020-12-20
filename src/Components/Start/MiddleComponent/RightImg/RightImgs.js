@@ -58,8 +58,10 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                                 position: 'absolute',
                                 left: `${140*i.id +60}px`,
                                 top: `${140*i.bottomRightPos + 202}px`,
-                                zIndex: '-8'
+                                zIndex: '-8',
+                                color:'transparent'
                                 }}
+                                stroke={"black"} stroke-width={1}
                         key={index+'--icon'} />)}
         </>)
 }

@@ -7,13 +7,13 @@ transform: translate(-50%, -50%);
         animation: loading 0.8s linear infinite;
         position: absolute;
         border-radius: 50px;
-        height: 15px;
-        width: 15px;
+        height: 8px;
+        width: 8px;
         background-color: green;
-        top: 98px;
+        top: 100px;
         z-index: 3;
         @media (max-width: 892px){
-            top: 77px;
+            top: 82px;
         }
         @keyframes loading { 
             0%, 100%{ 
@@ -22,11 +22,10 @@ transform: translate(-50%, -50%);
             } 
             25%{ 
              transform: translateX(2px) scale(0.8);; 
-             height: 18px;
             } 
             50%{ 
              transform: translateX(-2px) scale(1);; 
-             height: 15px;
+             height: 10px;
              background-color: green;
             } 
         }

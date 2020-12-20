@@ -9,7 +9,7 @@ Span,
 } from '../Middle.style';
 import Scroll from '../ScrollSliderComponent/Scroll';
 import { makeStyles } from '@material-ui/core/styles';
-
+import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
 //image source
 import {
 lightSource,
@@ -40,13 +40,21 @@ GlowEight
 import { GlowEightM, GlowFiveM, GlowFourM, GlowOneM, GlowSevenM, GlowSixM, GlowThreeM,GlowTwoM } from './GlowStyleMobile';
 import Loader from './Loader';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+
 const useStyles = makeStyles({
         largeIcon: {
           fontSize: 80,
-          transform: 'rotate(90deg)'
+          transform: 'rotate(90deg)',
+          "&:before": {
+                borderColor: "yellow"
+              }
         },
         largeIconXL: {
                 fontSize: 70,
+                color: 'transparent',
+                "&:before": {
+                        borderColor: "red"
+                      }
               },
       });
 
@@ -95,7 +103,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                  key={index}
                  style={{
                          left: `${140*index}px`,
-                         backgroundColor: `${'red'}`
+                         backgroundColor: `${'red'}`,
                  }}
                  />)
         }
@@ -266,27 +274,32 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
             if(mQuery && !mQuery.matches){
                     return(<ArrowRightAltIcon
                         className={classes.largeIconXL + ' row-line'}
+                        stroke={"black"} stroke-width={1}
                         style={{
                                 marginLeft: `${140*index}px`,
                                 opacity: '0.8',
                                 position: 'absolute',
                                 top: '52px',
                                 left: '190px',
-                                transform: 'scale(1.4)'
+                                transform: 'scale(1.4)',
+                                color: 'transparent',
                                 }}
                         key={index+'--icon-arrow'} />)
             }else{
-                    return(
+                    return(<>
                         <ArrowRightAltIcon
                         className={classes.largeIconXL + ' row-line'}
+                        stroke={"black"} stroke-width={1}
                         style={{
                                 marginLeft: `${140*index}px`,
                                 opacity: '0.8',
                                 position: 'absolute',
                                 top: '70px',
-                                left: '205px'
+                                left: '205px',
+                                color: 'transparent',
                                 }}
                         key={index+'--icon-arrow'} />
+                        </>
                     )
             }
     }
@@ -298,14 +311,28 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 style={{
                         left: `${100*index + 20}px`,
                 }}
-                id={i.id}
-                // onClick={(e) => deleteImage(e)}
+                id={i.uid}
                 />
         </Span>
+
+        <CancelOutlinedIcon 
+        stroke={'orange'}
+        style={{
+                left: `${mQuery && !mQuery.matches ? 140*index + 168:140*index+190}px`,
+                top: '52px',
+                // marginRight:`${100}`,
+                position: 'absolute',
+                zIndex: '10',
+                cursor: 'pointer'
+        }}
+        onClick={(e) => deleteImage(e,i.uid,index,i.id)}
+        />
 
         {i.bool && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? true? (
                 <Loader index={index} />
         ): null: null}
+
+        {index === 1 ? <Loader index={index} /> : null}
 
         {i.bools && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? true? (
                 <Loader index={index} bool={i.bools}/>
@@ -376,9 +403,11 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         <>
         <ArrowRightAltIcon 
         className={classes.largeIcon + ' bottom-dot-normal'}
+        stroke={"black"} stroke-width={1}
         style={{
                 marginLeft: `${140*index}px`,
-                zIndex: '1'
+                zIndex: '1',
+                color: 'transparent'
         }}
         key={index+'-bottom'}
         id={index}

@@ -12,11 +12,7 @@ const Loader = ({index,bool}) => {
     }, []);
     return (<>
     {bool !== 1 ? (mQuery && !mQuery.matches) ? <Style>
-        <span 
-        style={{
-                marginLeft: `${100*index}px`,
-        }}
-        />
+        
         <span 
         style={{
                 marginLeft: `${100*index +12}px`,
