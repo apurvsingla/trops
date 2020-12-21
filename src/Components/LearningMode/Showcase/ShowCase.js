@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 // import Box from '@material-ui/core/Box';
 import axios from "axios";
 // import Grid from '@material-ui/core/Grid';
@@ -29,13 +29,13 @@ const ShowCase = () => {
     const [state, setState] = useSessionStorage('state', null);
     const history = useHistory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(() => {
-        const result = axios(
-            'http://localhost:8000/data'
-        );
+    // useEffect(() => {
+    //     const result = axios(
+    //         'http://localhost:8000/data'
+    //     );
      
-        setState(result.data);
-      });
+    //     setState(result.data);
+    //   });
 
     // const page = (e,index) => {
     //     history.push({
@@ -46,10 +46,11 @@ const ShowCase = () => {
 
     // }
 
-    const click = () => {
-      const result = axios(
+    const click = async () => {
+      const result = await axios(
         'http://localhost:8000/data'
     );
+    console.log(result)
  
     setState(result.data);
     }
