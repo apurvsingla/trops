@@ -7,6 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import {Main} from './ShowCase.styles';
 import {useHistory} from 'react-router-dom';
 import {ReactComponent as Back} from './button_back.svg';
+import useSessionStorage from '../../SessionStorage/SessionStorage';
 // import Start from '../../Start/Start';
 
 const useStyles = makeStyles((theme) => ({
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const ShowCase = () => {
     const classes = useStyles();
-    const [state, setState] = React.useState(null);
+    const [state, setState] = useSessionStorage('state', null);
     const history = useHistory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
@@ -37,8 +38,11 @@ const ShowCase = () => {
       });
 
     const page = (e,index) => {
-        // console.log(e)
-        history.push(`${'/learning/tut_' + index}`);
+        history.push({
+          pathname: `${'/learning/tut_' + index}`,
+          data: e.img1,
+          bottom: e.img2
+        });
     }
 
     const back = () => {
@@ -63,7 +67,7 @@ const ShowCase = () => {
             > 
             {state ? state.map((e,index) => {
             return (
-                <Grid item md={4} sm={1} style={{width: '100%', cursor: 'pointer'}} onClick={(a) => page(e,index+1)}>
+                <Grid item md={4} sm={1} style={{width: '100%', cursor: 'pointer'}} onClick={() => page(e,index+1)}>
                 <Paper className={classes.paper}>
                     <h1 style={{paddingBottom: '40px'}}>Tutorial {index+1}:</h1> 
                     <span style={{fontSize: '1.3rem', textTransform: 'uppercase'}}>{e.name}</span>

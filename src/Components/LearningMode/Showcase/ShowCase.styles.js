@@ -9,3 +9,24 @@ export const Main = styled.div`
     align-items: center;
     flex-direction: column;
 `;
+
+export const Imgs = styled.img`
+    width: 75px;
+    height: 75px;
+    @media (min-width: 893px){
+        width: 100px;
+        height: 100px;
+    }  
+`;
+
+export const NormalImg = styled.img`
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    z-index: 2;
+    @media (min-width: 893px){
+        width: 100px;
+        height: 100px;
+        position: absolute;
+    }
+`;

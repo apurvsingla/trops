@@ -1,8 +1,9 @@
 import React from 'react';
 import ModeFiles from '../../../Components/LearningMode/ModeFiles/ModeFiles';
 const Chapters = () => {
-    return (
+    return (<>
         <ModeFiles />
+        </>
     );
 }
 

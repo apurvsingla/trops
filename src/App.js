@@ -9,7 +9,7 @@ import HomePage from './pages/HomePage/HomePage';
 import Main from './pages/Sandbox/Main';
 import Assembly from './pages/Assembly/Assembly';
 import Showcase from './pages/Learning/Showcase';
-// import Chapters from './pages/Learning/Chapters/Chapters';
+import Chapters from './pages/Learning/Chapters/Chapters';
 import './App.css';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/sandbox" component={Main} />
           <Route exact path="/sandbox/start" component={Assembly} />
           <Route exact path="/learning" component={Showcase} />
-          {/* <Route exact path="/learning/tut" component={Chapters} /> */}
+          <Route exact path="/learning/:id" component={Chapters} />
       </Switch>
     </div>
   );
