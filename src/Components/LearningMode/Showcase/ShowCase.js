@@ -56,11 +56,6 @@ const ShowCase = () => {
                 style={{position: 'absolute', cursor: 'pointer', left: '-5px'}}
                 onClick={() => back()}
             />
-            <span>
-            {state ? state.map((e,index) => {
-              return(<span onClick={() => page(e,index+1)} style={{position: 'relative', right: '0'}} >Hey</span>)
-             }) :null}
-            </span>
         <Main>
           <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning Tutorials</h1>  
           <Grid
@@ -73,14 +68,13 @@ const ShowCase = () => {
             > 
             {state ? state.map((e,index) => {
             return (
-                <Grid item md={4} sm={1} style={{width: '100%', cursor: 'pointer', zIndex: '1000'}} onClick={() => page(e,index+1)} key={index}>
+                <Grid item style={{width: '100%', cursor: 'pointer', zIndex: '1000'}} onClick={() => page(e,index+1)} key={index}>
                 <Paper className={classes.paper}>
                     <h1 style={{paddingBottom: '40px'}}>Tutorial {index+1}:</h1> 
                     <span style={{fontSize: '1.3rem', textTransform: 'uppercase'}}>{e.name}</span>
                 </Paper>
               </Grid>
                 );
-            // Object.entries(e).map((i ,v) => console.log(i))
         }) : null}
           </Grid>
         </Main>
