@@ -8,6 +8,11 @@ export const Main = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    @media (max-width: 893px){
+        width: 100%;
+        height: 100%;
+        display: block;
+    } 
 `;
 
 export const Imgs = styled.img`
