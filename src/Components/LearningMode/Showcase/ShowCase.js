@@ -59,7 +59,8 @@ const ShowCase = () => {
         <Main>
           <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning Tutorials</h1> 
           asdsad 
-          <Grid
+          {state ? state.map((e,index) => <span>{index}</span>) : null}
+          {/* <Grid
             container
             direction="row"
             justify="space-around"
@@ -77,7 +78,7 @@ const ShowCase = () => {
               </Grid>
                 );
         }) : null}
-          </Grid>
+          </Grid> */}
         </Main>
     </>);
 }
