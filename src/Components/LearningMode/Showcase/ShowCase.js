@@ -57,8 +57,8 @@ const ShowCase = () => {
                 onClick={() => back()}
             />
         <Main>
-          <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning Tutorials</h1>  
-          {state.map((e,index) => <>{index+1}</>)}
+          <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning Tutorials</h1> 
+          asdsad 
           <Grid
             container
             direction="row"
@@ -69,14 +69,12 @@ const ShowCase = () => {
             > 
             {state ? state.map((e,index) => {
             return (
-              <>
                 <Grid item md={4} sm={1} style={{width: '100%', cursor: 'pointer', zIndex: '1000'}} onClick={() => page(e,index+1)} key={index}>
                 <Paper className={classes.paper}>
                     <h1 style={{paddingBottom: '40px'}}>Tutorial {index+1}:</h1> 
                     <span style={{fontSize: '1.3rem', textTransform: 'uppercase'}}>{e.name}</span>
                 </Paper>
               </Grid>
-              </>
                 );
         }) : null}
           </Grid>
