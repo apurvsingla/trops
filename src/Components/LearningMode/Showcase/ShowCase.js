@@ -29,8 +29,8 @@ const ShowCase = () => {
     const [state, setState] = useSessionStorage('state', null);
     const history = useHistory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    useEffect(async () => {
-        const result = await axios(
+    useEffect(() => {
+        const result = axios(
             'http://localhost:8000/data'
         );
      
@@ -46,6 +46,14 @@ const ShowCase = () => {
 
     // }
 
+    const click = () => {
+      const result = axios(
+        'http://localhost:8000/data'
+    );
+ 
+    setState(result.data);
+    }
+
     const back = () => {
         history.push('/');
     }
@@ -58,7 +66,7 @@ const ShowCase = () => {
             />
         <Main>
           <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning Tutorials</h1> 
-          asdsad 
+          <button onClick={() => click()}>Load data</button>
           {state ? state.map((e,index) => <span>{index}</span>) : null}
           {/* <Grid
             container
