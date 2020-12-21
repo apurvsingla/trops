@@ -80,7 +80,6 @@ const ModeFiles = () => {
                             top: '170px',
                             zIndex: '1000' ,
                     }} 
-                    key={index+'bottom'}
                     />
                     )
             }else{

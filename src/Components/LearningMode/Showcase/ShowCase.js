@@ -43,6 +43,7 @@ const ShowCase = () => {
           data: e.img1,
           bottom: e.img2
         });
+
     }
 
     const back = () => {
@@ -55,6 +56,11 @@ const ShowCase = () => {
                 style={{position: 'absolute', cursor: 'pointer', left: '-5px'}}
                 onClick={() => back()}
             />
+            <span>
+            {state ? state.map((e,index) => {
+              return(<span onClick={() => page(e,index+1)} style={{position: 'relative', right: '0'}} >Hey</span>)
+             }) :null}
+            </span>
         <Main>
           <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning Tutorials</h1>  
           <Grid
