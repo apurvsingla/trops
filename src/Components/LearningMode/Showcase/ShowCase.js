@@ -1,58 +1,52 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 // import Box from '@material-ui/core/Box';
 import axios from "axios";
-// import Grid from '@material-ui/core/Grid';
-// import { makeStyles } from '@material-ui/core/styles';
-// import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
 import {Main} from './ShowCase.styles';
 import {useHistory} from 'react-router-dom';
 import {ReactComponent as Back} from './button_back.svg';
 import useSessionStorage from '../../SessionStorage/SessionStorage';
 // import Start from '../../Start/Start';
 
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-//   paper: {
-//     padding: theme.spacing(2),
-//     textAlign: 'center',
-//     color: theme.palette.text.secondary,
-//     // paddingBottom: '150px'
-//   },
-// }));
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+    // paddingBottom: '150px'
+  },
+}));
 
 
 
 const ShowCase = () => {
-    // const classes = useStyles();
+    const classes = useStyles();
     const [state, setState] = useSessionStorage('state', null);
     const history = useHistory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // useEffect(() => {
-    //     const result = axios(
-    //         'http://localhost:8000/data'
-    //     );
-     
-    //     setState(result.data);
-    //   });
+    useEffect(async () => {
+        func();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      },[]);
 
-    // const page = (e,index) => {
-    //     history.push({
-    //       pathname: `${'/learning/tut_' + index}`,
-    //       data: e.img1,
-    //       bottom: e.img2
-    //     });
+    const page = (e,index) => {
+        history.push({
+          pathname: `${'/learning/tut_' + index}`,
+          data: e.img1,
+          bottom: e.img2
+        });
+    }
 
-    // }
-
-    const click = async () => {
+    const func = async () => {
       const result = await axios(
         'http://localhost:8000/data'
-    );
-    console.log(result)
- 
-    setState(result.data);
+      );
+      setState(result.data);
     }
 
     const back = () => {
@@ -66,10 +60,8 @@ const ShowCase = () => {
                 onClick={() => back()}
             />
         <Main>
-          <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning Tutorials</h1> 
-          <button onClick={() => click()} style={{position:'absolute', right: '0'}}>Load data</button>
-          {state ? state.map((e,index) => <span>{index}</span>) : null}
-          {/* <Grid
+          <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning Tutorials</h1>  
+          <Grid
             container
             direction="row"
             justify="space-around"
@@ -86,8 +78,9 @@ const ShowCase = () => {
                 </Paper>
               </Grid>
                 );
+            // Object.entries(e).map((i ,v) => console.log(i))
         }) : null}
-          </Grid> */}
+          </Grid>
         </Main>
     </>);
 }
