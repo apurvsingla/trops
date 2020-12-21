@@ -67,7 +67,7 @@ const ShowCase = () => {
             />
         <Main>
           <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning Tutorials</h1> 
-          <button onClick={() => click()}>Load data</button>
+          <button onClick={() => click()} style={{position:'absolute', right: '0'}}>Load data</button>
           {state ? state.map((e,index) => <span>{index}</span>) : null}
           {/* <Grid
             container
