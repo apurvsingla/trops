@@ -63,11 +63,11 @@ const ShowCase = () => {
             justify="space-around"
             alignItems="center"
             spacing={4}
-            style={{width:"100%", margin: 'auto'}}
+            style={{width:"100%", margin: 'auto', zIndex: '1000'}}
             > 
             {state ? state.map((e,index) => {
             return (
-                <Grid item md={4} sm={1} style={{width: '100%', cursor: 'pointer'}} onClick={() => page(e,index+1)}>
+                <Grid item md={4} sm={1} style={{width: '100%', cursor: 'pointer', zIndex: '1000'}} onClick={() => page(e,index+1)} key={index}>
                 <Paper className={classes.paper}>
                     <h1 style={{paddingBottom: '40px'}}>Tutorial {index+1}:</h1> 
                     <span style={{fontSize: '1.3rem', textTransform: 'uppercase'}}>{e.name}</span>

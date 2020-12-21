@@ -80,6 +80,7 @@ const ModeFiles = () => {
                             top: '170px',
                             zIndex: '1000' ,
                     }} 
+                    key={index+'bottom'}
                     />
                     )
             }else{
@@ -288,6 +289,7 @@ const ModeFiles = () => {
                             marginTop: `${140*i.trackValue + 20}px`,
                             top: '170px',
                     }} 
+                    key={index+'bottom'}
                     />
                     )
             }else{
