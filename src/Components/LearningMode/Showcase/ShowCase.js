@@ -1,31 +1,31 @@
 import React, {useEffect} from 'react';
 // import Box from '@material-ui/core/Box';
 import axios from "axios";
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+// import Grid from '@material-ui/core/Grid';
+// import { makeStyles } from '@material-ui/core/styles';
+// import Paper from '@material-ui/core/Paper';
 import {Main} from './ShowCase.styles';
 import {useHistory} from 'react-router-dom';
 import {ReactComponent as Back} from './button_back.svg';
 import useSessionStorage from '../../SessionStorage/SessionStorage';
 // import Start from '../../Start/Start';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(2),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-    // paddingBottom: '150px'
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     flexGrow: 1,
+//   },
+//   paper: {
+//     padding: theme.spacing(2),
+//     textAlign: 'center',
+//     color: theme.palette.text.secondary,
+//     // paddingBottom: '150px'
+//   },
+// }));
 
 
 
 const ShowCase = () => {
-    const classes = useStyles();
+    // const classes = useStyles();
     const [state, setState] = useSessionStorage('state', null);
     const history = useHistory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -37,14 +37,14 @@ const ShowCase = () => {
         setState(result.data);
       });
 
-    const page = (e,index) => {
-        history.push({
-          pathname: `${'/learning/tut_' + index}`,
-          data: e.img1,
-          bottom: e.img2
-        });
+    // const page = (e,index) => {
+    //     history.push({
+    //       pathname: `${'/learning/tut_' + index}`,
+    //       data: e.img1,
+    //       bottom: e.img2
+    //     });
 
-    }
+    // }
 
     const back = () => {
         history.push('/');
