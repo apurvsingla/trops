@@ -43,7 +43,7 @@ const ShowCase = () => {
     }
 
     const func = async () => {
-      const apiUrl = 'http://localhost:8000/data';
+      const apiUrl = 'https://trops.herokuapp.com/data';
       fetch(apiUrl).then((res) => (res.json())).then(data => setState(data))
       // setState(result.data);
       // console.log(result.data)
