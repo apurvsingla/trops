@@ -114,7 +114,7 @@ const Start = () => {
      img2: bottomImg,
      name: value
     }
-    const but = () => axios.post('http://localhost:8000/', data).then((res) => {
+    const but = () => axios.post('https://trops.herokuapp.com/', data).then((res) => {
         console.log(res.data)
     }).catch((error) => {
         console.log(error)

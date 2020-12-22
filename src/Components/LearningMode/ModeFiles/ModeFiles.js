@@ -88,7 +88,7 @@ const ModeFiles = () => {
             })}
         </div>
             {/* swipeable area */}
-           <Bottom>
+           <Bottom style={{zIndex: '1500'}}>
                <>
                  <ReactSwipe
                 className="carousel"
@@ -300,7 +300,7 @@ const ModeFiles = () => {
 
 
             {/* swipeable area */}
-           <Bottom>
+           <Bottom style={{zIndex: '1500'}}>
                <>
                <ArrowBackIosIcon 
                style={{
