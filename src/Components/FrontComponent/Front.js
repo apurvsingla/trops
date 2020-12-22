@@ -61,7 +61,7 @@ const Front = () => {
           borderRadius: '20px',
           // backgroundSize: '200px 300px',
           // overflow: 'none',
-          top: '250px',
+          top: '210px',
           backgroundColor: 'yellow',
           cursor: 'pointer'
         }}
@@ -71,7 +71,7 @@ const Front = () => {
         <SandboxLogo style={{
           position: 'absolute',
           // border: '1px solid black',
-          top: '420px',
+          top: '400px',
           left: '0',
           right: '0',
           margin: "0 auto",
