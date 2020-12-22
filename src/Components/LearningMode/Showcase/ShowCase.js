@@ -52,15 +52,26 @@ const ShowCase = () => {
     const back = () => {
         history.push('/');
     }
+    const [mQuery, setMQuery] = React.useState({
+      matches: window.innerWidth > 639 ? true : false,
+    });
+
+    React.useEffect(() => {
+        let mediaQuery = window.matchMedia("(max-width: 892px)");
+        mediaQuery.addListener(setMQuery);
+        return () => mediaQuery.removeListener(setMQuery);
+      }, []);
 
     return (
         <>
         <Back width="120" height="120"
-                style={{position: 'absolute', cursor: 'pointer', left: '-5px'}}
+                style={{position: 'absolute', cursor: 'pointer', left: '-15px'}}
                 onClick={() => back()}
             />
         <Main>
-          <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning Tutorials</h1>  
+        {mQuery && !mQuery.matches ?
+          <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning <br/> Tutorials</h1> :
+          <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning Tutorials</h1> } 
           <Grid
             container
             direction="row"
@@ -71,7 +82,7 @@ const ShowCase = () => {
             > 
             {state ? state.map((e,index) => {
             return (
-                <Grid item md={4} sm={1} style={{width: '100%', cursor: 'pointer', zIndex: '1000'}} onClick={() => page(e,index+1)} key={index}>
+                <Grid item md={4} sm={6} style={{width: '100%', cursor: 'pointer', zIndex: '1000', marginTop: '50px'}} onClick={() => page(e,index+1)} key={index}>
                 <Paper className={classes.paper}>
                     <h1 style={{paddingBottom: '40px'}}>Tutorial {index+1}:</h1> 
                     <span style={{fontSize: '1.3rem', textTransform: 'uppercase'}}>{e.name}</span>
