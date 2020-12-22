@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 // import Box from '@material-ui/core/Box';
-import axios from "axios";
+// import axios from "axios";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -43,10 +43,10 @@ const ShowCase = () => {
     }
 
     const func = async () => {
-      const result = await axios(
-        'http://localhost:8000/data'
-      );
-      setState(result.data);
+      const apiUrl = 'http://localhost:8000/data';
+      fetch(apiUrl).then((res) => (res.json())).then(data => setState(data))
+      // setState(result.data);
+      // console.log(result.data)
     }
 
     const back = () => {
