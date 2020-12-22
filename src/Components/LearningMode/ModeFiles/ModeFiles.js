@@ -57,7 +57,7 @@ const ModeFiles = () => {
            }}>
             <Back width="120" height="120"
                 style={{position: 'absolute', cursor: 'pointer'}}
-                // onClick={() => back()}
+                onClick={() => back()}
             />
            </div>
 

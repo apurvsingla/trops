@@ -40,7 +40,9 @@ const Front = () => {
     {/* top component */}
         <HeaderComponent position="static">
           <HeaderIcon className={classes.icons}>
-            <MenuIcon />
+            <MenuIcon style={{
+              outline: 'none'
+            }}/>
           </HeaderIcon>
           <HeaderContent>
             <h1>Trops Kit</h1>

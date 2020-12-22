@@ -4,7 +4,7 @@ import {ReactComponent as ReactLogo2} from './button_back.svg';
 
 export const BackButton = styled(ReactLogo2)`
     position: absolute;
-    top: 11.6rem;
+    top: 7.7rem;
     transform: scale(1.2);
     left: 1rem;
     cursor: pointer;
