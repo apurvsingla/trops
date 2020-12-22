@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { useLocation } from "react-router-dom";
-import { Img,
+import { Img, LargeColLine,
 } from '../../Start/MiddleComponent/Middle.style';
 import {ReactComponent as Back} from './button_back.svg';
 import {
@@ -19,8 +19,29 @@ import 'reactjs-popup/dist/index.css';
 import { beeperSource, conditionSource, distanceSource, graphSource, ledSource, lightSource, magSource, motorSource, powerSource, sequenceSource, soundSource, splitterSource, tactSource, tempSource } from '../../Start/MiddleComponent/Source/source';
 import {useHistory} from 'react-router-dom';
 import {Imgs, NormalImg} from '../Showcase/ShowCase.styles';
+import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles({
+    largeIcon: {
+      fontSize: 80,
+      transform: 'rotate(90deg)',
+      "&:before": {
+            borderColor: "yellow"
+          }
+    },
+    largeIconXL: {
+            fontSize: 70,
+            color: 'transparent',
+            "&:before": {
+                    borderColor: "red"
+                  }
+          },
+  });
 
 const ModeFiles = () => {
+    const classes = useStyles();
     const history = useHistory();
     const back = () => {
         history.push('/learning');
@@ -30,6 +51,44 @@ const ModeFiles = () => {
     const [displayDot2, setDisplayDot2] = useState(false);
     const [displayDot3, setDisplayDot3] = useState(false);
     const [displayDot4, setDisplayDot4] = useState(false);
+
+    const line = (index) => {
+        if(mQuery && !mQuery.matches){
+                return(<ArrowRightAltIcon
+                    className={classes.largeIconXL + ' row-line'}
+                    stroke={"black"} stroke-width={1}
+                    style={{
+                            marginLeft: `${140*index}px`,
+                            opacity: '0.8',
+                            position: 'absolute',
+                            top: '52px',
+                            left: '190px',
+                            transform: 'scale(1.4)',
+                            color: 'transparent',
+                            zIndex: '2000'
+                            }}
+                    key={index+'--icon-arrow'} />)
+        }else{
+                return(<>
+                    <ArrowRightAltIcon
+                    className={classes.largeIconXL + ' row-line'}
+                    stroke={"black"} stroke-width={1}
+                    style={{
+                            marginLeft: `${140*index}px`,
+                            opacity: '0.8',
+                            position: 'absolute',
+                            top: '70px',
+                            left: '205px',
+                            zIndex: '2000',
+                            color: 'transparent',
+                            }}
+                    key={index+'--icon-arrow'} />
+                    </>
+                )
+        }
+}
+
+
     const [mQuery, setMQuery] = React.useState({
         matches: window.innerWidth > 892 ? true : false,
       });
@@ -65,22 +124,48 @@ const ModeFiles = () => {
             {
             location.data.map((i,index)=> {
                 return(
+                    <>
                     <NormalImg src={i.src} alt="as" height="100" width="100" 
-                    style={{position: 'absolute', zIndex: '1000' ,left: `${140*index}px`, marginLeft: '180px', top: '50px'}} key={index}/>
+                    style={{position: 'absolute', zIndex: '1000' ,left: `${140*index}px`, 
+                    marginLeft: '120px', top: '50px'}} key={index}/>
+                     {(location.data.length-1) === index ? null : line(index) }
+                    </>
                 )
             })}
             {
             location.bottom.map((i,index)=> {
                 if(i.pos === 'normal'){
                 return(
+                    <>
                     <Img src={i.src} alt="alt"
                     style={{
-                            marginLeft: `${(140*i.bottomPos) + 180}px`,
+                            marginLeft: `${(140*i.bottomPos) + 120}px`,
                             marginTop: `${140*i.trackValue + 20}px`,
                             top: '170px',
                             zIndex: '1000' ,
                     }} 
                     />
+                    {(location.bottom.length) === index ? null : 
+                    <>  
+                    <LargeColLine style={{
+                            marginLeft: `${140*i.bottomPos}px`,
+                            zIndex: '-2',
+                            top: `${i.trackValue? 140*i.trackValue + 120 : 122}px`
+                            }}
+                    key={index+'--icon'} />
+
+                    <span 
+                    className='line-bottom-arrow'
+                    key={index+'icon-arrow'}
+                    style={{
+                            left: `${140*i.bottomPos}px`,
+                            marginTop: `${i.trackValue ? 140*i.trackValue + 40: 41}px`, 
+                            zIndex: '-1',
+                            color: 'transparent',
+                    }}
+                    />
+                    </> }
+                    </>
                     )
             }else{
                 return(<></>)
@@ -273,23 +358,46 @@ const ModeFiles = () => {
             <div>
             {
             location.data.map((i,index)=> {
-                return(
+                return(<>
                     <NormalImg src={i.src} alt="as" height="100" width="100" 
-                    style={{position: 'absolute', zIndex: '1000' ,left: `${140*index}px`, marginLeft: '180px', top: '50px'}} key={index}/>
-                )
+                    style={{position: 'absolute', zIndex: '1000' ,left: `${140*index}px`, marginLeft: '120px', top: '50px'}} key={index}/>
+                {(location.data.length-1) === index ? null : line(index) }
+                </>)
             })}
             {
             location.bottom.map((i,index)=> {
                 if(i.pos === 'normal'){
                 return(
+                    <>
                     <Img src={i.src} alt="alt"
                     style={{
-                            marginLeft: `${(140*i.bottomPos) + 180}px`,
+                            marginLeft: `${(140*i.bottomPos) + 120}px`,
                             marginTop: `${140*i.trackValue + 20}px`,
                             top: '170px',
                     }} 
                     key={index+'bottom'}
                     />
+                     {(location.bottom.length) === index ? null : 
+                    <>  
+                    <LargeColLine style={{
+                            marginLeft: `${140*i.bottomPos}px`,
+                            zIndex: '-2',
+                            top: `${i.trackValue? 140*i.trackValue + 78 : 82}px`
+                            }}
+                    key={index+'--icon'} />
+
+                    <span 
+                    className='line-bottom-arrow'
+                    key={index+'icon-arrow'}
+                    style={{
+                            left: `${140*i.bottomPos}px`,
+                            marginTop: `${140*i.trackValue}px`, 
+                            zIndex: '-1',
+                            color: 'transparent',                     
+                    }}
+                    />
+                    </> }
+                    </>
                     )
             }else{
                 return(<></>)
