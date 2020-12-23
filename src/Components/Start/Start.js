@@ -104,6 +104,7 @@ const Start = () => {
 
     const [right, setRight] = useSessionStorage('right', {});
     const [normal, setNormal] = useSessionStorage('normal', {});
+    const [nid, setNid] = useSessionStorage('nid', 0);
 
     // const [trackBottom, setTrackBottom] = useSessionStorage('track-bottom', {});
     // const [trackBottomTop, setTrackBottomTop] = useSessionStorage('track-bottom-top', {});
@@ -232,12 +233,43 @@ const Start = () => {
             }
         }else if(active[activeRightIndex[currentRight]] === true){
             let obj = 0;
+            if(src === powerSource){
+                return;
+            }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
+                if(right[current+'-'+currentRight]){
+                    obj = right[current+'-'+currentRight]+1
+                }else{
+                    obj = current+1;
+                }
+                if(right[current+'-'+currentRight]){
+                    right[current+'-'+currentRight] = right[current+'-'+currentRight] + 1;
+                    setRight(right);
+                }else{
+                    right[current+'-'+currentRight] = current + 1;
+                    setRight(right);
+                }
+                if(trackRight[currentRight]){
+                    trackRight[currentRight] = trackRight[currentRight] + 1
+                    setTrackRight(trackRight);
+                    setTrackValueRight(trackRight[currentRight]);
+    
+                }else{
+                    trackRight[currentRight] = id2 + currentRight;
+                    setTrackRight(trackRight);
+                    setTrackValueRight(trackRight[currentRight]);
+    
+                }
+                setId3(id3+1);
+                //nid h lights k liye
+                setBottomImg(i => i.concat({id: obj, nid: currentRight+nid, src: src, pos: 'right', bool: false, bottomRightPos: currentRight, uid: uid, trackValue: trackRight[currentRight]}));
+                return;
+            }
             if(right[current+'-'+currentRight]){
                 obj = right[current+'-'+currentRight]+1
             }else{
                 obj = current+1;
             }
-            setBottomImg(i => i.concat({id:  obj, src: src, pos: 'right', bottomRightPos: currentRight, uid: uid, trackValue: trackRight[currentRight]}));
+            setBottomImg(i => i.concat({id:  obj, src: src, nid: currentRight+nid,pos: 'right', bottomRightPos: currentRight, uid: uid, trackValue: trackRight[currentRight]}));
             if(right[current+'-'+currentRight]){
                 right[current+'-'+currentRight] = right[current+'-'+currentRight] + 1;
                 setRight(right);
@@ -258,6 +290,7 @@ const Start = () => {
             }
             setId3(id3+1);
             setUid(uid+1);
+            setNid(nid + 1);
             // setCurrent(current+1)
             return;
         }else if(activeRightBottom[activeRightBottomIndex[currentRightDot] + '-bottom'] === true){

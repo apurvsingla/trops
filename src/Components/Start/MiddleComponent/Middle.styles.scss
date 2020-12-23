@@ -36,6 +36,23 @@
     }
 }
 
+.line-bottom-arrow-cond{
+    position: absolute;
+    top: 177px;
+    left: 162px;
+    margin-top: 4px;
+    width: 13px;
+    height: 13px;
+    transform: rotate(45deg);
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    z-index: -2;    
+    @media (max-width: 893px){
+        margin-top:-40px;
+        left: 224px;
+    }
+}
+
 .arrow-icon{
     position: absolute;
     left: 158px;
@@ -93,6 +110,19 @@
     @media (max-width: 893px){
         top: 180px !important;
         margin-left: 148px;
+    }
+}
+
+.right-middle-dot{
+    border-radius: 25px;
+    height: 15px;
+    width: 15px;
+    background-color: black;
+    position: absolute;
+    top: 250px;
+    margin-left: 162px;
+    @media (max-width: 893px){
+        top: 180px !important;        
     }
 }
 

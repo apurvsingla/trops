@@ -77,6 +77,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         
         //red dots
         const [appearDot, setAppearDot] = useSessionStorage('appear-dot',{});
+        const [appearDotRight, setAppearDotRight] = useSessionStorage('appear-dot-right',{})
 
         let boolean = false;
         let boolean2 = false;
@@ -103,9 +104,9 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         // const ids = Number(e.target.id);
                         activeother[index] = boolean2;
                         if(boolean2 === true){
-                                e.target.style.color = 'green';
+                                e.target.style.backgroundColor = 'green';
                         }else{
-                                e.target.style.color = 'transparent';   
+                                e.target.style.backgroundColor = 'transparent';   
                         }
                         activeIndex[index] = index;
                         setActiveother(activeother);
@@ -206,10 +207,18 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setTopPos={setTopPos} deleteImage={deleteBottomImg}
                         />
                         :null}
-                        {i.pos === 'right' ? <RightImgs mQuery={mQuery} currentRight={currentRight} activeRightIndex={activeRightIndex}
-                        activeDot={activeDot} activeSecondRightLink={activeSecondRightLink} bottomTop={bottomTop} 
-                        index={index} setBottomTop={setBottomTop} pos={pos} rightImg={rightImg} i={i} activeIndex={activeIndex}
-                        deleteImage={deleteBottomImg} 
+                        {i.pos === 'right' ? <RightImgs mQuery={mQuery} 
+                        currentRight={currentRight} 
+                        activeRightIndex={activeRightIndex}
+                        apperDot={appearDotRight} 
+                        setAppearDot={setAppearDotRight}
+                        activeSecondRightLink={activeSecondRightLink}
+                        bottomTop={bottomTop} 
+                        index={index} setBottomTop={setBottomTop} 
+                        pos={pos} i={i} activeIndex={activeIndex} 
+                        setBottomImg={setBottomImg}
+                        deleteImage={deleteBottomImg} appearDot={appearDot} 
+                        bottomImg={bottomImg}
                         /> : null}
                         </>
                         

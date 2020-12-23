@@ -2,8 +2,10 @@ import React from 'react';
 
 //styled components
 import {
+        NImg,
 NormalImg,
 Span,
+LargeColLineCondition
 // LargeLine,
 // Arrow
 } from '../Middle.style';
@@ -305,15 +307,25 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
     }
         
     return(<>
-        <Span>
-                <NormalImg src={i.src} 
-                alt="alt" 
-                style={{
+        {i.src === conditionSource ? <Span>
+                <NImg src={i.src} alt="alt"
+                 style={{
                         left: `${100*index + 20}px`,
                 }}
                 id={i.uid}
+                // onClick={(e) => deleteImage(e,i.uid)}
                 />
-        </Span>
+        </Span>: null}
+        {/* NormalImg */}
+        {i.src !== conditionSource ? <Span>
+                <NormalImg src={i.src} alt="alt"
+                 style={{
+                        left: `${100*index + 20}px`,
+                }}
+                id={i.uid}
+                // onClick={(e) => deleteImage(e,i.uid)}
+                />
+        </Span>: null}
 
         <CancelOutlinedIcon 
         stroke={'orange'}
@@ -401,18 +413,39 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         {/* dots start */}
         {i.src === conditionSource ? 
         <>
-        <ArrowRightAltIcon 
-        className={classes.largeIcon + ' bottom-dot-normal'}
-        stroke={"black"} stroke-width={1}
-        style={{
-                marginLeft: `${140*index}px`,
-                zIndex: '1',
-                color: 'transparent'
-        }}
-        key={index+'-bottom'}
-        id={index}
-        onClick={(e) => activeSecondLink(e,index)}
-                />
+       
+                <>  <LargeColLineCondition  style={{
+                                marginLeft: `${140*index}px`,
+                                zIndex: '4',
+                                color: 'transparent',
+                                top: '146px',
+                        }}
+                key={index+'--icon'}
+                onClick={(e) => activeSecondLink(e,index)}
+                 />
+                {mQuery && mQuery.matches ? <span 
+                className='line-bottom-arrow-cond'
+                key={index+'-bottom'}
+                id={index}
+                style={{
+                        marginLeft: `${140*index }px`,
+                        zIndex: '1',
+                        color: 'grey',
+                        top: '176px',
+                }}
+                />: <span 
+                className='line-bottom-arrow-cond'
+                key={index+'-bottom'}
+                id={index}
+                style={{
+                        marginLeft: `${140*index - 77}px`,
+                        zIndex: '1',
+                        color: 'grey',
+                        top: '176px',
+                }}
+                />}
+                
+                </>
         </>
         : null }
         {/* dots end */}

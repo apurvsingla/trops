@@ -382,7 +382,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
               <>  <LargeColLine style={{
                         marginLeft: `${140*i.bottomPos}px`,
                         zIndex: '-2',
-                        top: `${i.trackValue? 140*i.trackValue + 78 : 60}px`
+                        top: `${i.trackValue? 140*i.trackValue + 78 : 82}px`
                         }}
                 key={index+'--icon'} />
 

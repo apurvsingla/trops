@@ -39,12 +39,24 @@ export const NormalImg = styled.img`
         position: absolute;
     }
 `;
+export const NImg = styled.img`
+    width: 70px;
+    height: 70px;
+    position: absolute;
+    z-index: 2;
+    @media (min-width: 893px){
+        width: 90px;
+        height: 92px;
+        position: absolute;
+        margin-top: 6px;
+        margin-left: 5px
+    }
+`;
 
 export const NormalRImg = styled.img`
     width: 70px;
     height: 70px;
     position: absolute;
-    z-index: -3;
     @media (min-width: 893px){
         width: 100px;
         height: 100px;
@@ -120,6 +132,24 @@ export const LargeColLine = styled.span`
     @media (max-width: 893px){
         margin-top: 0px;
         height: 66px;
+        width: 0.35rem;
+        left: 150px;
+    }
+    border: 2px solid black;
+`;
+
+export const LargeColLineCondition = styled.span`
+    background-color: transparent;
+    width: 0.4rem;
+    position: absolute;
+    top: 150px;
+    left: 166px;
+    z-index: 4;
+    border-radius: 25px;
+    height: 45px;
+    @media (max-width: 893px){
+        margin-top: -30px;
+        height: 35px;
         width: 0.35rem;
         left: 150px;
     }
