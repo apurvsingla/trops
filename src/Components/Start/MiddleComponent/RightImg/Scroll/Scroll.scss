@@ -1,0 +1,7 @@
+.scroll-large-right{
+    position: absolute !important;
+    width: 50px !important;
+    @media (max-width: 892px){
+        width: 40px !important;
+    }
+}

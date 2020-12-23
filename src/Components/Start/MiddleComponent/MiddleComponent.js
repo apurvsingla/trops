@@ -219,6 +219,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setBottomImg={setBottomImg}
                         deleteImage={deleteBottomImg} appearDot={appearDot} 
                         bottomImg={bottomImg}
+                        marks={marks} valueLabelFormat={valueLabelFormat}
                         /> : null}
                         </>
                         

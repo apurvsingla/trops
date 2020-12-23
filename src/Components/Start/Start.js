@@ -261,7 +261,7 @@ const Start = () => {
                 }
                 setId3(id3+1);
                 //nid h lights k liye
-                setBottomImg(i => i.concat({id: obj, nid: currentRight+nid, src: src, pos: 'right', bool: false, bottomRightPos: currentRight, uid: uid, trackValue: trackRight[currentRight]}));
+                setBottomImg(i => i.concat({id: obj, bools: 0, nid: currentRight+nid, src: src, pos: 'right', bool: false, bottomRightPos: currentRight, uid: uid, trackValue: trackRight[currentRight]}));
                 return;
             }
             if(right[current+'-'+currentRight]){
