@@ -9,6 +9,7 @@ import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import { tactSource,ledSource,beeperSource, motorSource, lightSource, tempSource, magSource, soundSource, distanceSource, graphSource } from '../Source/source';
 // import {conditionSource} from '../Source/source';
 import { makeStyles } from '@material-ui/core/styles';
+import Loader from './Loader/Loader';
 import {
 GlowOne,
 GlowTwo,
@@ -64,7 +65,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                         }
                 })
                 setBottomImg(newArray);
-            }
+        }
         const glowDot = () => {
                 if(mQuery && !mQuery.matches){
                         if(i.bool){
@@ -115,8 +116,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                         </>)
                     }
                 }
-        }
-        
+        } 
         const rangeGlow = () => {
                     if(mQuery && !mQuery.matches){
                             if(i.bools){
@@ -277,8 +277,10 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                         left: `${120*i.id +81}px`,
                         top: `${140*i.bottomRightPos + 149}px`,
                         zIndex: '-8',
+                        color:'transparent'
                         }}
-                key={index+'--icon'} />): (
+                        stroke={"black"} stroke-width={1}
+                        key={index+'--icon'} />): (
                         <ArrowRightAltIcon 
                         className={classes.largeIconXL}
                         style={{
@@ -291,7 +293,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                                 stroke={"black"} stroke-width={1}
                         key={index+'--icon'} />)}
                </>
-               
+
                 {/* ledGlow */}
                 {(((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)) 
                 )? 
@@ -309,6 +311,15 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 {(((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)))? 
                         rangeGlow()
                 : null}
+
+                {i.bool && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? true? (
+                        <Loader index={i.id} top={i.bottomRightPos}/>
+                ): null: null}
+
+                {i.bools && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? true? (
+                        <Loader index={i.id} bool={i.bools} top={i.bottomRightPos}/>
+                ): null: null}
+
                 {(i.src === tactSource) 
                 ? (
                 <>
@@ -322,7 +333,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 style={{
                       cursor: 'pointer',
                       marginTop: `${140*i.bottomRightPos }px`,
-                      marginLeft: `${120*i.id+87}px`,
+                      left: `${120*i.id+2}px`,
                       
                 }}
                 key={index+'-middle-right'}
