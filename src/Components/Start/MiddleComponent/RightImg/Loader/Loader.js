@@ -15,62 +15,62 @@ const Loader = ({index,bool,top}) => {
         
         <span 
         style={{
-                marginLeft: `${120*index -110}px`,
-                marginTop: `${140*top + 97}px`
+                left: `${120*index +130}px`,
+                top: `${140*top + 179}px`
 
         }}
         />
         <span 
         style={{
-                marginLeft: `${120*index -100}px`,
-                marginTop: `${140*top + 97}px`
+                left: `${120*index+120}px`,
+                top: `${140*top + 179}px`
 
         }}
         />
          <span 
         style={{
-                marginLeft: `${120*index -90 }px`,
-                marginTop: `${140*top + 97}px`
+                left: `${120*index+110}px`,
+                top: `${140*top + 179}px`
 
         }}
         />
         <span 
         style={{
-                marginLeft: `${120*index -80 }px`,
-                marginTop: `${140*top + 97}px`
+                left: `${120*index +100}px`,
+                top: `${140*top + 179}px`
 
         }}
         />
         <span 
         style={{
-                marginLeft: `${120*index -70 }px`,
-                marginTop: `${140*top + 97}px`
+                left: `${120*index+90}px`,
+                top: `${140*top + 179}px`
 
         }}
         />
         </Style>: <Style>
         <span 
         style={{
-                marginLeft: `${140*index -94}px`,
-                marginTop: `${140*top + 132}px`
+                left: `${140*index +70}px`,
+                top: `${140*top + 232}px`
         }}
         />
         <span 
         style={{
-                marginLeft: `${140*index -106}px`,
-                marginTop: `${140*top + 132}px`
+                left: `${140*index + 82}px`,
+                top: `${140*top + 232}px`
         }}
         />
         <span 
         style={{
-                marginLeft: `${140*index-118}px`,
-                marginTop: `${140*top + 132}px`
+                left: `${140*index+94}px`,
+                top: `${140*top + 232}px`
         }}
         />
         <span 
         style={{
-                marginLeft: `${140*index -130}px`,
-                marginTop: `${140*top + 132}px`
+                left: `${140*index +106}px`,
+                top: `${140*top + 232}px`
 
         }}
         />
