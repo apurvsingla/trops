@@ -331,7 +331,6 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                         func(e,arr);
                 }}
                 style={{
-                      cursor: 'pointer',
                       marginTop: `${140*i.bottomRightPos }px`,
                       left: `${120*i.id+2}px`,
                       
@@ -346,7 +345,6 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                         func(e,arr);
                 }}
                 style={{
-                      cursor: 'pointer',
                       marginTop: `${140*i.bottomRightPos }px`,
                       left: `${140*i.id- 6}px`,
                       

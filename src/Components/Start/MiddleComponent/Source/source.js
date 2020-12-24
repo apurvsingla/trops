@@ -13,3 +13,4 @@ export const powerSource = (process.env.PUBLIC_URL + '/images/components/power.p
 export const graphSource = (process.env.PUBLIC_URL + '/images/components/graph.png');
 export const sequenceSource = process.env.PUBLIC_URL + '/images/components/sequence.png';
 export const conditionSource = process.env.PUBLIC_URL + '/images/components/splitter.png';
+export const tap = process.env.PUBLIC_URL + '/images/extraImages/tap.png';

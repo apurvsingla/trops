@@ -357,7 +357,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         {(i.src === tactSource) 
                 ? (
                 <span 
-                className="middle-dot-normal"
+                className="middle-dot-normal icons"
                 onTouchStart={(e) => func(e)}
                 onTouchEnd={(e) => func(e)}
                 onClick={(e,arr) => {
@@ -365,8 +365,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 }}
                 style={{
                       marginLeft: `${140*index}px`,
-                      cursor: 'pointer',
-                      zIndex: '2'
+                      zIndex: '2',
                 }}
                 key={index+'-middle'}
                 id={index}
@@ -383,7 +382,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 id={i.id}
                 key={index + '-scroll'}
                 img1={img1} setImg1={setImg1}
-                className="scroll-large"
+                className="scroll-large icons"
                 style={{
                         marginLeft: `${140*index}px`,
                         zIndex: "2"
@@ -420,6 +419,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                                 color: 'transparent',
                                 top: '146px',
                         }}
+                        className="icons"
                 key={index+'--icon'}
                 onClick={(e) => activeSecondLink(e,index)}
                  />

@@ -45,7 +45,6 @@ export const Icon = styled(AddCircleIcon)`
     position: relative;
     bottom: 78px;
     left: 14px;
-    cursor: pointer;
     @media (max-width: 892px){
         bottom: 51px
     }
@@ -55,7 +54,6 @@ export const MiddleIcon = styled(AddCircleIcon)`
     position: relative;
     bottom: 78px;
     left: 30px;
-    cursor: pointer;
     @media (max-width: 892px){
         bottom: 51px;
     }

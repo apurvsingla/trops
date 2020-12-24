@@ -7,6 +7,10 @@
     background-repeat: no-repeat;
 }
 
+.icons{
+  cursor: url('../images/tap.png'), default;
+}
+
 .popup-form{
   background-color: white;
   padding: 10px;
@@ -45,7 +49,6 @@
         border: none;
         padding: 5px;
         margin-top: 5px;
-        cursor: pointer;
         background-color: red;
         color: white;
     }
@@ -68,7 +71,6 @@
   .popup-button{
     position: fixed;
     right: 0;
-    cursor: pointer;
     z-index: 100;
     border-radius: 50px;
     border: none;
@@ -78,4 +80,5 @@
     font-weight: bold;
     letter-spacing: 0.1em;
     outline: none;
+    cursor: url('../images/tap.png'), default;
   }

@@ -6,7 +6,8 @@ export const Heading = styled.div`
     color: #553795;
     letter-spacing: 0.05rem;
     z-index: 5;
-    margin-top: 17rem;
+    margin-top: 27%;
+    height: 80%;
     h1{
         font-weight: 600
     }
@@ -15,39 +16,11 @@ export const Heading = styled.div`
         font-size: 1.1rem;
         color: #735dab;
     }
-    @media (max-width: 540px){
-        margin-top: 22rem;
-    }
 `;
 
 export const Img = styled.img`
     z-index: -1;
-    width: 340px;
-    @media (max-width: 540px){
-        width: 540px;
-        height: 450px;
-    }
-    @media (max-width: 414px){
-        width: 412px;  
-    }
-    @media (max-width: 384px){
-        width: 384px;  
-    }
-    @media (max-width: 375px){
-        width: 375px;
-        height: 410px;
-    }
-    @media (max-width: 360px){
-        width: 360px;
-    }
-    @media (max-width: 320px){
-        width: 320px;
-    }
-    @media (max-width: 280px){
-        width: 280px;
-    }
-   
-
+    width: 100%;
 `;
 
 export const SandboxBackIcon = styled(ReactLogo)`

@@ -357,7 +357,8 @@ const Start = () => {
                      setClicked(true);
                      setValue("");
                      }}>
-                    <label style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                    <label style={{display: 'flex', flexDirection: 'column', 
+                    justifyContent: 'center', alignItems: 'center'}}>
                         Project-Name 
                         <input type="text" required value={value} onChange={handleChange}/>
                     </label>
@@ -385,7 +386,7 @@ const Start = () => {
                flexDirection: 'column',
            }}>
             <Back width="120" height="120"
-                style={{position: 'absolute', cursor: 'pointer'}}
+                style={{position: 'absolute'}}
                 onClick={() => back()}
             />
             <Retry width="120" height="120" 
@@ -610,15 +611,18 @@ const Start = () => {
                flexDirection: 'column',
            }}>
             <Back width="120" height="120"
-                style={{position: 'absolute', cursor: 'pointer'}}
+                style={{position: 'absolute', pointerEvents: 'all',}}
                 onClick={() => back()}
+                className='icons'
+                
             />
             <Retry width="120" height="120" 
             style={{position: 'absolute',
                     top: '75px',
-                    cursor: 'pointer'
+                    pointerEvents: 'all',
                 }}
                 onClick={() => reset()}
+                className='icons'
             />
            </div>
 
@@ -683,19 +687,19 @@ const Start = () => {
                         setDisplayDot1(true);
                         setDisplayDot3(false);
                         }}>
-                        <Icon onClick={(e) =>  onImage1Concat(powerSource)}/>
+                        <Icon onClick={(e) =>  onImage1Concat(powerSource)} className='icons'/>
                         <Img src={powerSource} 
                         alt="power" style={{marginRight: '20px'}}/>
     
-                        <Icon onClick={() => onImage1Concat(sequenceSource)}/>
+                        <Icon onClick={() => onImage1Concat(sequenceSource)} className='icons'/>
                         <Img src={sequenceSource} 
                         alt="beeper" style={{marginRight: '20px'}}/>
     
-                        <Icon onClick={(e) =>  onImage1Concat(beeperSource)}/>
+                        <Icon onClick={(e) =>  onImage1Concat(beeperSource)} className='icons'/>
                         <Img src={beeperSource} 
                         alt="beeper" />
     
-                        <MiddleIcon onClick={() => onImage1Concat(conditionSource)}/>
+                        <MiddleIcon onClick={() => onImage1Concat(conditionSource)} className='icons'/>
                         <Img src={conditionSource} 
                         alt="beeper" 
                         style={{
@@ -703,7 +707,7 @@ const Start = () => {
                         marginRight: '20px'
                         }}/>
     
-                        <Icon onClick={() => onImage1Concat(distanceSource)} />
+                        <Icon onClick={() => onImage1Concat(distanceSource)} className='icons'/>
                         <Img src={distanceSource} 
                         alt="beeper" />
                     </div>
@@ -714,19 +718,19 @@ const Start = () => {
                         setDisplayDot3(false);
                     }}>
     
-                        <Icon onClick={() => onImage1Concat(graphSource)}/>
+                        <Icon onClick={() => onImage1Concat(graphSource)} className='icons'/>
                         <Img src={graphSource} 
                         alt="beeper" style={{marginRight: '20px'}}/>
     
-                        <Icon onClick={() => onImage1Concat(distanceSource)}  />
+                        <Icon onClick={() => onImage1Concat(distanceSource)} className='icons' />
                         <Img src={distanceSource} 
                         alt="beeper" style={{marginRight: "20px"}}/>
     
-                        <Icon onClick={() => onImage1Concat(tactSource)}  />
+                        <Icon onClick={() => onImage1Concat(tactSource)} className='icons' />
                         <Img src={tactSource} 
                         alt="magnetic" />
     
-                        <MiddleIcon onClick={() => onImage1Concat(ledSource)}/>
+                        <MiddleIcon onClick={() => onImage1Concat(ledSource)} className='icons'/>
                         <Img src={ledSource} 
                         alt="beeper" 
                         style={{
@@ -734,7 +738,7 @@ const Start = () => {
                         marginRight: '20px'
                         }}/>
                         
-                        <Icon onClick={() => onImage1Concat(lightSource)}/>
+                        <Icon onClick={() => onImage1Concat(lightSource)} className='icons'/>
                         <Img src={lightSource} 
                         alt="beeper" />
                     </div>
@@ -744,15 +748,15 @@ const Start = () => {
                         setDisplayDot1(false);
                         setDisplayDot3(true);
                     }}>
-                        <Icon onClick={() => onImage1Concat(magSource)}/>
+                        <Icon onClick={() => onImage1Concat(magSource)} className='icons'/>
                         <Img src={magSource} 
                         alt="mag" style={{marginRight: '20px'}}/>
     
-                        <Icon onClick={() => onImage1Concat(tempSource)}/>
+                        <Icon onClick={() => onImage1Concat(tempSource)} className='icons'/>
                         <Img src={tempSource} 
                         alt="temp" />
                         
-                        <MiddleIcon onClick={() => onImage1Concat(motorSource)}/>
+                        <MiddleIcon onClick={() => onImage1Concat(motorSource)} className='icons'/>
                         <Img src={motorSource} 
                         alt="motor" 
                         style={{
@@ -760,10 +764,10 @@ const Start = () => {
                         marginRight: '20px'
                         }}/>
                         
-                        <Icon onClick={() => onImage1Concat(soundSource)}/>
+                        <Icon onClick={() => onImage1Concat(soundSource)} className='icons'/>
                         <Img src={soundSource} 
                         alt="sound" />
-                        <Icon onClick={() => onImage1Concat(splitterSource)}/>
+                        <Icon onClick={() => onImage1Concat(splitterSource)} className='icons'/>
                         <Img src={splitterSource} 
                         alt="sound" />
                     </div>

@@ -1,0 +1,48 @@
+{/* top component */}
+    <HeaderComponent position="static">
+          <HeaderIcon className={classes.icons}>
+            <MenuIcon style={{
+              outline: 'none'
+            }}/>
+          </HeaderIcon>
+          <HeaderContent>
+            <h1>Trops Kit</h1>
+            <p>Small explanation about the Kit</p>
+          </HeaderContent>
+          <BackButton/>
+        </HeaderComponent>
+
+    {/* middle component */}
+
+        <LearningLogo style={{
+          position: 'absolute',
+          left: '0',
+          right: '0',
+          margin: "0 auto",
+          borderRadius: '20px',
+          // backgroundSize: '200px 300px',
+          // overflow: 'none',
+          top: '210px',
+          backgroundColor: 'yellow',
+          cursor: 'pointer'
+        }}
+        onClick={() => learning()}
+        />
+    
+        <SandboxLogo style={{
+          position: 'absolute',
+          // border: '1px solid black',
+          top: '400px',
+          left: '0',
+          right: '0',
+          margin: "0 auto",
+          borderRadius: '20px',
+          backgroundColor: 'red',
+          cursor: 'pointer'
+        }}
+        onClick={() => sandbox()} />
+      {/* <img src={process.env.PUBLIC_URL + '/images/sand.png'} alt="s" width="350"/> */}
+    {/* bottom button */}
+        <LastIcon>
+            <ReactLogo />
+        </LastIcon>

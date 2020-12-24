@@ -19,7 +19,7 @@ function Sandbox() {
     return (
         <>
         <div style={{textAlign: 'center'}}>
-            <Img src={process.env.PUBLIC_URL + 'images/sandbox.png'} 
+            <Img src={process.env.PUBLIC_URL + 'images/extraImages/path.png'} 
             alt="sandbox"/>
         </div>
         <div style={{position: 'absolute', top: '0', left: '0', right: '0', margin: '0 auto'}}>
@@ -30,8 +30,8 @@ function Sandbox() {
             </Heading>
             <br/>
             <br/>
-            <Start>
-                <button onClick={() => next()}>START</button>
+            <Start className="icons">
+                <button className='icons' onClick={() => next()}>START</button>
             </Start>
         </div>
         </>
