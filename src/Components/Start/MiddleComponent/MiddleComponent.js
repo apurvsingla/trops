@@ -57,15 +57,33 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
 }) => {
         
         //media query
-        const [mQuery, setMQuery] = React.useState({
-                matches: window.innerWidth > 892 ? true : false,
-        });
+        // const [mQuery, setMQuery] = React.useState({
+        //         matches: window.innerWidth > 892 ? true : false,
+        // });
 
+        // React.useEffect(() => {
+        //         let mediaQuery = window.matchMedia("(max-width: 892px)");
+        //         mediaQuery.addListener(setMQuery);
+        //         return () => mediaQuery.removeListener(setMQuery);
+        // }, []);
+
+        const [dimensions, setDimensions] = React.useState({ 
+                height: window.innerHeight,
+                width: window.innerWidth
+              })
         React.useEffect(() => {
-                let mediaQuery = window.matchMedia("(max-width: 892px)");
-                mediaQuery.addListener(setMQuery);
-                return () => mediaQuery.removeListener(setMQuery);
-        }, []);
+        function handleResize() {
+                setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+                })
+                return _ => {
+                window.removeEventListener('resize', handleResize)
+                
+                }
+        }
+        window.addEventListener('resize', handleResize);
+        })
 
         const [pos, setPos] = useSessionStorage('bottom-dot-pos', {});
         const [activeDot, setActiveDot] = useSessionStorage('active-top-bottom-dot',null);
@@ -207,7 +225,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setTopPos={setTopPos} deleteImage={deleteBottomImg}
                         />
                         :null}
-                        {i.pos === 'right' ? <RightImgs mQuery={mQuery} 
+                        {i.pos === 'right' ? <RightImgs mQuery={dimensions} 
                         currentRight={currentRight} 
                         activeRightIndex={activeRightIndex}
                         apperDot={appearDotRight} 

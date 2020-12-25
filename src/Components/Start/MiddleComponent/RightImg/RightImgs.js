@@ -67,7 +67,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 setBottomImg(newArray);
         }
         const glowDot = () => {
-                if(mQuery && !mQuery.matches){
+                if(mQuery.width < 892){
                         if(i.bool){
                                 return(
                                 <><span 
@@ -99,7 +99,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 }
         }
         const glowGraph = () => {
-                if(mQuery && !mQuery.matches){
+                if(mQuery.width < 892){
                         if(i.bool){
                         return(<>
                         <GlowEightM 
@@ -159,7 +159,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 }
         }  
         const rangeGraph = () => {
-                if(mQuery && !mQuery.matches){
+                if(mQuery.width < 892){
                         if(i.bools){
                                 if(i.bools === 1){
                                         return(
@@ -248,7 +248,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 }      
         }
     return(<>
-        {mQuery && !mQuery.matches ? (
+        {mQuery.width < 892 ? (
                 <NormalRImg src={i.src} 
                         alt="alt" 
                         style={{
@@ -269,7 +269,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
 
                 {/* lines and arrow     */}
                 <>         
-                {mQuery && !mQuery.matches ? (
+                {mQuery.width < 892 ? (
                 <ArrowRightAltIcon 
                 className={classes.largeIconXL}
                 style={{
@@ -323,7 +323,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 {(i.src === tactSource) 
                 ? (
                 <>
-                {mQuery && !mQuery.matches ? (<span 
+                {mQuery.width < 892 ? (<span 
                 className="right-middle-dot"
                 onTouchStart={(e) => func(e)}
                 onTouchEnd={(e) => func(e)}
@@ -361,7 +361,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 (i.src === distanceSource)
                 ? 
                 <>
-                {mQuery && !mQuery.matches ? <Scroll marks={marks} 
+                {mQuery.width < 892 ? <Scroll marks={marks} 
                 valueLabelFormat={valueLabelFormat} 
                 nid={i.nid}
                 index={index}

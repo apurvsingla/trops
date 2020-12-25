@@ -80,183 +80,191 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 setBottomImg(newArray);
             }
 
-            const [mQuery, setMQuery] = React.useState({
-                matches: window.innerWidth > 892 ? true : false,
-            });
-         
-            React.useEffect(() => {
-                let mediaQuery = window.matchMedia("(max-width: 892px)");
-                mediaQuery.addListener(setMQuery);
-                return () => mediaQuery.removeListener(setMQuery);     
-            }, []);
+        const [dimensions, setDimensions] = React.useState({ 
+        height: window.innerHeight,
+        width: window.innerWidth
+        })
+        React.useEffect(() => {
+        function handleResize() {
+                setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+                })
+                return _ => {
+                window.removeEventListener('resize', handleResize)
+                
+                }
+        }
+        window.addEventListener('resize', handleResize);
+        })
 
-            const glowDot = () => {
+        const glowDot = () => {
+        if(i.bool){
+                return(<span 
+                        className='glow-small-bottom'
+                        key={index}
+                        style={{
+                        marginTop: `${140*i.trackValue + 10}px`,
+                        left: `${140*i.bottomPos - 2}px`,
+                        backgroundColor: `${'red'}`,
+                        position: 'absolute',
+                        }}
+                        />)
+        }
+        }
+
+        const glowGraph = () => {
+        if(dimensions.width < 892){
                 if(i.bool){
-                        return(<span 
-                         className='glow-small-bottom'
-                         key={index}
-                         style={{
-                                marginTop: `${140*i.trackValue + 10}px`,
-                                left: `${140*i.bottomPos - 2}px`,
-                                backgroundColor: `${'red'}`,
-                                position: 'absolute',
-                         }}
-                         />)
+                return(<>
+                <span 
+                style={{
+                        width: '20px',
+                        backgroundColor:'red',
+                        height: '2px',
+                        zIndex: '15',
+                        position: 'absolute',
+                        left: `${140*i.bottomPos + 145}px`,
+                        marginTop: `${140*i.trackValue + 200}px`
+                }}
+                />
+                <span 
+                style={{
+                        width: '25px',
+                        backgroundColor:'red',
+                        height: '2px',
+                        zIndex: '15',
+                        position: 'absolute',
+                        left: `${140*i.bottomPos + 142}px`,
+                        marginTop: `${140*i.trackValue + 195}px`
+                }}
+                />
+                <span 
+                style={{
+                        width: '29px',
+                        backgroundColor:'red',
+                        height: '2px',
+                        zIndex: '15',
+                        position: 'absolute',
+                        left: `${140*i.bottomPos + 140}px`,
+                        marginTop: `${140*i.trackValue + 191}px`
+                }}
+                />
+                <span 
+                style={{
+                        width: '33px',
+                        backgroundColor:'red',
+                        height: '3px',
+                        zIndex: '15',
+                        position: 'absolute',
+                        left: `${140*i.bottomPos + 138}px`,
+                        marginTop: `${140*i.trackValue + 186}px`
+                }}
+                />
+                <span 
+                style={{
+                        width: '37px',
+                        backgroundColor:'red',
+                        height: '3px',
+                        zIndex: '15',
+                        position: 'absolute',
+                        left: `${140*i.bottomPos + 136}px`,
+                        marginTop: `${140*i.trackValue + 181}px`
+                }}
+                />
+                <span 
+                style={{
+                        width: '43px',
+                        backgroundColor:'red',
+                        height: '3px',
+                        zIndex: '15',
+                        position: 'absolute',
+                        left: `${140*i.bottomPos + 133}px`,
+                        marginTop: `${140*i.trackValue + 176}px`
+                }}
+                />
+                <span 
+                style={{
+                        width: '53px',
+                        backgroundColor:'red',
+                        height: '3px',
+                        zIndex: '15',
+                        position: 'absolute',
+                        left: `${140*i.bottomPos + 128}px`,
+                        marginTop: `${140*i.trackValue + 171}px`
+                }}
+                />
+                <span 
+                style={{
+                        width: '60px',
+                        backgroundColor:'red',
+                        height: '3px',
+                        zIndex: '15',
+                        position: 'absolute',
+                        left: `${140*i.bottomPos + 124}px`,
+                        marginTop: `${140*i.trackValue + 167}px`
+                }}
+                />
+                </>)
                 }
-            }
-        
-            const glowGraph = () => {
-                if(mQuery && !mQuery.matches){
-                        if(i.bool){
-                        return(<>
-                        <span 
-                        style={{
-                                width: '20px',
-                                backgroundColor:'red',
-                                height: '2px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 145}px`,
-                                marginTop: `${140*i.trackValue + 200}px`
-                        }}
-                        />
-                        <span 
-                        style={{
-                                width: '25px',
-                                backgroundColor:'red',
-                                height: '2px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 142}px`,
-                                marginTop: `${140*i.trackValue + 195}px`
-                        }}
-                        />
-                        <span 
-                        style={{
-                                width: '29px',
-                                backgroundColor:'red',
-                                height: '2px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 140}px`,
-                                marginTop: `${140*i.trackValue + 191}px`
-                        }}
-                        />
-                        <span 
-                        style={{
-                                width: '33px',
-                                backgroundColor:'red',
-                                height: '3px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 138}px`,
-                                marginTop: `${140*i.trackValue + 186}px`
-                        }}
-                        />
-                        <span 
-                        style={{
-                                width: '37px',
-                                backgroundColor:'red',
-                                height: '3px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 136}px`,
-                                marginTop: `${140*i.trackValue + 181}px`
-                        }}
-                        />
-                        <span 
-                        style={{
-                                width: '43px',
-                                backgroundColor:'red',
-                                height: '3px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 133}px`,
-                                marginTop: `${140*i.trackValue + 176}px`
-                        }}
-                        />
-                        <span 
-                        style={{
-                                width: '53px',
-                                backgroundColor:'red',
-                                height: '3px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 128}px`,
-                                marginTop: `${140*i.trackValue + 171}px`
-                        }}
-                        />
-                        <span 
-                        style={{
-                                width: '60px',
-                                backgroundColor:'red',
-                                height: '3px',
-                                zIndex: '15',
-                                position: 'absolute',
-                                left: `${140*i.bottomPos + 124}px`,
-                                marginTop: `${140*i.trackValue + 167}px`
-                        }}
-                        />
-                        </>)
-                        }
-                }else{
-                    if(i.bool){
-                        return(<>
-                        <GlowEight 
-                        index={i.trackValue} bottom={i.bottomPos}
-                        />
-                        </>)
-                    }
+        }else{
+                if(i.bool){
+                return(<>
+                <GlowEight 
+                index={i.trackValue} bottom={i.bottomPos}
+                />
+                </>)
                 }
-            }
-        
-            const rangeGlow = () => {
-                    if(mQuery && !mQuery.matches){
-                            if(i.bools){
-                                return(
-                                        <span
-                                        style={{
-                                                height: `${i.bools*4 + 5 }px`,
-                                                width: `${i.bools*4 + 5}px`,
-                                                backgroundColor: `${true ?'red':null}`,
-                                                borderRadius: '50px',
-                                                zIndex: '15',
-                                                position: 'absolute',
-                                                left: `${140*i.bottomPos + 152 - 2*i.bools}px`,
-                                                marginTop: `${140*i.trackValue + 5}px`,
-                                                top: `${175 -2*i.bools}px`,
-                                                // left: `${140*i.bottomPos- 22}px`,
-                                                opacity: '0.7',
-                                                
-                                        }}
-                                        />
-                                )
-                        }
-                    }else{
+        }
+        }
+
+        const rangeGlow = () => {
+                if(dimensions.width < 892){
                         if(i.bools){
-                                return(
-                                        <span
-                                        style={{
-                                                height: `${i.bools*7 + 5 }px`,
-                                                width: `${i.bools*7 + 5}px`,
-                                                backgroundColor: `${true ?'red':null}`,
-                                                borderRadius: '50px',
-                                                zIndex: '15',
-                                                position: 'absolute',
-                                                left: `${140*i.bottomPos - 3.3*i.bools + 166}px`,
-                                                marginTop: `${140*i.trackValue + 232 - 3*i.bools}px`,
-                                                // left: `${140*i.bottomPos + 132}px`,
-                                                opacity: '0.7',
-                                        }}
-                                        />
-                                )
-                        }
+                        return(
+                                <span
+                                style={{
+                                        height: `${i.bools*4 + 5 }px`,
+                                        width: `${i.bools*4 + 5}px`,
+                                        backgroundColor: `${true ?'red':null}`,
+                                        borderRadius: '50px',
+                                        zIndex: '15',
+                                        position: 'absolute',
+                                        left: `${140*i.bottomPos + 152 - 2*i.bools}px`,
+                                        marginTop: `${140*i.trackValue + 5}px`,
+                                        top: `${175 -2*i.bools}px`,
+                                        // left: `${140*i.bottomPos- 22}px`,
+                                        opacity: '0.7',
+                                        
+                                }}
+                                />
+                        )
                 }
-            }
+                }else{
+                if(i.bools){
+                        return(
+                                <span
+                                style={{
+                                        height: `${i.bools*7 + 5 }px`,
+                                        width: `${i.bools*7 + 5}px`,
+                                        backgroundColor: `${true ?'red':null}`,
+                                        borderRadius: '50px',
+                                        zIndex: '15',
+                                        position: 'absolute',
+                                        left: `${140*i.bottomPos - 3.3*i.bools + 166}px`,
+                                        marginTop: `${140*i.trackValue + 232 - 3*i.bools}px`,
+                                        // left: `${140*i.bottomPos + 132}px`,
+                                        opacity: '0.7',
+                                }}
+                                />
+                        )
+                }
+        }
+        }
+
         
-            
-            const rangeGraph = () => {
-                if(mQuery && !mQuery.matches){
+        const rangeGraph = () => {
+                if(dimensions.width < 892){
                         if(i.bools){
                                 if(i.bools === 1){
                                         return(
@@ -369,10 +377,10 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         key={index+'key'}
         style={{
                 left: `${(140*i.bottomPos) + 120}px`,
-                top: `${mQuery && !mQuery.matches ? 140*i.trackValue :140*i.trackValue + 10}px`,
+                top: `${dimensions.width < 892 ? 140*i.trackValue :140*i.trackValue + 10}px`,
                 position: 'absolute',
                 cursor: 'pointer',
-                marginTop: `${mQuery && !mQuery.matches? '150' : '200'}px`
+                marginTop: `${dimensions.width < 892? '150' : '200'}px`
         }} 
         onClick={(e) => deleteImage(e,i.uid)}
         />
@@ -431,7 +439,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         (i.src === distanceSource)
                 ? 
                 <>
-                {mQuery && !mQuery.matches ? <ScrollBottom marks={marks} 
+                {dimensions.width < 892 ? <ScrollBottom marks={marks} 
                 valueLabelFormat={valueLabelFormat} 
                 index={index}
                 i={i}
@@ -484,7 +492,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         
         {i.src === conditionSource ? 
         <>
-         {mQuery && !mQuery.matches  ?
+         {dimensions.width < 892  ?
         <ArrowRightAltIcon 
         className={classes.largeIconXL + " right-dot-bottom"}
         style={{

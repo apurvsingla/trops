@@ -125,7 +125,6 @@ export const GlowSeven = ({index,bottom}) => {
     </>)
 }
 
-
 export const GlowEight = ({index, bottom}) => {
     return(<>
     <GlowSeven index={index} bottom={bottom}/>

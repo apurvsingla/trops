@@ -6,7 +6,7 @@ export const Heading = styled.div`
     color: #553795;
     letter-spacing: 0.05rem;
     z-index: 5;
-    margin-top: 27%;
+    margin-top: -10px;
     height: 80%;
     h1{
         font-weight: 600
@@ -31,17 +31,34 @@ export const SandboxBackIcon = styled(ReactLogo)`
 `;
 
 export const Start = styled.div`
-    
     text-align: center;
     button{
         background-color: red;
         border: none;
-        padding: 0.3rem 7rem 0.3rem 7rem;
-        border-radius: 25px;
+        padding: 0.3rem 4rem 0.3rem 4rem;
         color: white;
         font-size: 1.3rem;
         font-weight: 500;
         outline: none;
         cursor: pointer;
+        font-weight: 600;
+        border-radius: 4px;
+    }
+`;
+
+export const StartMob = styled.div`
+    text-align: center;
+    button{
+        background-color: red;
+        border: none;
+        padding: 0.3rem 3rem 0.3rem 3rem;
+        color: white;
+        font-size: 1.3rem;
+        font-weight: 500;
+        outline: none;
+        cursor: pointer;
+        margin-top: 27%;
+        font-weight: 600;
+        border-radius: 4px;
     }
 `;

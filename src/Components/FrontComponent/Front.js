@@ -4,40 +4,47 @@ import React from 'react';
 import {useHistory} from 'react-router-dom';
 // import {ReactComponent as ReactLogo2} from './button_back.svg';
 // import { makeStyles } from '@material-ui/core/styles';
-// import {LastIcon,
-// HeaderIcon, 
-// HeaderContent,
-// HeaderComponent,
-// BackButton,
-// } from './Front.styles';
-import {ReactComponent as LearningLogo} from './learning_mode.svg';
-import {ReactComponent as SandboxLogo} from './sandbox_mode.svg';
-
-
-// const useStyles = makeStyles({
-//   icons: {
-//     '& svg': {
-//       fontSize: 40
-//     }
-//   }
-// });
+import {
+Img,
+} from './Front.styles';
+// import {ReactComponent as LearningLogo} from './learning_mode.svg';
+// import {ReactComponent as SandboxLogo} from './sandbox_mode.svg';
+import ScrollLock  from 'react-scrolllock';
 
 const Front = () => {
-    const [mQuery, setMQuery] = React.useState({
-      matches: window.innerWidth > 892 ? true : false,
-    });
+    // const [mQuery, setMQuery] = React.useState({
+    //   matches: window.innerWidth > 892 ? true : false,
+    // });
 
-    React.useEffect(() => {
-      let mediaQuery = window.matchMedia("(max-width: 892px)");
-      mediaQuery.addListener(setMQuery);
-      return () => mediaQuery.removeListener(setMQuery);
-    }, []);
+    // React.useEffect(() => {
+    //   let mediaQuery = window.matchMedia("(max-width: 892px)");
+    //   mediaQuery.addListener(setMQuery);
+    //   return () => mediaQuery.removeListener(setMQuery);
+    // }, []);
     const history = useHistory();
     const sandbox = () => {
         if(history.location.pathname === '/'){
             history.push('/sandbox');
         }
     }
+
+    const [dimensions, setDimensions] = React.useState({ 
+      height: window.innerHeight,
+      width: window.innerWidth
+    })
+    React.useEffect(() => {
+      function handleResize() {
+          setDimensions({
+          height: window.innerHeight,
+          width: window.innerWidth
+          })
+          return _ => {
+              window.removeEventListener('resize', handleResize)
+            
+        }
+    }
+    window.addEventListener('resize', handleResize);
+    })
 
     const learning = () => {
       if(history.location.pathname === '/'){
@@ -46,7 +53,7 @@ const Front = () => {
     }
     // const classes = useStyles();
     return (<>
-    {mQuery && !mQuery.matches ? <>
+    {dimensions.width <892 ? <>
       <section>
       <div>
         <img src={process.env.PUBLIC_URL + 'images/extraImages/back1.png'} alt="back" />
@@ -63,10 +70,10 @@ const Front = () => {
         }}
         className='icons'
         onClick={() => learning()}
-        src={process.env.PUBLIC_URL + 'images/extraImages/mob1.png'}
+        src={process.env.PUBLIC_URL + 'images/extraImages/mob.png'}
         />
           <img 
-          alt="icon1"
+          alt="icon2"
           style={{
           position: 'absolute',
           top: '25%',
@@ -83,34 +90,36 @@ const Front = () => {
     </section>
     </>: <>
     <section>
-      <div style={{backgroundColor: '#fe818d', height: '100vh', width: '250px'}}>
+    <ScrollLock>
+      <div>
+        <div style={{display: 'inline'}}>
+          <img src={process.env.PUBLIC_URL + 'images/extraImages/save.png'} 
+          style={{height: '100vh', width: '25vw'}}
+          alt="left"/>
           <img src={process.env.PUBLIC_URL + 'images/extraImages/back.png'}  
           className='icons'
           alt="back" 
-          style={{position: 'absolute', top:'30px', left: '0'}}/>
+          style={{position: 'absolute', top:'30px', left: '0'}}
+          />
           <h1 style={{position: 'absolute', top: '53px', left: '100px', fontSize: '1.8rem', color: 'white'}}>Trops Kit</h1>
-          <LearningLogo style={{
-          position: 'absolute',
-          left: '-20%',
-          top: '35%',
-          right: '0',
-          margin: "0 auto",
-          borderRadius: '20px',
-        }}
-        className='icons'
-        onClick={() => learning()}
-        />
-          <SandboxLogo style={{
-          position: 'absolute',
-          top: '35%',
-          left: '50%',
-          right: '0',
-          margin: "0 auto",
-          borderRadius: '20px',
-          }}
-        className='icons'
-        onClick={() => sandbox()} />
+        </div>
+        <div style={{display: 'inline'}}>
+          <Img
+          alt={'icon1'}
+          src={process.env.PUBLIC_URL + 'images/extraImages/icon.png'}
+          className='icons'
+          onClick={() => learning()}
+          />
+          <Img
+          alt={'icon2'}
+          src={process.env.PUBLIC_URL + 'images/extraImages/icon2.png'}
+          className='icons'
+          onClick={() => sandbox()} />
+        </div>
+        {/* <p style={{position: 'absolute', top: '-47rem', left: '25rem'}}>Learning Mode</p>
+          <p style={{position: 'absolute', top: '-47rem' ,left: '55rem'}}>Sandbox Mode</p> */}
       </div>
+    </ScrollLock>
     </section>
     </> }
     

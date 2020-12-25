@@ -65,15 +65,23 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
      activeSecondLink, img1,setAppearDot, appearDot,setImg1
 }) => {
         const classes = useStyles();
-    const [mQuery, setMQuery] = React.useState({
-        matches: window.innerWidth > 892 ? true : false,
-    });
- 
-    React.useEffect(() => {
-        let mediaQuery = window.matchMedia("(max-width: 892px)");
-        mediaQuery.addListener(setMQuery);
-        return () => mediaQuery.removeListener(setMQuery);     
-    }, []);      
+        const [dimensions, setDimensions] = React.useState({ 
+                height: window.innerHeight,
+                width: window.innerWidth
+              })
+        React.useEffect(() => {
+        function handleResize() {
+                setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+                })
+                return _ => {
+                window.removeEventListener('resize', handleResize)
+                
+                }
+        }
+        window.addEventListener('resize', handleResize);
+        })     
 
     const func = (e) => {
         // boolean =!boolean;
@@ -112,7 +120,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
     }
 
     const glowGraph = () => {
-        if(mQuery && !mQuery.matches){
+        if(dimensions.width < 892){
                 if(i.bool){
                 return(<GlowEightM index={index}/>)
                         
@@ -125,7 +133,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
     }
 
     const rangeGlow = () => {
-            if(mQuery && !mQuery.matches){
+            if(dimensions.width < 892){
                     if(i.bools){
                         return(
                                 <span
@@ -167,7 +175,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
     }
 
     const rangeGraph = () => {
-        if(mQuery && !mQuery.matches){
+        if(dimensions.width < 892){
                 if(i.bools){
                         if(i.bools === 1){
                                 return(<GlowOneM index={index}/>)
@@ -273,7 +281,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
     } 
 
     const line = () => {
-            if(mQuery && !mQuery.matches){
+            if(dimensions.width < 892){
                     return(<ArrowRightAltIcon
                         className={classes.largeIconXL + ' row-line'}
                         stroke={"black"} stroke-width={1}
@@ -330,7 +338,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         <CancelOutlinedIcon 
         stroke={'orange'}
         style={{
-                left: `${mQuery && !mQuery.matches ? 140*index + 168:140*index+190}px`,
+                left: `${dimensions.width < 892 ? 140*index + 168:140*index+190}px`,
                 top: '52px',
                 // marginRight:`${100}`,
                 position: 'absolute',
@@ -423,7 +431,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 key={index+'--icon'}
                 onClick={(e) => activeSecondLink(e,index)}
                  />
-                {mQuery && mQuery.matches ? <span 
+                {dimensions.width < 892 ? <span 
                 className='line-bottom-arrow-cond'
                 key={index+'-bottom'}
                 id={index}

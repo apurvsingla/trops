@@ -53,7 +53,7 @@ const ModeFiles = () => {
     const [displayDot4, setDisplayDot4] = useState(false);
 
     const line = (index) => {
-        if(mQuery && !mQuery.matches){
+        if(dimensions.width < 892){
                 return(<ArrowRightAltIcon
                     className={classes.largeIconXL + ' row-line'}
                     stroke={"black"} stroke-width={1}
@@ -89,21 +89,39 @@ const ModeFiles = () => {
 }
 
 
-    const [mQuery, setMQuery] = React.useState({
-        matches: window.innerWidth > 892 ? true : false,
-      });
+    // const [mQuery, setMQuery] = React.useState({
+    //     matches: window.innerWidth > 892 ? true : false,
+    //   });
 
-    React.useEffect(() => {
-        let mediaQuery = window.matchMedia("(max-width: 892px)");
-        mediaQuery.addListener(setMQuery);
-        return () => mediaQuery.removeListener(setMQuery);
-      }, []);
+    // React.useEffect(() => {
+    //     let mediaQuery = window.matchMedia("(max-width: 892px)");
+    //     mediaQuery.addListener(setMQuery);
+    //     return () => mediaQuery.removeListener(setMQuery);
+    //   }, []);
+
+      const [dimensions, setDimensions] = React.useState({ 
+        height: window.innerHeight,
+        width: window.innerWidth
+      })
+      React.useEffect(() => {
+        function handleResize() {
+            setDimensions({
+            height: window.innerHeight,
+            width: window.innerWidth
+            })
+            return _ => {
+                window.removeEventListener('resize', handleResize)
+              
+          }
+      }
+      window.addEventListener('resize', handleResize);
+      })
     //swipe
     let reactSwipeEl;
     // const [img, setImg] = useSessionStorage('imgss', {});
     return (
         <>
-        {mQuery && !mQuery.matches ? 
+        {dimensions.width < 892 ? 
          <Scrollbars style={{ width: '100vw', height: '100vh' }}>
            <Graph 
            style={{position: 'absolute',

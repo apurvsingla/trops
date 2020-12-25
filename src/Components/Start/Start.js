@@ -43,16 +43,23 @@ import './Start.styles.scss';
 
 const Start = () => {
     //media query
-    const [mQuery, setMQuery] = React.useState({
-        matches: window.innerWidth > 892 ? true : false,
-      });
-
+    const [dimensions, setDimensions] = React.useState({ 
+        height: window.innerHeight,
+        width: window.innerWidth
+      })
     React.useEffect(() => {
-        let mediaQuery = window.matchMedia("(max-width: 892px)");
-        mediaQuery.addListener(setMQuery);
-        return () => mediaQuery.removeListener(setMQuery);
-      }, []);
-
+    function handleResize() {
+            setDimensions({
+            height: window.innerHeight,
+            width: window.innerWidth
+            })
+            return _ => {
+            window.removeEventListener('resize', handleResize)
+            
+            }
+    }
+    window.addEventListener('resize', handleResize);
+    })  
       const [open, setOpen] = useState(false);
       const [clicked, setClicked] = useState(false);
       const [value, setValue] = useState(null);
@@ -374,7 +381,7 @@ const Start = () => {
         </Popup>
 
         {clicked ? <span className="popup-form"><span>Saved Sucessfully</span> <button onClick={() => setClicked(false)} style={{marginTop: '5px', border: 'none', outline: 'none', backgroundColor: 'green', color: 'white', padding: '5px', borderRadius: '25px', cursor: 'pointer'}}>Continue</button></span>: null}
-        {mQuery && !mQuery.matches ? 
+        {    dimensions.width < 892 ? 
          <Scrollbars style={{ width: '100vw', height: '100vh' }}>
            <Graph 
            style={{position: 'absolute',
@@ -602,10 +609,10 @@ const Start = () => {
            </Scrollbars> : (
                <>
                <Graph 
-           style={{position: 'absolute',
+                    style={{position: 'absolute',
                     minWidth: `${8*(img1.length)+  8*(rightRImg.length)  + 100}%`,
                     height: `${20*(bottomImg.length)+ 100}%`,
-        }}/>
+            }}/>
            <div style={{
                display: 'flex',
                flexDirection: 'column',

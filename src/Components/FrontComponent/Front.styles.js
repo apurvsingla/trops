@@ -69,3 +69,9 @@ export const LastIcon = styled.div`
         left: 90%;
     }
 `;
+
+export const Img = styled.img`
+    width: 35%;
+    position: relative;
+    top: -12rem;
+`;
