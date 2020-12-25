@@ -1,17 +1,25 @@
 import React from 'react';
 import { Style } from './Loader.styles';
 const Loader = ({index,bool}) => {
-    const [mQuery, setMQuery] = React.useState({
-        matches: window.innerWidth > 892 ? true : false,
-    });
- 
-    React.useEffect(() => {
-        let mediaQuery = window.matchMedia("(max-width: 892px)");
-        mediaQuery.addListener(setMQuery);
-        return () => mediaQuery.removeListener(setMQuery);     
-    }, []);
+        const [dimensions, setDimensions] = React.useState({ 
+                height: window.innerHeight,
+                width: window.innerWidth
+              })
+        React.useEffect(() => {
+        function handleResize() {
+                setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+                })
+                return _ => {
+                window.removeEventListener('resize', handleResize)
+                
+                }
+        }
+        window.addEventListener('resize', handleResize);
+        }) 
     return (<>
-    {bool !== 1 ? (mQuery && !mQuery.matches) ? <Style>
+    {bool !== 1 ? (dimensions.width < 892) ? <Style>
         
         <span 
         style={{

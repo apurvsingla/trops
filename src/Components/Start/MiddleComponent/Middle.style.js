@@ -32,11 +32,11 @@ export const NormalImg = styled.img`
     width: 70px;
     height: 70px;
     position: absolute;
+    top: 0;
     z-index: 2;
     @media (min-width: 893px){
         width: 100px;
         height: 100px;
-        position: absolute;
     }
 `;
 export const NImg = styled.img`

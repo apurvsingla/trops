@@ -24,6 +24,7 @@ graphSource,
 sequenceSource,
 splitterSource
 } from './MiddleComponent/Source/source';
+import ScrollLock  from 'react-scrolllock';
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
@@ -35,7 +36,8 @@ Bottom,
 Dots,
 Icon,
 MiddleIcon,
-Img
+Img,
+BottomDesk
 } from './Start.styles';
 import axios from "axios";
 
@@ -351,13 +353,15 @@ const Start = () => {
 
     return (
         <>
-        <Popup trigger={<button
-        className='popup-button'
-        >SAVE</button>} position="left center" style={{zIndex: '150'}}
+        <Popup trigger={<img src={process.env.PUBLIC_URL + '/images/extraImages/saveicon.png'} alt="i" style={{
+            position: 'fixed', top: '0', right: '0', zIndex: '10000', cursor: 'pointer', pointerEvents: 'all'
+        }} 
+        onClick={() => setClicked(true)}
+        />} position="left center" style={{zIndex: '150'}}
         onClose={closeModal}
         open={open}>
              {close => (
-                 <form style={{marginTop: '25px', fontWeight: 'bold',}} 
+                 <form style={{marginTop: '10px', fontWeight: 'bold',}} 
                  onSubmit={(e) => {
                      handleSubmit(e); 
                      close();
@@ -380,9 +384,16 @@ const Start = () => {
             {/* <button onClick={() => false}>Cancel</button> */}
         </Popup>
 
-        {clicked ? <span className="popup-form"><span>Saved Sucessfully</span> <button onClick={() => setClicked(false)} style={{marginTop: '5px', border: 'none', outline: 'none', backgroundColor: 'green', color: 'white', padding: '5px', borderRadius: '25px', cursor: 'pointer'}}>Continue</button></span>: null}
+        {clicked ? <span className="popup-form">
+                    <span>Saved Sucessfully</span> 
+                    <button onClick={() => setClicked(false)} 
+                    style={{marginTop: '5px', border: 'none', 
+                    outline: 'none', backgroundColor: 'green', 
+                    color: 'white', padding: '5px', 
+                    borderRadius: '25px', cursor: 'pointer'}}>Continue</button>
+                </span>: null}
         {    dimensions.width < 892 ? 
-         <Scrollbars style={{ width: '100vw', height: '100vh' }}>
+         <Scrollbars style={{ width: '100vw', height: '100vh',}}>
            <Graph 
            style={{position: 'absolute',
                     minWidth: `${15*(img1.length)+ 15*(rightRImg.length)  + 100}%`,
@@ -608,31 +619,46 @@ const Start = () => {
            </Bottom>
            </Scrollbars> : (
                <>
-               <Graph 
-                    style={{position: 'absolute',
-                    minWidth: `${8*(img1.length)+  8*(rightRImg.length)  + 100}%`,
-                    height: `${20*(bottomImg.length)+ 100}%`,
-            }}/>
-           <div style={{
-               display: 'flex',
-               flexDirection: 'column',
-           }}>
-            <Back width="120" height="120"
-                style={{position: 'absolute', pointerEvents: 'all',}}
-                onClick={() => back()}
-                className='icons'
-                
-            />
-            <Retry width="120" height="120" 
-            style={{position: 'absolute',
-                    top: '75px',
-                    pointerEvents: 'all',
-                }}
-                onClick={() => reset()}
-                className='icons'
-            />
+               <div style={{position: 'absoute'}}>
+                   <ScrollLock>
+                    <img src={process.env.PUBLIC_URL + 'images/extraImages/save.png'} 
+                    style={{height: '100vh', width: '25vw',}}
+                    alt="left"/>
+                </ScrollLock>
+                <img src={process.env.PUBLIC_URL + 'images/extraImages/rec.png'} 
+                style={{ position: 'absolute', top: '40vh', left: '-1vw', height: '60vh', width: '26vw'}}
+                alt="rec"/>
+                <h2 style={{position: 'absolute', top: '42vh', left: '3vw', color: 'grey'}}>Description</h2>
+               </div>
+               <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                }}>
+                <Back width="120" height="120"
+                    style={{position: 'absolute', pointerEvents: 'all', top: '-1vh'}}
+                    onClick={() => back()}
+                    className='icons'
+                    
+                />
+                <Retry width="120" height="120" 
+                style={{position: 'absolute',
+                        top: '75px',
+                        pointerEvents: 'all',
+                    }}
+                    onClick={() => reset()}
+                    className='icons'
+                />
            </div>
-
+               <Scrollbars style={{ width: '100vw', height: '80vh', top: '-100vh', left: '25vw', zIndex: '100'}} >
+               <Graph 
+                style={{
+                    position: 'absolute',
+                    minWidth: `${8*(img1.length)+  8*(rightRImg.length)  + 100}%`,
+                    height: `${25*(bottomImg.length) + 100}%`,
+                    top: '0',
+                    zIndex: '0'
+                   
+                }}/>
             {/* Middle Component render */}
             <MiddleComponent img1={img1} 
             setImg1={setImg1}
@@ -662,11 +688,12 @@ const Start = () => {
             setId2={setId2}  
             setUid={setUid} uid={uid}
             />
+             </Scrollbars>
             {/* end */}
 
 
             {/* swipeable area */}
-           <Bottom>
+           <BottomDesk>
                <>
                <ArrowBackIosIcon 
                style={{
@@ -835,7 +862,8 @@ const Start = () => {
                 setDisplayDot3(true);
             }}
             />
-           </Bottom>
+           </BottomDesk>
+           {/* </Scrollbars> */}
            </>
            )}
         </>

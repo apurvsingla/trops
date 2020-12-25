@@ -446,7 +446,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 key={index+'-bottom'}
                 id={index}
                 style={{
-                        marginLeft: `${140*index - 77}px`,
+                        marginLeft: `${140*index }px`,
                         zIndex: '1',
                         color: 'grey',
                         top: '176px',

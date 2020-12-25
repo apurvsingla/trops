@@ -31,6 +31,24 @@ export const Bottom = styled.div`
     }
 `;
 
+export const BottomDesk = styled.div`
+    width: 75%;
+    background-color: white;
+    border: 1px solid #fc846a;
+    height: 100px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 25%;
+    
+    border-bottom: none;
+    z-index: 100;
+    @media (min-width: 893px){
+        height: 120px;
+    }
+`;
+
+
 export const Dots = styled.button`
     position: fixed;
     bottom: 7px;
