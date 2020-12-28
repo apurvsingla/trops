@@ -33,7 +33,7 @@ import {ReactComponent as Back} from './button_back.svg';
 import {ReactComponent as Retry} from './button_retry.svg';
 import {Graph,
 Bottom,
-Dots,
+MiddleIconDesk,
 Icon,
 MiddleIcon,
 Img,
@@ -71,7 +71,7 @@ const Start = () => {
     const [displayDot1, setDisplayDot1] = useState(true);
     const [displayDot2, setDisplayDot2] = useState(false);
     const [displayDot3, setDisplayDot3] = useState(false);
-    const [displayDot4, setDisplayDot4] = useState(false);
+    // const [displayDot4, setDisplayDot4] = useState(false);
 
     //uid
     const [uid,setUid] = useSessionStorage('uid', 0);
@@ -353,37 +353,6 @@ const Start = () => {
 
     return (
         <>
-        <Popup trigger={<img src={process.env.PUBLIC_URL + '/images/extraImages/saveicon.png'} alt="i" style={{
-            position: 'fixed', top: '0', right: '0', zIndex: '10000', cursor: 'pointer', pointerEvents: 'all'
-        }} 
-        onClick={() => setClicked(true)}
-        />} position="left center" style={{zIndex: '150'}}
-        onClose={closeModal}
-        open={open}>
-             {close => (
-                 <form style={{marginTop: '10px', fontWeight: 'bold',}} 
-                 onSubmit={(e) => {
-                     handleSubmit(e); 
-                     close();
-                     setClicked(true);
-                     setValue("");
-                     }}>
-                    <label style={{display: 'flex', flexDirection: 'column', 
-                    justifyContent: 'center', alignItems: 'center'}}>
-                        Project-Name 
-                        <input type="text" required value={value} onChange={handleChange}/>
-                    </label>
-                    <span style={{display: 'flex', justifyContent: 'space-around'}}>
-                    <input type="submit" value="Submit" className="popup-input"/>
-                        <input onClick={() => {
-                        close();
-                        }} className="popup-input" value="Cancel" type="button"/>
-                    </span>
-                </form>
-             )}
-            {/* <button onClick={() => false}>Cancel</button> */}
-        </Popup>
-
         {clicked ? <span className="popup-form">
                     <span>Saved Sucessfully</span> 
                     <button onClick={() => setClicked(false)} 
@@ -392,8 +361,8 @@ const Start = () => {
                     color: 'white', padding: '5px', 
                     borderRadius: '25px', cursor: 'pointer'}}>Continue</button>
                 </span>: null}
-        {    dimensions.width < 892 ? 
-         <Scrollbars style={{ width: '100vw', height: '100vh',}}>
+        {    dimensions.width < 892 ? <>
+         <Scrollbars style={{ width: '80vw', height: '90vh'}}>
            <Graph 
            style={{position: 'absolute',
                     minWidth: `${15*(img1.length)+ 15*(rightRImg.length)  + 100}%`,
@@ -451,22 +420,14 @@ const Start = () => {
             />
             {/* end */}
 
-
-            {/* swipeable area */}
+            </Scrollbars>
+            <div style={{position: 'absolute', bottom: '0', width: '80vw', 
+            left: '0',  height: '70px',backgroundColor: 'white', zIndex: '100000000'}}>
+                <h2 style={{color: 'grey', position: 'absolute', bottom: '0', left: '50px', fontWeight: '500'}}>Description</h2>
+            </div>
            <Bottom>
-               <>
-                 <ReactSwipe
-                className="carousel"
-                swipeOptions={{ continuous: true }}
-                ref={el => (reactSwipeEl = el)}
-                >
-                <div className={JSON.stringify(displayDot1)} onTouchEnd={() => {
-                    setDisplayDot2(true);
-                    setDisplayDot1(false);
-                    setDisplayDot3(false);
-                    setDisplayDot4(false);
-                    
-                    }}>
+               <Scrollbars style={{ width: '20vw', height: '100vh'}}>
+                <div>
                     <Icon onClick={(e) =>  onImage1Concat(powerSource)}/>
                     <Img src={powerSource} 
                     alt="power" style={{marginRight: '20px'}}/>
@@ -481,20 +442,15 @@ const Start = () => {
 
                     <MiddleIcon onClick={() => onImage1Concat(conditionSource)}/>
                     <Img src={conditionSource} 
-                    alt="beeper" 
+                    alt="condition" 
                     style={{
-                    marginLeft: '20px',
-                    marginRight: '20px'
+                    marginLeft: '25px',
+                    marginRight: '20px',
+                    width: '70px'
                     }}/>
                 </div>
                 
-                <div className={JSON.stringify(displayDot2)} onTouchEnd={() => {
-                    setDisplayDot2(false);
-                    setDisplayDot1(false);
-                    setDisplayDot3(true);
-                    setDisplayDot4(false);
-
-                }}>
+                <div>
 
                     <Icon onClick={() => onImage1Concat(graphSource)}/>
                     <Img src={graphSource} 
@@ -505,7 +461,7 @@ const Start = () => {
                     alt="beeper" style={{marginRight: "20px"}}/>
 
 
-                    <MiddleIcon onClick={() => onImage1Concat(ledSource)}/>
+                    <Icon onClick={() => onImage1Concat(ledSource)}/>
                     <Img src={ledSource} 
                     alt="beeper" 
                     style={{
@@ -517,13 +473,7 @@ const Start = () => {
                     alt="beeper" />
                 </div>
 
-                <div className={JSON.stringify(displayDot3)} onTouchEnd={() => {
-                    setDisplayDot2(false);
-                    setDisplayDot1(false);
-                    setDisplayDot3(false);
-                    setDisplayDot4(true);
-
-                }}>
+                <div>
                     <Icon onClick={() => onImage1Concat(magSource)}/>
                     <Img src={magSource} 
                     alt="beeper" style={{marginRight: '20px'}}/>
@@ -532,7 +482,7 @@ const Start = () => {
                     <Img src={tempSource} 
                     alt="temperature" style={{marginRight: '20px'}}/>
                     
-                    <MiddleIcon onClick={() => onImage1Concat(motorSource)}/>
+                    <Icon onClick={() => onImage1Concat(motorSource)}/>
                     <Img src={motorSource} 
                     alt="beeper" 
                     style={{
@@ -544,80 +494,18 @@ const Start = () => {
                     alt="beeper" />
                 </div>
 
-                <div className={JSON.stringify(displayDot4)} onTouchEnd={() => {
-                    setDisplayDot2(false);
-                    setDisplayDot1(true);
-                    setDisplayDot3(false);
-                    setDisplayDot4(false);
-                }}>                   
+                <div>                   
                     <Icon onClick={() => onImage1Concat(tactSource)}/>
                     <Img src={tactSource} 
                     alt="beeper" />
-                    <Icon onClick={() => onImage1Concat(splitterSource)}/>
+                    <MiddleIcon onClick={() => onImage1Concat(splitterSource)}/>
                     <Img src={splitterSource} 
-                    alt="beeper" />
+                    alt="beeper" style={{marginLeft: '23px', width: '70px'}} />
                     
                 </div>
-                </ReactSwipe>
-            </>
-
-            {/* Swipeable Dots Beggining */}
-            <Dots onTouchEnd={() => {
-            reactSwipeEl.slide(4);
-            setDisplayDot1(true);
-            setDisplayDot2(false);
-            setDisplayDot3(false);
-            setDisplayDot4(false);
-            }}
-            style={{
-                marginRight: '10px',
-            }}
-            className={JSON.stringify(displayDot1) + 'dot'}
-            />
-
-            <Dots onTouchEnd={() => {
-            reactSwipeEl.slide(2);
-            setDisplayDot2(true);
-            setDisplayDot1(false);
-            setDisplayDot3(false);
-            setDisplayDot4(false);
-
-            }} 
-            style={{
-                marginRight: '15px',
-                marginLeft: '15px'
-            }}
-            className={JSON.stringify(displayDot2) + 'dot'}
-            />
-            <Dots onTouchEnd={() => {
-                reactSwipeEl.slide(3);
-                setDisplayDot2(false);
-                setDisplayDot3(true);
-                setDisplayDot1(false);
-                setDisplayDot4(false);
-
-            }} 
-            style={{
-                marginLeft: '30px'
-            }}
-            className={JSON.stringify(displayDot3) + 'dot'}
-            />
-
-            <Dots onTouchEnd={() => {
-                reactSwipeEl.slide(1);
-                setDisplayDot3(false);
-                setDisplayDot4(true);
-                setDisplayDot1(false);
-                setDisplayDot2(false);
-            }} 
-            style={{
-                marginLeft: '45px'
-            }}
-            className={JSON.stringify(displayDot4) + 'dot'}
-            />
-            {/* Swipeable Dots End */}
+            </Scrollbars>
            </Bottom>
-           </Scrollbars> : (
+            </>: (
                <>
                <div style={{position: 'absoute'}}>
                    <ScrollLock>
@@ -649,7 +537,37 @@ const Start = () => {
                     className='icons'
                 />
            </div>
-               <Scrollbars style={{ width: '100vw', height: '80vh', top: '-100vh', left: '25vw', zIndex: '100'}} >
+           <Popup trigger={<img src={process.env.PUBLIC_URL + '/images/extraImages/saveicon.png'} alt="i" style={{
+            position: 'fixed', top: '0', right: '0', zIndex: '10000', cursor: 'pointer', pointerEvents: 'all'
+        }} 
+        onClick={() => setClicked(true)}
+        />} position="left center" style={{zIndex: '150'}}
+        onClose={closeModal}
+        open={open}>
+             {close => (
+                 <form style={{marginTop: '10px', fontWeight: 'bold',}} 
+                 onSubmit={(e) => {
+                     handleSubmit(e); 
+                     close();
+                     setClicked(true);
+                     setValue("");
+                     }}>
+                    <label style={{display: 'flex', flexDirection: 'column', 
+                    justifyContent: 'center', alignItems: 'center'}}>
+                        Project-Name 
+                        <input type="text" required value={value} onChange={handleChange}/>
+                    </label>
+                    <span style={{display: 'flex', justifyContent: 'space-around'}}>
+                    <input type="submit" value="Submit" className="popup-input"/>
+                        <input onClick={() => {
+                        close();
+                        }} className="popup-input" value="Cancel" type="button"/>
+                    </span>
+                </form>
+             )}
+            {/* <button onClick={() => false}>Cancel</button> */}
+        </Popup>
+               <Scrollbars style={{ width: '75vw', height: '80vh', top: '-100vh', left: '25vw', zIndex: '100'}} >
                <Graph 
                 style={{
                     position: 'absolute',
@@ -733,7 +651,7 @@ const Start = () => {
                         <Img src={beeperSource} 
                         alt="beeper" />
     
-                        <MiddleIcon onClick={() => onImage1Concat(conditionSource)} className='icons'/>
+                        <MiddleIconDesk onClick={() => onImage1Concat(conditionSource)} className='icons'/>
                         <Img src={conditionSource} 
                         alt="beeper" 
                         style={{
@@ -764,7 +682,7 @@ const Start = () => {
                         <Img src={tactSource} 
                         alt="magnetic" />
     
-                        <MiddleIcon onClick={() => onImage1Concat(ledSource)} className='icons'/>
+                        <MiddleIconDesk onClick={() => onImage1Concat(ledSource)} className='icons'/>
                         <Img src={ledSource} 
                         alt="beeper" 
                         style={{
@@ -790,7 +708,7 @@ const Start = () => {
                         <Img src={tempSource} 
                         alt="temp" />
                         
-                        <MiddleIcon onClick={() => onImage1Concat(motorSource)} className='icons'/>
+                        <MiddleIconDesk onClick={() => onImage1Concat(motorSource)} className='icons'/>
                         <Img src={motorSource} 
                         alt="motor" 
                         style={{

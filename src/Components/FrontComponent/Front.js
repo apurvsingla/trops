@@ -56,7 +56,7 @@ const Front = () => {
     {dimensions.width <892 ? <>
       <section>
       <div>
-        <img src={process.env.PUBLIC_URL + 'images/extraImages/back1.png'} alt="back" />
+      <img src={process.env.PUBLIC_URL + 'images/extraImages/back1.png'} alt="back" />
           <span style={{fontSize: '2rem', fontWeight: '600', position: 'absolute', top: '10px', left: '90px', color: '#707070'}}>Trops Kit</span>
           <img 
           alt="icon1"

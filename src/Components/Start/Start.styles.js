@@ -14,17 +14,14 @@ export const Graph = styled.div`
 `;
 
 export const Bottom = styled.div`
-    width: 80%;
+    width: 20vw;
     background-color: white;
-    border: 1px solid #fc846a;
-    height: 100px;
-    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     position: fixed;
     bottom: 0;
-    left: 10%;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    border-bottom: none;
+    right: 0;
     z-index: 100;
     @media (min-width: 893px){
         height: 120px;
@@ -40,7 +37,8 @@ export const BottomDesk = styled.div`
     position: fixed;
     bottom: 0;
     left: 25%;
-    
+    border-left: none;
+    border-right: none;
     border-bottom: none;
     z-index: 100;
     @media (min-width: 893px){
@@ -69,6 +67,15 @@ export const Icon = styled(AddCircleIcon)`
 `;
 
 export const MiddleIcon = styled(AddCircleIcon)`
+    position: relative;
+    top: 25px;
+    right: 85px;
+    @media (max-width: 892px){
+        bottom: 51px;
+    }
+`;
+
+export const MiddleIconDesk = styled(AddCircleIcon)`
     position: relative;
     bottom: 78px;
     left: 30px;

@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const Main = styled.div`
-    background-color: #DCDCDC;
+    background-color: white;
     min-height: 100vh;
     letter-spacing: 0.05em;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     @media (max-width: 893px){
         width: 100%;
@@ -14,6 +14,7 @@ export const Main = styled.div`
         display: block;
     } 
 `;
+
 
 export const Imgs = styled.img`
     width: 75px;

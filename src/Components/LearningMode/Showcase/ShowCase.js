@@ -6,8 +6,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import {Main} from './ShowCase.styles';
 import {useHistory} from 'react-router-dom';
-import {ReactComponent as Back} from './button_back.svg';
+// import {ReactComponent as Back} from './button_back.svg';
 import useSessionStorage from '../../SessionStorage/SessionStorage';
+import { Scrollbars } from 'react-custom-scrollbars';
+
 // import Start from '../../Start/Start';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,9 +17,10 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     textAlign: 'center',
-    color: theme.palette.text.secondary,
+    color: '#fafafa',
+    backgroundColor: '#FE818D'
     // paddingBottom: '150px'
   },
 }));
@@ -52,47 +55,105 @@ const ShowCase = () => {
     const back = () => {
         history.push('/');
     }
-    const [mQuery, setMQuery] = React.useState({
-      matches: window.innerWidth > 639 ? true : false,
-    });
-
+    const [dimensions, setDimensions] = React.useState({ 
+      height: window.innerHeight,
+      width: window.innerWidth
+    })
     React.useEffect(() => {
-        let mediaQuery = window.matchMedia("(max-width: 892px)");
-        mediaQuery.addListener(setMQuery);
-        return () => mediaQuery.removeListener(setMQuery);
-      }, []);
+      function handleResize() {
+          setDimensions({
+          height: window.innerHeight,
+          width: window.innerWidth
+          })
+          return _ => {
+              window.removeEventListener('resize', handleResize)
+            
+        }
+    }
+    window.addEventListener('resize', handleResize);
+    })
 
     return (
         <>
-        <Back width="120" height="120"
-                style={{position: 'absolute', cursor: 'pointer', left: '-15px'}}
-                onClick={() => back()}
-            />
+        {dimensions.width > 892 ?
+        <>
+        <img src={process.env.PUBLIC_URL + 'images/extraImages/save.png'} 
+          style={{height: '100vh', width: '260px', position: 'absolute', left: '0', zIndex: '1000'}}
+          alt="left"/>
+          <h1 style={{position: 'absolute', top: '53px', zIndex: '1001',
+          left: '100px', fontSize: '1.8rem', color: 'white'}}>Tutorials</h1>
+          <img src={process.env.PUBLIC_URL + 'images/extraImages/back.png'}  
+          className='icons'
+          alt="back" 
+          style={{position: 'absolute', top:'30px', left: '0', zIndex: '1001'}}
+          onClick={() => back()}
+          />
+          </>: 
+          <>
+          <h1 style={{position: 'absolute', top: '33px', zIndex: '1001',
+          left: '70px', fontSize: '1.5rem', color: 'grey', fontWeight: '500'}}>Tutorials</h1>
+          <img src={process.env.PUBLIC_URL + 'images/extraImages/back1.png'} alt="back"
+          style={{position: 'absolute', top: '20px'}}
+          onClick={() => back()}
+          />
+          </>}
+          {dimensions.width > 892 ?
         <Main>
-        {mQuery && !mQuery.matches ?
-          <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning <br/> Tutorials</h1> :
-          <h1 style={{textAlign: 'center', letterSpacing: '0.1em', color: 'white'}}>Learning Tutorials</h1> } 
+         <Scrollbars style={{ width: '100vw', height: '100vh'}}>
           <Grid
             container
             direction="row"
-            justify="space-around"
+            justify="flex-start"
             alignItems="center"
             spacing={4}
-            style={{width:"100%", margin: 'auto', zIndex: '1000'}}
+            style={{width:"80vw", marginLeft: '260px', zIndex: '100'}}
             > 
             {state ? state.map((e,index) => {
             return (
-                <Grid item md={4} sm={6} style={{width: '100%', cursor: 'pointer', zIndex: '1000', marginTop: '50px'}} onClick={() => page(e,index+1)} key={index}>
+                <Grid item md={4} sm={6} 
+                className="icons"
+                style={{width: '100%', zIndex: '100', marginTop: '50px'}} 
+                onClick={() => page(e,index+1)} key={index}>
                 <Paper className={classes.paper}>
-                    <h1 style={{paddingBottom: '40px'}}>Tutorial {index+1}:</h1> 
+                    <h1 style={{paddingBottom: '30px'}}>Tutorial {index+1}:</h1> 
                     <span style={{fontSize: '1.3rem', textTransform: 'uppercase'}}>{e.name}</span>
                 </Paper>
               </Grid>
                 );
-            // Object.entries(e).map((i ,v) => console.log(i))
         }) : null}
           </Grid>
+          </Scrollbars>
         </Main>
+        : null}
+
+        {dimensions.width <= 892 ? 
+        <Main>
+        <Scrollbars style={{ width: '100vw', height: '100vh', marginTop: '76px'}}>
+         <Grid
+           container
+           direction="row"
+           justify="flex-start"
+           alignItems="center"
+           spacing={3}
+           style={{width:"100vw", zIndex: '100', margin: 'auto',}}
+           > 
+           {state ? state.map((e,index) => {
+           return (
+               <Grid item md={4} sm={6} 
+               className="icons"
+               style={{width: '100%', zIndex: '100'}} 
+               onClick={() => page(e,index+1)} key={index}>
+               <Paper className={classes.paper}>
+                   <h1 style={{paddingBottom: '10px',}}>Tutorial {index+1}:</h1> 
+                   <span style={{fontSize: '1.3rem', textTransform: 'uppercase'}}>{e.name}</span>
+               </Paper>
+             </Grid>
+               );
+       }) : null}
+         </Grid>
+         </Scrollbars>
+       </Main>
+        : null}
     </>);
 }
 

@@ -1,24 +1,27 @@
-import React,{useState} from 'react';
+import React
+// {useState} 
+from 'react';
 import { useLocation } from "react-router-dom";
 import { Img, LargeColLine,
 } from '../../Start/MiddleComponent/Middle.style';
-import {ReactComponent as Back} from './button_back.svg';
+// import {ReactComponent as Back} from './button_back.svg';
 import {
 Graph,
-Bottom,
-Dots,
-Icon,
-MiddleIcon,
+// Bottom,
+// Icon,
+// MiddleIcon,
 } from '../../Start/Start.styles';
 import '../../Start/Start.styles.scss';
-import ReactSwipe from 'react-swipe';
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+// import ReactSwipe from 'react-swipe';
+// import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+// import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { Scrollbars } from 'react-custom-scrollbars';
 import 'reactjs-popup/dist/index.css';
-import { beeperSource, conditionSource, distanceSource, graphSource, ledSource, lightSource, magSource, motorSource, powerSource, sequenceSource, soundSource, splitterSource, tactSource, tempSource } from '../../Start/MiddleComponent/Source/source';
+// import { beeperSource, conditionSource, distanceSource, graphSource, ledSource, lightSource, magSource, motorSource, powerSource, sequenceSource, soundSource, splitterSource, tactSource, tempSource } from '../../Start/MiddleComponent/Source/source';
 import {useHistory} from 'react-router-dom';
-import {Imgs, NormalImg} from '../Showcase/ShowCase.styles';
+import {
+    // Imgs,
+     NormalImg} from '../Showcase/ShowCase.styles';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -47,10 +50,10 @@ const ModeFiles = () => {
         history.push('/learning');
     }
     const location = useLocation();
-    const [displayDot1, setDisplayDot1] = useState(true);
-    const [displayDot2, setDisplayDot2] = useState(false);
-    const [displayDot3, setDisplayDot3] = useState(false);
-    const [displayDot4, setDisplayDot4] = useState(false);
+    // const [displayDot1, setDisplayDot1] = useState(true);
+    // const [displayDot2, setDisplayDot2] = useState(false);
+    // const [displayDot3, setDisplayDot3] = useState(false);
+    // const [displayDot4, setDisplayDot4] = useState(false);
 
     const line = (index) => {
         if(dimensions.width < 892){
@@ -88,40 +91,30 @@ const ModeFiles = () => {
         }
 }
 
-
-    // const [mQuery, setMQuery] = React.useState({
-    //     matches: window.innerWidth > 892 ? true : false,
-    //   });
-
-    // React.useEffect(() => {
-    //     let mediaQuery = window.matchMedia("(max-width: 892px)");
-    //     mediaQuery.addListener(setMQuery);
-    //     return () => mediaQuery.removeListener(setMQuery);
-    //   }, []);
-
-      const [dimensions, setDimensions] = React.useState({ 
+    const [dimensions, setDimensions] = React.useState({ 
+    height: window.innerHeight,
+    width: window.innerWidth
+    })
+    React.useEffect(() => {
+    function handleResize() {
+        setDimensions({
         height: window.innerHeight,
         width: window.innerWidth
-      })
-      React.useEffect(() => {
-        function handleResize() {
-            setDimensions({
-            height: window.innerHeight,
-            width: window.innerWidth
-            })
-            return _ => {
-                window.removeEventListener('resize', handleResize)
-              
-          }
-      }
-      window.addEventListener('resize', handleResize);
-      })
+        })
+        return _ => {
+            window.removeEventListener('resize', handleResize)
+            
+        }
+    }
+    window.addEventListener('resize', handleResize);
+    })
     //swipe
-    let reactSwipeEl;
+    // let reactSwipeEl;
     // const [img, setImg] = useSessionStorage('imgss', {});
     return (
         <>
         {dimensions.width < 892 ? 
+        <>
          <Scrollbars style={{ width: '100vw', height: '100vh' }}>
            <Graph 
            style={{position: 'absolute',
@@ -132,10 +125,12 @@ const ModeFiles = () => {
                display: 'flex',
                flexDirection: 'column',
            }}>
-            <Back width="120" height="120"
-                style={{position: 'absolute', cursor: 'pointer'}}
-                onClick={() => back()}
-            />
+        <img src={process.env.PUBLIC_URL + 'images/extraImages/back1.png'} 
+        alt="back" width="70px"
+        style={{zIndex: '10000'}}
+        onClick={() => back()}
+        />
+
            </div>
 
            <div>
@@ -190,172 +185,91 @@ const ModeFiles = () => {
             }
             })}
         </div>
+        </Scrollbars> 
             {/* swipeable area */}
-           <Bottom style={{zIndex: '1500'}}>
-               <>
-                 <ReactSwipe
-                className="carousel"
-                swipeOptions={{ continuous: true }}
-                ref={el => (reactSwipeEl = el)}
-                >
-                <div className={JSON.stringify(displayDot1)} onTouchEnd={() => {
-                    setDisplayDot2(true);
-                    setDisplayDot1(false);
-                    setDisplayDot3(false);
-                    setDisplayDot4(false);
-                    
-                    }}>
-                    <Icon/>
-                    <Imgs src={powerSource} 
-                    alt="power" style={{marginRight: '20px'}}/>
+            {/* <Bottom>
+            <Scrollbars style={{ width: '10vw', height: '100vh'}}>
+             <div>
+                 <Icon/>
+                 <Img src={powerSource} 
+                 alt="power" style={{marginRight: '20px',}}/>
 
-                    <Icon />
-                    <Imgs src={sequenceSource} 
-                    alt="sequence" style={{marginRight: '20px'}}/>
+                 <Icon/>
+                 <Img src={sequenceSource} 
+                 alt="sequence" style={{marginRight: '20px'}}/>
 
-                    <Icon/>
-                    <Imgs src={beeperSource} 
-                    alt="beeper" />
+                 <Icon/>
+                 <Img src={beeperSource} 
+                 alt="beeper" />
 
-                    <MiddleIcon />
-                    <Imgs src={conditionSource} 
-                    alt="beeper" 
-                    style={{
-                    marginLeft: '20px',
-                    marginRight: '20px'
-                    }}/>
-                </div>
-                
-                <div className={JSON.stringify(displayDot2)} onTouchEnd={() => {
-                    setDisplayDot2(false);
-                    setDisplayDot1(false);
-                    setDisplayDot3(true);
-                    setDisplayDot4(false);
+                 <MiddleIcon/>
+                 <Img src={conditionSource} 
+                 alt="condition" 
+                 style={{
+                 marginLeft: '25px',
+                 marginRight: '20px',
+                 width: '70px'
+                 }}/>
+             </div>
+             <br/>
+             <br/>
+             
+             <div>
 
-                }}>
+                 <Icon/>
+                 <Img src={graphSource} 
+                 alt="beeper" style={{marginRight: '20px'}}/>
 
-                    <Icon />
-                    <Imgs src={graphSource} 
-                    alt="beeper" style={{marginRight: '20px'}}/>
-
-                    <Icon />
-                    <Imgs src={distanceSource} 
-                    alt="beeper" style={{marginRight: "20px"}}/>
+                 <Icon />
+                 <Img src={distanceSource} 
+                 alt="beeper" style={{marginRight: "20px"}}/>
 
 
-                    <MiddleIcon />
-                    <Imgs src={ledSource} 
-                    alt="beeper" 
-                    style={{
-                    marginRight: '20px'
-                    }}/>
-                    
-                    <Icon />
-                    <Imgs src={lightSource} 
-                    alt="beeper" />
-                </div>
+                 <Icon/>
+                 <Img src={ledSource} 
+                 alt="beeper" 
+                 style={{
+                 marginRight: '20px'
+                 }}/>
+                 
+                 <Icon/>
+                 <Img src={lightSource} 
+                 alt="beeper" />
+             </div>
 
-                <div className={JSON.stringify(displayDot3)} onTouchEnd={() => {
-                    setDisplayDot2(false);
-                    setDisplayDot1(false);
-                    setDisplayDot3(false);
-                    setDisplayDot4(true);
+             <div>
+                 <Icon/>
+                 <Img src={magSource} 
+                 alt="beeper" style={{marginRight: '20px'}}/>
 
-                }}>
-                    <Icon />
-                    <Imgs src={magSource} 
-                    alt="beeper" style={{marginRight: '20px'}}/>
+                 <Icon/>
+                 <Img src={tempSource} 
+                 alt="temperature" style={{marginRight: '20px'}}/>
+                 
+                 <Icon/>
+                 <Img src={motorSource} 
+                 alt="beeper" 
+                 style={{
+                 marginRight: '20px'
+                 }}/>
+                 
+                 <Icon/>
+                 <Img src={soundSource} 
+                 alt="beeper" />
+             </div>
 
-                    <Icon />
-                    <Imgs src={tempSource} 
-                    alt="temperature" style={{marginRight: '20px'}}/>
-                    
-                    <MiddleIcon/>
-                    <Imgs src={motorSource} 
-                    alt="beeper" 
-                    style={{
-                    marginRight: '20px'
-                    }}/>
-                    
-                    <Icon />
-                    <Imgs src={soundSource} 
-                    alt="beeper" />
-                </div>
-
-                <div className={JSON.stringify(displayDot4)} onTouchEnd={() => {
-                    setDisplayDot2(false);
-                    setDisplayDot1(true);
-                    setDisplayDot3(false);
-                    setDisplayDot4(false);
-                }}>                   
-                    <Icon />
-                    <Imgs src={tactSource} 
-                    alt="beeper" />
-                    <Icon />
-                    <Imgs src={splitterSource} 
-                    alt="beeper" />
-                    
-                </div>
-                </ReactSwipe>
-            </>
-
-            {/* Swipeable Dots Beggining */}
-            <Dots onTouchEnd={() => {
-            reactSwipeEl.slide(4);
-            setDisplayDot1(true);
-            setDisplayDot2(false);
-            setDisplayDot3(false);
-            setDisplayDot4(false);
-            }}
-            style={{
-                marginRight: '10px',
-            }}
-            className={JSON.stringify(displayDot1) + 'dot'}
-            />
-
-            <Dots onTouchEnd={() => {
-            reactSwipeEl.slide(2);
-            setDisplayDot2(true);
-            setDisplayDot1(false);
-            setDisplayDot3(false);
-            setDisplayDot4(false);
-
-            }} 
-            style={{
-                marginRight: '15px',
-                marginLeft: '15px'
-            }}
-            className={JSON.stringify(displayDot2) + 'dot'}
-            />
-            <Dots onTouchEnd={() => {
-                reactSwipeEl.slide(3);
-                setDisplayDot2(false);
-                setDisplayDot3(true);
-                setDisplayDot1(false);
-                setDisplayDot4(false);
-
-            }} 
-            style={{
-                marginLeft: '30px'
-            }}
-            className={JSON.stringify(displayDot3) + 'dot'}
-            />
-
-            <Dots onTouchEnd={() => {
-                reactSwipeEl.slide(1);
-                setDisplayDot3(false);
-                setDisplayDot4(true);
-                setDisplayDot1(false);
-                setDisplayDot2(false);
-            }} 
-            style={{
-                marginLeft: '45px'
-            }}
-            className={JSON.stringify(displayDot4) + 'dot'}
-            />
-            {/* Swipeable Dots End */}
-           </Bottom>
-           </Scrollbars> : (
+             <div>                   
+                 <Icon />
+                 <Img src={tactSource} 
+                 alt="beeper" />
+                 <MiddleIcon/>
+                 <Img src={splitterSource} 
+                 alt="beeper" style={{marginLeft: '23px', width: '70px'}} />
+                 
+             </div>
+         </Scrollbars>
+        </Bottom> */}
+         </>: (
                <>
                <Graph 
            style={{position: 'absolute',
@@ -366,10 +280,12 @@ const ModeFiles = () => {
                display: 'flex',
                flexDirection: 'column',
            }}>
-            <Back width="120" height="120"
-                style={{position: 'absolute', cursor: 'pointer'}}
-                onClick={() => back()}
-            />
+           <img src={process.env.PUBLIC_URL + 'images/extraImages/back.png'}  
+          className='icons'
+          alt="back" 
+          style={{position: 'absolute', top:'20px', left: '0'}}
+          onClick={() => back()}
+          />
            </div>
 
             {/* Middle Component render */}
@@ -426,7 +342,7 @@ const ModeFiles = () => {
 
 
             {/* swipeable area */}
-           <Bottom style={{zIndex: '1500'}}>
+           {/* <Bottom style={{zIndex: '1500'}}>
                <>
                <ArrowBackIosIcon 
                style={{
@@ -549,6 +465,7 @@ const ModeFiles = () => {
             }}
             />
            </Bottom>
+           */}
            </>
            )}
         </>
