@@ -11,6 +11,7 @@ export const Graph = styled.div`
     background-image: linear-gradient(rgba(56, 56, 56, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 56, 56, 0.5) 1px, transparent 1px), linear-gradient(rgba(56, 56, 56, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 56, 56, 0.5) 1px, transparent 1px);
     height: 100%;
     opacity: 0.2;
+    z-index: 1;
 `;
 
 export const Bottom = styled.div`
@@ -21,11 +22,7 @@ export const Bottom = styled.div`
     flex-direction: column;
     position: fixed;
     bottom: 0;
-    right: 0;
-    z-index: 100;
-    @media (min-width: 893px){
-        height: 120px;
-    }
+    right: -10px;
 `;
 
 export const BottomDesk = styled.div`
@@ -65,6 +62,21 @@ export const Icon = styled(AddCircleIcon)`
         bottom: 51px
     }
 `;
+
+export const IconMob = styled(AddCircleIcon)`
+    position: absolute;
+    right: 50px;
+    margin-top: 100px;
+    z-index: 5000000;
+`;
+
+export const IconMobi = styled(AddCircleIcon)`
+    position: absolute;
+    right: 50px;
+    z-index: 5000000;
+    margin-top: 20px;
+`;
+
 
 export const MiddleIcon = styled(AddCircleIcon)`
     position: relative;

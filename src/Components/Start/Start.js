@@ -35,9 +35,10 @@ import {Graph,
 Bottom,
 MiddleIconDesk,
 Icon,
-MiddleIcon,
+IconMobi,
 Img,
-BottomDesk
+BottomDesk,
+IconMob
 } from './Start.styles';
 import axios from "axios";
 
@@ -362,7 +363,7 @@ const Start = () => {
                     borderRadius: '25px', cursor: 'pointer'}}>Continue</button>
                 </span>: null}
         {    dimensions.width < 892 ? <>
-         <Scrollbars style={{ width: '80vw', height: '90vh'}}>
+         <Scrollbars style={{ width: '85vw', height: '90vh'}}>
            <Graph 
            style={{position: 'absolute',
                     minWidth: `${15*(img1.length)+ 15*(rightRImg.length)  + 100}%`,
@@ -421,86 +422,78 @@ const Start = () => {
             {/* end */}
 
             </Scrollbars>
-            <div style={{position: 'absolute', bottom: '0', width: '80vw', 
+            <div style={{position: 'absolute', bottom: '0', width: '85vw', 
             left: '0',  height: '70px',backgroundColor: 'white', zIndex: '100000000'}}>
-                <h2 style={{color: 'grey', position: 'absolute', bottom: '0', left: '50px', fontWeight: '500'}}>Description</h2>
+                <h2 style={{color: 'grey', position: 'fixed', bottom: '0', left: '50px', fontWeight: '500'}}>Description</h2>
             </div>
            <Bottom>
-               <Scrollbars style={{ width: '20vw', height: '100vh'}}>
+               <Scrollbars style={{ width: '100px', height: '100vh' ,position: 'absolute', right: '0'}}>
                 <div>
-                    <Icon onClick={(e) =>  onImage1Concat(powerSource)}/>
+                <IconMobi onClick={(e) =>  onImage1Concat(powerSource)}/>
                     <Img src={powerSource} 
-                    alt="power" style={{marginRight: '20px'}}/>
+                    alt="power" />
 
-                    <Icon onClick={() => onImage1Concat(sequenceSource)}/>
+                    <IconMob onClick={() => onImage1Concat(sequenceSource)}/>
                     <Img src={sequenceSource} 
-                    alt="sequence" style={{marginRight: '20px'}}/>
+                    alt="sequence" />
 
-                    <Icon onClick={(e) =>  onImage1Concat(beeperSource)}/>
+                    <IconMob onClick={(e) =>  onImage1Concat(beeperSource)}/>
                     <Img src={beeperSource} 
                     alt="beeper" />
 
-                    <MiddleIcon onClick={() => onImage1Concat(conditionSource)}/>
+                    <IconMob onClick={() => onImage1Concat(conditionSource)}/>
                     <Img src={conditionSource} 
                     alt="condition" 
-                    style={{
-                    marginLeft: '25px',
-                    marginRight: '20px',
-                    width: '70px'
-                    }}/>
+                    />
                 </div>
                 
                 <div>
 
-                    <Icon onClick={() => onImage1Concat(graphSource)}/>
+                    <IconMobi onClick={() => onImage1Concat(graphSource)}/>
                     <Img src={graphSource} 
-                    alt="beeper" style={{marginRight: '20px'}}/>
+                    alt="beeper"/>
 
-                    <Icon onClick={() => onImage1Concat(distanceSource)}  />
+                    <IconMob onClick={() => onImage1Concat(distanceSource)}  />
                     <Img src={distanceSource} 
-                    alt="beeper" style={{marginRight: "20px"}}/>
+                    alt="beeper" />
 
 
-                    <Icon onClick={() => onImage1Concat(ledSource)}/>
+                    <IconMob onClick={() => onImage1Concat(ledSource)}/>
                     <Img src={ledSource} 
                     alt="beeper" 
-                    style={{
-                    marginRight: '20px'
-                    }}/>
+                    />
                     
-                    <Icon onClick={() => onImage1Concat(lightSource)}/>
+                    <IconMob onClick={() => onImage1Concat(lightSource)}/>
                     <Img src={lightSource} 
                     alt="beeper" />
                 </div>
 
                 <div>
-                    <Icon onClick={() => onImage1Concat(magSource)}/>
+                    <IconMobi onClick={() => onImage1Concat(magSource)}/>
                     <Img src={magSource} 
-                    alt="beeper" style={{marginRight: '20px'}}/>
+                    alt="beeper" />
 
-                    <Icon onClick={() => onImage1Concat(tempSource)}/>
+                    <IconMob onClick={() => onImage1Concat(tempSource)}/>
                     <Img src={tempSource} 
-                    alt="temperature" style={{marginRight: '20px'}}/>
+                    alt="temperature"/>
                     
-                    <Icon onClick={() => onImage1Concat(motorSource)}/>
+                    <IconMob onClick={() => onImage1Concat(motorSource)}/>
                     <Img src={motorSource} 
                     alt="beeper" 
-                    style={{
-                    marginRight: '20px'
-                    }}/>
+                    />
                     
-                    <Icon onClick={() => onImage1Concat(soundSource)}/>
+                    <IconMob onClick={() => onImage1Concat(soundSource)}/>
                     <Img src={soundSource} 
                     alt="beeper" />
                 </div>
 
                 <div>                   
-                    <Icon onClick={() => onImage1Concat(tactSource)}/>
+                    <IconMobi onClick={() => onImage1Concat(tactSource)}/>
                     <Img src={tactSource} 
                     alt="beeper" />
-                    <MiddleIcon onClick={() => onImage1Concat(splitterSource)}/>
+                    <IconMob onClick={() => onImage1Concat(splitterSource)}/>
                     <Img src={splitterSource} 
-                    alt="beeper" style={{marginLeft: '23px', width: '70px'}} />
+                    alt="beeper" />
                     
                 </div>
             </Scrollbars>
