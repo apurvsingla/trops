@@ -374,13 +374,14 @@ const Start = () => {
                flexDirection: 'column',
            }}>
             <Back width="120" height="120"
-                style={{position: 'absolute'}}
+                style={{position: 'absolute', zIndex: '10'}}
                 onClick={() => back()}
             />
             <Retry width="120" height="120" 
             style={{position: 'absolute',
                     top: '75px',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    zIndex: '10'
                 }}
                 onClick={() => reset()}
             />
@@ -422,9 +423,9 @@ const Start = () => {
             {/* end */}
 
             </Scrollbars>
-            <div style={{position: 'absolute', bottom: '0', width: '85vw', 
-            left: '0',  height: '70px',backgroundColor: 'white', zIndex: '100000000'}}>
-                <h2 style={{color: 'grey', position: 'fixed', bottom: '0', left: '50px', fontWeight: '500'}}>Description</h2>
+            <div style={{position: 'fixed', bottom: '0', width: '85vw', 
+            left: '0',  height: '70px',backgroundColor: 'white', zIndex: '100000000',}}>
+                <h2 style={{color: 'grey', left: '50px', fontWeight: '500'}}>Description</h2>
             </div>
            <Bottom>
                <Scrollbars style={{ width: '100px', height: '100vh' ,position: 'absolute', right: '0'}}>
