@@ -319,6 +319,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 <NImg src={i.src} alt="alt"
                  style={{
                         left: `${100*index + 20}px`,
+                        zIndex: '12'
                 }}
                 id={i.uid}
                 // onClick={(e) => deleteImage(e,i.uid)}
@@ -329,6 +330,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 <NormalImg src={i.src} alt="alt"
                  style={{
                         left: `${100*index + 20}px`,
+                        zIndex: '12'
                 }}
                 id={i.uid}
                 // onClick={(e) => deleteImage(e,i.uid)}
@@ -342,7 +344,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 top: '52px',
                 // marginRight:`${100}`,
                 position: 'absolute',
-                zIndex: '10',
+                zIndex: '12',
                 cursor: 'pointer'
         }}
         onClick={(e) => deleteImage(e,i.uid,index,i.id)}
@@ -423,7 +425,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
        
                 <>  <LargeColLineCondition  style={{
                                 marginLeft: `${140*index}px`,
-                                zIndex: '4',
+                                zIndex: '11',
                                 color: 'transparent',
                                 top: '146px',
                         }}
@@ -437,7 +439,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 id={index}
                 style={{
                         marginLeft: `${140*index - 78}px`,
-                        zIndex: '1',
+                        zIndex: '11',
                         color: 'grey',
                         top: '176px',
                 }}

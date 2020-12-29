@@ -358,6 +358,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 style={{
                         marginLeft: `${(140*i.bottomPos) + 20}px`,
                         marginTop: `${140*i.trackValue + 20}px`,
+                        zIndex: '10'
                 }}
                 // onClick={(e) => deleteImage(e,i.uid)}
                 />
@@ -367,6 +368,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 style={{
                         marginLeft: `${(140*i.bottomPos) + 20}px`,
                         marginTop: `${140*i.trackValue + 20}px`,
+                        zIndex: '10'
                 }} 
                 // onClick={(e) => deleteImage(e,i.uid)}
                 />
@@ -380,7 +382,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 top: `${dimensions.width < 892 ? 140*i.trackValue :140*i.trackValue + 10}px`,
                 position: 'absolute',
                 cursor: 'pointer',
-                marginTop: `${dimensions.width < 892? '150' : '200'}px`
+                marginTop: `${dimensions.width < 892? '150' : '200'}px`,
+                zIndex: '10'
         }} 
         onClick={(e) => deleteImage(e,i.uid)}
         />
@@ -389,7 +392,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         {(bottomImg.length) === index ? null : 
               <>  <LargeColLine style={{
                         marginLeft: `${140*i.bottomPos}px`,
-                        zIndex: '-2',
+                        zIndex: '10',
                         top: `${i.trackValue? 140*i.trackValue + 78 : 82}px`
                         }}
                 key={index+'--icon'} />
@@ -400,7 +403,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 style={{
                         left: `${140*i.bottomPos}px`,
                         marginTop: `${140*i.trackValue}px`, 
-                        zIndex: '-1',
+                        zIndex: '10',
                         color: 'transparent',                     
                 }}
                 />
@@ -498,7 +501,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         style={{
                 marginTop: `${i.trackValue ? 140*i.trackValue: 0}px`,
                 left: `${140*i.bottomPos + 182}px`,
-                color: 'transparent'
+                color: 'transparent',
+                zIndex: '10'
                 }}
                 onClick={(e) => activeLink(e,index,i.normal)}
                 id={i.normal}
@@ -509,7 +513,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         style={{
                 marginTop: `${i.trackValue ? 140*i.trackValue : 0}px`,
                 left: `${140*i.bottomPos + 202}px`,
-                color: 'transparent'
+                color: 'transparent',
+                zIndex: '10'
                 }}
                 onClick={(e) => activeLink(e,i.switchId,i.normal)}
                 id={i.normal}
