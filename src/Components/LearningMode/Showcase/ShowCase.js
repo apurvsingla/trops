@@ -9,7 +9,8 @@ import {useHistory} from 'react-router-dom';
 // import {ReactComponent as Back} from './button_back.svg';
 import useSessionStorage from '../../SessionStorage/SessionStorage';
 import { Scrollbars } from 'react-custom-scrollbars';
-
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
 // import Start from '../../Start/Start';
 
 const useStyles = makeStyles((theme) => ({
@@ -98,6 +99,14 @@ const ShowCase = () => {
           />
           </>}
           {dimensions.width > 892 ?
+          !state ? <Loader
+          type="Puff"
+          color="#00BFFF"
+          height={100}
+          width={100}
+          style={{ zIndex: '5000000000',
+          position: 'absolute', top: '25%', left: '50%'}}
+       /> :
         <Main>
          <Scrollbars style={{ width: '100vw', height: '100vh'}}>
           <Grid
@@ -127,6 +136,14 @@ const ShowCase = () => {
         : null}
 
         {dimensions.width <= 892 ? 
+        !state ? <Loader
+        type="Puff"
+        color="#00BFFF"
+        height={100}
+        width={100}
+        style={{ zIndex: '5000000000',
+        position: 'absolute', top: '25%', left: '50%'}}
+     /> :
         <Main>
         <Scrollbars style={{ width: '100vw', height: '100vh', marginTop: '76px'}}>
          <Grid

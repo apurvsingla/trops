@@ -63,10 +63,10 @@ const Start = () => {
     }
     window.addEventListener('resize', handleResize);
     })  
-      const [open, setOpen] = useState(false);
-      const [clicked, setClicked] = useState(false);
-      const [value, setValue] = useState(null);
-      const closeModal = () => setOpen(false);
+    const [open, setOpen] = useState(false);
+    const [clicked, setClicked] = useState(false);
+    const [value, setValue] = useState(null);
+    const closeModal = () => setOpen(false);
 
     // + sign
     const [displayDot1, setDisplayDot1] = useState(true);
