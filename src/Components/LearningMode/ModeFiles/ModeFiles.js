@@ -127,7 +127,7 @@ const ModeFiles = () => {
            }}>
         <img src={process.env.PUBLIC_URL + 'images/extraImages/back1.png'} 
         alt="back" width="70px"
-        style={{zIndex: '10000'}}
+        style={{zIndex: '1000000'}}
         onClick={() => back()}
         />
 
@@ -283,7 +283,7 @@ const ModeFiles = () => {
            <img src={process.env.PUBLIC_URL + 'images/extraImages/back.png'}  
           className='icons'
           alt="back" 
-          style={{position: 'absolute', top:'20px', left: '0'}}
+          style={{position: 'absolute', top:'20px', left: '0', zIndex: '10000000'}}
           onClick={() => back()}
           />
            </div>
@@ -308,6 +308,7 @@ const ModeFiles = () => {
                             marginLeft: `${(140*i.bottomPos) + 120}px`,
                             marginTop: `${140*i.trackValue + 20}px`,
                             top: '170px',
+                            zIndex: '2'
                     }} 
                     key={index+'bottom'}
                     />
@@ -326,7 +327,7 @@ const ModeFiles = () => {
                     style={{
                             left: `${140*i.bottomPos}px`,
                             marginTop: `${140*i.trackValue}px`, 
-                            zIndex: '-1',
+                            zIndex: '2',
                             color: 'transparent',                     
                     }}
                     />

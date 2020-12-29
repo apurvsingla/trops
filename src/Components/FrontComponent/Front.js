@@ -90,40 +90,39 @@ const Front = () => {
     </section>
     </>: <>
     <section>
-    <ScrollLock>
-      <div>
-        <div style={{display: 'inline'}}>
-          <img src={process.env.PUBLIC_URL + 'images/extraImages/save.png'} 
-          style={{height: '100vh', width: '25vw'}}
-          alt="left"/>
-          <img src={process.env.PUBLIC_URL + 'images/extraImages/back.png'}  
-          className='icons'
-          alt="back" 
-          style={{position: 'absolute', top:'30px', left: '0'}}
-          />
-          <h1 style={{position: 'absolute', top: '53px', left: '100px', fontSize: '1.8rem', color: 'white'}}>Trops Kit</h1>
+      <ScrollLock>
+        <div>
+          <div style={{display: 'inline'}}>
+            <img src={process.env.PUBLIC_URL + 'images/extraImages/save.png'} 
+            style={{height: '100vh', width: '25vw'}}
+            alt="left"/>
+            <img src={process.env.PUBLIC_URL + 'images/extraImages/back.png'}  
+            className='icons'
+            alt="back" 
+            style={{position: 'absolute', top:'30px', left: '0'}}
+            />
+            <h1 style={{position: 'absolute', top: '53px', left: '100px', fontSize: '1.8rem', color: 'white'}}>Trops Kit</h1>
+          </div>
+          <div style={{display: 'inline'}}>
+            <Img
+            alt={'icon1'}
+            src={process.env.PUBLIC_URL + 'images/extraImages/icon.png'}
+            className='icons'
+            onClick={() => learning()}
+            />
+            <Img
+            alt={'icon2'}
+            src={process.env.PUBLIC_URL + 'images/extraImages/icon2.png'}
+            className='icons'
+            onClick={() => sandbox()} />
+          </div>
+          {/* <p style={{position: 'absolute', top: '-47rem', left: '25rem'}}>Learning Mode</p>
+            <p style={{position: 'absolute', top: '-47rem' ,left: '55rem'}}>Sandbox Mode</p> */}
         </div>
-        <div style={{display: 'inline'}}>
-          <Img
-          alt={'icon1'}
-          src={process.env.PUBLIC_URL + 'images/extraImages/icon.png'}
-          className='icons'
-          onClick={() => learning()}
-          />
-          <Img
-          alt={'icon2'}
-          src={process.env.PUBLIC_URL + 'images/extraImages/icon2.png'}
-          className='icons'
-          onClick={() => sandbox()} />
-        </div>
-        {/* <p style={{position: 'absolute', top: '-47rem', left: '25rem'}}>Learning Mode</p>
-          <p style={{position: 'absolute', top: '-47rem' ,left: '55rem'}}>Sandbox Mode</p> */}
-      </div>
-    </ScrollLock>
+      </ScrollLock>
     </section>
     </> }
-    
-        </>
+    </>
     );
 }
 
