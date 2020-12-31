@@ -392,7 +392,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         {(bottomImg.length) === index ? null : 
               <>  <LargeColLine style={{
                         marginLeft: `${140*i.bottomPos}px`,
-                        zIndex: '10',
+                        zIndex: '8',
                         top: `${i.trackValue? 140*i.trackValue + 78 : 82}px`
                         }}
                 key={index+'--icon'} />
@@ -403,7 +403,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 style={{
                         left: `${140*i.bottomPos}px`,
                         marginTop: `${140*i.trackValue}px`, 
-                        zIndex: '10',
+                        zIndex: '8',
                         color: 'transparent',                     
                 }}
                 />
@@ -429,7 +429,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                       cursor: 'pointer',
                       marginTop: `${140*i.trackValue}px`,
                       left: `${140*i.bottomPos}px`,
-                      
+                      zIndex: '12'
                 }}
                 key={index+'-middle'}
                 id={index}
@@ -454,7 +454,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                         top: `${185}px`,
                         cursor: 'pointer',
                         marginTop: `${140*i.trackValue}px`,
-                      left: `${140*i.bottomPos + 137}px`
+                      left: `${140*i.bottomPos + 137}px`,
+                      zIndex: '20'
                 }}
                 />: <ScrollBottom marks={marks} 
                 valueLabelFormat={valueLabelFormat} 
@@ -468,7 +469,8 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                         top: `${255}px`,
                         cursor: 'pointer',
                         marginTop: `${140*i.trackValue}px`,
-                      left: `${140*i.bottomPos + 152}px`
+                      left: `${140*i.bottomPos + 152}px`,
+                      zIndex: '20'
                 }}
                 />}
                 
@@ -500,9 +502,9 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         className={classes.largeIconXL + " right-dot-bottom"}
         style={{
                 marginTop: `${i.trackValue ? 140*i.trackValue: 0}px`,
-                left: `${140*i.bottomPos + 182}px`,
+                left: `${140*i.bottomPos + 162}px`,
                 color: 'transparent',
-                zIndex: '10'
+                zIndex: '8'
                 }}
                 onClick={(e) => activeLink(e,index,i.normal)}
                 id={i.normal}

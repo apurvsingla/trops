@@ -225,7 +225,8 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setTopPos={setTopPos} deleteImage={deleteBottomImg}
                         />
                         :null}
-                        {i.pos === 'right' ? <RightImgs mQuery={dimensions} 
+                        {i.pos === 'right' ? <RightImgs 
+                        mQuery={dimensions} 
                         currentRight={currentRight} 
                         activeRightIndex={activeRightIndex}
                         apperDot={appearDotRight} 

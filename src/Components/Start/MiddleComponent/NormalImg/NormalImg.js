@@ -375,7 +375,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 }}
                 style={{
                       marginLeft: `${140*index}px`,
-                      zIndex: '2',
+                      zIndex: '12',
                 }}
                 key={index+'-middle'}
                 id={index}
@@ -395,7 +395,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 className="scroll-large icons"
                 style={{
                         marginLeft: `${140*index}px`,
-                        zIndex: "2"
+                        zIndex: "12"
                 }}
                 />
          : null}

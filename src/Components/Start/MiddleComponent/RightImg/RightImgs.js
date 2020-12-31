@@ -118,22 +118,21 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 }
         } 
         const rangeGlow = () => {
-                    if(mQuery && !mQuery.matches){
+                    if(mQuery.width<892){
                             if(i.bools){
                                 return(
                                         <span
                                         style={{
-                                                height: `${i.bools*4 + 5 }px`,
-                                                width: `${i.bools*4 + 5}px`,
+                                                height: `${i.bools*6 }px`,
+                                                width: `${i.bools*6 }px`,
                                                 backgroundColor: `${true ?'red':null}`,
                                                 borderRadius: '50px',
                                                 zIndex: '15',
                                                 position: 'absolute',
-                                                left: `${120*i.id  + 172 - 2*i.bools}px`,
+                                                left: `${120*i.id  +173 - 3*i.bools}px`,
                                                 marginTop: `${140*i.bottomRightPos + 5}px`,
-                                                top: `${175 -2*i.bools}px`,
-                                                opacity: '0.7',
-                                                
+                                                top: `${175 -3*i.bools}px`,
+                                                opacity: '0.7', 
                                         }}
                                         />
                                 )
@@ -149,9 +148,10 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                                                 borderRadius: '50px',
                                                 zIndex: '15',
                                                 position: 'absolute',
-                                                left: `${140*i.id - 3.3*i.bools + 160}px`,
-                                                marginTop: `${140*i.bottomRightPos + 227 - 3*i.bools}px`,
-                                                opacity: '0.7',
+                                                left: `${140*i.id  + 160 - 3.3*i.bools}px`,
+                                                marginTop: `${140*i.bottomRightPos + 5}px`,
+                                                top: `${220 -3*i.bools}px`,
+                                                opacity: '0.7', 
                                         }}
                                         />
                                 )
@@ -254,6 +254,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                         style={{
                                 left: `${120*i.id+ 138}px`,
                                 marginTop: `${140*i.bottomRightPos + 147}px`,
+                                zIndex: '12'
                         }}
                 />
                 ) : 
@@ -333,7 +334,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 style={{
                       marginTop: `${140*i.bottomRightPos }px`,
                       left: `${120*i.id+2}px`,
-                      
+                      zIndex: '12'
                 }}
                 key={index+'-middle-right'}
                 id={i.uid}
@@ -372,6 +373,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 style={{
                         left: `${120*i.id+ 158}px`,
                         marginTop:`${140*i.bottomRightPos+ 185}px`,
+                        zIndex: '12'
                 }}
                 />: <Scroll marks={marks} 
                 valueLabelFormat={valueLabelFormat} 

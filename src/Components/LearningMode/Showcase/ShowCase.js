@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 // import Box from '@material-ui/core/Box';
-// import axios from "axios";
+import axios from "axios";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -10,7 +10,8 @@ import {useHistory} from 'react-router-dom';
 import useSessionStorage from '../../SessionStorage/SessionStorage';
 import { Scrollbars } from 'react-custom-scrollbars';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
-import Loader from 'react-loader-spinner'
+import Loader from 'react-loader-spinner';
+import DeleteIcon from '@material-ui/icons/Delete';
 // import Start from '../../Start/Start';
 
 const useStyles = makeStyles((theme) => ({
@@ -49,8 +50,6 @@ const ShowCase = () => {
     const func = async () => {
       const apiUrl = 'https://trops.herokuapp.com/data';
       fetch(apiUrl).then((res) => (res.json())).then(data => setState(data))
-      // setState(result.data);
-      // console.log(result.data)
     }
 
     const back = () => {
@@ -73,6 +72,15 @@ const ShowCase = () => {
     }
     window.addEventListener('resize', handleResize);
     })
+
+    const deletes = async (e) => {
+      console.log('deleting')
+      return await axios({
+        method: 'DELETE',
+        url: `https://trops.herokuapp.com/delete/${e._id}`,
+        data: e._id,
+      })
+    }
 
     return (
         <>
@@ -126,6 +134,12 @@ const ShowCase = () => {
                 <Paper className={classes.paper}>
                     <h1 style={{paddingBottom: '30px'}}>Tutorial {index+1}:</h1> 
                     <span style={{fontSize: '1.3rem', textTransform: 'uppercase'}}>{e.name}</span>
+                    <DeleteIcon 
+                   style={{ 
+                     zIndex: '100000000000000000000'
+                   }}
+                   onClick={() => deletes(e)}
+                   />
                 </Paper>
               </Grid>
                 );
@@ -163,6 +177,12 @@ const ShowCase = () => {
                <Paper className={classes.paper}>
                    <h1 style={{paddingBottom: '10px',}}>Tutorial {index+1}:</h1> 
                    <span style={{fontSize: '1.3rem', textTransform: 'uppercase'}}>{e.name}</span>
+                   <DeleteIcon 
+                   style={{
+                     position: 'absolute'
+                   }}
+                   onClick={() => deletes(e)}
+                   />
                </Paper>
              </Grid>
                );

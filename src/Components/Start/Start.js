@@ -366,8 +366,8 @@ const Start = () => {
          <Scrollbars style={{ width: '85vw', height: '90vh'}}>
            <Graph 
            style={{position: 'absolute',
-                    minWidth: `${15*(img1.length)+ 15*(rightRImg.length)  + 100}%`,
-                    height: `${25*(bottomImg.length) + 100}%`,
+                    minWidth: `${18*(img1.length)+ 18*(rightRImg.length)  + 100}%`,
+                    height: `${30*(bottomImg.length) + 100}%`,
         }}/>
            <div style={{
                display: 'flex',
@@ -561,7 +561,7 @@ const Start = () => {
              )}
             {/* <button onClick={() => false}>Cancel</button> */}
         </Popup>
-               <Scrollbars style={{ width: '75vw', height: '80vh', top: '-100vh', left: '25vw', zIndex: '100'}} >
+               <Scrollbars style={{ width: '75vw', height: '80vh', top: '-100vh', left: '25vw', zIndex: '150'}} >
                <Graph 
                 style={{
                     position: 'absolute',
