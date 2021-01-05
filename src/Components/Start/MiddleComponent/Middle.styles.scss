@@ -5,7 +5,8 @@
     position: absolute;
     z-index: -1;
     height: 50px;
-    cursor: url('../../images/tap.png'), default;
+    // cursor: url('../../images/tap.png'), default;
+    cursor: pointer;
     border-radius: 50px;
     @media (min-width: 893px){
         left: 131px;
@@ -26,6 +27,24 @@
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    z-index: -2;    
+    @media (max-width: 893px){
+        top: 132px;
+        margin-left: 146px;
+        margin-top:19px;
+    }
+}
+
+.line-right-arrow{
+    position: absolute;
+    top: 177px;
+    margin-left: 162px;
+    margin-top: 4px;
+    width: 13px;
+    height: 13px;
+    transform: rotate(315deg);
     border-right: 4px solid black;
     border-bottom: 4px solid black;
     z-index: -2;    
@@ -59,7 +78,8 @@
     top: 168px;
     transform: scale(2);
     z-index: 4;
-    cursor: url('../../images/tap.png'), default;
+    // cursor: url('../../images/tap.png'), default;
+    cursor: pointer;
     @media (max-width: 893px){
         left: 142px;
         top: 130px;
@@ -70,7 +90,8 @@
 .right-dot-bottom{
     position: absolute;
     top: 202px;
-    cursor: url('../../images/tap.png'), default;
+    // cursor: url('../../images/tap.png'), default;
+    cursor: pointer;
     @media (max-width: 892px){
         top: 149px;
     }
@@ -121,9 +142,9 @@
     position: absolute;
     top: 250px;
     margin-left: 162px;
-    cursor: url('../../images/tap.png'), default;
+    // cursor: url('../../images/tap.png'), default;
+    cursor: pointer;
     @media (max-width: 893px){
         top: 180px !important;        
     }
 }
-

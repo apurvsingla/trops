@@ -5,7 +5,7 @@ import {
 NormalRImg,
 // LargeRowLine
 } from '../Middle.style';
-import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+// import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import { tactSource,ledSource,beeperSource, motorSource, lightSource, tempSource, magSource, soundSource, distanceSource, graphSource } from '../Source/source';
 // import {conditionSource} from '../Source/source';
 import { makeStyles } from '@material-ui/core/styles';
@@ -75,7 +75,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                                         key={index}
                                         style={{
                                         marginTop: `${140*i.bottomRightPos +5}px`,
-                                        left: `${120*i.id - 8}px`,
+                                        left: `${120*i.id + 16}px`,
                                         backgroundColor: `${'red'}`,
                                         position: 'absolute',
                                         }}
@@ -129,7 +129,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                                                 borderRadius: '50px',
                                                 zIndex: '15',
                                                 position: 'absolute',
-                                                left: `${120*i.id  +173 - 3*i.bools}px`,
+                                                left: `${120*i.id  +197 - 3*i.bools}px`,
                                                 marginTop: `${140*i.bottomRightPos + 5}px`,
                                                 top: `${175 -3*i.bools}px`,
                                                 opacity: '0.7', 
@@ -252,9 +252,10 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 <NormalRImg src={i.src} 
                         alt="alt" 
                         style={{
-                                left: `${120*i.id+ 138}px`,
+                                left: `${120*i.id+ 162}px`,
                                 marginTop: `${140*i.bottomRightPos + 147}px`,
-                                zIndex: '12'
+                                zIndex: '12',
+                                // marginLeft: '20px'
                         }}
                 />
                 ) : 
@@ -271,27 +272,31 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 {/* lines and arrow     */}
                 <>         
                 {mQuery.width < 892 ? (
-                <ArrowRightAltIcon 
+                <span 
                 className={classes.largeIconXL}
                 style={{
                         position: 'absolute',
-                        left: `${120*i.id +81}px`,
-                        top: `${140*i.bottomRightPos + 149}px`,
+                        left: `${120*i.id +105}px`,
+                        top: `${140*i.bottomRightPos + 179}px`,
                         zIndex: '-8',
-                        color:'transparent'
+                        border: '3px solid black',
+                                width: '60px',
+                                height: '5px'
                         }}
-                        stroke={"black"} stroke-width={1}
+                        // stroke={"black"} stroke-width={1}
                         key={index+'--icon'} />): (
-                        <ArrowRightAltIcon 
+                        <span 
                         className={classes.largeIconXL}
                         style={{
                                 position: 'absolute',
                                 left: `${140*i.id +60}px`,
-                                top: `${140*i.bottomRightPos + 202}px`,
+                                top: `${140*i.bottomRightPos + 233}px`,
                                 zIndex: '-8',
-                                color:'transparent'
+                                // color:'transparent',
+                                border: '3px solid black',
+                                width: '60px',
+                                height: '5px'
                                 }}
-                                stroke={"black"} stroke-width={1}
                         key={index+'--icon'} />)}
                </>
 
@@ -333,7 +338,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 }}
                 style={{
                       marginTop: `${140*i.bottomRightPos }px`,
-                      left: `${120*i.id+2}px`,
+                      left: `${120*i.id+26}px`,
                       zIndex: '12'
                 }}
                 key={index+'-middle-right'}
@@ -371,7 +376,7 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 bottomImg={bottomImg} setBottomImg={setBottomImg}
                 className="scroll-large-right"
                 style={{
-                        left: `${120*i.id+ 158}px`,
+                        left: `${120*i.id+ 180}px`,
                         marginTop:`${140*i.bottomRightPos+ 185}px`,
                         zIndex: '12'
                 }}

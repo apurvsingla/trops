@@ -304,7 +304,7 @@ const Start = () => {
             // setCurrent(current+1)
             return;
         }else if(activeRightBottom[activeRightBottomIndex[currentRightDot] + '-bottom'] === true){
-            setRightRImg(i=> i.concat({id: id4, src: src, pos: 'normal', currentRightRight: currentRightDot, uid: uid}));
+            setRightRImg(i=> i.concat({id: id4, src: src, pos: 'normal', currentRightRight: currentRightDot, uid: uid, clicked: false}));
             setId4(id4+1);
             setUid(uid+1);
             return;
@@ -315,28 +315,33 @@ const Start = () => {
                     setNormalId(0);
                     // setId3(1);
                     if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
-                        setImg1(i => i.concat({id: id, src: src, pos: 'normal', uid: uid}));
+                        setImg1(i => i.concat({id: id, src: src, pos: 'normal', uid: uid, clicked: false}));
                         setId(id+1);
                         setId3(id);
                         setUid(uid+1);
                     }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
-                        setImg1(i => i.concat({id: id, src: src, bool: false, bools: 0, pos: 'normal', uid: uid}));
+                        setImg1(i => i.concat({id: id, src: src, bool: false, bools: 0, pos: 'normal', uid: uid, clicked: false}));
                         setImgTrack(imgTrack +1);
                         setUid(uid+1);
-                    }else{
-                        setImg1(img1 => img1.concat({id: id, src: src, pos: 'normal', uid: uid}));
+                    }else if(src === conditionSource){
+                        setImg1(img1 => img1.concat({id: id, src: src, pos: 'normal', uid: uid, clicked: true}));
                         setId(id + 1);
                         setId3(id);
                         setUid(uid+1);
+                    }else{
+                        setImg1(img1 => img1.concat({id: id, src: src, pos: 'normal', uid: uid, clicked: false}));
+                        setId(id + 1);
+                        setId3(id);
+                        setUid(uid+1); 
                     }
                 }
             }else if(src=== powerSource){
-                if(num === 1){
-                    return;
-                }
+                // if(num === 1){
+                //     return;
+                // }
                 setNum(num+1);
                 setUid(uid+1);
-                setImg1(img1 => img1.concat({id: num, src: src, pos: 'normal', uid: uid}));
+                setImg1(img1 => img1.concat({id: num, src: src, pos: 'normal', uid: uid, clicked: false}));
                 return;
             }
         }
@@ -366,7 +371,7 @@ const Start = () => {
          <Scrollbars style={{ width: '85vw', height: '90vh'}}>
            <Graph 
            style={{position: 'absolute',
-                    minWidth: `${18*(img1.length)+ 18*(rightRImg.length)  + 100}%`,
+                    minWidth: `${18*(img1.length)+ 18*(bottomImg.length)  + 100}%`,
                     height: `${30*(bottomImg.length) + 100}%`,
         }}/>
            <div style={{
@@ -504,13 +509,13 @@ const Start = () => {
                <div style={{position: 'absoute'}}>
                    <ScrollLock>
                     <img src={process.env.PUBLIC_URL + 'images/extraImages/save.png'} 
-                    style={{height: '100vh', width: '25vw',}}
+                    style={{height: '100vh', width: '10vw',}}
                     alt="left"/>
                 </ScrollLock>
-                <img src={process.env.PUBLIC_URL + 'images/extraImages/rec.png'} 
+                {/* <img src={process.env.PUBLIC_URL + 'images/extraImages/rec.png'} 
                 style={{ position: 'absolute', top: '40vh', left: '-1vw', height: '60vh', width: '26vw'}}
                 alt="rec"/>
-                <h2 style={{position: 'absolute', top: '42vh', left: '3vw', color: 'grey'}}>Description</h2>
+                <h2 style={{position: 'absolute', top: '42vh', left: '3vw', color: 'grey'}}>Description</h2> */}
                </div>
                <div style={{
                     display: 'flex',
@@ -561,11 +566,11 @@ const Start = () => {
              )}
             {/* <button onClick={() => false}>Cancel</button> */}
         </Popup>
-               <Scrollbars style={{ width: '75vw', height: '80vh', top: '-100vh', left: '25vw', zIndex: '150'}} >
+               <Scrollbars style={{ width: '90vw', height: '80vh', top: '-100vh', left: '10vw', zIndex: '150'}} >
                <Graph 
                 style={{
                     position: 'absolute',
-                    minWidth: `${8*(img1.length)+  8*(rightRImg.length)  + 100}%`,
+                    minWidth: `${8*(img1.length)+  8*(bottomImg.length)  + 100}%`,
                     height: `${25*(bottomImg.length) + 100}%`,
                     top: '0',
                     zIndex: '0'

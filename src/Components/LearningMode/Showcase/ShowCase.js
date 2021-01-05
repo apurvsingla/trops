@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 const ShowCase = () => {
     const classes = useStyles();
     const [state, setState] = useSessionStorage('state', null);
+    // const [loader, setLoader] = React.useState(false);
     const history = useHistory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
@@ -74,12 +75,12 @@ const ShowCase = () => {
     })
 
     const deletes = async (e) => {
-      console.log('deleting')
-      return await axios({
+      await axios({
         method: 'DELETE',
         url: `https://trops.herokuapp.com/delete/${e._id}`,
         data: e._id,
       })
+      window.location.reload()
     }
 
     return (
@@ -130,17 +131,20 @@ const ShowCase = () => {
                 <Grid item md={4} sm={6} 
                 className="icons"
                 style={{width: '100%', zIndex: '100', marginTop: '50px'}} 
-                onClick={() => page(e,index+1)} key={index}>
-                <Paper className={classes.paper}>
+                 key={index}>
+                <Paper className={classes.paper} onClick={() => page(e,index+1)}>
                     <h1 style={{paddingBottom: '30px'}}>Tutorial {index+1}:</h1> 
                     <span style={{fontSize: '1.3rem', textTransform: 'uppercase'}}>{e.name}</span>
-                    <DeleteIcon 
+                </Paper>
+                <DeleteIcon 
                    style={{ 
-                     zIndex: '100000000000000000000'
+                     zIndex: '1000000000',
+                     position: 'relative',
+                     top: '20px',
+                     color: 'black'
                    }}
                    onClick={() => deletes(e)}
                    />
-                </Paper>
               </Grid>
                 );
         }) : null}

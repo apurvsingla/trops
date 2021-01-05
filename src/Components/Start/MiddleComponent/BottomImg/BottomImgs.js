@@ -44,7 +44,7 @@ GlowSixM,
 GlowEightM
 } from './GlowStylesMob';
 import { makeStyles } from '@material-ui/core/styles';
-import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+// import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import Leds from './Scroll/GlowLeds/Leds';
 
 const useStyles = makeStyles({
@@ -397,7 +397,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                         }}
                 key={index+'--icon'} />
 
-                <span 
+                {/* <span 
                 className='line-bottom-arrow'
                 key={index+'icon-arrow'}
                 style={{
@@ -406,7 +406,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                         zIndex: '8',
                         color: 'transparent',                     
                 }}
-                />
+                /> */}
                 </> }
                 {i.bools && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? true? (
                 <Leds index={i.bottomPos} top={i.trackValue} bool={i.bools}/>
@@ -498,31 +498,69 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
         {i.src === conditionSource ? 
         <>
          {dimensions.width < 892  ?
-        <ArrowRightAltIcon 
+         <>
+        <span 
         className={classes.largeIconXL + " right-dot-bottom"}
         style={{
-                marginTop: `${i.trackValue ? 140*i.trackValue: 0}px`,
-                left: `${140*i.bottomPos + 162}px`,
+                marginTop: `${i.trackValue ? 140*i.trackValue + 30: 30}px`,
+                left: `${140*i.bottomPos + 192}px`,
                 color: 'transparent',
-                zIndex: '8'
+                zIndex: '8',
+                width: '30px',
+                height: '5px',
+                border: '3px solid black',
+                borderTopRightRadius: '25px',
+                borderBottomRightRadius: '25px',
+                borderLeft: 'none'
                 }}
                 onClick={(e) => activeLink(e,index,i.normal)}
                 id={i.normal}
                 key={index+'-right'}
-                stroke={"black"} stroke-width={1}
-                />: <ArrowRightAltIcon
+                // stroke={"black"} stroke-width={1}
+                />
+                <span 
+                className='line-right-arrow'
+                key={index+'icon-arrow'}
+                style={{
+                        left: `${140*i.bottomPos + 64}px`,
+                        marginTop: `${i.trackValue ? 140*i.trackValue + 44: 44}px`,
+                        zIndex: '8',
+                        color: 'transparent',                     
+                }}
+                /> 
+                </>: 
+                <>
+                <span
         className={classes.largeIconXL + " right-dot-bottom"}
         style={{
-                marginTop: `${i.trackValue ? 140*i.trackValue : 0}px`,
-                left: `${140*i.bottomPos + 202}px`,
+                marginTop: `${i.trackValue ? 140*i.trackValue + 31 : 31}px`,
+                left: `${140*i.bottomPos + 214}px`,
                 color: 'transparent',
-                zIndex: '10'
+                zIndex: '10',
+                width: '41px',
+                height: '5px',
+                border: '3px solid black',
+                borderTopRightRadius: '25px',
+                borderBottomRightRadius: '25px',
+                borderLeft: 'none'
                 }}
                 onClick={(e) => activeLink(e,i.switchId,i.normal)}
                 id={i.normal}
                 key={index+'-right'}
-                stroke={"black"} stroke-width={1}
-                />}
+                // stroke={"black"} stroke-width={1}
+                />
+                <span 
+                className='line-right-arrow'
+                key={index+'icon-arrow'}
+                style={{
+                        left: `${140*i.bottomPos + 80}px`,
+                        marginTop: `${i.trackValue ? 140*i.trackValue + 53: 53}px`,
+                        zIndex: '8',
+                        color: 'transparent',                     
+                }}
+                /> 
+                </>
+                }
         </>
         : null }
         </>)

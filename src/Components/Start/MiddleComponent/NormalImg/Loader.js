@@ -26,7 +26,7 @@ const Loader = ({index,bool}) => {
                 marginLeft: `${100*index +12}px`,
         }}
         />
-        <span 
+        {/* <span 
         style={{
                 marginLeft: `${100*index + 24 }px`,
         }}
@@ -50,14 +50,14 @@ const Loader = ({index,bool}) => {
         style={{
                 marginLeft: `${100*index + 72 }px`,
         }}
-        />
+        /> */}
         </Style>: <Style>
         <span 
         style={{
                 marginLeft: `${100*index + 32}px`,
         }}
         />
-        <span 
+        {/* <span 
         style={{
                 marginLeft: `${100*index +47}px`,
         }}
@@ -72,7 +72,7 @@ const Loader = ({index,bool}) => {
                 marginLeft: `${100*index + 77 }px`,
 
         }}
-        />
+        /> */}
         </Style>
     :null}
         

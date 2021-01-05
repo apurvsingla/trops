@@ -104,15 +104,18 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         boolean = !boolean;
                         active[normal] = boolean;
                         if(boolean === true){
-                                e.target.style.color = 'green';
+                                e.target.style.backgroundColor = 'green';
                         }else{
-                                e.target.style.color = 'transparent';   
+                                e.target.style.backgroundColor = 'transparent';   
                         }
                         activeRightIndex[normal] = normal;
+                        Object.keys(activeother).map(k=>activeother[k]=false);
+                        setActiveother(activeother);
                         setActive(active);
                         setActiveRightIndex(activeRightIndex);
                         setCurrentRight(normal);
                         setIndexVal(index);
+                        // setActiveother({});
                 }      
         }
         
@@ -127,6 +130,8 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                                 e.target.style.backgroundColor = 'transparent';   
                         }
                         activeIndex[index] = index;
+                        Object.keys(active).map(k=>active[k]=false);
+                        setActive(active);
                         setActiveother(activeother);
                         setActiveIndex(activeIndex);
                         setCurrent(index);

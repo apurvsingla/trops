@@ -15,12 +15,12 @@ const Loader = ({index,bool,top}) => {
         
         <span 
         style={{
-                left: `${120*index +130}px`,
+                left: `${120*index +90}px`,
                 top: `${140*top + 179}px`
 
         }}
         />
-        <span 
+        {/* <span 
         style={{
                 left: `${120*index+120}px`,
                 top: `${140*top + 179}px`
@@ -47,15 +47,15 @@ const Loader = ({index,bool,top}) => {
                 top: `${140*top + 179}px`
 
         }}
-        />
+        /> */}
         </Style>: <Style>
         <span 
         style={{
                 left: `${140*index +70}px`,
-                top: `${140*top + 232}px`
+                top: `${140*top + 234}px`
         }}
         />
-        <span 
+        {/* <span 
         style={{
                 left: `${140*index + 82}px`,
                 top: `${140*top + 232}px`
@@ -73,7 +73,7 @@ const Loader = ({index,bool,top}) => {
                 top: `${140*top + 232}px`
 
         }}
-        />
+        /> */}
         </Style>
     :null}
         

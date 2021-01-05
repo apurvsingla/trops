@@ -26,14 +26,14 @@ export const Bottom = styled.div`
 `;
 
 export const BottomDesk = styled.div`
-    width: 75%;
+    width: 90vw;
     background-color: white;
     border: 1px solid #fc846a;
     height: 100px;
     text-align: center;
     position: fixed;
     bottom: 0;
-    left: 25%;
+    left: 10vw;
     border-left: none;
     border-right: none;
     border-bottom: none;

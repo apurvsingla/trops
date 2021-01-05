@@ -10,7 +10,7 @@ export const GlowOneM = ({index,bottom}) => {
                     height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    left: `${120*bottom + 163}px`,
+                    left: `${120*bottom + 187}px`,
                     marginTop: `${140*index + 202}px`
             }}
             />
@@ -28,7 +28,7 @@ export const GlowTwoM = ({index, bottom}) => {
                     height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    left: `${120*bottom + 160}px`,
+                    left: `${120*bottom + 184}px`,
                     marginTop: `${140*index + 197}px`
             }}
             />
@@ -45,7 +45,7 @@ export const GlowThreeM = ({index, bottom}) => {
                     height: '2px',
                     zIndex: '15',
                     position: 'absolute',
-                    left: `${120*bottom + 158}px`,
+                    left: `${120*bottom + 182}px`,
                     marginTop: `${140*index + 193}px`
             }}
             />
@@ -63,7 +63,7 @@ export const GlowFourM = ({index, bottom}) => {
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    left: `${120*bottom + 156}px`,
+                    left: `${120*bottom + 180}px`,
                     marginTop: `${140*index + 188}px`
             }}
             />
@@ -82,7 +82,7 @@ export const GlowFiveM = ({index, bottom}) => {
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    left: `${120*bottom + 153}px`,
+                    left: `${120*bottom + 177}px`,
                     marginTop: `${140*index + 183}px`
             }}
             />
@@ -100,7 +100,7 @@ export const GlowSixM = ({index, bottom}) => {
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    left: `${120*bottom + 151}px`,
+                    left: `${120*bottom + 175}px`,
                     marginTop: `${140*index + 178}px`
             }}
             />
@@ -117,7 +117,7 @@ export const GlowSevenM = ({index,bottom}) => {
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    left: `${120*bottom + 145}px`,
+                    left: `${120*bottom + 169}px`,
                     marginTop: `${140*index + 173}px`
             }}
             />
@@ -135,7 +135,7 @@ export const GlowEightM = ({index, bottom}) => {
                     height: '3px',
                     zIndex: '15',
                     position: 'absolute',
-                    left: `${120*bottom + 142}px`,
+                    left: `${120*bottom + 166}px`,
                     marginTop: `${140*index + 169}px`
             }}
             />

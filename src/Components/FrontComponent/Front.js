@@ -104,20 +104,25 @@ const Front = () => {
             <h1 style={{position: 'absolute', top: '53px', left: '100px', fontSize: '1.8rem', color: 'white'}}>Trops Kit</h1>
           </div>
           <div style={{display: 'inline'}}>
+            <p style={{position: 'absolute', top: '43%', left: '30%', 
+            zIndex: '22', fontSize: '2rem', fontWeight: 'bold'}}>Learning Mode</p>
+            <p style={{position: 'absolute', top: '43%' ,left: '60%', 
+            zIndex: '22', fontSize: '2rem',fontWeight: 'bold'}}>Sandbox Mode</p>
             <Img
             alt={'icon1'}
             src={process.env.PUBLIC_URL + 'images/extraImages/icon.png'}
             className='icons'
             onClick={() => learning()}
+            style={{position: 'absolute', top: '35%'}}
             />
             <Img
             alt={'icon2'}
             src={process.env.PUBLIC_URL + 'images/extraImages/icon2.png'}
             className='icons'
-            onClick={() => sandbox()} />
+            onClick={() => sandbox()}
+            style={{position: 'absolute', top: '35%', left: '55%'}}
+             />
           </div>
-          {/* <p style={{position: 'absolute', top: '-47rem', left: '25rem'}}>Learning Mode</p>
-            <p style={{position: 'absolute', top: '-47rem' ,left: '55rem'}}>Sandbox Mode</p> */}
         </div>
       </ScrollLock>
     </section>

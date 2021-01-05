@@ -1,24 +1,15 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
 
-import {Heading,
+import {
+// Heading,
 // SandboxBackIcon,
 Start,
 Img,
 StartMob
 } from './Sandbox.styles';
-// import {ReactComponent as ReactLogo} from './Path.svg';
 
 function Sandbox() {
-    // const [mQuery, setMQuery] = React.useState({
-    //     matches: window.innerWidth > 892 ? true : false,
-    //   });
-
-    // React.useEffect(() => {
-    //     let mediaQuery = window.matchMedia("(max-width: 892px)");
-    //     mediaQuery.addListener(setMQuery);
-    //     return () => mediaQuery.removeListener(setMQuery);
-    // }, []);
     const [dimensions, setDimensions] = React.useState({ 
         height: window.innerHeight,
         width: window.innerWidth
@@ -76,12 +67,12 @@ function Sandbox() {
             style={{position: 'absolute', top: '40px'}}
             onClick={() =>  back()}/>
             <h1 style={{position: 'absolute', top: '60px', left: '41%', color: 'white'}}>Sandbox Mode</h1>
-            <Heading>
+            {/* <Heading>
                 <p>Summarised Overview</p>
-            </Heading>
+            </Heading> */}
             <br/>
             <br/>
-            <Start className="icons">
+            <Start>
                 <button className="icons" onClick={() => next()}>START</button>
             </Start>
         </div>

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const BottomStyles = styled.span`
 transform: translate(-50%, -50%); 
     span{
-        animation: loading2 0.8s linear infinite;
+        animation: loading2 0.4s linear infinite;
         position: absolute;
         border-radius: 50px;
         height: 10px;
@@ -18,12 +18,9 @@ transform: translate(-50%, -50%);
             0%, 100%{ 
              transform: translateY(0) scale(0.7);
              background-color: green;
-            } 
-            25%{ 
-             transform: translateY(2px) scale(0.8);
-            } 
-            50%{ 
-             transform: translateY(-2px) scale(1); 
+            }  
+            100%{ 
+             transform: translateY(70px) scale(1); 
              background-color: green;
             } 
         }

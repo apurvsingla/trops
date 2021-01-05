@@ -12,6 +12,7 @@ LargeColLineCondition
 import Scroll from '../ScrollSliderComponent/Scroll';
 import { makeStyles } from '@material-ui/core/styles';
 import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
+// import DragHandleIcon from '@material-ui/icons/DragHandle';
 //image source
 import {
 lightSource,
@@ -24,7 +25,8 @@ tactSource,
 beeperSource,
 motorSource,
 conditionSource,
-graphSource
+graphSource,
+powerSource
 } from '../Source/source';
 
 import './Glow.scss';
@@ -41,7 +43,7 @@ GlowEight
 } from './GlowStyle';
 import { GlowEightM, GlowFiveM, GlowFourM, GlowOneM, GlowSevenM, GlowSixM, GlowThreeM,GlowTwoM } from './GlowStyleMobile';
 import Loader from './Loader';
-import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+// import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
 const useStyles = makeStyles({
         largeIcon: {
@@ -280,33 +282,53 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         }
     } 
 
+    const [bool, setBool] = React.useState(true);
+    const clickedImage = (e,uid) => {
+        let newArray = [...img1];
+        newArray.forEach((val, index) => {
+                const array = newArray[index]
+                if(array.uid === uid){
+                        newArray[index] = {...newArray[index], clicked: bool}
+                }
+        })
+        setImg1(newArray);
+        setBool(!bool);
+    }
+
     const line = () => {
             if(dimensions.width < 892){
-                    return(<ArrowRightAltIcon
+                    return(<span
                         className={classes.largeIconXL + ' row-line'}
-                        stroke={"black"} stroke-width={1}
+                        // stroke={"black"} stroke-width={1}
                         style={{
                                 marginLeft: `${140*index}px`,
                                 opacity: '0.8',
                                 position: 'absolute',
-                                top: '52px',
+                                top: '83px',
                                 left: '190px',
                                 transform: 'scale(1.4)',
-                                color: 'transparent',
-                                }}
+                                color: 'black',
+                                zIndex: '10',
+                                border: '2px solid black',
+                                width: '60px',
+                                height: '4px'
+                        }}
                         key={index+'--icon-arrow'} />)
             }else{
                     return(<>
-                        <ArrowRightAltIcon
+                        <span
                         className={classes.largeIconXL + ' row-line'}
-                        stroke={"black"} stroke-width={1}
+                        // stroke={"black"} stroke-width={1}
                         style={{
                                 marginLeft: `${140*index}px`,
                                 opacity: '0.8',
                                 position: 'absolute',
-                                top: '70px',
+                                top: '100px',
                                 left: '205px',
-                                color: 'transparent',
+                                color: 'black',
+                                border: '3px solid black',
+                                width: '60px',
+                                height: '5px'
                                 }}
                         key={index+'--icon-arrow'} />
                         </>
@@ -333,22 +355,22 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                         zIndex: '12'
                 }}
                 id={i.uid}
-                // onClick={(e) => deleteImage(e,i.uid)}
+                onClick={(e) => clickedImage(e,i.uid)}
                 />
         </Span>: null}
-
-        <CancelOutlinedIcon 
+        {i.clicked === true && i.src !== powerSource ? <CancelOutlinedIcon 
         stroke={'orange'}
         style={{
-                left: `${dimensions.width < 892 ? 140*index + 168:140*index+190}px`,
-                top: '52px',
+                left: `${dimensions.width < 892 ? 140*index + 168:140*index+200}px`,
+                top: '42px',
                 // marginRight:`${100}`,
                 position: 'absolute',
-                zIndex: '12',
+                zIndex: '15',
                 cursor: 'pointer'
         }}
         onClick={(e) => deleteImage(e,i.uid,index,i.id)}
-        />
+        />: null}
+        
 
         {i.bool && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? true? (
                 <Loader index={index} />

@@ -34,7 +34,7 @@ const Leds = ({index,top,bool}) => {
                 marginTop: `${140*top + 145}px`
             }}
             />
-            <span 
+            {/* <span 
             className="loader-glow-bottom"
 
             style={{
@@ -49,7 +49,7 @@ const Leds = ({index,top,bool}) => {
                 left: `${140*index + 166}px`,
                 marginTop: `${140*top + 175}px`
             }}
-            />
+            /> */}
               {func()}
               </>
         : null}
