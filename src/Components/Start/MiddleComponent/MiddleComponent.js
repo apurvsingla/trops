@@ -182,6 +182,15 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                                 })
                                 setBottomImg(newBottom);
                         }
+                        if(current>index){
+                                let newBottom = [...bottomImg];
+                                newBottom.forEach((v,intt) => {
+                                        newBottom.splice(0,10);
+                                        track[current] = 0;
+                                        setTrack(track);
+                                })
+                                setBottomImg(newBottom);
+                        }
                 })
                 setImg1(newArray);
                 setCurrent(null);
