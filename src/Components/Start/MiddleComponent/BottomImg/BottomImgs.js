@@ -58,6 +58,18 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 deleteImage
 }) => {
         const classes = useStyles();
+        const [bool, setBool] = React.useState(true);
+        const clickedImage = (e,uid) => {
+            let newArray = [...bottomImg];
+            newArray.forEach((val, index) => {
+                    const array = newArray[index]
+                    if(array.uid === uid){
+                            newArray[index] = {...newArray[index], clicked: bool}
+                    }
+            })
+            setBottomImg(newArray);
+            setBool(!bool);
+        }
         const func = (e) => {
                 const num = Number(i.id);
                 if(appearDot[num] === true){
@@ -360,7 +372,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                         marginTop: `${140*i.trackValue + 20}px`,
                         zIndex: '10'
                 }}
-                // onClick={(e) => deleteImage(e,i.uid)}
+                onClick={(e) => clickedImage(e,i.uid)}
                 />
         </BottomSpan>: null}
         {i.src !== conditionSource ?<BottomSpan>
@@ -370,23 +382,36 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                         marginTop: `${140*i.trackValue + 20}px`,
                         zIndex: '10'
                 }} 
-                // onClick={(e) => deleteImage(e,i.uid)}
+                onClick={(e) => clickedImage(e,i.uid)}
                 />
         </BottomSpan>: null }
-
+        {i.clicked === true ?
+        dimensions.width>892 ?
         <CancelOutlinedIcon 
         stroke={'orange'}
         key={index+'key'}
         style={{
-                left: `${(140*i.bottomPos) + 120}px`,
-                top: `${dimensions.width < 892 ? 140*i.trackValue :140*i.trackValue + 10}px`,
+                left: `${(140*i.bottomPos) + 200}px`,
+                top: `${140*i.trackValue}px`,
                 position: 'absolute',
                 cursor: 'pointer',
-                marginTop: `${dimensions.width < 892? '150' : '200'}px`,
+                marginTop: `${'180'}px`,
                 zIndex: '10'
         }} 
         onClick={(e) => deleteImage(e,i.uid)}
-        />
+        />:<CancelOutlinedIcon 
+        stroke={'orange'}
+        key={index+'key'}
+        style={{
+                left: `${(140*i.bottomPos) + 173}px`,
+                top: `${140*i.trackValue}px`,
+                position: 'absolute',
+                cursor: 'pointer',
+                marginTop: '135px',
+                zIndex: '10'
+        }} 
+        onClick={(e) => deleteImage(e,i.uid)}
+        /> :null}
         
 
         {(bottomImg.length) === index ? null : 

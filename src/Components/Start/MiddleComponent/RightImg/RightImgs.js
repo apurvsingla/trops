@@ -10,6 +10,8 @@ import { tactSource,ledSource,beeperSource, motorSource, lightSource, tempSource
 // import {conditionSource} from '../Source/source';
 import { makeStyles } from '@material-ui/core/styles';
 import Loader from './Loader/Loader';
+import CancelOutlinedIcon from '@material-ui/icons/CancelOutlined';
+
 import {
 GlowOne,
 GlowTwo,
@@ -40,8 +42,11 @@ const useStyles = makeStyles({
       });
 
 
-const RightImgs = ({mQuery, currentRight, activeRightIndex, 
-    activeDot, activeSecondRightLink, index, appearDot, setAppearDot, bottomImg, setBottomImg,
+const RightImgs = ({mQuery, 
+//         currentRight, activeRightIndex, 
+//     activeDot, activeSecondRightLink, 
+    deleteRightImage,
+    index, appearDot, setAppearDot, bottomImg, setBottomImg,
     marks, valueLabelFormat,
      pos, i}) => {
         const classes = useStyles();
@@ -97,6 +102,18 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                                         />)
                         }
                 }
+        }
+        const [bool, setBool] = React.useState(true);
+        const clickedImage = (e,uid) => {
+            let newArray = [...bottomImg];
+            newArray.forEach((val, index) => {
+                    const array = newArray[index]
+                    if(array.nid === uid){
+                            newArray[index] = {...newArray[index], clicked: bool}
+                    }
+            })
+            setBottomImg(newArray);
+            setBool(!bool);
         }
         const glowGraph = () => {
                 if(mQuery.width < 892){
@@ -257,6 +274,8 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                                 zIndex: '12',
                                 // marginLeft: '20px'
                         }}
+                onClick={(e) => clickedImage(e,i.nid)}
+                key={index+'bottom'}
                 />
                 ) : 
                 <NormalRImg src={i.src} 
@@ -266,6 +285,8 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                         marginTop:`${140*i.bottomRightPos+ 185}px`,
                         // top: `${-250}px`
                 }}
+                onClick={(e) => clickedImage(e,i.nid)}
+                key={index+'bottom'}
                 />
                 }   
 
@@ -360,6 +381,32 @@ const RightImgs = ({mQuery, currentRight, activeRightIndex,
                 /> }                
                 </>
         ): null}
+
+        {i.clicked === true ? mQuery.width < 892 ? 
+        <CancelOutlinedIcon
+        style={{
+                left: `${(120*i.id) + 215}px`,
+                top: `${140*i.bottomRightPos - 40}px`,
+                position: 'absolute',
+                cursor: 'pointer',
+                marginTop: `${'180'}px`,
+                zIndex: '15'
+        }}
+        onClick={(e) => deleteRightImage(e,i.nid)}
+        stroke="orange"
+        /> : 
+        <CancelOutlinedIcon 
+        style={{
+                left: `${(140*i.id) + 198}px`,
+                top: `${140*i.bottomRightPos - 5}px`,
+                position: 'absolute',
+                cursor: 'pointer',
+                marginTop: `${'180'}px`,
+                zIndex: '10'
+        }}
+        stroke="orange"
+        onClick={(e) => deleteRightImage(e,i.nid)}
+        />: null}
 
         {/* lightSourceScollBar */}
         {(i.src===lightSource)|| (i.src === tempSource) || 

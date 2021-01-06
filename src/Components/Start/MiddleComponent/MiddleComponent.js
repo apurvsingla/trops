@@ -4,7 +4,7 @@ import NormalImgs from './NormalImg/NormalImg';
 import BottomImgs from './BottomImg/BottomImgs';
 import RightImgs from './RightImg/RightImgs';
 import RightRImgs from './RightRImg/RightRImgs';
-import { beeperSource, conditionSource } from './Source/source';
+import { conditionSource } from './Source/source';
 
 const marks = [
         {
@@ -53,7 +53,8 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         activeRightBottom,setActiveRightBottom,
         currentRightDot,setCurrentRightDot,
         rightRImg, setIndexVal, setBottomImg, id2, setTrack, track, trackValue,
-        setTopPos,setId2,indexVal,setUid,uid
+        setTopPos,setId2,indexVal,setUid,uid,
+        right, setRight,id,setNormalId,setNormal,normal
 }) => {
         
         //media query
@@ -155,7 +156,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                 }
         }
 
-        const deleteImage = (e,uid,indexx,id) => {
+        const deleteImage = (e,uid,indexx) => {
                 // setImg1(i => i.filter(a => {
                 //         return a.uid !== uid;
                 // }));
@@ -164,39 +165,62 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                 newArray.forEach((val,index) => {
                         const arr = newArray[index];
                         if(arr.uid === uid){
-                                newArray.splice(index,1);
+                                newArray.splice(index,id+1);
                         }
-                        if(val.src !== conditionSource){
+                        if(val.src === conditionSource){
                                 let newBottom = [...bottomImg];
                                 newBottom.forEach((v,intt) => {
-                                        // if(v.bottomPos === indexx){
-                                        //         newBottom.splice(0,15);
-                                        // }
-                                        // if(uid<=v.uid){
-                                        if(v.nid >= indexx){
-                                                newBottom[intt] = {...newBottom[intt], bottomPos: v.bottomPos-1}     
+                                        if(v.bottomPos === indexx){
+                                                newBottom.splice(0,track[current]);
                                         }
-                                        
+                                        track[current] = 0;
+                                        setTrack(track);
+                                        // if(uid<=v.uid){
+                                        // if(v.nid >= indexx){
+                                        //         newBottom[intt] = {...newBottom[intt], bottomPos: v.bottomPos-1}     
+                                        // }  
                                 })
                                 setBottomImg(newBottom);
-                                setCurrent(null);
                         }
                 })
                 setImg1(newArray);
+                setCurrent(null);
+                setCurrentRight(null);
         }
 
-        
+        const deleteRightImage = (e,uid) => {
+                let newArray = [...bottomImg];
+                newArray.forEach((val,index) => {
+                        const arr = newArray[index];
+                        if(arr.nid === uid){
+                                newArray.splice(index,right[current+'-'+currentRight]||1)
+                                const num = right[current+'-'+currentRight] - index;
+                                right[current+'-'+currentRight] = right[current+'-'+currentRight] - num;
+                              setRight(right);
+                        }
+                })
+                // setCurrentRight(null)
+                setBottomImg(newArray);
+        }
+
         const deleteBottomImg = (e,uid) => {
                 let newArray = [...bottomImg];
                 newArray.forEach((val,index) => {
                         const arr = newArray[index];
                         if(arr.uid === uid){
                                 // newArray.splice(index,1);
-                                newArray[index] = {...arr, src: beeperSource}
-                              
+                                newArray.splice(index,track[current])
+                                const num = track[current] - index;
+                                // newArray[index] = {...arr, src: beeperSource}
+                              track[current] = track[current] - num;
+                              setTrack(track);
                         }
                 })
                 setBottomImg(newArray);
+                setCurrentRight(null);
+                Object.keys(normal).map(k=>normal[k]=0);
+                setNormal(normal);
+                setNormalId(1);
         }
 
         return(<> 
@@ -231,6 +255,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         />
                         :null}
                         {i.pos === 'right' ? <RightImgs 
+                        deleteRightImage={deleteRightImage}
                         mQuery={dimensions} 
                         currentRight={currentRight} 
                         activeRightIndex={activeRightIndex}

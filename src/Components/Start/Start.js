@@ -173,7 +173,9 @@ const Start = () => {
                 return;
             }
             else if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
-                setBottomImg(i => i.concat({id: id2+current, src: src, pos: 'normal', uid: uid, bottomPos: indexVal, trackValue: track[current], normal: normal[current]||normalId, nid: current}));
+                setBottomImg(i => i.concat({id: id2+current, src: src, pos: 'normal', 
+                uid: uid, clicked: false,bottomPos: indexVal, trackValue: track[current], 
+                normal: normal[current]||normalId, nid: current}));
                 if(track[current]){
                     track[current] = track[current]+ 1
                     setTrack(track);
@@ -196,7 +198,9 @@ const Start = () => {
                 setId2(id2+1);
                 return;
             }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
-                setBottomImg(i => i.concat({id: id2+current, nid: current, src: src, bool: false, bools: 0, pos: 'normal', uid: uid, bottomPos: indexVal, trackValue: track[current], normal: normal[current]||normalId}));
+                setBottomImg(i => i.concat({id: id2+current, nid: current, 
+                    src: src, bool: false, bools: 0, pos: 'normal', uid: uid, clicked: false,
+                    bottomPos: indexVal, trackValue: track[current], normal: normal[current]||normalId}));
                 if(track[current]){
                     track[current] = track[current]+ 1
                     setTrack(track);
@@ -218,7 +222,9 @@ const Start = () => {
                 setUid(uid+1);
                 return;
             }else{
-                setBottomImg(i => i.concat({id: id2,nid: current, switchId: id2+current,src: src, pos: 'normal', bottomPos: indexVal, uid: uid ,trackValue:track[current],  normal: normal[current]||normalId}));
+                setBottomImg(i => i.concat({id: id2,nid: current, switchId: id2+current,
+                    src: src, pos: 'normal', bottomPos: indexVal, uid: uid, clicked: false,
+                    trackValue:track[current],  normal: normal[current]||normalId}));
                 if(track[current]){
                     track[current] = track[current] + 1;
                     setTrack(track);
@@ -271,7 +277,10 @@ const Start = () => {
                 }
                 setId3(id3+1);
                 //nid h lights k liye
-                setBottomImg(i => i.concat({id: obj, bools: 0, nid: currentRight+nid, src: src, pos: 'right', bool: false, bottomRightPos: currentRight, uid: uid, trackValue: trackRight[currentRight]}));
+                setBottomImg(i => i.concat({id: obj, bools: 0, 
+                    nid: currentRight+nid, src: src, pos: 'right', 
+                    bool: false, bottomRightPos: currentRight, clicked: false,
+                    uid: uid, trackValue: trackRight[currentRight]}));
                 return;
             }
             if(right[current+'-'+currentRight]){
@@ -279,7 +288,9 @@ const Start = () => {
             }else{
                 obj = current+1;
             }
-            setBottomImg(i => i.concat({id:  obj, src: src, nid: currentRight+nid,pos: 'right', bottomRightPos: currentRight, uid: uid, trackValue: trackRight[currentRight]}));
+            setBottomImg(i => i.concat({id:  obj, src: src, clicked: false,
+                nid: currentRight+nid,pos: 'right', bottomRightPos: currentRight, uid: uid, 
+                trackValue: trackRight[currentRight]}));
             if(right[current+'-'+currentRight]){
                 right[current+'-'+currentRight] = right[current+'-'+currentRight] + 1;
                 setRight(right);
@@ -417,13 +428,17 @@ const Start = () => {
             setIndexVal={setIndexVal} 
             id2={id2}
             setTrack={setTrack}
-            tack={track}
+            track={track}
             trackRight={trackRight}
             setTrackRight={setTrackRight}
             id3={id3}
             trackValueRight={trackValueRight}
-            setId2={setId2} track={track} 
+            setId2={setId2} 
             setUid={setUid} uid={uid}
+            right={right} setRight={setRight}
+            id={id} setNormalId={setNormalId}
+            normal={normal}
+            setNormal={setNormal}
             />
             {/* end */}
 
@@ -601,9 +616,12 @@ const Start = () => {
             indexVal={indexVal}
             id2={id2}
             setTrack={setTrack}
-            tack={track} trackValue={trackValue}
+            track={track} trackValue={trackValue}
             setId2={setId2}  
             setUid={setUid} uid={uid}
+            right={right} setRight={setRight} id={id}
+            setNormal={setNormal} setNormalId={setNormalId}
+            normal={normal}
             />
              </Scrollbars>
             {/* end */}
