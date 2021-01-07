@@ -26,7 +26,7 @@ splitterSource
 } from './MiddleComponent/Source/source';
 import ScrollLock  from 'react-scrolllock';
 
-import Popup from 'reactjs-popup';
+// import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 import {ReactComponent as Back} from './button_back.svg';
@@ -37,14 +37,12 @@ MiddleIconDesk,
 Icon,
 IconMobi,
 Img,
-BottomDesk,
+BottomDeskLearn,
 IconMob
 } from './Start.styles';
-import axios from "axios";
-
 import './Start.styles.scss';
 
-const Start = () => {
+const LearningStart = ({frontData}) => {
     //media query
     const [dimensions, setDimensions] = React.useState({ 
         height: window.innerHeight,
@@ -63,10 +61,6 @@ const Start = () => {
     }
     window.addEventListener('resize', handleResize);
     })  
-    const [open, setOpen] = useState(false);
-    const [clicked, setClicked] = useState(false);
-    const [value, setValue] = useState(null);
-    const closeModal = () => setOpen(false);
 
     // + sign
     const [displayDot1, setDisplayDot1] = useState(true);
@@ -75,83 +69,73 @@ const Start = () => {
     // const [displayDot4, setDisplayDot4] = useState(false);
 
     //uid
-    const [uid,setUid] = useSessionStorage('uid', 0);
+    const [uid1,setUid1] = useSessionStorage('uid1', 0);
 
     //images
-    const [img1, setImg1] = useSessionStorage('img1', []);
-    const [bottomImg, setBottomImg] = useSessionStorage('bottom-img', []);
-    const [rightImg, setRightImg] = useSessionStorage('right-img', []);
-    const [rightRImg, setRightRImg]= useSessionStorage('right-bottom-Img', []);
+    const [img11, setImg11] = useSessionStorage('img11', []);
+    const [bottomImg1, setBottomImg1] = useSessionStorage('bottom-img1', []);
+    const [rightImg1, setRightImg1] = useSessionStorage('right-img1', []);
+    const [rightRImg1, setRightRImg1]= useSessionStorage('right-bottom-Img1', []);
     
-    const [id, setId] = useSessionStorage('id', 1);
-    const [id2, setId2] = useSessionStorage('id2', 1);
-    const [id3, setId3] = useSessionStorage('id3', 1);
-    const [id4, setId4] = useSessionStorage('id4', 1);
-    const [num, setNum] = useSessionStorage('num', 0);
+    const [id, setId] = useSessionStorage('id1', 1);
+    const [id2, setId2] = useSessionStorage('id21', 1);
+    const [id3, setId3] = useSessionStorage('id31', 1);
+    const [id4, setId4] = useSessionStorage('id41', 1);
+    const [num, setNum] = useSessionStorage('num1', 0);
 
     //dots active or not
-    const [active, setActive] = useSessionStorage('active-right-dot', {});
-    const [activeother, setActiveother] = useSessionStorage('active-bottom-dot', {});
-    const [activeRightBottom,setActiveRightBottom] = useSessionStorage('active-right-bottom',{}); //new for right
+    const [active, setActive] = useSessionStorage('active-right-dot1', {});
+    const [activeother, setActiveother] = useSessionStorage('active-bottom-dot1', {});
+    const [activeRightBottom,setActiveRightBottom] = useSessionStorage('active-right-bottom1',{}); //new for right
 
     //index dictionary
-    const [activeIndex, setActiveIndex] = useSessionStorage('active-bottom-index',{});
-    const [activeRightIndex, setActiveRightIndex] = useSessionStorage('active-right-index',{});
-    const [activeRightBottomIndex, setActiveRightBottomIndex] = useSessionStorage('right-bottom-index', {}); //new for right
+    const [activeIndex, setActiveIndex] = useSessionStorage('active-bottom-index1',{});
+    const [activeRightIndex, setActiveRightIndex] = useSessionStorage('active-right-index1',{});
+    const [activeRightBottomIndex, setActiveRightBottomIndex] = useSessionStorage('right-bottom-index1', {}); //new for right
 
     //active index
-    const [current, setCurrent] = useSessionStorage('current-bottom',null);
-    const [currentRight, setCurrentRight] = useSessionStorage('current-right',null);
-    const [currentRightDot, setCurrentRightDot] = useSessionStorage('right-right-dot', null); 
-    const [indexVal, setIndexVal] = useSessionStorage('index-val',null);
-    const [track, setTrack] = useSessionStorage('track',{});
-    const [trackValue, setTrackValue] = useSessionStorage('tracl-value', 0);
-    const [imgTrack, setImgTrack] = useSessionStorage('imgTrack', 0);
+    const [current, setCurrent] = useSessionStorage('current-bottom1',null);
+    const [currentRight, setCurrentRight] = useSessionStorage('current-right1',null);
+    const [currentRightDot, setCurrentRightDot] = useSessionStorage('right-right-dot1', null); 
+    const [indexVal, setIndexVal] = useSessionStorage('index-val1',null);
+    const [track, setTrack] = useSessionStorage('track1',{});
+    const [trackValue, setTrackValue] = useSessionStorage('tracl-value1', 0);
+    const [imgTrack, setImgTrack] = useSessionStorage('imgTrack1', 0);
 
 
-    const [trackValueRight, setTrackValueRight] = useSessionStorage('trackValueRight', 0);
-    const [trackRight, setTrackRight] = useSessionStorage('track-right',{});
+    const [trackValueRight, setTrackValueRight] = useSessionStorage('trackValueRight1', 0);
+    const [trackRight, setTrackRight] = useSessionStorage('track-right1',{});
 
-    const [right, setRight] = useSessionStorage('right', {});
-    const [normal, setNormal] = useSessionStorage('normal', {});
-    const [nid, setNid] = useSessionStorage('nid', 0);
+    const [right, setRight] = useSessionStorage('right1', {});
+    const [normal, setNormal] = useSessionStorage('normal1', {});
+    const [nid, setNid] = useSessionStorage('nid1', 0);
 
     // const [trackBottom, setTrackBottom] = useSessionStorage('track-bottom', {});
     // const [trackBottomTop, setTrackBottomTop] = useSessionStorage('track-bottom-top', {});
 
-    const [normalId, setNormalId] = useSessionStorage('noraml-id', 0);
-    const data = {
-     img1: img1,
-     img2: bottomImg,
-     name: value
-    }
-    const but = () => axios.post('https://trops.herokuapp.com/', data).then((res) => {
-        console.log(res.data)
-    }).catch((error) => {
-        console.log(error)
-    });;
+    const [normalId, setNormalId] = useSessionStorage('noraml-id1', 0);
     const history = useHistory();
 
     const back = () => {
-        history.push('/sandbox');
+        history.goBack();
     }
 
     const reset = () => {
-        setImg1([]);
+        setImg11([]);
         setId(1);
         setNum(0);
-        setBottomImg([]);
-        setRightImg([]);
+        setBottomImg1([]);
+        setRightImg1([]);
         setActive({});
         setActiveother({});
-        setRightRImg([]);
+        setRightRImg1([]);
         setActiveRightBottom({});
         setCurrent(null);
         setCurrentRight(null);
         setCurrentRightDot(null);
-        setBottomImg([]);
-        setRightRImg([]);
-        setRightImg([]);
+        setBottomImg1([]);
+        setRightRImg1([]);
+        setRightImg1([]);
         setTrack({});
         setTrackValue(0);
         setIndexVal(null);
@@ -162,20 +146,20 @@ const Start = () => {
         setNormalId(0);
         setNormal({});
         setRight({});
-        setUid(0);
+        setUid1(0);
     }
 
     // populating images
-    const onImage1Concat = (src, alt) => {
+    const onImage1Concat = (src) => {
         if(activeother[activeIndex[current]]=== true){
             setId3(1);
             if(src === powerSource){
                 return;
             }
             else if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
-                setBottomImg(i => i.concat({id: id2+current, src: src, pos: 'normal', 
-                uid: uid, clicked: false,bottomPos: indexVal, trackValue: track[current], 
-                normal: normal[current]||normalId, nid: current, alt: alt}));
+                setBottomImg1(i => i.concat({id: id2+current, src: src, pos: 'normal', 
+                uid: uid1, clicked: false,bottomPos: indexVal, trackValue: track[current], 
+                normal: normal[current]||normalId, nid: current}));
                 if(track[current]){
                     track[current] = track[current]+ 1
                     setTrack(track);
@@ -194,13 +178,13 @@ const Start = () => {
                     normal[current] = normalId+1;
                     setNormal(normal);
                 }
-                setUid(uid+1);
+                setUid1(uid1+1);
                 setId2(id2+1);
                 return;
             }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
-                setBottomImg(i => i.concat({id: id2+current, nid: current, 
-                    src: src, bool: false, bools: 0, pos: 'normal', uid: uid, clicked: false,
-                    bottomPos: indexVal, trackValue: track[current], alt: alt, normal: normal[current]||normalId}));
+                setBottomImg1(i => i.concat({id: id2+current, nid: current, 
+                    src: src, bool: false, bools: 0, pos: 'normal', uid: uid1, clicked: false,
+                    bottomPos: indexVal, trackValue: track[current], normal: normal[current]||normalId}));
                 if(track[current]){
                     track[current] = track[current]+ 1
                     setTrack(track);
@@ -219,12 +203,12 @@ const Start = () => {
                     normal[current] = normalId+1;
                     setNormal(normal);
                 }
-                setUid(uid+1);
+                setUid1(uid1+1);
                 return;
             }else{
-                setBottomImg(i => i.concat({id: id2,nid: current, switchId: id2+current,
-                    src: src, pos: 'normal', bottomPos: indexVal, uid: uid, clicked: false,
-                    trackValue:track[current], alt: alt,  normal: normal[current]||normalId}));
+                setBottomImg1(i => i.concat({id: id2,nid: current, switchId: id2+current,
+                    src: src, pos: 'normal', bottomPos: indexVal, uid: uid1, clicked: false,
+                    trackValue:track[current],  normal: normal[current]||normalId}));
                 if(track[current]){
                     track[current] = track[current] + 1;
                     setTrack(track);
@@ -244,7 +228,7 @@ const Start = () => {
                     setNormal(normal);
                 }
                 setId2(id2+1);
-                setUid(uid+1);
+                setUid1(uid1+1);
                 return;
             }
         }else if(active[activeRightIndex[currentRight]] === true){
@@ -277,10 +261,10 @@ const Start = () => {
                 }
                 setId3(id3+1);
                 //nid h lights k liye
-                setBottomImg(i => i.concat({id: obj, bools: 0, 
+                setBottomImg1(i => i.concat({id: obj, bools: 0, 
                     nid: currentRight+nid, src: src, pos: 'right', 
-                    bool: false, bottomRightPos: currentRight, clicked: false, alt: alt,
-                    uid: uid, trackValue: trackRight[currentRight]}));
+                    bool: false, bottomRightPos: currentRight, clicked: false,
+                    uid: uid1, trackValue: trackRight[currentRight]}));
                 return;
             }
             if(right[current+'-'+currentRight]){
@@ -288,8 +272,8 @@ const Start = () => {
             }else{
                 obj = current+1;
             }
-            setBottomImg(i => i.concat({id:  obj, src: src, clicked: false,
-                nid: currentRight+nid,pos: 'right', bottomRightPos: currentRight, uid: uid, alt: alt, 
+            setBottomImg1(i => i.concat({id:  obj, src: src, clicked: false,
+                nid: currentRight+nid,pos: 'right', bottomRightPos: currentRight, uid: uid1, 
                 trackValue: trackRight[currentRight]}));
             if(right[current+'-'+currentRight]){
                 right[current+'-'+currentRight] = right[current+'-'+currentRight] + 1;
@@ -310,15 +294,14 @@ const Start = () => {
 
             }
             setId3(id3+1);
-            setUid(uid+1);
+            setUid1(uid1+1);
             setNid(nid + 1);
             // setCurrent(current+1)
             return;
         }else if(activeRightBottom[activeRightBottomIndex[currentRightDot] + '-bottom'] === true){
-            setRightRImg(i=> i.concat({id: id4, src: src, pos: 'normal', alt: alt, 
-            currentRightRight: currentRightDot, uid: uid, clicked: false}));
+            setRightRImg1(i=> i.concat({id: id4, src: src, pos: 'normal', currentRightRight: currentRightDot, uid: uid1, clicked: false}));
             setId4(id4+1);
-            setUid(uid+1);
+            setUid1(uid1+1);
             return;
         }else{
             if(src!==powerSource){
@@ -327,24 +310,24 @@ const Start = () => {
                     setNormalId(0);
                     // setId3(1);
                     if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
-                        setImg1(i => i.concat({id: id, src: src, pos: 'normal', uid: uid, clicked: false, alt: alt}));
+                        setImg11(i => i.concat({id: id, src: src, pos: 'normal', uid: uid1, clicked: false}));
                         setId(id+1);
                         setId3(id);
-                        setUid(uid+1);
+                        setUid1(uid1+1);
                     }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
-                        setImg1(i => i.concat({id: id, src: src, bool: false, bools: 0, pos: 'normal', alt: alt, uid: uid, clicked: false}));
+                        setImg11(i => i.concat({id: id, src: src, bool: false, bools: 0, pos: 'normal', uid: uid1, clicked: false}));
                         setImgTrack(imgTrack +1);
-                        setUid(uid+1);
+                        setUid1(uid1+1);
                     }else if(src === conditionSource){
-                        setImg1(img1 => img1.concat({id: id, src: src, pos: 'normal', alt: alt, uid: uid, clicked: true}));
+                        setImg11(img1 => img1.concat({id: id, src: src, pos: 'normal', uid: uid1, clicked: true}));
                         setId(id + 1);
                         setId3(id);
-                        setUid(uid+1);
+                        setUid1(uid1+1);
                     }else{
-                        setImg1(img1 => img1.concat({id: id, src: src, pos: 'normal', alt: alt, uid: uid, clicked: false}));
+                        setImg11(img1 => img1.concat({id: id, src: src, pos: 'normal', uid: uid1, clicked: false}));
                         setId(id + 1);
                         setId3(id);
-                        setUid(uid+1); 
+                        setUid1(uid1+1); 
                     }
                 }
             }else if(src=== powerSource){
@@ -352,39 +335,23 @@ const Start = () => {
                 //     return;
                 // }
                 setNum(num+1);
-                setUid(uid+1);
-                setImg1(img1 => img1.concat({id: num, src: src, pos: 'normal', alt: alt, uid: uid, clicked: false}));
+                setUid1(uid1+1);
+                setImg11(img1 => img1.concat({id: num, src: src, pos: 'normal', uid: uid1, clicked: false}));
                 return;
             }
         }
-    }
-
-    const handleChange = (e) => {
-        setValue(e.target.value);
-    }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        but();
     }
     //swipe
     let reactSwipeEl;
 
     return (
         <>
-        {clicked ? <span className="popup-form">
-                    <span>Saved Sucessfully</span> 
-                    <button onClick={() => setClicked(false)} 
-                    style={{marginTop: '5px', border: 'none', 
-                    outline: 'none', backgroundColor: 'green', 
-                    color: 'white', padding: '5px', 
-                    borderRadius: '25px', cursor: 'pointer'}}>Continue</button>
-                </span>: null}
         {    dimensions.width < 892 ? <>
          <Scrollbars style={{ width: '85vw', height: '90vh'}}>
            <Graph 
            style={{position: 'absolute',
-                    minWidth: `${18*(img1.length)+ 18*(bottomImg.length)  + 100}%`,
-                    height: `${30*(bottomImg.length) + 100}%`,
+                    minWidth: `${18*(img11.length)+ 18*(bottomImg1.length)  + 100}%`,
+                    height: `${30*(bottomImg1.length) + 100}%`,
         }}/>
            <div style={{
                display: 'flex',
@@ -405,8 +372,8 @@ const Start = () => {
            </div>
 
             {/* Middle Component render */}
-            <MiddleComponent img1={img1} 
-            setImg1={setImg1}
+            <MiddleComponent img1={img11} 
+            setImg1={setImg11}
             active={active} setActive={setActive}
             activeother={activeother} 
             setActiveother={setActiveother}
@@ -417,15 +384,15 @@ const Start = () => {
             current={current} setCurrent={setCurrent} 
             currentRight={currentRight} 
             setCurrentRight={setCurrentRight}
-            bottomImg={bottomImg} setBottomImg={setBottomImg}
-            rightImg={rightImg} setRightImg={setRightImg}
+            bottomImg={bottomImg1} setBottomImg={setBottomImg1}
+            rightImg={rightImg1} setRightImg={setRightImg1}
             activeRightBottom={activeRightBottom} 
             setActiveRightBottom={setActiveRightBottom}
             activeRightBottomIndex={activeRightBottomIndex}
             setActiveRightBottomIndex={setActiveRightBottomIndex}
             currentRightDot={currentRightDot}
             setCurrentRightDot={setCurrentRightDot}
-            rightRImg={rightRImg} indexVal={indexVal}
+            rightRImg={rightRImg1} indexVal={indexVal}
             setIndexVal={setIndexVal} 
             id2={id2}
             setTrack={setTrack}
@@ -435,7 +402,7 @@ const Start = () => {
             id3={id3}
             trackValueRight={trackValueRight}
             setId2={setId2} 
-            setUid={setUid} uid={uid}
+            setUid={setUid1} uid={uid1}
             right={right} setRight={setRight}
             id={id} setNormalId={setNormalId}
             normal={normal}
@@ -451,19 +418,19 @@ const Start = () => {
            <Bottom>
                <Scrollbars style={{ width: '100px', height: '100vh' ,position: 'absolute', right: '0'}}>
                 <div>
-                <IconMobi onClick={(e) =>  onImage1Concat(powerSource, 'Power')}/>
+                <IconMobi onClick={(e) =>  onImage1Concat(powerSource)}/>
                     <Img src={powerSource} 
                     alt="power" />
 
-                    <IconMob onClick={() => onImage1Concat(sequenceSource, 'Sequence')}/>
+                    <IconMob onClick={() => onImage1Concat(sequenceSource)}/>
                     <Img src={sequenceSource} 
                     alt="sequence" />
 
-                    <IconMob onClick={(e) =>  onImage1Concat(beeperSource, 'Beeper')}/>
+                    <IconMob onClick={(e) =>  onImage1Concat(beeperSource)}/>
                     <Img src={beeperSource} 
                     alt="beeper" />
 
-                    <IconMob onClick={() => onImage1Concat(conditionSource, 'Splitter')}/>
+                    <IconMob onClick={() => onImage1Concat(conditionSource)}/>
                     <Img src={conditionSource} 
                     alt="condition" 
                     />
@@ -471,49 +438,49 @@ const Start = () => {
                 
                 <div>
 
-                    <IconMobi onClick={() => onImage1Concat(graphSource, 'Graph')}/>
+                    <IconMobi onClick={() => onImage1Concat(graphSource)}/>
                     <Img src={graphSource} 
                     alt="beeper"/>
 
-                    <IconMob onClick={() => onImage1Concat(distanceSource, 'Proximity')}  />
+                    <IconMob onClick={() => onImage1Concat(distanceSource)}  />
                     <Img src={distanceSource} 
                     alt="beeper" />
 
 
-                    <IconMob onClick={() => onImage1Concat(ledSource, 'LED')}/>
+                    <IconMob onClick={() => onImage1Concat(ledSource)}/>
                     <Img src={ledSource} 
                     alt="beeper" 
                     />
                     
-                    <IconMob onClick={() => onImage1Concat(lightSource, 'Light')}/>
+                    <IconMob onClick={() => onImage1Concat(lightSource)}/>
                     <Img src={lightSource} 
                     alt="beeper" />
                 </div>
 
                 <div>
-                    <IconMobi onClick={() => onImage1Concat(magSource, 'Magnetic')}/>
+                    <IconMobi onClick={() => onImage1Concat(magSource)}/>
                     <Img src={magSource} 
                     alt="beeper" />
 
-                    <IconMob onClick={() => onImage1Concat(tempSource, "Temperature")}/>
+                    <IconMob onClick={() => onImage1Concat(tempSource)}/>
                     <Img src={tempSource} 
                     alt="temperature"/>
                     
-                    <IconMob onClick={() => onImage1Concat(motorSource, 'Motor')}/>
+                    <IconMob onClick={() => onImage1Concat(motorSource)}/>
                     <Img src={motorSource} 
                     alt="beeper" 
                     />
                     
-                    <IconMob onClick={() => onImage1Concat(soundSource, 'Sound')}/>
+                    <IconMob onClick={() => onImage1Concat(soundSource)}/>
                     <Img src={soundSource} 
                     alt="beeper" />
                 </div>
 
                 <div>                   
-                    <IconMobi onClick={() => onImage1Concat(tactSource, 'Tact')}/>
+                    <IconMobi onClick={() => onImage1Concat(tactSource)}/>
                     <Img src={tactSource} 
                     alt="beeper" />
-                    <IconMob onClick={() => onImage1Concat(splitterSource, 'condition')}/>
+                    <IconMob onClick={() => onImage1Concat(splitterSource)}/>
                     <Img src={splitterSource} 
                     alt="beeper" />
                     
@@ -525,13 +492,23 @@ const Start = () => {
                <div style={{position: 'absoute'}}>
                    <ScrollLock>
                     <img src={process.env.PUBLIC_URL + 'images/extraImages/save.png'} 
-                    style={{height: '100vh', width: '10vw',}}
+                    style={{height: '100vh', width: '25vw',}}
                     alt="left"/>
                 </ScrollLock>
-                {/* <img src={process.env.PUBLIC_URL + 'images/extraImages/rec.png'} 
+                <img src={process.env.PUBLIC_URL + 'images/extraImages/rec.png'} 
                 style={{ position: 'absolute', top: '40vh', left: '-1vw', height: '60vh', width: '26vw'}}
                 alt="rec"/>
-                <h2 style={{position: 'absolute', top: '42vh', left: '3vw', color: 'grey'}}>Description</h2> */}
+                <h2 style={{position: 'absolute', top: '42vh', left: '3vw', color: 'grey'}}>Description</h2>
+                <ol>
+                {frontData.map((i,index) => {
+                    return(
+                            <li style={{position: 'absolute', top: `${'49'}vh`, 
+                            left: '4vw', color: 'grey', marginTop: `${4*index}vh`}}>
+                                Select {i}
+                            </li>
+                    )
+                })}
+                </ol>
                </div>
                <div style={{
                     display: 'flex',
@@ -552,49 +529,20 @@ const Start = () => {
                     className='icons'
                 />
            </div>
-           <Popup trigger={<img src={process.env.PUBLIC_URL + '/images/extraImages/saveicon.png'} alt="i" style={{
-            position: 'fixed', top: '0', right: '0', zIndex: '10000', cursor: 'pointer', pointerEvents: 'all'
-        }} 
-        onClick={() => setClicked(true)}
-        />} position="left center" style={{zIndex: '150'}}
-        onClose={closeModal}
-        open={open}>
-             {close => (
-                 <form style={{marginTop: '10px', fontWeight: 'bold',}} 
-                 onSubmit={(e) => {
-                     handleSubmit(e); 
-                     close();
-                     setClicked(true);
-                     setValue("");
-                     }}>
-                    <label style={{display: 'flex', flexDirection: 'column', 
-                    justifyContent: 'center', alignItems: 'center'}}>
-                        Project-Name 
-                        <input type="text" required value={value} onChange={handleChange}/>
-                    </label>
-                    <span style={{display: 'flex', justifyContent: 'space-around'}}>
-                    <input type="submit" value="Submit" className="popup-input"/>
-                        <input onClick={() => {
-                        close();
-                        }} className="popup-input" value="Cancel" type="button"/>
-                    </span>
-                </form>
-             )}
-            {/* <button onClick={() => false}>Cancel</button> */}
-        </Popup>
-               <Scrollbars style={{ width: '90vw', height: '80vh', top: '-100vh', left: '10vw', zIndex: '150'}} >
-               <Graph 
-                style={{
-                    position: 'absolute',
-                    minWidth: `${8*(img1.length)+  8*(bottomImg.length)  + 100}%`,
-                    height: `${25*(bottomImg.length) + 100}%`,
-                    top: '0',
-                    zIndex: '0'
-                   
-                }}/>
+              
+            <Scrollbars style={{ width: '90vw', height: '80vh', top: '-100vh', left: '25vw', zIndex: '150'}} >
+            <Graph 
+            style={{
+                position: 'absolute',
+                minWidth: `${8*(img11.length)+  8*(bottomImg1.length)  + 100}%`,
+                height: `${25*(bottomImg1.length) + 100}%`,
+                top: '0',
+                zIndex: '0'
+                
+            }}/>
             {/* Middle Component render */}
-            <MiddleComponent img1={img1} 
-            setImg1={setImg1}
+            <MiddleComponent img1={img11} 
+            setImg1={setImg11}
             active={active} setActive={setActive}
             activeother={activeother} 
             setActiveother={setActiveother}
@@ -605,21 +553,21 @@ const Start = () => {
             current={current} setCurrent={setCurrent} 
             currentRight={currentRight} 
             setCurrentRight={setCurrentRight}
-            bottomImg={bottomImg} setBottomImg={setBottomImg}
-            rightImg={rightImg} setRightImg={setRightImg}
+            bottomImg={bottomImg1} setBottomImg={setBottomImg1}
+            rightImg={rightImg1} setRightImg={setRightImg1}
             activeRightBottom={activeRightBottom} 
             setActiveRightBottom={setActiveRightBottom}
             activeRightBottomIndex={activeRightBottomIndex}
             setActiveRightBottomIndex={setActiveRightBottomIndex}
             currentRightDot={currentRightDot}
             setCurrentRightDot={setCurrentRightDot}
-            rightRImg={rightRImg} setIndexVal={setIndexVal}
+            rightRImg={rightRImg1} setIndexVal={setIndexVal}
             indexVal={indexVal}
             id2={id2}
             setTrack={setTrack}
             track={track} trackValue={trackValue}
             setId2={setId2}  
-            setUid={setUid} uid={uid}
+            setUid={setUid1} uid={uid1}
             right={right} setRight={setRight} id={id}
             setNormal={setNormal} setNormalId={setNormalId}
             normal={normal}
@@ -629,7 +577,7 @@ const Start = () => {
 
 
             {/* swipeable area */}
-           <BottomDesk>
+           <BottomDeskLearn>
                <>
                <ArrowBackIosIcon 
                style={{
@@ -657,19 +605,19 @@ const Start = () => {
                         setDisplayDot1(true);
                         setDisplayDot3(false);
                         }}>
-                        <Icon onClick={(e) =>  onImage1Concat(powerSource, "Power")} className='icons'/>
+                        <Icon onClick={(e) =>  onImage1Concat(powerSource)} className='icons'/>
                         <Img src={powerSource} 
                         alt="power" style={{marginRight: '20px'}}/>
     
-                        <Icon onClick={() => onImage1Concat(sequenceSource, 'Counter')} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(sequenceSource)} className='icons'/>
                         <Img src={sequenceSource} 
                         alt="beeper" style={{marginRight: '20px'}}/>
     
-                        <Icon onClick={(e) =>  onImage1Concat(beeperSource, 'Beeper')} className='icons'/>
+                        <Icon onClick={(e) =>  onImage1Concat(beeperSource)} className='icons'/>
                         <Img src={beeperSource} 
                         alt="beeper" />
     
-                        <MiddleIconDesk onClick={() => onImage1Concat(conditionSource, 'Splitter')} className='icons'/>
+                        <MiddleIconDesk onClick={() => onImage1Concat(conditionSource)} className='icons'/>
                         <Img src={conditionSource} 
                         alt="beeper" 
                         style={{
@@ -677,7 +625,7 @@ const Start = () => {
                         marginRight: '20px'
                         }}/>
     
-                        <Icon onClick={() => onImage1Concat(distanceSource, 'Proximity')} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(distanceSource)} className='icons'/>
                         <Img src={distanceSource} 
                         alt="beeper" />
                     </div>
@@ -688,19 +636,19 @@ const Start = () => {
                         setDisplayDot3(false);
                     }}>
     
-                        <Icon onClick={() => onImage1Concat(graphSource, "Graph")} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(graphSource)} className='icons'/>
                         <Img src={graphSource} 
                         alt="beeper" style={{marginRight: '20px'}}/>
     
-                        <Icon onClick={() => onImage1Concat(distanceSource, "Proximity")} className='icons' />
+                        <Icon onClick={() => onImage1Concat(distanceSource)} className='icons' />
                         <Img src={distanceSource} 
                         alt="beeper" style={{marginRight: "20px"}}/>
     
-                        <Icon onClick={() => onImage1Concat(tactSource, "Tact")} className='icons' />
+                        <Icon onClick={() => onImage1Concat(tactSource)} className='icons' />
                         <Img src={tactSource} 
                         alt="magnetic" />
     
-                        <MiddleIconDesk onClick={() => onImage1Concat(ledSource, "LED")} className='icons'/>
+                        <MiddleIconDesk onClick={() => onImage1Concat(ledSource)} className='icons'/>
                         <Img src={ledSource} 
                         alt="beeper" 
                         style={{
@@ -708,7 +656,7 @@ const Start = () => {
                         marginRight: '20px'
                         }}/>
                         
-                        <Icon onClick={() => onImage1Concat(lightSource, "Light")} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(lightSource)} className='icons'/>
                         <Img src={lightSource} 
                         alt="beeper" />
                     </div>
@@ -718,15 +666,15 @@ const Start = () => {
                         setDisplayDot1(false);
                         setDisplayDot3(true);
                     }}>
-                        <Icon onClick={() => onImage1Concat(magSource, "Magnetic")} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(magSource)} className='icons'/>
                         <Img src={magSource} 
                         alt="mag" style={{marginRight: '20px'}}/>
     
-                        <Icon onClick={() => onImage1Concat(tempSource, "Temperature")} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(tempSource)} className='icons'/>
                         <Img src={tempSource} 
                         alt="temp" />
                         
-                        <MiddleIconDesk onClick={() => onImage1Concat(motorSource, "Motor")} className='icons'/>
+                        <MiddleIconDesk onClick={() => onImage1Concat(motorSource)} className='icons'/>
                         <Img src={motorSource} 
                         alt="motor" 
                         style={{
@@ -734,10 +682,10 @@ const Start = () => {
                         marginRight: '20px'
                         }}/>
                         
-                        <Icon onClick={() => onImage1Concat(soundSource, "Sound")} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(soundSource)} className='icons'/>
                         <Img src={soundSource} 
                         alt="sound" />
-                        <Icon onClick={() => onImage1Concat(splitterSource, "Condition")} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(splitterSource)} className='icons'/>
                         <Img src={splitterSource} 
                         alt="sound" />
                     </div>
@@ -758,7 +706,7 @@ const Start = () => {
                 setDisplayDot3(true);
             }}
             />
-           </BottomDesk>
+           </BottomDeskLearn>
            {/* </Scrollbars> */}
            </>
            )}
@@ -766,4 +714,4 @@ const Start = () => {
     );
 }
 
-export default Start;
+export default LearningStart;

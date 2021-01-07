@@ -43,6 +43,24 @@ export const BottomDesk = styled.div`
     }
 `;
 
+export const BottomDeskLearn = styled.div`
+    width: 75vw;
+    background-color: white;
+    border: 1px solid #fc846a;
+    height: 100px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 25vw;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    z-index: 100;
+    @media (min-width: 893px){
+        height: 120px;
+    }
+`;
+
 
 export const Dots = styled.button`
     position: fixed;

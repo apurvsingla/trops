@@ -12,6 +12,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner';
 import DeleteIcon from '@material-ui/icons/Delete';
+// import ModeFiles from '../ModeFiles/ModeFiles';
 // import Start from '../../Start/Start';
 
 const useStyles = makeStyles((theme) => ({
@@ -40,12 +41,23 @@ const ShowCase = () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       },[]);
 
+      // eslint-disable-next-line no-unused-vars
+      const [showfront,setShowFront] = useSessionStorage('front', null);
+      // eslint-disable-next-line no-unused-vars
+      const [showBottom,setShowBottom] = useSessionStorage('bottom', null);
+
+
     const page = (e,index) => {
         history.push({
           pathname: `${'/learning/tut_' + index}`,
-          data: e.img1,
-          bottom: e.img2
+          // data: e.img1,
+          // bottom: e.img2
         });
+        
+        setShowFront(e.img1);
+        
+        setShowBottom(e.img2)
+
     }
 
     const func = async () => {
@@ -84,6 +96,7 @@ const ShowCase = () => {
     }
 
     return (
+      
         <>
         {dimensions.width > 892 ?
         <>
