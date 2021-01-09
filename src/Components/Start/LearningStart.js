@@ -120,6 +120,20 @@ const LearningStart = ({frontData}) => {
         history.goBack();
     }
 
+
+    // React.useEffect(() => {
+    //     frontData.map((i,index) => {
+    //         return(
+    //                 <li style={{position: 'absolute', top: `${'49'}vh`, 
+    //                 left: '4vw', color: 'grey', marginTop: `${4*index}vh`}}>
+    //                     Select {i}
+    //                 </li>
+    //         )
+    //     })
+    // }, [])
+
+   
+
     const reset = () => {
         setImg11([]);
         setId(1);
@@ -148,9 +162,9 @@ const LearningStart = ({frontData}) => {
         setRight({});
         setUid1(0);
     }
-
+    let j = 0;
     // populating images
-    const onImage1Concat = (src) => {
+    const onImage1Concat = (src, alt) => {
         if(activeother[activeIndex[current]]=== true){
             setId3(1);
             if(src === powerSource){
@@ -158,7 +172,7 @@ const LearningStart = ({frontData}) => {
             }
             else if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
                 setBottomImg1(i => i.concat({id: id2+current, src: src, pos: 'normal', 
-                uid: uid1, clicked: false,bottomPos: indexVal, trackValue: track[current], 
+                uid: uid1, clicked: false,bottomPos: indexVal, trackValue: track[current], alt: alt,
                 normal: normal[current]||normalId, nid: current}));
                 if(track[current]){
                     track[current] = track[current]+ 1
@@ -183,7 +197,7 @@ const LearningStart = ({frontData}) => {
                 return;
             }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
                 setBottomImg1(i => i.concat({id: id2+current, nid: current, 
-                    src: src, bool: false, bools: 0, pos: 'normal', uid: uid1, clicked: false,
+                    src: src, bool: false, bools: 0, pos: 'normal', uid: uid1, clicked: false,alt: alt,
                     bottomPos: indexVal, trackValue: track[current], normal: normal[current]||normalId}));
                 if(track[current]){
                     track[current] = track[current]+ 1
@@ -207,7 +221,7 @@ const LearningStart = ({frontData}) => {
                 return;
             }else{
                 setBottomImg1(i => i.concat({id: id2,nid: current, switchId: id2+current,
-                    src: src, pos: 'normal', bottomPos: indexVal, uid: uid1, clicked: false,
+                    src: src, pos: 'normal', bottomPos: indexVal, uid: uid1, clicked: false,alt: alt,
                     trackValue:track[current],  normal: normal[current]||normalId}));
                 if(track[current]){
                     track[current] = track[current] + 1;
@@ -263,7 +277,7 @@ const LearningStart = ({frontData}) => {
                 //nid h lights k liye
                 setBottomImg1(i => i.concat({id: obj, bools: 0, 
                     nid: currentRight+nid, src: src, pos: 'right', 
-                    bool: false, bottomRightPos: currentRight, clicked: false,
+                    bool: false, bottomRightPos: currentRight, clicked: false,alt: alt,
                     uid: uid1, trackValue: trackRight[currentRight]}));
                 return;
             }
@@ -272,7 +286,7 @@ const LearningStart = ({frontData}) => {
             }else{
                 obj = current+1;
             }
-            setBottomImg1(i => i.concat({id:  obj, src: src, clicked: false,
+            setBottomImg1(i => i.concat({id:  obj, src: src, clicked: false,alt: alt,
                 nid: currentRight+nid,pos: 'right', bottomRightPos: currentRight, uid: uid1, 
                 trackValue: trackRight[currentRight]}));
             if(right[current+'-'+currentRight]){
@@ -310,33 +324,33 @@ const LearningStart = ({frontData}) => {
                     setNormalId(0);
                     // setId3(1);
                     if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
-                        setImg11(i => i.concat({id: id, src: src, pos: 'normal', uid: uid1, clicked: false}));
+                        setImg11(i => i.concat({id: id, src: src, pos: 'normal',alt: alt, uid: uid1, clicked: false}));
                         setId(id+1);
                         setId3(id);
                         setUid1(uid1+1);
                     }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
-                        setImg11(i => i.concat({id: id, src: src, bool: false, bools: 0, pos: 'normal', uid: uid1, clicked: false}));
+                        setImg11(i => i.concat({id: id, src: src, bool: false, bools: 0, alt: alt,pos: 'normal', uid: uid1, clicked: false}));
                         setImgTrack(imgTrack +1);
                         setUid1(uid1+1);
                     }else if(src === conditionSource){
-                        setImg11(img1 => img1.concat({id: id, src: src, pos: 'normal', uid: uid1, clicked: true}));
+                        setImg11(img1 => img1.concat({id: id, src: src, pos: 'normal', uid: uid1, alt: alt,clicked: true}));
                         setId(id + 1);
                         setId3(id);
                         setUid1(uid1+1);
                     }else{
-                        setImg11(img1 => img1.concat({id: id, src: src, pos: 'normal', uid: uid1, clicked: false}));
+                        setImg11(img1 => img1.concat({id: id, src: src, pos: 'normal', uid: uid1, alt: alt,clicked: false}));
                         setId(id + 1);
                         setId3(id);
                         setUid1(uid1+1); 
                     }
                 }
             }else if(src=== powerSource){
-                // if(num === 1){
-                //     return;
-                // }
+                if(num === 1){
+                    return;
+                }
                 setNum(num+1);
                 setUid1(uid1+1);
-                setImg11(img1 => img1.concat({id: num, src: src, pos: 'normal', uid: uid1, clicked: false}));
+                setImg11(img1 => img1.concat({id: num, src: src, pos: 'normal', uid: uid1, alt: alt,clicked: false}));
                 return;
             }
         }
@@ -418,19 +432,19 @@ const LearningStart = ({frontData}) => {
            <Bottom>
                <Scrollbars style={{ width: '100px', height: '100vh' ,position: 'absolute', right: '0'}}>
                 <div>
-                <IconMobi onClick={(e) =>  onImage1Concat(powerSource)}/>
+                <IconMobi onClick={(e) =>  onImage1Concat(powerSource,"Power")}/>
                     <Img src={powerSource} 
                     alt="power" />
 
-                    <IconMob onClick={() => onImage1Concat(sequenceSource)}/>
+                    <IconMob onClick={() => onImage1Concat(sequenceSource, "Counter")}/>
                     <Img src={sequenceSource} 
                     alt="sequence" />
 
-                    <IconMob onClick={(e) =>  onImage1Concat(beeperSource)}/>
+                    <IconMob onClick={(e) =>  onImage1Concat(beeperSource,"Bepeer")}/>
                     <Img src={beeperSource} 
                     alt="beeper" />
 
-                    <IconMob onClick={() => onImage1Concat(conditionSource)}/>
+                    <IconMob onClick={() => onImage1Concat(conditionSource, "Splitter")}/>
                     <Img src={conditionSource} 
                     alt="condition" 
                     />
@@ -438,49 +452,49 @@ const LearningStart = ({frontData}) => {
                 
                 <div>
 
-                    <IconMobi onClick={() => onImage1Concat(graphSource)}/>
+                    <IconMobi onClick={() => onImage1Concat(graphSource, "Graph")}/>
                     <Img src={graphSource} 
                     alt="beeper"/>
 
-                    <IconMob onClick={() => onImage1Concat(distanceSource)}  />
+                    <IconMob onClick={() => onImage1Concat(distanceSource, "Proximity")}  />
                     <Img src={distanceSource} 
                     alt="beeper" />
 
 
-                    <IconMob onClick={() => onImage1Concat(ledSource)}/>
+                    <IconMob onClick={() => onImage1Concat(ledSource, "LED")}/>
                     <Img src={ledSource} 
                     alt="beeper" 
                     />
                     
-                    <IconMob onClick={() => onImage1Concat(lightSource)}/>
+                    <IconMob onClick={() => onImage1Concat(lightSource, "Light")}/>
                     <Img src={lightSource} 
                     alt="beeper" />
                 </div>
 
                 <div>
-                    <IconMobi onClick={() => onImage1Concat(magSource)}/>
+                    <IconMobi onClick={() => onImage1Concat(magSource, "Magnetic")}/>
                     <Img src={magSource} 
                     alt="beeper" />
 
-                    <IconMob onClick={() => onImage1Concat(tempSource)}/>
+                    <IconMob onClick={() => onImage1Concat(tempSource, "Temperature")}/>
                     <Img src={tempSource} 
                     alt="temperature"/>
                     
-                    <IconMob onClick={() => onImage1Concat(motorSource)}/>
+                    <IconMob onClick={() => onImage1Concat(motorSource, "Motor")}/>
                     <Img src={motorSource} 
                     alt="beeper" 
                     />
                     
-                    <IconMob onClick={() => onImage1Concat(soundSource)}/>
+                    <IconMob onClick={() => onImage1Concat(soundSource, "Sound")}/>
                     <Img src={soundSource} 
                     alt="beeper" />
                 </div>
 
                 <div>                   
-                    <IconMobi onClick={() => onImage1Concat(tactSource)}/>
+                    <IconMobi onClick={() => onImage1Concat(tactSource, "Tact")}/>
                     <Img src={tactSource} 
                     alt="beeper" />
-                    <IconMob onClick={() => onImage1Concat(splitterSource)}/>
+                    <IconMob onClick={() => onImage1Concat(splitterSource, "Condition")}/>
                     <Img src={splitterSource} 
                     alt="beeper" />
                     
@@ -499,13 +513,36 @@ const LearningStart = ({frontData}) => {
                 style={{ position: 'absolute', top: '40vh', left: '-1vw', height: '60vh', width: '26vw'}}
                 alt="rec"/>
                 <h2 style={{position: 'absolute', top: '42vh', left: '3vw', color: 'grey'}}>Description</h2>
+                {/* <ol>
+                <li style={{position: 'absolute', top: `${'49'}vh`, 
+                            left: '4vw', color: 'grey',}}>
+                                Select Power
+                            </li>
+                </ol> */}
                 <ol>
                 {frontData.map((i,index) => {
-                    return(
+                    if(!img11[index] || img11[index].alt !== i){
+                        if(j === index){
+                            return(<> 
                             <li style={{position: 'absolute', top: `${'49'}vh`, 
-                            left: '4vw', color: 'grey', marginTop: `${4*index}vh`}}>
+                            left: '4vw', color: 'grey', 
+                            fontSize: '1.2rem'
+                            // marginTop: `${4*index}vh`
+                            }}>
                                 Select {i}
                             </li>
+                            </>);
+                        }
+                    }
+                    // if(img11[index-1].alt !== i){
+                    //     return(<li style={{position: 'absolute', top: `${'49'}vh`, 
+                    //     left: '4vw', color: 'red', marginTop: `${4*index}vh`, fontWeight: 'bold'}}>
+                    //         Wrong Selected
+                    //     </li>)
+                    // }
+                    j= j+1;
+                    return(
+                            <></>
                     )
                 })}
                 </ol>
@@ -605,19 +642,19 @@ const LearningStart = ({frontData}) => {
                         setDisplayDot1(true);
                         setDisplayDot3(false);
                         }}>
-                        <Icon onClick={(e) =>  onImage1Concat(powerSource)} className='icons'/>
+                       <Icon onClick={(e) =>  onImage1Concat(powerSource, "Power")} className='icons'/>
                         <Img src={powerSource} 
                         alt="power" style={{marginRight: '20px'}}/>
     
-                        <Icon onClick={() => onImage1Concat(sequenceSource)} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(sequenceSource, 'Counter')} className='icons'/>
                         <Img src={sequenceSource} 
                         alt="beeper" style={{marginRight: '20px'}}/>
     
-                        <Icon onClick={(e) =>  onImage1Concat(beeperSource)} className='icons'/>
+                        <Icon onClick={(e) =>  onImage1Concat(beeperSource, 'Beeper')} className='icons'/>
                         <Img src={beeperSource} 
                         alt="beeper" />
     
-                        <MiddleIconDesk onClick={() => onImage1Concat(conditionSource)} className='icons'/>
+                        <MiddleIconDesk onClick={() => onImage1Concat(conditionSource, 'Splitter')} className='icons'/>
                         <Img src={conditionSource} 
                         alt="beeper" 
                         style={{
@@ -625,7 +662,7 @@ const LearningStart = ({frontData}) => {
                         marginRight: '20px'
                         }}/>
     
-                        <Icon onClick={() => onImage1Concat(distanceSource)} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(distanceSource, 'Proximity')} className='icons'/>
                         <Img src={distanceSource} 
                         alt="beeper" />
                     </div>
@@ -636,19 +673,19 @@ const LearningStart = ({frontData}) => {
                         setDisplayDot3(false);
                     }}>
     
-                        <Icon onClick={() => onImage1Concat(graphSource)} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(graphSource, "Graph")} className='icons'/>
                         <Img src={graphSource} 
                         alt="beeper" style={{marginRight: '20px'}}/>
     
-                        <Icon onClick={() => onImage1Concat(distanceSource)} className='icons' />
+                        <Icon onClick={() => onImage1Concat(distanceSource, "Proximity")} className='icons' />
                         <Img src={distanceSource} 
                         alt="beeper" style={{marginRight: "20px"}}/>
     
-                        <Icon onClick={() => onImage1Concat(tactSource)} className='icons' />
+                        <Icon onClick={() => onImage1Concat(tactSource, "Tact")} className='icons' />
                         <Img src={tactSource} 
                         alt="magnetic" />
     
-                        <MiddleIconDesk onClick={() => onImage1Concat(ledSource)} className='icons'/>
+                        <MiddleIconDesk onClick={() => onImage1Concat(ledSource, "LED")} className='icons'/>
                         <Img src={ledSource} 
                         alt="beeper" 
                         style={{
@@ -656,7 +693,7 @@ const LearningStart = ({frontData}) => {
                         marginRight: '20px'
                         }}/>
                         
-                        <Icon onClick={() => onImage1Concat(lightSource)} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(lightSource, "Light")} className='icons'/>
                         <Img src={lightSource} 
                         alt="beeper" />
                     </div>
@@ -666,15 +703,15 @@ const LearningStart = ({frontData}) => {
                         setDisplayDot1(false);
                         setDisplayDot3(true);
                     }}>
-                        <Icon onClick={() => onImage1Concat(magSource)} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(magSource, "Magnetic")} className='icons'/>
                         <Img src={magSource} 
                         alt="mag" style={{marginRight: '20px'}}/>
     
-                        <Icon onClick={() => onImage1Concat(tempSource)} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(tempSource, "Temperature")} className='icons'/>
                         <Img src={tempSource} 
                         alt="temp" />
                         
-                        <MiddleIconDesk onClick={() => onImage1Concat(motorSource)} className='icons'/>
+                        <MiddleIconDesk onClick={() => onImage1Concat(motorSource, "Motor")} className='icons'/>
                         <Img src={motorSource} 
                         alt="motor" 
                         style={{
@@ -682,10 +719,10 @@ const LearningStart = ({frontData}) => {
                         marginRight: '20px'
                         }}/>
                         
-                        <Icon onClick={() => onImage1Concat(soundSource)} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(soundSource, "Sound")} className='icons'/>
                         <Img src={soundSource} 
                         alt="sound" />
-                        <Icon onClick={() => onImage1Concat(splitterSource)} className='icons'/>
+                        <Icon onClick={() => onImage1Concat(splitterSource, "Condition")} className='icons'/>
                         <Img src={splitterSource} 
                         alt="sound" />
                     </div>

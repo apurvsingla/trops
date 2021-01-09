@@ -348,9 +348,9 @@ const Start = () => {
                     }
                 }
             }else if(src=== powerSource){
-                // if(num === 1){
-                //     return;
-                // }
+                if(num === 1){
+                    return;
+                }
                 setNum(num+1);
                 setUid(uid+1);
                 setImg1(img1 => img1.concat({id: num, src: src, pos: 'normal', alt: alt, uid: uid, clicked: false}));
