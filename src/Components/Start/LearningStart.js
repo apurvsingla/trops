@@ -42,7 +42,7 @@ IconMob
 } from './Start.styles';
 import './Start.styles.scss';
 
-const LearningStart = ({frontData}) => {
+const LearningStart = ({frontData, bottomData}) => {
     //media query
     const [dimensions, setDimensions] = React.useState({ 
         height: window.innerHeight,
@@ -163,6 +163,7 @@ const LearningStart = ({frontData}) => {
         setUid1(0);
     }
     let j = 0;
+    let pp = 0;
     // populating images
     const onImage1Concat = (src, alt) => {
         if(activeother[activeIndex[current]]=== true){
@@ -544,6 +545,38 @@ const LearningStart = ({frontData}) => {
                     return(
                             <></>
                     )
+                })}
+                </ul>
+                <ul>
+                    <h2 style={{position: 'absolute', top: `${'55'}vh`, 
+                            left: '4vw', color: 'grey', 
+                            fontSize: '1.2rem'
+                            // marginTop: `${4*index}vh`
+                            }}>Bottom Component</h2>
+                {bottomData.map((i,index) => {
+                    if(!bottomImg1[index] || bottomImg1[index].alt !== i){
+                        if(true){
+                            return(
+                                <>
+                                {i === Number(i) ? <li style={{position: 'absolute', top: `${'60'}vh`, 
+                                left: '4vw', color: 'grey', 
+                                fontSize: '1.2rem',
+                                }}>
+                                    Select arrow mark at pos {i+1} 
+                                </li>:
+                                <li style={{position: 'absolute', top: `${'64'}vh`, 
+                                left: '4vw', color: 'grey', 
+                                fontSize: '1.2rem',
+                                }}>
+                                    Select {i}
+                                </li>}
+                                </>
+                        )
+                        }
+                    } 
+                    pp= pp+1;
+                    return(<></>)
+
                 })}
                 </ul>
                </div>

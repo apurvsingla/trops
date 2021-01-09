@@ -25,21 +25,25 @@ import useSessionStorage from '../../SessionStorage/SessionStorage';
 
 const ModeFiles = () => {
     const [front] = React.useState(JSON.parse(sessionStorage.getItem("front")));
-    // const [bottom] = React.useState(JSON.parse(sessionStorage.getItem("bottom")));
+    const [bottom] = React.useState(JSON.parse(sessionStorage.getItem("bottom")));
     const [state, setState] = useSessionStorage('statealt',[]);
+    const [stateB, setStateB] = useSessionStorage('statealtBottom',[]);
     
     React.useEffect(() => {
         const func = () => {
             let arr = [];
+            let ar = [];
             front.map(i => arr.push(i.alt));
             setState(arr);
-            // bottom.map(i => console.log(i.alt));
+            bottom.map(i => ar.push(Number(i.cur),i.alt));
+            setStateB(ar);
         }
         return func()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
     return (
-    <LearningStart frontData={state}/>
+    <LearningStart frontData={state} bottomData={stateB} />
     );
 }
 

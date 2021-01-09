@@ -174,7 +174,7 @@ const Start = () => {
             }
             else if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
                 setBottomImg(i => i.concat({id: id2+current, src: src, pos: 'normal', 
-                uid: uid, clicked: false,bottomPos: indexVal, trackValue: track[current], 
+                uid: uid, clicked: false,bottomPos: indexVal, trackValue: track[current], cur:current,
                 normal: normal[current]||normalId, nid: current, alt: alt}));
                 if(track[current]){
                     track[current] = track[current]+ 1
@@ -199,7 +199,7 @@ const Start = () => {
                 return;
             }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
                 setBottomImg(i => i.concat({id: id2+current, nid: current, 
-                    src: src, bool: false, bools: 0, pos: 'normal', uid: uid, clicked: false,
+                    src: src, bool: false, bools: 0, pos: 'normal', uid: uid, clicked: false, cur:current,
                     bottomPos: indexVal, trackValue: track[current], alt: alt, normal: normal[current]||normalId}));
                 if(track[current]){
                     track[current] = track[current]+ 1
@@ -222,7 +222,7 @@ const Start = () => {
                 setUid(uid+1);
                 return;
             }else{
-                setBottomImg(i => i.concat({id: id2,nid: current, switchId: id2+current,
+                setBottomImg(i => i.concat({id: id2,nid: current, switchId: id2+current,cur:current,
                     src: src, pos: 'normal', bottomPos: indexVal, uid: uid, clicked: false,
                     trackValue:track[current], alt: alt,  normal: normal[current]||normalId}));
                 if(track[current]){
@@ -278,7 +278,7 @@ const Start = () => {
                 setId3(id3+1);
                 //nid h lights k liye
                 setBottomImg(i => i.concat({id: obj, bools: 0, 
-                    nid: currentRight+nid, src: src, pos: 'right', 
+                    nid: currentRight+nid, src: src, pos: 'right', cur:current,
                     bool: false, bottomRightPos: currentRight, clicked: false, alt: alt,
                     uid: uid, trackValue: trackRight[currentRight]}));
                 return;
@@ -288,7 +288,7 @@ const Start = () => {
             }else{
                 obj = current+1;
             }
-            setBottomImg(i => i.concat({id:  obj, src: src, clicked: false,
+            setBottomImg(i => i.concat({id:  obj, src: src, clicked: false, cur:current,
                 nid: currentRight+nid,pos: 'right', bottomRightPos: currentRight, uid: uid, alt: alt, 
                 trackValue: trackRight[currentRight]}));
             if(right[current+'-'+currentRight]){
