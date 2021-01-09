@@ -33,10 +33,10 @@ const useStyles = makeStyles((theme) => ({
 const ShowCase = () => {
     const classes = useStyles();
     const [state, setState] = useSessionStorage('state', null);
-    // const [loader, setLoader] = React.useState(false);
     const history = useHistory();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(async () => {
+      window.sessionStorage.clear();
         func();
       // eslint-disable-next-line react-hooks/exhaustive-deps
       },[]);
