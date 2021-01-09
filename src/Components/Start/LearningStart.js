@@ -519,9 +519,15 @@ const LearningStart = ({frontData}) => {
                                 Select Power
                             </li>
                 </ol> */}
-                <ol>
+                <ul>
                 {frontData.map((i,index) => {
                     if(!img11[index] || img11[index].alt !== i){
+                        if(img11[j] !== frontData[j-1000]){
+                            return(<li style={{position: 'absolute', top: `${'49'}vh`, 
+                            left: '4vw', color: 'red',  fontWeight: '400', fontSize: '1.2rem'}}>
+                            Wrong Selected
+                        </li>)
+                        }
                         if(j === index){
                             return(<> 
                             <li style={{position: 'absolute', top: `${'49'}vh`, 
@@ -533,19 +539,13 @@ const LearningStart = ({frontData}) => {
                             </li>
                             </>);
                         }
-                    }
-                    // if(img11[index-1].alt !== i){
-                    //     return(<li style={{position: 'absolute', top: `${'49'}vh`, 
-                    //     left: '4vw', color: 'red', marginTop: `${4*index}vh`, fontWeight: 'bold'}}>
-                    //         Wrong Selected
-                    //     </li>)
-                    // }
+                    }               
                     j= j+1;
                     return(
                             <></>
                     )
                 })}
-                </ol>
+                </ul>
                </div>
                <div style={{
                     display: 'flex',
