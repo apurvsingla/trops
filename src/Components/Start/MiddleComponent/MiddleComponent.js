@@ -40,7 +40,7 @@ const marks = [
       ];
 
 function valueLabelFormat(value) {
-return marks.findIndex((mark) => mark.value === value) + 1;
+return marks.findIndex((mark) => mark.value === value) ;
 }
 
 const MiddleComponent = ({img1,setImg1, active, setActive, 
@@ -116,7 +116,6 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setActiveRightIndex(activeRightIndex);
                         setCurrentRight(normal);
                         setIndexVal(index);
-                        // setActiveother({});
                 }      
         }
         
@@ -137,6 +136,25 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         setActiveIndex(activeIndex);
                         setCurrent(index);
                         setIndexVal(index);
+                }
+        }
+
+        const activeLinkBottom = (e,cur) => {
+                if(e){
+                        boolean2= !boolean2;
+                        activeother[cur] = boolean2;
+                        if(boolean2 === true){
+                                e.target.style.backgroundColor = 'green';
+                        }else{
+                                e.target.style.backgroundColor = 'transparent';   
+                        }
+                        activeIndex[cur] = cur;
+                        Object.keys(active).map(k=>active[k]=false);
+                        setActive(active);
+                        setActiveother(activeother);
+                        setActiveIndex(activeIndex);
+                        setCurrent(cur);
+                        setIndexVal(cur);
                 }
         }
 
@@ -212,16 +230,16 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                 setBottomImg(newArray);
         }
 
-        const deleteBottomImg = (e,uid) => {
+        const deleteBottomImg = (e,uid,cur) => {
                 let newArray = [...bottomImg];
                 newArray.forEach((val,index) => {
                         const arr = newArray[index];
                         if(arr.uid === uid){
                                 // newArray.splice(index,1);
-                                newArray.splice(index,track[current])
-                                const num = track[current] - index;
+                                newArray.splice(index,track[cur])
+                                const num = track[cur] - index;
                                 // newArray[index] = {...arr, src: beeperSource}
-                              track[current] = track[current] - num;
+                              track[cur] = track[cur] - num;
                               setTrack(track);
                         }
                 })
@@ -261,6 +279,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         marks={marks} valueLabelFormat={valueLabelFormat}
                         track={track} trackValue={trackValue}
                         setTopPos={setTopPos} deleteImage={deleteBottomImg}
+                        activeLinkBottom={activeLinkBottom}
                         />
                         :null}
                         {i.pos === 'right' ? <RightImgs 

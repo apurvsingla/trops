@@ -126,16 +126,17 @@ export const LargeColLine = styled.span`
     top: 150px;
     left: 166px;
     z-index: 4;
-    border-radius: 25px;
-    height: 60px;
-    margin-top:50px;
+    border: 2px solid black;
+    border-bottom: none;
+    height: 62px;
+    margin-top:51px;
     @media (max-width: 893px){
         margin-top: 0px;
-        height: 66px;
+        height: 72px;
         width: 0.35rem;
         left: 150px;
+        border-top: none;
     }
-    border: 2px solid black;
 `;
 
 export const LargeColLineCondition = styled.span`

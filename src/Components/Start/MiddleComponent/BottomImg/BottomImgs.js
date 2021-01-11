@@ -55,7 +55,7 @@ const useStyles = makeStyles({
 
 const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 appearDot, setAppearDot, setBottomImg, marks, valueLabelFormat,
-                deleteImage
+                deleteImage,activeLinkBottom,
 }) => {
         const classes = useStyles();
         const [bool, setBool] = React.useState(true);
@@ -398,7 +398,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 marginTop: `${'180'}px`,
                 zIndex: '10'
         }} 
-        onClick={(e) => deleteImage(e,i.uid)}
+        onClick={(e) => deleteImage(e,i.uid,i.cur)}
         />:<CancelOutlinedIcon 
         stroke={'orange'}
         key={index+'key'}
@@ -410,7 +410,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 marginTop: '135px',
                 zIndex: '10'
         }} 
-        onClick={(e) => deleteImage(e,i.uid)}
+        onClick={(e) => deleteImage(e,i.uid,i.cur)}
         /> :null}
         
 
@@ -584,6 +584,34 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                         color: 'transparent',                     
                 }}
                 /> 
+                <span 
+                className='line-bottom-arrow-cond'
+                key={index+'icon-arrow-b'}
+                style={{
+                        left: `${140*i.bottomPos + 162}px`,
+                        marginTop: `${i.trackValue ? 140*i.trackValue + 140: 140}px`,
+                        zIndex: '8',
+                        color: 'transparent',                     
+                }}
+                /> 
+                <span
+        className={classes.largeIconXL + " right-dot-bottom"}
+        style={{
+                marginTop: `${i.trackValue ? 140*i.trackValue + 82 : 82}px`,
+                left: `${140*i.bottomPos + 165}px`,
+                color: 'transparent',
+                zIndex: '10',
+                width: '5px',
+                height: '45px',
+                border: '3px solid black',
+                borderBottom: 'none',
+                borderTop: 'none'
+                }}
+                onClick={(e) => activeLinkBottom(e,i.cur,i.normal)}
+                id={i.normal}
+                key={index+'-right'}
+                // stroke={"black"} stroke-width={1}
+                />
                 </>
                 }
         </>
