@@ -64,7 +64,7 @@ const useStyles = makeStyles({
 
 
 const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat, 
-     activeSecondLink, img1,setAppearDot, appearDot,setImg1
+     activeSecondLink, img1,setAppearDot, appearDot,setImg1, activeNormal
 }) => {
         const classes = useStyles();
         const [dimensions, setDimensions] = React.useState({ 
@@ -455,6 +455,35 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 key={index+'--icon'}
                 onClick={(e) => activeSecondLink(e,index)}
                  />
+                 <span style={{
+                                left: `${140*index +215}px`,
+                                zIndex: '11',
+                                position: 'absolute',
+                                top: '100px',
+                                border: '3px solid black',
+                                height: '5px',
+                                width: '50px',
+                                borderLeft: 'none',
+                                borderRight: 'none'
+                        }}
+                        className="icons"
+                key={index+'--icon'}
+                onClick={(e) => activeNormal(e,index)}
+                 />
+                <span 
+                className='line-bottom-arrow-cond'
+                key={index+'-bottom'}
+                id={index}
+                style={{
+                        marginLeft: `${140*index + 88}px`,
+                        zIndex: '1',
+                        color: 'grey',
+                        top: '93px',
+                        transform: 'rotate(315deg)'
+                }}
+                />
+
+
                 {dimensions.width < 892 ? <span 
                 className='line-bottom-arrow-cond'
                 key={index+'-bottom'}

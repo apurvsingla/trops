@@ -4,7 +4,7 @@ import NormalImgs from './NormalImg/NormalImg';
 import BottomImgs from './BottomImg/BottomImgs';
 import RightImgs from './RightImg/RightImgs';
 import RightRImgs from './RightRImg/RightRImgs';
-import { conditionSource } from './Source/source';
+// import { conditionSource } from './Source/source';
 
 const marks = [
         {
@@ -110,6 +110,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                                 e.target.style.backgroundColor = 'transparent';   
                         }
                         activeRightIndex[normal] = normal;
+                        // track[index] = track[index] - 1;
                         Object.keys(activeother).map(k=>activeother[k]=false);
                         setActiveother(activeother);
                         setActive(active);
@@ -139,7 +140,22 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                 }
         }
 
-        const activeLinkBottom = (e,cur) => {
+        const activeNormal = (e,index) => {
+                if(e){
+                        boolean2 = !boolean2;
+                        if(boolean2 === true){
+                                e.target.style.backgroundColor = 'green';
+                        }else{
+                                e.target.style.backgroundColor = 'transparent';   
+                        }
+                        Object.keys(activeother).map(k=>activeother[k]=false);
+                        Object.keys(active).map(k=>active[k]=false);
+                        setActive(active);
+                        setActiveother(activeother);
+                }
+        }
+
+        const activeLinkBottom = (e,normal,cur) => {
                 if(e){
                         boolean2= !boolean2;
                         activeother[cur] = boolean2;
@@ -185,30 +201,30 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         if(arr.uid === uid){
                                 newArray.splice(index,id+1);
                         }
-                        if(val.src === conditionSource){
-                                let newBottom = [...bottomImg];
-                                newBottom.forEach((v,intt) => {
-                                        if(v.bottomPos === indexx){
-                                                newBottom.splice(0,track[current]);
-                                        }
-                                        track[current] = 0;
-                                        setTrack(track);
-                                        // if(uid<=v.uid){
-                                        // if(v.nid >= indexx){
-                                        //         newBottom[intt] = {...newBottom[intt], bottomPos: v.bottomPos-1}     
-                                        // }  
-                                })
-                                setBottomImg(newBottom);
-                        }
-                        if(current>=index){
-                                let newBottom = [...bottomImg];
-                                newBottom.forEach((v,intt) => {
-                                        newBottom.splice(0,10);
-                                        track[current] = 0;
-                                        setTrack(track);
-                                })
-                                setBottomImg(newBottom);
-                        }
+                        // if(val.src === conditionSource){
+                        //         let newBottom = [...bottomImg];
+                        //         newBottom.forEach((v,intt) => {
+                        //                 if(v.bottomPos === indexx){
+                        //                         newBottom.splice(indexx,track[current]);
+                        //                 }
+                        //                 track[current] = 0;
+                        //                 setTrack(track);
+                        //                 // if(uid<=v.uid){
+                        //                 // if(v.nid >= indexx){
+                        //                 //         newBottom[intt] = {...newBottom[intt], bottomPos: v.bottomPos-1}     
+                        //                 // }  
+                        //         })
+                        //         setBottomImg(newBottom);
+                        // }
+                        // if(current>=index){
+                        //         let newBottom = [...bottomImg];
+                        //         newBottom.forEach((v,intt) => {
+                        //                 newBottom.splice(0,10);
+                        //                 track[current] = 0;
+                        //                 setTrack(track);
+                        //         })
+                        //         setBottomImg(newBottom);
+                        // }
                 })
                 setImg1(newArray);
                 setCurrent(null);
@@ -230,7 +246,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                 setBottomImg(newArray);
         }
 
-        const deleteBottomImg = (e,uid,cur) => {
+        const deleteBottomImg = (e,uid,cur,trackVal) => {
                 let newArray = [...bottomImg];
                 newArray.forEach((val,index) => {
                         const arr = newArray[index];
@@ -262,6 +278,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         img1={img1} appearDot={appearDot} 
                         setAppearDot={setAppearDot}
                         setImg1={setImg1}
+                        activeNormal={activeNormal}
                          /> : null}
                         </>
                          )

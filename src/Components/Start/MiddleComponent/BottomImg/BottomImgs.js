@@ -382,7 +382,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                         marginTop: `${140*i.trackValue + 20}px`,
                         zIndex: '10'
                 }} 
-                onClick={(e) => clickedImage(e,i.uid)}
+                onClick={(e) => clickedImage(e,i.uid,i.cur,i.trackValue)}
                 />
         </BottomSpan>: null }
         {i.clicked === true ?
@@ -398,7 +398,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 marginTop: `${'180'}px`,
                 zIndex: '10'
         }} 
-        onClick={(e) => deleteImage(e,i.uid,i.cur)}
+        onClick={(e) => deleteImage(e,i.uid,i.cur,i.trackValue)}
         />:<CancelOutlinedIcon 
         stroke={'orange'}
         key={index+'key'}
@@ -410,7 +410,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 marginTop: '135px',
                 zIndex: '10'
         }} 
-        onClick={(e) => deleteImage(e,i.uid,i.cur)}
+        onClick={(e) => deleteImage(e,i.uid,i.cur,i.trackValue)}
         /> :null}
         
 
@@ -607,7 +607,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 borderBottom: 'none',
                 borderTop: 'none'
                 }}
-                onClick={(e) => activeLinkBottom(e,i.cur,i.normal)}
+                onClick={(e) => activeLinkBottom(e,i.normal,i.cur)}
                 id={i.normal}
                 key={index+'-right'}
                 // stroke={"black"} stroke-width={1}

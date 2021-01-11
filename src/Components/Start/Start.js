@@ -174,7 +174,7 @@ const Start = () => {
             }
             else if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
                 setBottomImg(i => i.concat({id: id2+current, src: src, pos: 'normal', 
-                uid: uid, clicked: false,bottomPos: indexVal, trackValue: track[current], cur:current,
+                uid: uid, clicked: false,bottomPos: indexVal, trackValue: track[current]||0, cur:current,
                 normal: normal[current]||normalId, nid: current, alt: alt}));
                 if(track[current]){
                     track[current] = track[current]+ 1
@@ -200,7 +200,7 @@ const Start = () => {
             }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
                 setBottomImg(i => i.concat({id: id2+current, nid: current, 
                     src: src, bool: false, bools: 0, pos: 'normal', uid: uid, clicked: false, cur:current,
-                    bottomPos: indexVal, trackValue: track[current], alt: alt, normal: normal[current]||normalId}));
+                    bottomPos: indexVal, trackValue: track[current]||0, alt: alt, normal: normal[current]||normalId}));
                 if(track[current]){
                     track[current] = track[current]+ 1
                     setTrack(track);
@@ -224,7 +224,7 @@ const Start = () => {
             }else{
                 setBottomImg(i => i.concat({id: id2,nid: current, switchId: id2+current,cur:current,
                     src: src, pos: 'normal', bottomPos: indexVal, uid: uid, clicked: false,
-                    trackValue:track[current], alt: alt,  normal: normal[current]||normalId}));
+                    trackValue:track[current] || 0, alt: alt,  normal: normal[current]||normalId}));
                 if(track[current]){
                     track[current] = track[current] + 1;
                     setTrack(track);
