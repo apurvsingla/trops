@@ -485,6 +485,32 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 key={index+'--icon'}
                 onClick={(e) => activeNormal(e,index)}
                  />}
+                 {dimensions.width < 892 ? <span 
+                className='line-bottom-arrow-cond'
+                key={index+'-bottom'}
+                id={index}
+                style={{
+                        marginLeft: `${140*index+ 28}px`,
+                        zIndex: '1',
+                        color: 'grey',
+                        top: '119px',
+                        transform: 'rotate(315deg)'
+                }}
+                />:
+                <span 
+                className='line-bottom-arrow-cond'
+                key={index+'-bottom'}
+                id={index}
+                style={{
+                        marginLeft: `${140*index + 88}px`,
+                        zIndex: '1',
+                        color: 'grey',
+                        top: '93px',
+                        transform: 'rotate(315deg)'
+                }}
+                />}
+
+
                 {dimensions.width < 892 ? <span 
                 className='line-bottom-arrow-cond'
                 key={index+'-bottom'}
