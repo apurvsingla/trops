@@ -269,7 +269,7 @@ const RightImgs = ({mQuery,
                 <NormalRImg src={i.src} 
                         alt="alt" 
                         style={{
-                                left: `${120*i.id+ 162}px`,
+                                left: `${140*i.id+ 82}px`,
                                 marginTop: `${140*i.bottomRightPos + 147}px`,
                                 zIndex: '12',
                                 // marginLeft: '20px'
@@ -297,12 +297,14 @@ const RightImgs = ({mQuery,
                 className={classes.largeIconXL}
                 style={{
                         position: 'absolute',
-                        left: `${120*i.id +105}px`,
+                        left: `${140*i.id +10}px`,
                         top: `${140*i.bottomRightPos + 179}px`,
                         zIndex: '-8',
                         border: '3px solid black',
-                                width: '60px',
-                                height: '5px'
+                        width: '74px',
+                        height: '5px',
+                        borderLeft: 'none',
+                        borderRight: 'none'
                         }}
                         // stroke={"black"} stroke-width={1}
                         key={index+'--icon'} />): (
@@ -385,7 +387,7 @@ const RightImgs = ({mQuery,
         {i.clicked === true ? mQuery.width < 892 ? 
         <CancelOutlinedIcon
         style={{
-                left: `${(120*i.id) + 215}px`,
+                left: `${(140*i.id) + 130}px`,
                 top: `${140*i.bottomRightPos - 40}px`,
                 position: 'absolute',
                 cursor: 'pointer',

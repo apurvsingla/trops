@@ -1,5 +1,5 @@
 import React from 'react';
-import useSessionStorage from '../../SessionStorage/SessionStorage';
+// import useSessionStorage from '../../SessionStorage/SessionStorage';
 import NormalImgs from './NormalImg/NormalImg';
 import BottomImgs from './BottomImg/BottomImgs';
 import RightImgs from './RightImg/RightImgs';
@@ -54,7 +54,9 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         currentRightDot,setCurrentRightDot,
         rightRImg, setIndexVal, setBottomImg, id2, setTrack, track, trackValue,
         setTopPos,setId2,indexVal,setUid,uid,
-        right, setRight,id,setNormalId,setNormal,normal
+        right, setRight,id,setNormalId,setNormal,normal, pos, setPos, activeDot, setActiveDot,
+        bottomTop, setBottomTop,posRight, setPosRight, activeDotRight, setActiveDotRight,
+        appearDot, setAppearDot, appearDotRight, setAppearDotRight
 }) => {
         
         //media query
@@ -85,18 +87,6 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         }
         window.addEventListener('resize', handleResize);
         })
-
-        const [pos, setPos] = useSessionStorage('bottom-dot-pos', {});
-        const [activeDot, setActiveDot] = useSessionStorage('active-top-bottom-dot',null);
-        const [bottomTop,setBottomTop] = useSessionStorage('right-img-pos', {});
-
-        //rightR
-        const [posRight,setPosRight] = useSessionStorage('right-dot-bottom',{});
-        const [activeDotRight,setActiveDotRight] = React.useState(null);
-        
-        //red dots
-        const [appearDot, setAppearDot] = useSessionStorage('appear-dot',{});
-        const [appearDotRight, setAppearDotRight] = useSessionStorage('appear-dot-right',{})
 
         let boolean = false;
         let boolean2 = false;

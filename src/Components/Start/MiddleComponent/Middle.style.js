@@ -7,11 +7,17 @@ export const Img = styled.img`
     flex-direction: column;
     position: absolute;
     margin-top: 23px;
+    top: 20px;
     height: 70px;
     @media (min-width: 893px){
         width: 100px;
         height: 100px;
     }
+    @-moz-document url-prefix() {
+        position: absolute;
+        left: 0px;
+        margin-left:0;
+      }
 `;
 
 
@@ -44,6 +50,7 @@ export const NImg = styled.img`
     height: 70px;
     position: absolute;
     z-index: 2;
+    top: 0;
     @media (min-width: 893px){
         width: 90px;
         height: 92px;
@@ -147,7 +154,7 @@ export const LargeColLineCondition = styled.span`
     left: 166px;
     z-index: 4;
     border-radius: 25px;
-    height: 45px;
+    height: 42px;
     @media (max-width: 893px){
         margin-top: -30px;
         height: 35px;

@@ -379,7 +379,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 <Img src={i.src} alt="alt"
                 style={{
                         marginLeft: `${(140*i.bottomPos) + 20}px`,
-                        marginTop: `${140*i.trackValue + 20}px`,
+                        marginTop: `${140*i.trackValue}px`,
                         zIndex: '10'
                 }} 
                 onClick={(e) => clickedImage(e,i.uid,i.cur,i.trackValue)}
@@ -410,7 +410,7 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                 marginTop: '135px',
                 zIndex: '10'
         }} 
-        onClick={(e) => deleteImage(e,i.uid,i.cur,i.trackValue)}
+        onClick={(e) => deleteImage(e,i.uid,i.cur,i.trackValue,i.id)}
         /> :null}
         
 
@@ -553,11 +553,39 @@ const BottomImgs = ({i, index, activeLink, bottomImg, activeDot,
                         color: 'transparent',                     
                 }}
                 /> 
+                <span 
+                className='line-bottom-arrow-cond'
+                key={index+'icon-arrow-b'}
+                style={{
+                        left: `${140*i.bottomPos + 147}px`,
+                        marginTop: `${i.trackValue ? 140*i.trackValue + 100: 100}px`,
+                        zIndex: '8',
+                        color: 'transparent',                     
+                }}
+                /> 
+                <span
+                className={classes.largeIconXL + " right-dot-bottom"}
+                style={{
+                marginTop: `${i.trackValue ? 140*i.trackValue + 68 : 68}px`,
+                left: `${140*i.bottomPos + 150}px`,
+                color: 'transparent',
+                zIndex: '10',
+                width: '5px',
+                height: '75px',
+                border: '3px solid black',
+                borderBottom: 'none',
+                borderTop: 'none'
+                }}
+                onClick={(e) => activeLinkBottom(e,i.normal,i.cur)}
+                id={i.normal}
+                key={index+'-right'}
+                // stroke={"black"} stroke-width={1}
+                />
                 </>: 
                 <>
                 <span
-        className={classes.largeIconXL + " right-dot-bottom"}
-        style={{
+                className={classes.largeIconXL + " right-dot-bottom"}
+                style={{
                 marginTop: `${i.trackValue ? 140*i.trackValue + 31 : 31}px`,
                 left: `${140*i.bottomPos + 214}px`,
                 color: 'transparent',

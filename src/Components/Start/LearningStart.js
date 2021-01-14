@@ -162,8 +162,8 @@ const LearningStart = ({frontData, bottomData}) => {
         setRight({});
         setUid1(0);
     }
-    let j = 0;
-    let pp = 0;
+    let noa = 0;
+    let noa1 = 0;
     // populating images
     const onImage1Concat = (src, alt) => {
         if(activeother[activeIndex[current]]=== true){
@@ -173,16 +173,16 @@ const LearningStart = ({frontData, bottomData}) => {
             }
             else if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
                 setBottomImg1(i => i.concat({id: id2+current, src: src, pos: 'normal', 
-                uid: uid1, clicked: false,bottomPos: indexVal, trackValue: track[current], alt: alt,
-                normal: normal[current]||normalId, nid: current}));
+                uid: uid1, clicked: false,bottomPos: indexVal, trackValue: track[current]||0, cur:current,
+                normal: normal[current]||normalId, nid: current, alt: alt}));
                 if(track[current]){
                     track[current] = track[current]+ 1
                     setTrack(track);
-                    setTrackValue(track[current]);
+                    // setTrackValue(track[current]);
                 }else{
                     track[current] = id2;
                     setTrack(track);
-                    setTrackValue(track[current]);
+                    // setTrackValue(track[current]);
 
                 }
                 setNormalId(normalId + 1);
@@ -198,16 +198,16 @@ const LearningStart = ({frontData, bottomData}) => {
                 return;
             }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
                 setBottomImg1(i => i.concat({id: id2+current, nid: current, 
-                    src: src, bool: false, bools: 0, pos: 'normal', uid: uid1, clicked: false,alt: alt,
-                    bottomPos: indexVal, trackValue: track[current], normal: normal[current]||normalId}));
+                    src: src, bool: false, bools: 0, pos: 'normal', uid: uid1, clicked: false, cur:current,
+                    bottomPos: indexVal, trackValue: track[current]||0, alt: alt, normal: normal[current]||normalId}));
                 if(track[current]){
                     track[current] = track[current]+ 1
                     setTrack(track);
-                    setTrackValue(track[current]);
+                    // setTrackValue(track[current]);
                 }else{
                     track[current] = id2;
                     setTrack(track);
-                    setTrackValue(track[current]);
+                    // setTrackValue(track[current]);
 
                 }
                 setNormalId(normalId + 1);
@@ -221,18 +221,17 @@ const LearningStart = ({frontData, bottomData}) => {
                 setUid1(uid1+1);
                 return;
             }else{
-                setBottomImg1(i => i.concat({id: id2,nid: current, switchId: id2+current,
-                    src: src, pos: 'normal', bottomPos: indexVal, uid: uid1, clicked: false,alt: alt,
-                    trackValue:track[current],  normal: normal[current]||normalId}));
+                setBottomImg1(i => i.concat({id: id2,nid: current, switchId: id2+current,cur:current,
+                    src: src, pos: 'normal', bottomPos: indexVal, uid: uid1, clicked: false,
+                    trackValue:track[current] || 0, alt: alt,  normal: normal[current]||normalId}));
                 if(track[current]){
                     track[current] = track[current] + 1;
                     setTrack(track);
-                    setTrackValue(track[current]);
-
+                    // setTrackValue(track[current]);
                 }else{
                     track[current] = id2;
                     setTrack(track);
-                    setTrackValue(track[current]);
+                    // setTrackValue(track[current]);
                 }
                 setNormalId(normalId + 1);
                 if(normal[current]){
@@ -277,8 +276,8 @@ const LearningStart = ({frontData, bottomData}) => {
                 setId3(id3+1);
                 //nid h lights k liye
                 setBottomImg1(i => i.concat({id: obj, bools: 0, 
-                    nid: currentRight+nid, src: src, pos: 'right', 
-                    bool: false, bottomRightPos: currentRight, clicked: false,alt: alt,
+                    nid: currentRight+nid, src: src, pos: 'right', cur:current,
+                    bool: false, bottomRightPos: currentRight, clicked: false, alt: alt,
                     uid: uid1, trackValue: trackRight[currentRight]}));
                 return;
             }
@@ -287,8 +286,8 @@ const LearningStart = ({frontData, bottomData}) => {
             }else{
                 obj = current+1;
             }
-            setBottomImg1(i => i.concat({id:  obj, src: src, clicked: false,alt: alt,
-                nid: currentRight+nid,pos: 'right', bottomRightPos: currentRight, uid: uid1, 
+            setBottomImg1(i => i.concat({id:  obj, src: src, clicked: false, cur:current,
+                nid: currentRight+nid,pos: 'right', bottomRightPos: currentRight, uid: uid1, alt: alt, 
                 trackValue: trackRight[currentRight]}));
             if(right[current+'-'+currentRight]){
                 right[current+'-'+currentRight] = right[current+'-'+currentRight] + 1;
@@ -314,7 +313,8 @@ const LearningStart = ({frontData, bottomData}) => {
             // setCurrent(current+1)
             return;
         }else if(activeRightBottom[activeRightBottomIndex[currentRightDot] + '-bottom'] === true){
-            setRightRImg1(i=> i.concat({id: id4, src: src, pos: 'normal', currentRightRight: currentRightDot, uid: uid1, clicked: false}));
+            setRightRImg1(i=> i.concat({id: id4, src: src, pos: 'normal', alt: alt, 
+            currentRightRight: currentRightDot, uid: uid1, clicked: false}));
             setId4(id4+1);
             setUid1(uid1+1);
             return;
@@ -325,21 +325,21 @@ const LearningStart = ({frontData, bottomData}) => {
                     setNormalId(0);
                     // setId3(1);
                     if(src === tactSource || src === lightSource || src === magSource || src === distanceSource){
-                        setImg11(i => i.concat({id: id, src: src, pos: 'normal',alt: alt, uid: uid1, clicked: false}));
+                        setImg11(i => i.concat({id: id, src: src, pos: 'normal', uid: uid1, clicked: false, alt: alt}));
                         setId(id+1);
                         setId3(id);
                         setUid1(uid1+1);
                     }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
-                        setImg11(i => i.concat({id: id, src: src, bool: false, bools: 0, alt: alt,pos: 'normal', uid: uid1, clicked: false}));
+                        setImg11(i => i.concat({id: id, src: src, bool: false, bools: 0, pos: 'normal', alt: alt, uid: uid1, clicked: false}));
                         setImgTrack(imgTrack +1);
                         setUid1(uid1+1);
                     }else if(src === conditionSource){
-                        setImg11(img1 => img1.concat({id: id, src: src, pos: 'normal', uid: uid1, alt: alt,clicked: true}));
+                        setImg11(img1 => img1.concat({id: id, src: src, pos: 'normal', alt: alt, uid: uid1, clicked: true}));
                         setId(id + 1);
                         setId3(id);
                         setUid1(uid1+1);
                     }else{
-                        setImg11(img1 => img1.concat({id: id, src: src, pos: 'normal', uid: uid1, alt: alt,clicked: false}));
+                        setImg11(img1 => img1.concat({id: id, src: src, pos: 'normal', alt: alt, uid: uid1, clicked: false}));
                         setId(id + 1);
                         setId3(id);
                         setUid1(uid1+1); 
@@ -351,7 +351,7 @@ const LearningStart = ({frontData, bottomData}) => {
                 }
                 setNum(num+1);
                 setUid1(uid1+1);
-                setImg11(img1 => img1.concat({id: num, src: src, pos: 'normal', uid: uid1, alt: alt,clicked: false}));
+                setImg11(img1 => img1.concat({id: num, src: src, pos: 'normal', alt: alt, uid: uid1, clicked: false}));
                 return;
             }
         }
@@ -429,6 +429,66 @@ const LearningStart = ({frontData, bottomData}) => {
             <div style={{position: 'fixed', bottom: '0', width: '85vw', 
             left: '0',  height: '70px',backgroundColor: 'white', zIndex: '100000000',}}>
                 <h2 style={{color: 'grey', left: '50px', fontWeight: '500'}}>Description</h2>
+                <ul>
+                {frontData.map((i,index) => {
+                    if(!img11[index] || img11[index].alt !== i){
+                        if(img11[noa] !== frontData[noa-1000]){
+                            return(<li style={{top: '8vh', position: 'absolute',
+                            left: '5vw', color: 'red',  fontWeight: '400', fontSize: '1.2rem'}}>
+                            Wrong Selected
+                        </li>)
+                        }
+                        if(noa === index){
+                            return(<> 
+                            <li style={{top: '8vh', position: 'absolute',
+                            left: '5vw', color: 'grey', 
+                            fontSize: '1.2rem'
+                            // marginTop: `${4*index}vh`
+                            }}>
+                                Select {i}
+                            </li>
+                            </>);
+                        }
+                    }               
+                    noa= noa+1;
+                    return(
+                            <></>
+                    )
+                })}
+                </ul>
+                <ul>
+                    <h2 style={{position: 'absolute', top: `${'3'}vh`, 
+                            left: '32vw', color: 'grey', 
+                            fontSize: '1.2rem'
+                            // marginTop: `${4*index}vh`
+                            }}>Bottom Component</h2>
+                {bottomData.map((i,index) => {
+                    if(!bottomImg1[index] || bottomImg1[index].alt !== i){
+                        if(bottomImg1[noa1] !== bottomData[noa1-1000]){
+                            return(<li style={{position: 'absolute',top: '8vh',
+                            left: '32vw', color: 'red',  fontWeight: '400', fontSize: '1.2rem'}}>
+                            Wrong Selected
+                        </li>)
+                        }
+                        if(noa1 === index){
+                            return(<> 
+                            <li style={{position: 'absolute',top: '8vh',
+                            left: '32vw', color: 'grey', 
+                            fontSize: '1.2rem'
+                            // marginTop: `${4*index}vh`
+                            }}>
+                                Select {i}
+                            </li>
+                            </>);
+                        }
+                    }               
+                    noa1= noa1+1;
+                    return(
+                            <></>
+                    )
+
+                })}
+                </ul>
             </div>
            <Bottom>
                <Scrollbars style={{ width: '100px', height: '100vh' ,position: 'absolute', right: '0'}}>
@@ -441,7 +501,7 @@ const LearningStart = ({frontData, bottomData}) => {
                     <Img src={sequenceSource} 
                     alt="sequence" />
 
-                    <IconMob onClick={(e) =>  onImage1Concat(beeperSource,"Bepeer")}/>
+                    <IconMob onClick={(e) =>  onImage1Concat(beeperSource,"Beeper")}/>
                     <Img src={beeperSource} 
                     alt="beeper" />
 
@@ -523,13 +583,13 @@ const LearningStart = ({frontData, bottomData}) => {
                 <ul>
                 {frontData.map((i,index) => {
                     if(!img11[index] || img11[index].alt !== i){
-                        if(img11[j] !== frontData[j-1000]){
+                        if(img11[noa] !== frontData[noa-1000]){
                             return(<li style={{position: 'absolute', top: `${'49'}vh`, 
                             left: '4vw', color: 'red',  fontWeight: '400', fontSize: '1.2rem'}}>
                             Wrong Selected
                         </li>)
                         }
-                        if(j === index){
+                        if(noa === index){
                             return(<> 
                             <li style={{position: 'absolute', top: `${'49'}vh`, 
                             left: '4vw', color: 'grey', 
@@ -541,7 +601,7 @@ const LearningStart = ({frontData, bottomData}) => {
                             </>);
                         }
                     }               
-                    j= j+1;
+                    noa= noa+1;
                     return(
                             <></>
                     )
@@ -555,27 +615,28 @@ const LearningStart = ({frontData, bottomData}) => {
                             }}>Bottom Component</h2>
                 {bottomData.map((i,index) => {
                     if(!bottomImg1[index] || bottomImg1[index].alt !== i){
-                        if(true){
-                            return(
-                                <>
-                                {i === Number(i) ? <li style={{position: 'absolute', top: `${'60'}vh`, 
-                                left: '4vw', color: 'grey', 
-                                fontSize: '1.2rem',
-                                }}>
-                                    Select arrow mark at pos {i+1} 
-                                </li>:
-                                <li style={{position: 'absolute', top: `${'64'}vh`, 
-                                left: '4vw', color: 'grey', 
-                                fontSize: '1.2rem',
-                                }}>
-                                    Select {i}
-                                </li>}
-                                </>
-                        )
+                        if(bottomImg1[noa1] !== bottomData[noa1-1000]){
+                            return(<li style={{position: 'absolute', top: `${'64'}vh`, 
+                            left: '4vw', color: 'red',  fontWeight: '400', fontSize: '1.2rem'}}>
+                            Wrong Selected
+                        </li>)
                         }
-                    } 
-                    pp= pp+1;
-                    return(<></>)
+                        if(noa1 === index){
+                            return(<> 
+                            <li style={{position: 'absolute', top: `${'62'}vh`, 
+                            left: '4vw', color: 'grey', 
+                            fontSize: '1.2rem'
+                            // marginTop: `${4*index}vh`
+                            }}>
+                                Select {i}
+                            </li>
+                            </>);
+                        }
+                    }               
+                    noa1= noa1+1;
+                    return(
+                            <></>
+                    )
 
                 })}
                 </ul>

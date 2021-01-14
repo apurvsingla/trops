@@ -455,6 +455,21 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 key={index+'--icon'}
                 onClick={(e) => activeSecondLink(e,index)}
                  />
+                 {dimensions.width < 892 ? <span style={{
+                                left: `${140*index +185}px`,
+                                zIndex: '11',
+                                position: 'absolute',
+                                top: '82px',
+                                border: '3px solid black',
+                                height: '5px',
+                                width: '79px',
+                                borderLeft: 'none',
+                                borderRight: 'none'
+                        }}
+                        className="icons"
+                key={index+'--icon'}
+                onClick={(e) => activeNormal(e,index)}
+                 />:
                  <span style={{
                                 left: `${140*index +215}px`,
                                 zIndex: '11',
@@ -469,28 +484,14 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                         className="icons"
                 key={index+'--icon'}
                 onClick={(e) => activeNormal(e,index)}
-                 />
-                <span 
-                className='line-bottom-arrow-cond'
-                key={index+'-bottom'}
-                id={index}
-                style={{
-                        marginLeft: `${140*index + 88}px`,
-                        zIndex: '1',
-                        color: 'grey',
-                        top: '93px',
-                        transform: 'rotate(315deg)'
-                }}
-                />
-
-
+                 />}
                 {dimensions.width < 892 ? <span 
                 className='line-bottom-arrow-cond'
                 key={index+'-bottom'}
                 id={index}
                 style={{
                         marginLeft: `${140*index - 78}px`,
-                        zIndex: '11',
+                        zIndex: '110',
                         color: 'grey',
                         top: '176px',
                 }}
@@ -500,9 +501,9 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 id={index}
                 style={{
                         marginLeft: `${140*index }px`,
-                        zIndex: '1',
+                        zIndex: '100',
                         color: 'grey',
-                        top: '176px',
+                        top: '170px',
                 }}
                 />}
                 

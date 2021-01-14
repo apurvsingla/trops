@@ -116,6 +116,18 @@ const Start = () => {
     const [normal, setNormal] = useSessionStorage('normal', {});
     const [nid, setNid] = useSessionStorage('nid', 0);
 
+    const [pos, setPos] = useSessionStorage('bottom-dot-pos', {});
+    const [activeDot, setActiveDot] = useSessionStorage('active-top-bottom-dot',null);
+    const [bottomTop,setBottomTop] = useSessionStorage('right-img-pos', {});
+
+    //rightR
+    const [posRight,setPosRight] = useSessionStorage('right-dot-bottom',{});
+    const [activeDotRight,setActiveDotRight] = React.useState(null);
+    
+    //red dots
+    const [appearDot, setAppearDot] = useSessionStorage('appear-dot',{});
+    const [appearDotRight, setAppearDotRight] = useSessionStorage('appear-dot-right',{})
+
     // const [trackBottom, setTrackBottom] = useSessionStorage('track-bottom', {});
     // const [trackBottomTop, setTrackBottomTop] = useSessionStorage('track-bottom-top', {});
 
@@ -137,10 +149,17 @@ const Start = () => {
     }
 
     const reset = () => {
+        setAppearDotRight({});
+        setAppearDot({});
+        setActiveDotRight(null);
+        setPosRight({});
+        setPos({});
         setImg1([]);
+        setBottomTop({});
         setId(1);
         setNum(0);
         setBottomImg([]);
+        setActiveDot(null);
         setRightImg([]);
         setActive({});
         setActiveother({});
@@ -179,11 +198,11 @@ const Start = () => {
                 if(track[current]){
                     track[current] = track[current]+ 1
                     setTrack(track);
-                    setTrackValue(track[current]);
+                    // setTrackValue(track[current]);
                 }else{
                     track[current] = id2;
                     setTrack(track);
-                    setTrackValue(track[current]);
+                    // setTrackValue(track[current]);
 
                 }
                 setNormalId(normalId + 1);
@@ -204,11 +223,11 @@ const Start = () => {
                 if(track[current]){
                     track[current] = track[current]+ 1
                     setTrack(track);
-                    setTrackValue(track[current]);
+                    // setTrackValue(track[current]);
                 }else{
                     track[current] = id2;
                     setTrack(track);
-                    setTrackValue(track[current]);
+                    // setTrackValue(track[current]);
 
                 }
                 setNormalId(normalId + 1);
@@ -228,12 +247,11 @@ const Start = () => {
                 if(track[current]){
                     track[current] = track[current] + 1;
                     setTrack(track);
-                    setTrackValue(track[current]);
-
+                    // setTrackValue(track[current]);
                 }else{
                     track[current] = id2;
                     setTrack(track);
-                    setTrackValue(track[current]);
+                    // setTrackValue(track[current]);
                 }
                 setNormalId(normalId + 1);
                 if(normal[current]){
@@ -440,6 +458,10 @@ const Start = () => {
             id={id} setNormalId={setNormalId}
             normal={normal}
             setNormal={setNormal}
+            pos={pos} activeDot={activeDot}
+            bottomTop={bottomTop} posRight={posRight}
+            activeDotRight={activeDotRight}
+            appearDot={appearDot} appearDotRight={appearDotRight}
             />
             {/* end */}
 
@@ -455,7 +477,7 @@ const Start = () => {
                     <Img src={powerSource} 
                     alt="power" />
 
-                    <IconMob onClick={() => onImage1Concat(sequenceSource, 'Sequence')}/>
+                    <IconMob onClick={() => onImage1Concat(sequenceSource, 'Counter')}/>
                     <Img src={sequenceSource} 
                     alt="sequence" />
 
@@ -622,7 +644,10 @@ const Start = () => {
             setUid={setUid} uid={uid}
             right={right} setRight={setRight} id={id}
             setNormal={setNormal} setNormalId={setNormalId}
-            normal={normal}
+            normal={normal} pos={pos} activeDot={activeDot}
+            bottomTop={bottomTop} posRight={posRight}
+            activeDotRight={activeDotRight}
+            appearDot={appearDot} appearDotRight={appearDotRight}
             />
              </Scrollbars>
             {/* end */}

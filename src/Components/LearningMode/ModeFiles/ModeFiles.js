@@ -35,7 +35,7 @@ const ModeFiles = () => {
             let ar = [];
             front.map(i => arr.push(i.alt));
             setState(arr);
-            bottom.map(i => ar.push(Number(i.cur),i.alt));
+            bottom.map(i => ar.push(i.alt));
             setStateB(ar);
         }
         return func()
