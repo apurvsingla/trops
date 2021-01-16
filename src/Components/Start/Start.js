@@ -398,7 +398,7 @@ const Start = () => {
                     borderRadius: '25px', cursor: 'pointer'}}>Continue</button>
                 </span>: null}
         {    dimensions.width < 892 ? <>
-         <Scrollbars style={{ width: '85vw', height: '90vh'}}>
+         <Scrollbars style={{ width: '85vw', height: '100vh'}}>
            <Graph 
            style={{position: 'absolute',
                     minWidth: `${18*(img1.length)+ 18*(bottomImg.length)  + 100}%`,
@@ -466,10 +466,10 @@ const Start = () => {
             {/* end */}
 
             </Scrollbars>
-            <div style={{position: 'fixed', bottom: '0', width: '85vw', 
+            {/* <div style={{position: 'fixed', bottom: '0', width: '85vw', 
             left: '0',  height: '70px',backgroundColor: 'white', zIndex: '100000000',}}>
                 <h2 style={{color: 'grey', left: '50px', fontWeight: '500'}}>Description</h2>
-            </div>
+            </div> */}
            <Bottom>
                <Scrollbars style={{ width: '100px', height: '100vh' ,position: 'absolute', right: '0'}}>
                 <div>
