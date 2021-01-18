@@ -10,7 +10,7 @@ const Scroll = ({marks,
         const num = Number(e.target.innerText);
         const numId = Number(e.target.parentNode.parentNode.id);
         const newArray = [...bottomImg];
-        console.log(num,numId)
+        // console.log(num,numId)
         newArray.forEach((val, index) => {
             const array = newArray[index]
             if(array.nid === numId+1){

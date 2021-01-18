@@ -11,7 +11,7 @@ const Loader = ({index,bool,top}) => {
         return () => mediaQuery.removeListener(setMQuery);     
     }, []);
     return (<>
-    {bool !== 1 ? (mQuery && !mQuery.matches) ? <Style>
+    {bool !== 0 ? (mQuery && !mQuery.matches) ? <Style>
         
         <span 
         style={{

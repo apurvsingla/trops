@@ -19,7 +19,7 @@ const Loader = ({index,bool}) => {
         window.addEventListener('resize', handleResize);
         }) 
     return (<>
-    {bool !== 1 ? (dimensions.width < 892) ? <Style>
+    {bool !== 0 ? (dimensions.width < 892) ? <Style>
         
         <span 
         style={{

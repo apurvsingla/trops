@@ -61,7 +61,7 @@ const RightImgs = ({mQuery,
                 let newArray = [...bottomImg];
                 newArray.forEach((val, index) => {
                         const array = newArray[index]
-                        if(array.nid === num){
+                        if(array.nid === num+1){
                                 if(appearDot[num] === true){
                                         newArray[index] = {...newArray[index], bool: false}
                                 }else{

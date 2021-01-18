@@ -25,7 +25,7 @@ const Leds = ({index,top,bool}) => {
     }
     return (
         <BottomStyles>
-            {bool!== 1 ?
+            {bool!== 0 ?
             <>
             <span 
             className="loader-glow-bottom"

@@ -110,6 +110,18 @@ const LearningStart = ({frontData, bottomData}) => {
     const [normal, setNormal] = useSessionStorage('normal1', {});
     const [nid, setNid] = useSessionStorage('nid1', 0);
 
+    const [pos, setPos] = useSessionStorage('bottom-dot-pos', {});
+    const [activeDot, setActiveDot] = useSessionStorage('active-top-bottom-dot',null);
+    const [bottomTop,setBottomTop] = useSessionStorage('right-img-pos', {});
+
+    //rightR
+    const [posRight,setPosRight] = useSessionStorage('right-dot-bottom',{});
+    const [activeDotRight,setActiveDotRight] = React.useState(null);
+    
+    //red dots
+    const [appearDot, setAppearDot] = useSessionStorage('appear-dot',{});
+    const [appearDotRight, setAppearDotRight] = useSessionStorage('appear-dot-right',{})
+
     // const [trackBottom, setTrackBottom] = useSessionStorage('track-bottom', {});
     // const [trackBottomTop, setTrackBottomTop] = useSessionStorage('track-bottom-top', {});
 
@@ -287,7 +299,7 @@ const LearningStart = ({frontData, bottomData}) => {
                 obj = current+1;
             }
             setBottomImg1(i => i.concat({id:  obj, src: src, clicked: false, cur:current,
-                nid: currentRight+nid+ 1000,pos: 'right', bottomRightPos: currentRight, uid: uid1, alt: alt, 
+                nid: currentRight+nid+ 1001,pos: 'right', bottomRightPos: currentRight, uid: uid1, alt: alt, 
                 trackValue: trackRight[currentRight]}));
             if(right[current+'-'+currentRight]){
                 right[current+'-'+currentRight] = right[current+'-'+currentRight] + 1;
@@ -422,6 +434,17 @@ const LearningStart = ({frontData, bottomData}) => {
             id={id} setNormalId={setNormalId}
             normal={normal}
             setNormal={setNormal}
+            pos={pos} activeDot={activeDot}
+            bottomTop={bottomTop} posRight={posRight}
+            activeDotRight={activeDotRight}
+            appearDot={appearDot} appearDotRight={appearDotRight}
+            setAppearDotRight={setAppearDotRight}
+            setAppearDot={setAppearDot}
+            setActiveDotRight={setActiveDotRight}
+            setPosRight={setPosRight}
+            setBottomTop={setBottomTop}
+            setPos={setPos}
+            setActiveDot={setActiveDot}
             />
             {/* end */}
 
@@ -702,6 +725,17 @@ const LearningStart = ({frontData, bottomData}) => {
             right={right} setRight={setRight} id={id}
             setNormal={setNormal} setNormalId={setNormalId}
             normal={normal}
+            pos={pos} activeDot={activeDot}
+            bottomTop={bottomTop} posRight={posRight}
+            activeDotRight={activeDotRight}
+            appearDot={appearDot} appearDotRight={appearDotRight}
+            setAppearDotRight={setAppearDotRight}
+            setAppearDot={setAppearDot}
+            setActiveDotRight={setActiveDotRight}
+            setPosRight={setPosRight}
+            setBottomTop={setBottomTop}
+            setPos={setPos}
+            setActiveDot={setActiveDot}
             />
              </Scrollbars>
             {/* end */}

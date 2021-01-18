@@ -463,6 +463,13 @@ const Start = () => {
             bottomTop={bottomTop} posRight={posRight}
             activeDotRight={activeDotRight}
             appearDot={appearDot} appearDotRight={appearDotRight}
+            setAppearDotRight={setAppearDotRight}
+            setAppearDot={setAppearDot}
+            setActiveDotRight={setActiveDotRight}
+            setPosRight={setPosRight}
+            setBottomTop={setBottomTop}
+            setPos={setPos}
+            setActiveDot={setActiveDot}
             />
             {/* end */}
 
@@ -649,6 +656,13 @@ const Start = () => {
             bottomTop={bottomTop} posRight={posRight}
             activeDotRight={activeDotRight}
             appearDot={appearDot} appearDotRight={appearDotRight}
+            setAppearDotRight={setAppearDotRight}
+            setAppearDot={setAppearDot}
+            setActiveDotRight={setActiveDotRight}
+            setPosRight={setPosRight}
+            setBottomTop={setBottomTop}
+            setPos={setPos}
+            setActiveDot={setActiveDot}
             />
              </Scrollbars>
             {/* end */}
