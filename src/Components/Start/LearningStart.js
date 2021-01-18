@@ -276,7 +276,7 @@ const LearningStart = ({frontData, bottomData}) => {
                 setId3(id3+1);
                 //nid h lights k liye
                 setBottomImg1(i => i.concat({id: obj, bools: 0, 
-                    nid: currentRight+nid, src: src, pos: 'right', cur:current,
+                    nid: currentRight+nid + 1000, src: src, pos: 'right', cur:current,
                     bool: false, bottomRightPos: currentRight, clicked: false, alt: alt,
                     uid: uid1, trackValue: trackRight[currentRight]}));
                 return;
@@ -287,7 +287,7 @@ const LearningStart = ({frontData, bottomData}) => {
                 obj = current+1;
             }
             setBottomImg1(i => i.concat({id:  obj, src: src, clicked: false, cur:current,
-                nid: currentRight+nid,pos: 'right', bottomRightPos: currentRight, uid: uid1, alt: alt, 
+                nid: currentRight+nid+ 1000,pos: 'right', bottomRightPos: currentRight, uid: uid1, alt: alt, 
                 trackValue: trackRight[currentRight]}));
             if(right[current+'-'+currentRight]){
                 right[current+'-'+currentRight] = right[current+'-'+currentRight] + 1;

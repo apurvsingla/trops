@@ -269,7 +269,8 @@ const Start = () => {
             let obj = 0;
             if(src === powerSource){
                 return;
-            }else if(src === ledSource || src === graphSource || src === beeperSource || src === soundSource || src === motorSource){
+            }else if(src === ledSource || src === graphSource || src === beeperSource || 
+                src === soundSource || src === motorSource){
                 if(right[current+'-'+currentRight]){
                     obj = right[current+'-'+currentRight]+1
                 }else{
@@ -296,7 +297,7 @@ const Start = () => {
                 setId3(id3+1);
                 //nid h lights k liye
                 setBottomImg(i => i.concat({id: obj, bools: 0, 
-                    nid: currentRight+nid, src: src, pos: 'right', cur:current,
+                    nid: currentRight+nid+1000, src: src, pos: 'right', cur:current,
                     bool: false, bottomRightPos: currentRight, clicked: false, alt: alt,
                     uid: uid, trackValue: trackRight[currentRight]}));
                 return;
@@ -307,7 +308,7 @@ const Start = () => {
                 obj = current+1;
             }
             setBottomImg(i => i.concat({id:  obj, src: src, clicked: false, cur:current,
-                nid: currentRight+nid,pos: 'right', bottomRightPos: currentRight, uid: uid, alt: alt, 
+                nid: currentRight+nid+1000,pos: 'right', bottomRightPos: currentRight, uid: uid, alt: alt, 
                 trackValue: trackRight[currentRight]}));
             if(right[current+'-'+currentRight]){
                 right[current+'-'+currentRight] = right[current+'-'+currentRight] + 1;
