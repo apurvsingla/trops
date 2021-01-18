@@ -53,7 +53,8 @@ const Front = () => {
     }
     // const classes = useStyles();
     return (<>
-    {dimensions.width <892 ? <>
+    {dimensions.width <892 ? window.matchMedia("(orientation: landscape)").matches ?
+   <>
       <section>
       <div>
       <img src={process.env.PUBLIC_URL + 'images/extraImages/back1.png'} alt="back" />
@@ -88,7 +89,17 @@ const Front = () => {
         />
       </div>
     </section>
-    </>: <>
+    </>:<span
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: '100vh',
+        fontWeight: '500',
+        fontSize: '1.2rem',
+        textAlign: 'center'
+      }}
+    >Please rotate your device to view the content</span>: <>
     <section>
       <ScrollLock>
         <div>

@@ -126,11 +126,10 @@ const Start = () => {
     
     //red dots
     const [appearDot, setAppearDot] = useSessionStorage('appear-dot',{});
-    const [appearDotRight, setAppearDotRight] = useSessionStorage('appear-dot-right',{})
+    const [appearDotRight, setAppearDotRight] = useSessionStorage('appear-dot-right',{});
 
     // const [trackBottom, setTrackBottom] = useSessionStorage('track-bottom', {});
     // const [trackBottomTop, setTrackBottomTop] = useSessionStorage('track-bottom-top', {});
-
     const [normalId, setNormalId] = useSessionStorage('noraml-id', 0);
     const data = {
      img1: img1,
@@ -182,6 +181,7 @@ const Start = () => {
         setNormal({});
         setRight({});
         setUid(0);
+        setActiveRightBottom({});
     }
 
     // populating images
@@ -331,11 +331,11 @@ const Start = () => {
             setId3(id3+1);
             setUid(uid+1);
             setNid(nid + 1);
-            // setCurrent(current+1)
             return;
         }else if(activeRightBottom[activeRightBottomIndex[currentRightDot] + '-bottom'] === true){
-            setRightRImg(i=> i.concat({id: id4, src: src, pos: 'normal', alt: alt, 
-            currentRightRight: currentRightDot, uid: uid, clicked: false}));
+            setBottomImg(i => i.concat({id:  id4, src: src, clicked: false, cur:current,
+                nid: currentRight+nid+1000,pos: 'rightBottom', rightBottomPos: currentRight, uid: uid, alt: alt, 
+                trackValue: trackRight[currentRight]}));
             setId4(id4+1);
             setUid(uid+1);
             return;

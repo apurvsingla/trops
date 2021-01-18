@@ -57,7 +57,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         // setId2,indexVal,setUid,uid,
         right, setRight,id,setNormalId,setNormal,normal, pos, setPos, activeDot, setActiveDot,
         bottomTop, setBottomTop,posRight, setPosRight, activeDotRight, setActiveDotRight,
-        appearDot, setAppearDot, appearDotRight, setAppearDotRight
+        appearDot, setAppearDot, appearDotRight, setAppearDotRight,
 }) => {
         
         //media query
@@ -134,19 +134,16 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
         const activeRightBottomLink = (e,index) => {
                 if(e){
                         boolean2 = !boolean2;
-                        // const ids = Number(e.target.id);
-                        activeother[index] = boolean2;
+                        activeRightBottom[index] = boolean2;
                         if(boolean2 === true){
                                 e.target.style.backgroundColor = 'green';
                         }else{
                                 e.target.style.backgroundColor = 'transparent';   
                         }
-                        activeIndex[index] = index;
-                        Object.keys(active).map(k=>active[k]=false);
-                        setActive(active);
-                        setActiveother(activeother);
-                        setActiveIndex(activeIndex);
-                        setCurrentRight(index);
+                        activeRightBottomIndex[index] = index;
+                        setActiveRightBottom(activeRightBottom);
+                        setActiveRightBottomIndex(activeRightBottomIndex);
+                        setCurrentRightDot(index);
                         setIndexVal(index);
                 }
         }
@@ -328,6 +325,8 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         marks={marks} valueLabelFormat={valueLabelFormat}
                         activeRightBottomLink={activeRightBottomLink}
                         /> : null}
+
+                        {i.pos === 'rightBottom' ? <></> : null}
                         </>
                         
                         )
