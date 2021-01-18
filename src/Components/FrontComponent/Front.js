@@ -57,6 +57,10 @@ const Front = () => {
    <>
       <section>
       <div>
+      <p style={{position: 'absolute', top: '43%', left: '12%', 
+            zIndex: '22', fontSize: '1.2rem', fontWeight: 'bold'}}>Learning Mode</p>
+            <p style={{position: 'absolute', top: '43%' ,right: '20%', 
+            zIndex: '22', fontSize: '1.2rem',fontWeight: 'bold'}}>Sandbox Mode</p>
       <img src={process.env.PUBLIC_URL + 'images/extraImages/back1.png'} alt="back" />
           <span style={{fontSize: '2rem', fontWeight: '600', position: 'absolute', top: '10px', left: '90px', color: '#707070'}}>Trops Kit</span>
           <img 
