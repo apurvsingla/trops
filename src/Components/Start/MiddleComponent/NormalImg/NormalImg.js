@@ -337,6 +337,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
     }
         
     return(<>
+    {/* image condition */}
         {i.src === conditionSource ? <Span>
                 <NImg src={i.src} alt="alt"
                  style={{
@@ -344,10 +345,9 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                         zIndex: '12'
                 }}
                 id={i.uid}
-                // onClick={(e) => deleteImage(e,i.uid)}
+                onClick={(e) => clickedImage(e,i.uid)}
                 />
         </Span>: null}
-        {/* NormalImg */}
         {i.src !== conditionSource ? <Span>
                 <NormalImg src={i.src} alt="alt"
                  style={{
@@ -358,6 +358,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 onClick={(e) => clickedImage(e,i.uid)}
                 />
         </Span>: null}
+
+        {/* delete image */}
         {i.clicked === true && i.src !== powerSource ? <CancelOutlinedIcon 
         stroke={'orange'}
         style={{
@@ -368,10 +370,10 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 zIndex: '15',
                 cursor: 'pointer'
         }}
-        onClick={(e) => deleteImage(e,i.uid,index,i.id)}
+        onClick={(e) => deleteImage(e,i.uid,index)}
         />: null}
         
-
+        {/* electrons */}
         {i.bool && ((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource) || (i.src===graphSource)) ? true? (
                 <Loader index={index} />
         ): null: null}
@@ -382,10 +384,10 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 <Loader index={index} bool={i.bools}/>
         ): null: null}
 
-
+        {/* connection line */}
         {(img1.length-1) === index ? null : line() }
 
-        {/* special case */}
+        {/* tact dot*/}
         {(i.src === tactSource) 
                 ? (
                 <span 
@@ -404,6 +406,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 />
         ): null}
 
+        {/* range */}
         {(i.src===lightSource)|| (i.src === tempSource) || 
         (i.src === soundSource) ||(i.src === magSource) ||
         (i.src === distanceSource)
@@ -421,6 +424,8 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 }}
                 />
          : null}
+
+         {/* glow effect */}
         {(((i.src === ledSource) || (i.src===beeperSource) || (i.src===motorSource)) 
         )? 
                 glowDot()
@@ -440,8 +445,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
         : null}
 
         
-
-        {/* dots start */}
+        {/* condition line */}
         {i.src === conditionSource ? 
         <>
        
@@ -517,7 +521,7 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 id={index}
                 style={{
                         marginLeft: `${140*index - 78}px`,
-                        zIndex: '110',
+                        zIndex: '10',
                         color: 'grey',
                         top: '176px',
                 }}
@@ -526,10 +530,10 @@ const NormalImgs = ({index, i, deleteImage, marks, valueLabelFormat,
                 key={index+'-bottom'}
                 id={index}
                 style={{
-                        marginLeft: `${140*index }px`,
-                        zIndex: '100',
+                        marginLeft: `${140*index}px`,
+                        zIndex: '10',
                         color: 'grey',
-                        top: '170px',
+                        top: '172px',
                 }}
                 />}
                 

@@ -152,8 +152,6 @@ export const LargeColLineCondition = styled.span`
     position: absolute;
     top: 150px;
     left: 166px;
-    z-index: 4;
-    border-radius: 25px;
     height: 42px;
     @media (max-width: 893px){
         margin-top: -30px;

@@ -355,7 +355,8 @@ const Start = () => {
                         setImgTrack(imgTrack +1);
                         setUid(uid+1);
                     }else if(src === conditionSource){
-                        setImg1(img1 => img1.concat({id: id, src: src, pos: 'normal', alt: alt, uid: uid, clicked: true}));
+                        setImg1(img1 => img1.concat({id: id, src: src, pos: 'normal', 
+                        alt: alt, uid: uid, clicked: false}));
                         setId(id + 1);
                         setId3(id);
                         setUid(uid+1);

@@ -6,7 +6,7 @@ NormalRImg,
 // LargeRowLine
 } from '../Middle.style';
 // import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
-import { tactSource,ledSource,beeperSource, motorSource, lightSource, tempSource, magSource, soundSource, distanceSource, graphSource } from '../Source/source';
+import { tactSource,ledSource,beeperSource, motorSource, lightSource, tempSource, magSource, soundSource, distanceSource, graphSource, conditionSource } from '../Source/source';
 // import {conditionSource} from '../Source/source';
 import { makeStyles } from '@material-ui/core/styles';
 import Loader from './Loader/Loader';
@@ -444,6 +444,35 @@ const RightImgs = ({mQuery,
                 />}
                 
                 </>
+         : null}
+
+         {i.src === conditionSource ? 
+         <>
+         <span 
+         style={{
+                 height: '50px',
+                 width: '5px',
+                 border: '2px solid black',
+                 position: 'absolute',
+                 left: `${140*i.id+ 162}px`,
+                marginTop:`${140*i.bottomRightPos+ 284}px`,
+                borderBottom:  'none',
+                borderTop:  'none',
+                cursor: 'pointer',
+                zIndex: '9'
+         }}
+         />
+         <span 
+                className='line-bottom-arrow-cond'
+                key={index+'icon-arrow-b'}
+                style={{
+                        left: `${140*i.id + 158}px`,
+                        marginTop: `${140*i.bottomRightPos + 140}px`,
+                        zIndex: '8',
+                        color: 'transparent',                     
+                }}
+                /> 
+         </>
          : null}
         </>)
 }

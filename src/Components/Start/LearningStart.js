@@ -346,7 +346,8 @@ const LearningStart = ({frontData, bottomData}) => {
                         setImgTrack(imgTrack +1);
                         setUid1(uid1+1);
                     }else if(src === conditionSource){
-                        setImg11(img1 => img1.concat({id: id, src: src, pos: 'normal', alt: alt, uid: uid1, clicked: true}));
+                        setImg11(img1 => img1.concat({id: id, src: src, pos: 'normal', alt: alt, 
+                        uid: uid1, clicked: false}));
                         setId(id + 1);
                         setId3(id);
                         setUid1(uid1+1);
