@@ -47,7 +47,7 @@ const RightImgs = ({mQuery,
 //     activeDot, activeSecondRightLink, 
     deleteRightImage,
     index, appearDot, setAppearDot, bottomImg, setBottomImg,
-    marks, valueLabelFormat,
+    marks, valueLabelFormat,activeRightBottomLink,
      pos, i}) => {
         const classes = useStyles();
         const func = (e) => {
@@ -450,7 +450,7 @@ const RightImgs = ({mQuery,
          <>
          <span 
          style={{
-                 height: '50px',
+                 height: '48px',
                  width: '5px',
                  border: '2px solid black',
                  position: 'absolute',
@@ -461,6 +461,7 @@ const RightImgs = ({mQuery,
                 cursor: 'pointer',
                 zIndex: '9'
          }}
+         onClick={(e) => activeRightBottomLink(e,i.id)}
          />
          <span 
                 className='line-bottom-arrow-cond'

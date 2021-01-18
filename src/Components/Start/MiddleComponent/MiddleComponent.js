@@ -131,6 +131,27 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                 }
         }
 
+        const activeRightBottomLink = (e,index) => {
+                if(e){
+                        boolean2 = !boolean2;
+                        // const ids = Number(e.target.id);
+                        activeother[index] = boolean2;
+                        if(boolean2 === true){
+                                e.target.style.backgroundColor = 'green';
+                        }else{
+                                e.target.style.backgroundColor = 'transparent';   
+                        }
+                        activeIndex[index] = index;
+                        Object.keys(active).map(k=>active[k]=false);
+                        setActive(active);
+                        setActiveother(activeother);
+                        setActiveIndex(activeIndex);
+                        setCurrentRight(index);
+                        setIndexVal(index);
+                }
+        }
+
+
         const activeNormal = (e,index) => {
                 if(e){
                         boolean2 = !boolean2;
@@ -228,8 +249,8 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         const arr = newArray[index];
                         if(arr.nid === uid){
                                 newArray.splice(index,right[current+'-'+currentRight]||1)
-                                const num = right[current+'-'+currentRight] - index;
-                                right[current+'-'+currentRight] = right[current+'-'+currentRight] - num;
+                                // const num = right[current+'-'+currentRight] - index;
+                                right[current+'-'+currentRight] = index+1;
                               setRight(right);
                         }
                 })
@@ -305,6 +326,7 @@ const MiddleComponent = ({img1,setImg1, active, setActive,
                         deleteImage={deleteBottomImg} appearDot={appearDot} 
                         bottomImg={bottomImg}
                         marks={marks} valueLabelFormat={valueLabelFormat}
+                        activeRightBottomLink={activeRightBottomLink}
                         /> : null}
                         </>
                         
